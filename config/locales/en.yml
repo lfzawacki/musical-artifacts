@@ -1,0 +1,9 @@
+en:
+  _other:
+    edit: Edit
+    back: Back
+    confirm: Are you sure?
+
+  artifacts:
+    show:
+      download: Download

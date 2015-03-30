@@ -1,0 +1,25 @@
+%p#notice= notice
+%h1 Listing Artifacts
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Author
+      %th Archive url
+      %th File
+      %th{:colspan => "3"}
+  %tbody
+    - @artifacts.each do |artifact|
+      %tr
+        %td= artifact.name
+        %td= artifact.description
+        %td= artifact.author
+        %td= artifact.archive_url
+        %td= link_to '_', artifact.file.url
+
+        %td= link_to t('_other.show'), artifact
+        %td= link_to t('_other.edit'), edit_artifact_path(artifact)
+        %td= link_to t('_other.destroy'), artifact, method: :delete, data: { confirm: t('_other.confirm') }
+%br/
+= link_to t('.new'), new_artifact_path

@@ -1,0 +1,44 @@
+= form_for(@artifact) do |f|
+  - if @artifact.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@artifact.errors.count, "error")
+        prohibited this artifact from being saved:
+      %ul
+        - @artifact.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :description
+    %br/
+    = f.text_area :description
+  .field
+    = f.label :author
+    %br/
+    = f.text_field :author
+  .field
+    = f.label :archive_url
+    %br/
+    = f.text_field :archive_url
+
+  .field
+
+    = f.label :file
+    -if @artifact.file.present?
+      = @artifact.file.file.identifier
+
+    %br/
+    = f.file_field :file
+
+  .field
+    = f.label :license
+    %br/
+    = f.select :license_id, Hash[License.pluck(:name).zip(License.pluck(:id))]
+
+  %br
+  .actions
+    = f.submit

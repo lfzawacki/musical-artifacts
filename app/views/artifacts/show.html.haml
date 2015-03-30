@@ -1,0 +1,26 @@
+%p#notice= notice
+%p
+  %strong Filename:
+  = @artifact.name
+%p
+  %strong Description:
+  = @artifact.description
+%p
+  %strong Author:
+  = @artifact.author
+%p
+  %strong Archive url:
+  = @artifact.archive_url
+
+%p
+  %strong File:
+  = link_to t('.download'), @artifact.file.url
+
+%p
+  %strong License:
+  = cc_license_tags(@artifact.license.short_name)
+
+
+= link_to t('_other.edit'), edit_artifact_path(@artifact)
+|
+= link_to t('_other.back'), artifacts_path
