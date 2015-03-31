@@ -56,7 +56,7 @@ gem 'carrierwave'
 
 gem 'haml-rails', '~> 0.9'
 
-gem 'creative_commons_rails'
+gem 'creative_commons_rails', github: 'lfzawacki/creative_commons_rails'
 
 gem 'select2-rails'
 
