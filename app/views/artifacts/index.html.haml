@@ -6,7 +6,6 @@
       %th Name
       %th Description
       %th Author
-      %th Archive url
       %th File
       %th{:colspan => "3"}
   %tbody
@@ -15,7 +14,6 @@
         %td= artifact.name
         %td= artifact.description
         %td= artifact.author
-        %td= artifact.archive_url
         %td= link_to '_', artifact.file.url
 
         %td= link_to t('_other.show'), artifact

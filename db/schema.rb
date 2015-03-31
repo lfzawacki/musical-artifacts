@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150331004341) do
     t.string   "author"
     t.string   "file"
     t.string   "file_hash"
-    t.string   "archive_url"
+    t.string   "mirrors"
     t.text     "file_list"
     t.integer  "license_id"
     t.boolean  "compressed"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 20150331004341) do
   create_table "licenses", force: :cascade do |t|
     t.string   "name"
     t.string   "short_name"
-    t.string   "image"
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

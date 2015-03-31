@@ -5,12 +5,22 @@ class Artifact < ActiveRecord::Base
 
     acts_as_taggable_on :software, :tags
 
+    serialize :mirrors
+
+    def mirrors=m
+      if m.kind_of?(String)
+        write_attribute(:mirrors, m.split(/[,;]/))
+      else
+        write_attribute(:mirrors, m)
+      end
+    end
+
     validates :name, presence: true
+
+    belongs_to :license
 
     before_save :generate_file_hash
     before_save :generate_file_list
-
-    belongs_to :license
 
     def generate_file_hash
       if file_changed?

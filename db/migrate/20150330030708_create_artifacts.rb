@@ -6,7 +6,7 @@ class CreateArtifacts < ActiveRecord::Migration
       t.string :author
       t.string :file
       t.string :file_hash
-      t.string :archive_url
+      t.string :mirrors
       t.text :file_list
 
       t.integer :license_id

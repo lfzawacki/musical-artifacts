@@ -9,9 +9,9 @@
   %strong Author:
   = @artifact.author
 %p
-  %strong Archive url:
-  = @artifact.archive_url
-
+  %strong Mirrors:
+  - @artifact.mirrors.each do |mirror|
+    = link_to mirror, mirror
 %p
   %strong Software:
   = @artifact.software_list

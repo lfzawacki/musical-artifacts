@@ -21,9 +21,9 @@
     %br/
     = f.text_field :author
   .field
-    = f.label :archive_url
+    = f.label :mirrors
     %br/
-    = f.text_field :archive_url
+    = f.text_field :mirrors, value: @artifact.mirrors.try(:join, ',')
 
   .field
 
@@ -37,12 +37,12 @@
   .field
     = f.label :software_list
     %br/
-    = f.text_field :software_list, value: @artifact.software_list.join(',')
+    = f.text_field :software_list, value: @artifact.software_list.try(:join, ',')
 
   .field
     = f.label :tag_list
     %br/
-    = f.text_field :tag_list, value: @artifact.tag_list.join(',')
+    = f.text_field :tag_list, value: @artifact.tag_list.try(:join, ',')
 
   .field
     = f.label :license

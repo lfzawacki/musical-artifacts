@@ -20,3 +20,15 @@ $(document).on 'page:change', ->
       tags: []
       width: 'resolve'
       tokenSeparators: [',', ';']
+
+  if $('#artifact_mirrors')
+    $('#artifact_mirrors').select2
+      tags: []
+      width: 'resolve'
+      tokenSeparators: [',', ';']
+
+      formatSelection: (object, container) ->
+        text = if object.name?
+          object.name
+        else
+          object.text
