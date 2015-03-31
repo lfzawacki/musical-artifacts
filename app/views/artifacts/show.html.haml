@@ -13,6 +13,14 @@
   = @artifact.archive_url
 
 %p
+  %strong Software:
+  = @artifact.software_list
+
+%p
+  %strong Tags:
+  = @artifact.tag_list
+
+%p
   %strong File:
   = link_to t('.download'), @artifact.file.url
 

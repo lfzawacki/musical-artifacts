@@ -63,3 +63,5 @@ gem 'select2-rails'
 gem 'devise', '~> 3.4.0'
 
 gem 'activeadmin', github: 'activeadmin'
+
+gem 'acts-as-taggable-on', '~> 3.4'

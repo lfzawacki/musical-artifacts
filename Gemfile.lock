@@ -54,6 +54,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.0)
@@ -243,6 +245,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  acts-as-taggable-on (~> 3.4)
   better_errors
   bootstrap-generators (~> 3.3.1)
   byebug

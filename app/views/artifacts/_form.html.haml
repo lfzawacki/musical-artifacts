@@ -35,6 +35,16 @@
     = f.file_field :file
 
   .field
+    = f.label :software_list
+    %br/
+    = f.text_field :software_list, value: @artifact.software_list.join(',')
+
+  .field
+    = f.label :tag_list
+    %br/
+    = f.text_field :tag_list, value: @artifact.tag_list.join(',')
+
+  .field
     = f.label :license
     %br/
     = f.select :license_id, Hash[License.pluck(:name).zip(License.pluck(:id))]
