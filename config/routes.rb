@@ -10,4 +10,11 @@ Rails.application.routes.draw do
   resources :licenses
 
   resources :artifacts
+
+  resources :searches, only: [] do
+    collection do
+      get :tags
+      get :software
+    end
+  end
 end
