@@ -28,6 +28,10 @@
   %strong License:
   = cc_license_tags(@artifact.license.short_name)
 
+%p
+  %strong= t('.related')
+  - @artifact.related.each do |art|
+    = link_to art.name, artifact_path(art)
 
 = link_to t('_other.edit'), edit_artifact_path(@artifact)
 |

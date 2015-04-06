@@ -37,6 +37,7 @@ class Artifact < ActiveRecord::Base
       true
     end
 
+    # How to get file list of all different types?
     def generate_file_list
       ext = ['zip', 'rar', '7z', 'lzma', 'tar.gz']
 
@@ -44,5 +45,12 @@ class Artifact < ActiveRecord::Base
         self.compressed = ext.include?(file.file.try(:extension))
       end
       true
+    end
+
+    def related max=5
+      self.class
+      .tagged_with(software_list | tag_list , any: true)
+      .where('id NOT in(?)', self.id)
+      .limit(max)
     end
 end

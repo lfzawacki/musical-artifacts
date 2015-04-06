@@ -1,5 +1,7 @@
 class ArtifactsController < InheritedResources::Base
 
+  respond_to :json
+
   private
 
     def artifact_params
