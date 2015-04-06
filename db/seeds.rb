@@ -9,6 +9,28 @@ License.create short_name: 'by_nc', name: 'Creative Commons Attribution-NonComme
 License.create short_name: 'by_nc_sa', name: 'Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.'
 License.create short_name: 'by_nc_nd', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.'
 
+App.create(
+  name: "Guitarix",
+  description: "Guitarix is a virtual guitar amplifier for Linux running on Jack Audio Connection Kit. It is free as in speech and free as in beer. The available sourcecode allows to build it on other UNIX-like systems, too, namely for BSD and for MacOSX.",
+  url: "http://guitarix.sourceforge.net",
+  software_list: ['guitarix'],
+  file_format_list: ['gx']
+)
+
+App.create(
+  name: "ZynAddSubFx / Yoshimi",
+  url: 'http://zynaddsubfx.sourceforge.net/',
+  software_list: ['zynaddsubfx', 'yoshimi'],
+  file_format_list: ['xmz']
+)
+
+App.create(
+  name: 'Linuxsampler',
+  url: 'https://www.linuxsampler.org',
+  software_list: ['linuxsampler', 'qsampler', 'fantasia'],
+  file_format_list: ['gig', 'sf2', 'sfz']
+)
+
 Artifact.create(
   name: 'Heavy Rhythm Guitar Distortion',
   mirrors: ['http://lfzawacki.com/distortion.gx', 'http://lfzawacki2.com/distortion.gx'],
