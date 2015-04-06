@@ -1,0 +1,25 @@
+%h1 Listing apps
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Url
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @apps.each do |app|
+      %tr
+        %td= app.name
+        %td= app.url
+        %td= app.description
+        %td= link_to 'Show', app
+        %td= link_to 'Edit', edit_app_path(app)
+        %td= link_to 'Destroy', app, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New App', new_app_path

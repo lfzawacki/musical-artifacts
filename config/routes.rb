@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :apps
+
   root to: "artifacts#index"
 
   devise_for :users, ActiveAdmin::Devise.config
