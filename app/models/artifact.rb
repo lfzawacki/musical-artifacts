@@ -21,18 +21,28 @@ class Artifact < ActiveRecord::Base
 
     before_save :generate_file_hash
     before_save :generate_file_list
+    before_save :save_file_format
 
     def generate_file_hash
-      if file_changed?
+      if file.present? && file_changed?
         self.file_hash = Digest::SHA256.hexdigest(file.file.read)
       end
+      true
+    end
+
+    def save_file_format
+      if file_changed?
+        self.file_format = file.file.try(:extension)
+      end
+      true
     end
 
     def generate_file_list
       ext = ['zip', 'rar', '7z', 'lzma', 'tar.gz']
 
       if file_changed?
-        self.compressed = ext.include?(file.file.extension)
+        self.compressed = ext.include?(file.file.try(:extension))
       end
+      true
     end
 end
