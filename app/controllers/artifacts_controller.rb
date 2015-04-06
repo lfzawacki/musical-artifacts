@@ -57,7 +57,7 @@ class ArtifactsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def artifact_params
       params.require(:artifact).permit(
-        :name, :description, :author, :file, :license_id, :software_list, :tag_list, :mirrors
+        :name, :description, :author, :file, :license_id, :software_list, :tag_list, :file_hash, :mirrors
       )
     end
 

@@ -26,6 +26,11 @@
     = f.text_field :mirrors, value: @artifact.mirrors.try(:join, ',')
 
   .field
+    = f.label :file_hash
+    %br/
+    = f.text_field :file_hash
+
+  .field
 
     = f.label :file
     -if @artifact.file.present?
