@@ -3,13 +3,19 @@ class SearchesController < ApplicationController
   respond_to :json
 
   def tags
-    query = params[:q] || ''
-    @tags = ActsAsTaggableOn::Tag.named_like(query)
+    @tags = ActsAsTaggableOn::Tag.includes(:taggings).where(taggings: {context: 'tags'})
+
+    if params[:q]
+      @tags = @tags.named_like(params[:q])
+    end
   end
 
   def software
-    query = params[:q] || ''
-    @software = ActsAsTaggableOn::Tag.named_like(query)
+    @software = ActsAsTaggableOn::Tag.includes(:taggings).where(taggings: {context: 'software'})
+
+    if params[:q]
+      @software = @software.named_like(params[:q])
+    end
   end
 
 end
