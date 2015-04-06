@@ -43,10 +43,15 @@ $(document).on 'page:change', ->
 
   if $('#artifact_mirrors')[0]
     $('#artifact_mirrors')?.select2
-      tags: true
+      minimumResultsForSearch: Infinity
+      tags: []
       width: 'resolve'
       tokenSeparators: [',', ';']
 
       formatSelection: (object, container) ->
-        object.text
+        # Assume a url has been entered and stick a http:// in front if it's not there
+        if not object.text.match(/^http[s]?\:\/\//)
+          'http://' + object.text
+        else
+          object.text
 
