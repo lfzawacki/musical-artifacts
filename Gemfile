@@ -47,6 +47,13 @@ group :development, :test do
   gem 'better_errors'
 
   gem 'quiet_assets'
+
+  gem 'minitest-reporters'
+
+  gem 'guard'
+  gem 'guard-minitest'
+
+  gem 'ffi'
 end
 
 

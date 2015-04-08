@@ -17,6 +17,7 @@ class Artifact < ActiveRecord::Base
 
     validates :name, presence: true
 
+    validates :license, presence: true
     belongs_to :license
 
     before_save :generate_file_hash

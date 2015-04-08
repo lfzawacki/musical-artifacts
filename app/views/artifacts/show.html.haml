@@ -10,7 +10,7 @@
   = @artifact.author
 %p
   %strong Mirrors:
-  - @artifact.mirrors.each do |mirror|
+  - @artifact.mirrors.try(:each) do |mirror|
     = link_to mirror, mirror
 %p
   %strong Software:
