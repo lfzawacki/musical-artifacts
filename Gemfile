@@ -60,6 +60,8 @@ end
 
 
 # My gems
+gem 'font-awesome-rails'
+
 gem 'bootstrap-generators', '~> 3.3.1'
 gem 'carrierwave'
 

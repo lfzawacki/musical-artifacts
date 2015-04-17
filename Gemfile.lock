@@ -115,6 +115,8 @@ GEM
     erubis (2.7.0)
     execjs (2.4.0)
     ffi (1.9.8)
+    font-awesome-rails (4.1.0.0)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     formtastic (3.1.3)
       actionpack (>= 3.2.13)
@@ -327,6 +329,7 @@ DEPENDENCIES
   creative_commons_rails!
   devise (~> 3.4.0)
   ffi
+  font-awesome-rails
   guard
   guard-minitest
   haml-rails (~> 0.9)
