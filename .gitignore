@@ -16,3 +16,5 @@ log/
 /log/*
 !/log/.keep
 /tmp
+public/test_report.html
+public/uploads
