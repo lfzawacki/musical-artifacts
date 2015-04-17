@@ -33,8 +33,22 @@ initialize_select =  (field_id, url) ->
 
     $(field_id).select2 'data', values
 
+updateArtifacts = (value, target) ->
+  target.load "/?q=#{value}"
+
 $(document).on 'page:change', ->
 
+  # ------ index
+  if $('#artifact_search')[0]
+    timeout = null
+    $('#artifact_search').on 'keyup', (e) ->
+      value = $(this).val()
+      history.replaceState({q: value}, "/?q=#{value}", "/?q=#{value}")
+
+      clearTimeout(timeout)
+      timeout = setTimeout(updateArtifacts, '300', value, $("#artifact-list"))
+
+  # ------ _form
   initialize_select '#artifact_tag_list', '/searches/tags'
   initialize_select '#artifact_software_list', '/searches/software'
 

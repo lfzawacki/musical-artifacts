@@ -1,23 +1,13 @@
 %p#notice= notice
-%h1 Listing Artifacts
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Author
-      %th File
-      %th{:colspan => "3"}
-  %tbody
-    - @artifacts.each do |artifact|
-      %tr
-        %td= artifact.name
-        %td= artifact.description
-        %td= artifact.author
-        %td= link_to '_', artifact.file.url
 
-        %td= link_to t('_other.show'), artifact
-        %td= link_to t('_other.edit'), edit_artifact_path(artifact)
-        %td= link_to t('_other.destroy'), artifact, method: :delete, data: { confirm: t('_other.confirm') }
-%br/
+.row
+  .col-lg-12
+    .input-group
+      %span.input-group-btn
+        %button.btn.btn-default{:type => "button"} Search!
+      %input#artifact_search.form-control{:placeholder => "Search for...", :type => "text"}
+
+#artifact-list
+  = render 'artifact_list'
+
 = link_to t('.new'), new_artifact_path
