@@ -50,10 +50,12 @@ group :development, :test do
 
   gem 'minitest-reporters'
 
-  gem 'guard'
-  gem 'guard-minitest'
+  gem 'minitest-rails-capybara'
 
   gem 'ffi'
+
+  gem 'guard'
+  gem 'guard-minitest'
 end
 
 

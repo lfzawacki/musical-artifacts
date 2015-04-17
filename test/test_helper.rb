@@ -2,9 +2,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/reporters'
+require 'minitest/rails/capybara'
+require 'html_reporter'
 
-reporter_options = { color: true, slow_count: 5 }
-Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
+reporter_options = { color: true }
+Minitest::Reporters.use! [Minitest::Reporters::HtmlReporter.new]
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
