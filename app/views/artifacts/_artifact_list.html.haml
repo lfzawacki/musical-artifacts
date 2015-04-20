@@ -1,20 +1,28 @@
-%h2=t('.title')
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Author
-      %th File
-      %th{:colspan => "3"}
-  %tbody
-    - @artifacts.each do |artifact|
-      %tr
-        %td= artifact.name
-        %td= artifact.description
-        %td= artifact.author
-        %td= link_to '_', artifact.file.url
+- if @artifacts.empty?
+  = t('.none')
 
-        %td= link_to t('_other.show'), artifact
-        %td= link_to t('_other.edit'), edit_artifact_path(artifact)
-        %td= link_to t('_other.destroy'), artifact, method: :delete, data: { confirm: t('_other.confirm') }
+- @artifacts.in_groups_of(3, false).each do |group|
+  .row
+    - group.each do |artifact|
+      .col-sm-4.portfolio-item.artifact-item
+        %h3= link_to artifact.name, artifact
+        by
+        %span= artifact.author
+
+        .artifact-content
+          %p= artifact.description.truncate(140)
+
+          %p
+            = link_to edit_artifact_path(artifact), class: 'btn btn-outline btn-dark' do
+              %i.fa.fa-edit
+              = t('_other.edit')
+
+        %p
+          -if artifact.file.url.present?
+            = link_to artifact.file.url, class: 'btn btn-success' do
+              %i.fa.fa-download
+              = t('.download')
+
+          = link_to artifact, class: 'btn btn-danger', method: :delete, data: { confirm: t('_other.confirm') } do
+            %i.fa.fa-flash
+            = t('_other.destroy')

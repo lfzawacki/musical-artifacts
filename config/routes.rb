@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :artifacts
 
+  get '/info/about', to: 'info#about', as: :info_about
+
   resources :searches, only: [] do
     collection do
       get :tags

@@ -2,7 +2,7 @@
 
 .row
   .col-lg-12
-    .input-group
+    .input-group.search-field
       %span.input-group-btn
         %button.btn.btn-default{:type => "button"} Search!
       %input#artifact_search.form-control{:placeholder => "Search for...", :type => "text"}
@@ -10,4 +10,6 @@
 #artifact-list
   = render 'artifact_list'
 
-= link_to t('.new'), new_artifact_path
+.row
+  .col-lg-12
+    = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-primary btn-lg'

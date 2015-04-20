@@ -16,3 +16,27 @@
  *= require_tree .
  *= require_self
  */
+
+@media(min-width:767px) {
+  .with-navbar-on-top {
+    padding-top: 120px;
+  }
+
+  .search-field {
+    padding-bottom: 20px;
+  }
+}
+
+@media(max-width:767px) {
+  .with-navbar-on-top {
+    padding-top: 60px;
+  }
+
+  .search-field {
+    padding-bottom: 10px;
+  }
+}
+
+#artifact-list {
+  padding-bottom: 20px;
+}

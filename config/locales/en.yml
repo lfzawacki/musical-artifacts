@@ -1,9 +1,12 @@
 en:
   _other:
+    name: Musical Artifacts
     edit: Edit
     back: Back
     confirm: Are you sure?
 
   artifacts:
+    index:
+      new: Register a new artifact
     show:
       download: Download

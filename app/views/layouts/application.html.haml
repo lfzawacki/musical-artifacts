@@ -14,7 +14,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
+  %body#page-top.index
     %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
       .container
         .navbar-header
@@ -23,16 +23,14 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Musical Artifacts", "/", :class => "navbar-brand"
+          = link_to t('_other.name'), "/", :class => "navbar-brand"
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li.active
-              %a{:href => "#"} Home
             %li
-              %a{:href => "#about"} About
+              = link_to t('_other.about'), info_about_path
             %li
               %a{:href => "#contact"} Contact
-    .container
+    .container.with-navbar-on-top
       - flash.each do |name, msg|
         = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", :role => "alert" do
           %button.close{"data-dismiss" => "alert", :type => "button"}
