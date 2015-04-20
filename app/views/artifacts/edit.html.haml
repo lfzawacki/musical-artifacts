@@ -1,6 +1,13 @@
-%h1 Editing Artifact
-= render 'form'
+%section#form
+  .container
 
-= link_to t('.show'), @artifact
-|
-= link_to t('_other.back'), artifacts_path
+    .row
+      .col-lg-12.text-center
+        %h2 Editing Artifact
+        %hr.star-primary
+
+    = render 'form'
+
+    = link_to t('.show'), @artifact
+    |
+    = link_to t('_other.back'), artifacts_path

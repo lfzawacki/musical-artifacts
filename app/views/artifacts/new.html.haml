@@ -1,3 +1,10 @@
-%h1 New Artifact
-= render 'form'
-= link_to 'Back', artifacts_path
+%section#form
+  .container
+
+    .row
+      .col-lg-12.text-center
+        %h2 New Artifact
+        %hr.star-primary
+
+    = render 'form'
+    = link_to 'Back', artifacts_path
