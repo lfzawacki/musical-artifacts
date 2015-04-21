@@ -104,7 +104,14 @@ HTML
         text = last_before_assertion.sub!(/:in .*$/, '')
         href = text.sub(/:([0-9]+)$/, '&line=\1')
         parts = text.split('/')
-        ["<a href='txmt://open?url=file://#{href}'>#{parts[parts.index('test'),99].join('/')}</a>", "txmt://open?url=file://#{href}"]
+
+        if parts.index('test')
+          url = parts[parts.index('test'),99].join('/')
+        else
+          url = text
+        end
+
+        ["<a href='txmt://open?url=file://#{href}'>#{url}</a>", "txmt://open?url=file://#{href}"]
       end
 
       def analyze_suite(tests)
