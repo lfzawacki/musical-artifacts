@@ -12,12 +12,13 @@
         .artifact-content
           %p= artifact.description.truncate(140)
 
-          %p
-            = link_to edit_artifact_path(artifact), class: 'btn btn-outline btn-dark' do
-              %i.fa.fa-edit
-              = t('_other.edit')
-
+        .artifact-license
+          = display_license(artifact, small: true)
         %p
+          = link_to edit_artifact_path(artifact), class: 'btn btn-default' do
+            %i.fa.fa-edit
+            = t('_other.edit')
+
           -if artifact.file.url.present?
             = link_to artifact.file.url, class: 'btn btn-success' do
               %i.fa.fa-download

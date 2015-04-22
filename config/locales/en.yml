@@ -5,6 +5,21 @@ en:
     back: Back
     confirm: Are you sure?
 
+  licenses:
+    link:
+      cc: http://creativecommons.org/licenses/%{type}/4.0/deed.en
+      public: https://wiki.creativecommons.org/Public_domain
+      copyright: ''
+    text:
+      cc: Creative Commons 4.0 Unported License
+      public: Work in the Public Domain
+      copyright: Copyright to %{author}
+    parts:
+      by: Has to give attribution
+      nc: Non commercial use only
+      nd: No derivate works
+      sa: Share-Alike
+
   artifacts:
     index:
       new: Register a new artifact

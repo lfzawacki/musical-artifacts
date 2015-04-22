@@ -3,11 +3,12 @@
 #
 License.create short_name: 'public', name: 'Public Domain'
 License.create short_name: 'by', name: 'Creative Commons Attribution 3.0 Unported License.'
-License.create short_name: 'by_sa', name: 'Creative Commons Attribution-ShareAlike 3.0 Unported License.'
-License.create short_name: 'by_nd', name: 'Creative Commons Attribution-NoDerivs 3.0 Unported License.'
-License.create short_name: 'by_nc', name: 'Creative Commons Attribution-NonCommercial 3.0 Unported License.'
-License.create short_name: 'by_nc_sa', name: 'Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.'
-License.create short_name: 'by_nc_nd', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.'
+License.create short_name: 'by-sa', name: 'Creative Commons Attribution-ShareAlike 3.0 Unported License.'
+License.create short_name: 'by-nd', name: 'Creative Commons Attribution-NoDerivs 3.0 Unported License.'
+License.create short_name: 'by-nc', name: 'Creative Commons Attribution-NonCommercial 3.0 Unported License.'
+License.create short_name: 'by-nc-sa', name: 'Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.'
+License.create short_name: 'by-nc-nd', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.'
+License.create short_name: 'copyright', name: 'Copyright belongs to the author.'
 
 App.create(
   name: "Guitarix",
@@ -21,7 +22,7 @@ App.create(
   name: "ZynAddSubFx / Yoshimi",
   url: 'http://zynaddsubfx.sourceforge.net/',
   software_list: ['zynaddsubfx', 'yoshimi'],
-  file_format_list: ['xmz']
+  file_format_list: ['xmz', 'xiz', 'xpf']
 )
 
 App.create(
@@ -35,10 +36,10 @@ Artifact.create(
   name: 'Heavy Rhythm Guitar Distortion',
   mirrors: ['http://lfzawacki.com/distortion.gx', 'http://lfzawacki2.com/distortion.gx'],
   author: 'Lucas Fialho Zawacki',
-  description: 'Heavy but not too dirty distotion for rhythm playing, good for layering.',
+  description: 'Heavy but not too dirty distortion for rhythm playing, good for layering. Uses the mesa boogie cabinet and is very bassy.',
   software_list: ['guitarix'],
-  tag_list: ['guitar','distortion', 'rock', 'heavy metal'],
-  license_id: 1
+  tag_list: ['preset', 'guitar','distortion', 'rock', 'heavy metal'],
+  license_id: 2
 )
 
 Artifact.create(
@@ -47,8 +48,8 @@ Artifact.create(
   author: 'Lucas Fialho Zawacki',
   description: 'Clean and trebley guitar sound drenched with lots of reverb',
   software_list: ['guitarix'],
-  tag_list: ['guitar','clean', 'reverb', 'rock'],
-  license_id: 1
+  tag_list: ['preset', 'guitar','clean', 'reverb', 'rock'],
+  license_id: 2
 )
 
 Artifact.create(

@@ -40,3 +40,30 @@
 #artifact-list {
   padding-bottom: 20px;
 }
+
+.artifact-license {
+  margin-bottom: 10px;
+}
+
+.artifact-license img {
+  margin: 5px;
+}
+
+.related-links {
+  list-style: none;
+}
+
+.related-link {
+  display: inline;
+}
+
+.license {
+}
+
+.license-terms {
+
+}
+
+.license-label {
+  margin-right: 5px;
+}
