@@ -1,5 +1,6 @@
 class ArtifactsController < InheritedResources::Base
   before_filter :search_artifacts, only: [:index]
+  before_filter :set_software, only: [:index]
 
   respond_to :json
 
@@ -13,12 +14,16 @@ class ArtifactsController < InheritedResources::Base
 
     def artifact_params
       params.require(:artifact).permit(
-        :name, :description, :author, :file, :license_id, :software_list, :tag_list, :file_hash, :mirrors
+        :name, :description, :author, :file, :license_id, :more_info_urls, :software_list, :tag_list, :file_hash, :mirrors
       )
     end
 
     def search_artifacts
-      @artifacts = Searches.artifacts_by_metadata(params[:q])
+      @artifacts = Searches.artifacts_by_metadata(Artifact.all, params[:q])
+    end
+
+    def set_software
+      @software = params[:app]
     end
 
 end

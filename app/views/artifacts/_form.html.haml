@@ -46,6 +46,11 @@
 
     .row.control-group
       .form-group.col-xs-12.floating-label-form-group.controls
+        = f.label :more_info_urls
+        = f.text_field :more_info_urls, value: @artifact.more_info_urls.try(:join, ','), class: 'form-control'
+
+    .row.control-group
+      .form-group.col-xs-12.floating-label-form-group.controls
         = f.label :software_list
         = f.text_field :software_list, value: @artifact.software_list.try(:join, ','), class: 'form-control'
 

@@ -6,6 +6,7 @@ class Artifact < ActiveRecord::Base
     acts_as_taggable_on :software, :tags
 
     serialize :mirrors
+    serialize :more_info_urls
 
     def mirrors=m
       if m.kind_of?(String)

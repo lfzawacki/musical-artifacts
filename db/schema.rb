@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406010736) do
+ActiveRecord::Schema.define(version: 20150423043618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,9 +67,10 @@ ActiveRecord::Schema.define(version: 20150406010736) do
     t.text     "file_list"
     t.integer  "license_id"
     t.boolean  "compressed"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "file_format"
+    t.string   "more_info_urls"
   end
 
   create_table "licenses", force: :cascade do |t|
