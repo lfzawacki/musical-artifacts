@@ -1,4 +1,3 @@
-%p#notice= notice
 %p
   %strong Filename:
   = @artifact.name
@@ -13,6 +12,10 @@
   - @artifact.mirrors.try(:each) do |mirror|
     = link_to mirror, mirror
 %p
+  %strong More info:
+  - @artifact.more_info_urls.try(:each) do |more|
+    = link_to more, more
+%p
   %strong Software:
   = @artifact.software_list
 
@@ -20,9 +23,10 @@
   %strong Tags:
   = @artifact.tag_list
 
-%p
-  %strong File:
-  = link_to t('.download'), @artifact.file.url
+-if @artifact.file.present?
+  %p
+    %strong File:
+    = link_to t('.download'), @artifact.file.url
 
 %p
   %strong License:

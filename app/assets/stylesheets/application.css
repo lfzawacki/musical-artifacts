@@ -13,6 +13,7 @@
  *= require select2
  *= require select2-bootstrap
  *= require font-awesome
+ *= require bootstrap3-switch
  *= require_tree .
  *= require_self
  */
@@ -35,6 +36,15 @@
   .search-field {
     padding-bottom: 10px;
   }
+}
+
+a {
+  color: #632d4d;
+}
+
+a:hover {
+  color: #222;
+  text-decoration: none;
 }
 
 #artifact-list {
@@ -66,4 +76,50 @@
 
 .license-label {
   margin-right: 5px;
+}
+
+.label-app {
+  background-color: #d8d034;
+}
+
+.label-tag {
+  background-color: #632d4d;
+}
+
+.artifact-tags a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-download {
+  background-color: #222;
+}
+
+.btn-download:hover {
+  background-color: #000;
+}
+
+a.btn-download {
+  color: #ddd;
+  text-decoration: none;
+}
+
+a.btn-download:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.bootstrap-switch.bootstrap-switch-focused {
+    border-color: #cacaca;
+    outline: #d8d034 !important;;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
+  background-color: #d8d034;
+  background: none repeat scroll 0 0 #d8d034;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
+  color: #fff;
+  background-color: #222;
 }

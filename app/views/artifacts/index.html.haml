@@ -1,11 +1,15 @@
-%p#notice= notice
-
 .row
   .col-lg-12
     .input-group.search-field
       %span.input-group-btn
-        %button.btn.btn-default{:type => "button"} Search!
-      %input#artifact_search.form-control{:placeholder => "Search for...", :type => "text"}
+        %button.btn.btn-default{:type => "button"}= t('.search')
+      %input#artifact_search.form-control{:placeholder => t('.search_for'), :type => "text"}
+
+.row
+  .input-group.filters
+    - ['license', 'tags', 'apps', 'hash'].each do |filter|
+      .col-lg-3
+        %input{type: 'checkbox', 'data-handle-width' => '120px', 'data-label-text' => t(".filters.#{filter}"), name: filter, checked: false}
 
 #artifact-list
   = render 'artifact_list'

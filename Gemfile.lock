@@ -68,6 +68,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-generators (3.3.1)
       railties (>= 3.1.0)
+    bootstrap-switch-rails (3.3.2)
     bourbon (4.2.1)
       sass (~> 3.4)
       thor
@@ -315,6 +316,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   better_errors
   bootstrap-generators (~> 3.3.1)
+  bootstrap-switch-rails
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)

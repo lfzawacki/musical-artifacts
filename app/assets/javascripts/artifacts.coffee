@@ -48,6 +48,11 @@ $(document).on 'page:change', ->
       clearTimeout(timeout)
       timeout = setTimeout(updateArtifacts, '300', value, $("#artifact-list"))
 
+  $("[name='license']").bootstrapSwitch()
+  $("[name='apps']").bootstrapSwitch()
+  $("[name='tags']").bootstrapSwitch()
+  $("[name='hash']").bootstrapSwitch()
+
   # ------ _form
   initialize_select '#artifact_tag_list', '/searches/tags'
   initialize_select '#artifact_software_list', '/searches/software'

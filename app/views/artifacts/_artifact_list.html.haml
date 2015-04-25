@@ -12,6 +12,9 @@
         .artifact-content
           %p= artifact.description.truncate(140)
 
+        .artifact-tags
+          = render 'artifact_tags', artifact: artifact
+
         .artifact-license
           = display_license(artifact, small: true)
         %p
@@ -20,7 +23,7 @@
             = t('_other.edit')
 
           -if artifact.file.url.present?
-            = link_to artifact.file.url, class: 'btn btn-success' do
+            = link_to artifact.file.url, class: 'btn btn-download' do
               %i.fa.fa-download
               = t('.download')
 

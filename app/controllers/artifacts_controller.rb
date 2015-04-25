@@ -19,7 +19,14 @@ class ArtifactsController < InheritedResources::Base
     end
 
     def search_artifacts
-      @artifacts = Searches.artifacts_by_metadata(Artifact.all, params[:q])
+      @artifacts = Artifact.all
+
+      # searches by tags, apps, licenses
+      @artifacts = Searches.artifacts_tagged_with(@artifacts, params[:tags])
+      @artifacts = Searches.artifacts_app_tagged_with(@artifacts, params[:apps])
+      @artifacts = Searches.artifacts_licensed_as(@artifacts, params[:licenses])
+
+      @artifacts = Searches.artifacts_by_metadata(@artifacts, params[:q])
     end
 
     def set_software
