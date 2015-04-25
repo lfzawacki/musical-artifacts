@@ -20,12 +20,12 @@ module ArtifactsHelper
     end
 
     if opt[:small]
-      content_tag :div, class: 'license' do |div|
+      content_tag :div, class: 'license' do
         content_tag(:a, img, href: link) +
         content_tag(:a, text, href: link)
       end
     else
-      content_tag :div, class: 'license' do |div|
+      content_tag :div, class: 'license' do
         content = content_tag(:a, img, href: link)
 
         inner_content = content_tag(:a, text, href: link)
