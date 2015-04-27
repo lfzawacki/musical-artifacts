@@ -1,12 +1,12 @@
 require 'digest/sha2'
 
 class Artifact < ActiveRecord::Base
-    mount_uploader :file, ArtifactFileUploader
-
     acts_as_taggable_on :software, :tags
 
     serialize :mirrors
     serialize :more_info_urls
+
+    has_many :stored_files
 
     def mirrors=m
       if m.kind_of?(String)
@@ -25,6 +25,10 @@ class Artifact < ActiveRecord::Base
     before_save :generate_file_list
     before_save :save_file_format
 
+    def file
+      stored_files.last
+    end
+
     def generate_file_hash
       if file.present? && file_changed?
         self.file_hash = Digest::SHA256.hexdigest(file.file.read)
@@ -32,12 +36,12 @@ class Artifact < ActiveRecord::Base
       true
     end
 
-    def save_file_format
-      if file_changed?
-        self.file_format = file.file.try(:extension)
-      end
-      true
-    end
+    # def save_file_format
+    #   if file_changed?
+    #     self.file_format = file.file.try(:extension)
+    #   end
+    #   true
+    # end
 
     # How to get file list of all different types?
     def generate_file_list
