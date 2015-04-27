@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423043618) do
+ActiveRecord::Schema.define(version: 20150427011922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,15 +61,11 @@ ActiveRecord::Schema.define(version: 20150423043618) do
     t.string   "name"
     t.text     "description"
     t.string   "author"
-    t.string   "file"
     t.string   "file_hash"
     t.string   "mirrors"
-    t.text     "file_list"
     t.integer  "license_id"
-    t.boolean  "compressed"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.string   "file_format"
     t.string   "more_info_urls"
   end
 
@@ -79,6 +75,16 @@ ActiveRecord::Schema.define(version: 20150423043618) do
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stored_files", force: :cascade do |t|
+    t.string   "file"
+    t.string   "file_list"
+    t.string   "format"
+    t.boolean  "compressed"
+    t.integer  "artifact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", force: :cascade do |t|
