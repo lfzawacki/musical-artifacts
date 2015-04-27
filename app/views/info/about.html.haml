@@ -69,18 +69,11 @@
 
               %p
                 So you created some cool musical resource and want to share it which other artists?
-              %a.btn.btn-lg.btn-outline.btn-dark
-                %span.em #
-                samples
-              %a.btn.btn-lg.btn-outline.btn-dark
-                %span.em #
-                soundfonts
-              %a.btn.btn-lg.btn-outline.btn-dark
-                %span.em #
-                presets
-              %a.btn.btn-lg.btn-outline.btn-dark
-                %span.em #
-                beats
+
+              - @tags.each do |tag|
+                =link_to artifacts_path(tags: tag), class: 'btn btn-lg btn-outline btn-dark' do
+                  %span.em #
+                  = tag
 
     %section#access.success
       .container
@@ -123,7 +116,7 @@
         .row
           .col-lg-12
             .text-center.star-light
-              = about_icon 'radiotower'
+              = about_icon 'chat'
               %h1 Documentation
 
               %p
@@ -183,9 +176,8 @@
 
     / Scroll to Top Button (Only visible on small and extra-small screen sizes)
     .scroll-top.page-scroll.visible-xs.visible-sm
-      %a.btn.btn-primary{:href => "#page-top"}
+      %a.btn.btn-scroll-top{:href => "#page-top"}
         %i.fa.fa-chevron-up
-
 
     / Plugin JavaScript
     %script{:src => "http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"}
