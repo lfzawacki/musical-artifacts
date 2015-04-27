@@ -22,7 +22,7 @@
             %i.fa.fa-edit
             = t('_other.edit')
 
-          -if artifact.file.url.present?
+          -if artifact.file.try(:url)
             = link_to artifact.file.url, class: 'btn btn-download' do
               %i.fa.fa-download
               = t('.download')

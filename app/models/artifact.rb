@@ -22,35 +22,25 @@ class Artifact < ActiveRecord::Base
     belongs_to :license
 
     before_save :generate_file_hash
-    before_save :generate_file_list
-    before_save :save_file_format
-
-    def file
-      stored_files.last
-    end
-
     def generate_file_hash
-      if file.present? && file_changed?
+      if file.present? && file_hash.blank?
         self.file_hash = Digest::SHA256.hexdigest(file.file.read)
       end
       true
     end
 
-    # def save_file_format
-    #   if file_changed?
-    #     self.file_format = file.file.try(:extension)
-    #   end
-    #   true
-    # end
+    after_save :save_new_file
+    def save_new_file
+      stored_files.last.save if @new_file
+    end
 
-    # How to get file list of all different types?
-    def generate_file_list
-      ext = ['zip', 'rar', '7z', 'lzma', 'tar.gz']
+    def file= file_io
+      @new_file = true
+      stored_files << StoredFile.new(file: file_io)
+    end
 
-      if file_changed?
-        self.compressed = ext.include?(file.file.try(:extension))
-      end
-      true
+    def file
+      stored_files.last.try(:file)
     end
 
     def related max=5
