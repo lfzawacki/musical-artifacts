@@ -1,5 +1,12 @@
 module ArtifactsHelper
 
+  def value_from_params
+    search_str = [:apps, :tags, :license, :hash].map do |p|
+      "#{p}: #{params[p]}" if params[p]
+    end
+    [params[:q]].append(search_str).join(' ').gsub(/\s+/, ' ').strip
+  end
+
   def display_license artifact, opt={}
     license = artifact.license.short_name
 
@@ -21,8 +28,8 @@ module ArtifactsHelper
 
     if opt[:small]
       content_tag :div, class: 'license' do
-        content_tag(:a, img, href: link) +
-        content_tag(:a, text, href: link)
+        content_tag(:a, img, href: artifacts_path(license: license)) +
+        content_tag(:a, text, href: artifacts_path(license: license))
       end
     else
       content_tag :div, class: 'license' do

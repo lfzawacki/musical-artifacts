@@ -2,18 +2,18 @@
   .col-lg-12
     .input-group.search-field
       %span.input-group-btn
-        %button.btn.btn-default{:type => "button"}= t('.search')
-      %input#artifact_search.form-control{:placeholder => t('.search_for'), :type => "text"}
+        %button#artifacts_search_btn.btn.btn-default{:type => "button"}= t('.search')
+      %input#artifact_search.form-control{:placeholder => t('.search_for'), :type => "text", value: value_from_params }
 
 .row
   .input-group.filters
     - ['license', 'tags', 'apps', 'hash'].each do |filter|
       .col-lg-3
-        %input{type: 'checkbox', 'data-handle-width' => '120px', 'data-label-text' => t(".filters.#{filter}"), name: filter, checked: false}
+        %input.switch{type: 'checkbox', 'data-handle-width' => '120px', 'data-label-text' => t(".filters.#{filter}"), name: filter, checked: false}
 
 #artifact-list
   = render 'artifact_list'
 
 .row
   .col-lg-12
-    = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-primary btn-lg'
+    = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'

@@ -39,10 +39,17 @@ class Searches
   end
 
   def self.artifacts_licensed_as artifacts, terms
+    if terms.present?
+      licenses = License.where(short_name: terms.split(','))
+      artifacts = artifacts.where(license: licenses)
+    end
     artifacts
   end
 
   def self.artifacts_with_hash artifacts, hash
-    Artifact.where(file_hash: hash)
+    if hash.present?
+      artifacts = artifacts.where(file_hash: hash)
+    end
+    artifacts
   end
 end

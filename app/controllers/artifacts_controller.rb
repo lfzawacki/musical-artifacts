@@ -21,10 +21,11 @@ class ArtifactsController < InheritedResources::Base
     def search_artifacts
       @artifacts = Artifact.all
 
-      # searches by tags, apps, licenses
+      # searches by hash, tags, apps, licenses
+      @artifacts = Searches.artifacts_with_hash(@artifacts, params[:hash])
       @artifacts = Searches.artifacts_tagged_with(@artifacts, params[:tags])
       @artifacts = Searches.artifacts_app_tagged_with(@artifacts, params[:apps])
-      @artifacts = Searches.artifacts_licensed_as(@artifacts, params[:licenses])
+      @artifacts = Searches.artifacts_licensed_as(@artifacts, params[:license])
 
       @artifacts = Searches.artifacts_by_metadata(@artifacts, params[:q])
     end
