@@ -33,34 +33,23 @@ initialize_select =  (field_id, url) ->
 
     $(field_id).select2 'data', values
 
-updateArtifactsViaParams = (params, target) ->
-  url = paramsToString(params)
+updateArtifacts = ->
+  params = parseQueryString($('#artifact_search').val())
 
-  if url.length == 0
-    url = '/'
+  for field in ['apps', 'license', 'hash', 'tags', 'q']
+    if params[field]?
+      $("[name='#{field}']").attr('value', params[field])
+    else
+      $("[name='#{field}']")[0].disabled = true
 
-  $('#artifact_search')[0].value = params.search or ''
-  target.load url
-
-updateArtifacts = (value, target) ->
-  params = parseQueryString(value)
-  url = paramsToString(params)
-
-  # store search params
-  params['search'] = value
-
-  if url.length == 0
-    url = '/'
-
-  if url.length > 0
-    history.pushState(params, url, url)
-  else
-    history.pushState({}, '/', '/')
-
-  target.load url
+  $("[name='search']")[0].disabled = true
+  for field in ['apps', 'license', 'hash', 'tags']
+    $("[name='switch-#{field}']")[0].disabled = true
 
 updateSearchField = (field, state) ->
   search_field = $('#artifact_search')[0]
+
+  field = field.replace(/(switch\-)/, '')
 
   # adding a field
   if state
@@ -77,8 +66,9 @@ paramsToString = (params) ->
   if Object.keys(params).length > 0
     str += '?'
     for param, value of params
-      str += "#{if first then '' else '&'}#{param}=#{value}"
-      first = false
+      if param != 'search'
+        str += "#{if first then '' else '&'}#{param}=#{value}"
+        first = false
 
   str
 
@@ -105,25 +95,15 @@ parseQueryString = (str) ->
 
 $(document).on 'page:change', ->
 
-  window.onpopstate = (event) ->
-    console.log(window.location)
-    updateArtifactsViaParams(event.state, $("#artifact-list"))
-
   # ------ index
-  if $('#artifacts_search_btn')[0]
-    $('#artifacts_search_btn').focus()
-
-    $('#artifacts_search_btn').on 'click', (e) ->
-      updateArtifacts($('#artifact_search').val(), $("#artifact-list"))
-
   if $('#artifact_search')[0]
-    $('#artifact_search').on 'keyup', (e) ->
-      if e.keyCode == 13
-        updateArtifacts($('#artifact_search').val(), $("#artifact-list"))
-        return false
+    $('#artifacts_search').focus()
+
+    $('form#artifact_search_form').submit ->
+      updateFormParameters()
 
   # ------ switches
-  $("input.switch[name='#{filter}']").bootstrapSwitch('state', String(window.location).match(filter + '=')) for filter in ['apps', 'license', 'tags', 'hash']
+  $("input.switch[name='switch-#{filter}']").bootstrapSwitch('state', String(window.location).match(filter + '=')) for filter in ['apps', 'license', 'tags', 'hash']
   $('input.switch').on 'switchChange.bootstrapSwitch', (event, state) ->
     updateSearchField($(this).attr('name'), state)
     setTimeout ->
