@@ -1,45 +1,48 @@
-%p
-  %strong Filename:
-  = @artifact.name
-%p
-  %strong Description:
-  = @artifact.description
-%p
-  %strong Author:
+%h1= @artifact.name
+%p.small
+  by
   = @artifact.author
+
+.artifact-content
+  %p= @artifact.description
+
 %p
   %strong Mirrors:
   - @artifact.mirrors.try(:each) do |mirror|
     = link_to mirror, mirror
-%p
-  %strong More info:
-  - @artifact.more_info_urls.try(:each) do |more|
-    = link_to more, more
-%p
-  %strong Software:
-  = @artifact.software_list
 
-%p
-  %strong Tags:
-  = @artifact.tag_list
-
--if @artifact.file.present?
+-if @artifact.more_info_urls.present?
   %p
-    %strong File:
-    = link_to t('.download'), @artifact.file.url
+    %strong More info:
+    - @artifact.more_info_urls.each do |more|
+      = link_to more, more
 
-%p
+.artifact-tags.big-tags
+  = render 'artifact_tags', artifact: @artifact
+
+%p.artifact-license
   %strong License:
   = display_license(@artifact)
 
 %p
-  %strong
-    = t('.related')
-    \:
-%ul.related-links
-  - @artifact.related.each do |art|
-    %li.related-link= link_to art.name, artifact_path(art)
+  %strong= t('.related')
 
-= link_to t('_other.edit'), edit_artifact_path(@artifact)
-|
+  %ul.related-links
+    - @artifact.related.each do |art|
+      %li.related-link= link_to art.name, artifact_path(art)
+
+%p
+  = link_to edit_artifact_path(@artifact), class: 'btn btn-default' do
+    %i.fa.fa-edit
+    = t('_other.edit')
+
+  -if @artifact.file.try(:url)
+    = link_to @artifact.file.url, class: 'btn btn-download' do
+      %i.fa.fa-download
+      = t('.download')
+
+  = link_to @artifact, class: 'btn btn-danger', method: :delete, data: { confirm: t('_other.confirm') } do
+    %i.fa.fa-flash
+    = t('_other.destroy')
+
 = link_to t('_other.back'), artifacts_path
