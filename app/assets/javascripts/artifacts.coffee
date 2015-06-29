@@ -33,7 +33,7 @@ initialize_select =  (field_id, url) ->
 
     $(field_id).select2 'data', values
 
-updateArtifacts = ->
+updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
 
   for field in ['apps', 'license', 'hash', 'tags', 'q']
@@ -97,7 +97,8 @@ $(document).on 'page:change', ->
 
   # ------ index
   if $('#artifact_search')[0]
-    $('#artifacts_search').focus()
+    input = $('#artifacts_search')
+    input.focus().val(input.val())
 
     $('form#artifact_search_form').submit ->
       updateFormParameters()
