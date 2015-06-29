@@ -10,6 +10,10 @@ class Searches
     query
   end
 
+  def self.recent_tags number
+    self.tags('').order('created_at DESC').last(number)
+  end
+
   def self.app_tags terms
     query = ActsAsTaggableOn::Tag.includes(:taggings).where(taggings: {context: 'software'})
 
