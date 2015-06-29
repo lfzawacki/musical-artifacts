@@ -14,10 +14,10 @@
  *= require select2-bootstrap
  *= require font-awesome
  *= require bootstrap3-switch
- *= require_tree .
+ *= require bootstrap-variables.scss
+ *= require bootstrap-generators.scss
  *= require_self
  */
-
 
 $cold: #632d4d;
 $colder: #521c3c;
