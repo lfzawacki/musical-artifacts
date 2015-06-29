@@ -5,12 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users, ActiveAdmin::Devise.config
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
-  ActiveAdmin.routes(self)
-
   resources :licenses
-
   resources :artifacts
 
   get '/info/about', to: 'info#about', as: :info_about
@@ -21,4 +16,6 @@ Rails.application.routes.draw do
       get :software
     end
   end
+
+  ActiveAdmin.routes(self)
 end
