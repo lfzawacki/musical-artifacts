@@ -6,16 +6,17 @@
 .artifact-content
   %p= @artifact.description
 
-%p
-  %strong Mirrors:
-  - @artifact.mirrors.try(:each) do |mirror|
-    = link_to mirror, mirror
+-if @artifact.mirrors.present?
+  %p
+    %strong Mirrors:
+    - @artifact.mirrors.each_with_index do |mirror, i|
+      = external_link_to i, mirror
 
 -if @artifact.more_info_urls.present?
   %p
     %strong More info:
-    - @artifact.more_info_urls.each do |more|
-      = link_to more, more
+    - @artifact.more_info_urls.each_with_index do |more, i|
+      = external_link_to i, more
 
 .artifact-tags.big-tags
   = render 'artifact_tags', artifact: @artifact
@@ -25,12 +26,14 @@
   = display_license(@artifact)
 
 %p
-  %strong= t('.related')
+  %strong
+    = t('.related')
+    \:
 
-  %ul.related-links
-    - @artifact.related.each do |art|
-      %li.related-link= link_to art.name, artifact_path(art)
-
+  - @artifact.related.each do |art|
+    = link_to artifact_path(art, class: 'related-link') do
+      %i.fa.fa-cog
+      = art.name
 %p
   = link_to edit_artifact_path(@artifact), class: 'btn btn-default' do
     %i.fa.fa-edit

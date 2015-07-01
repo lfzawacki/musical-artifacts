@@ -32,6 +32,16 @@ $darker: #111;
 
 $white: #fff;
 
+a.external-link:after {
+  content: "\f14c";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  margin: 2px;
+  padding: 2px;
+}
 
 @media(min-width:767px) {
   .with-navbar-on-top {
@@ -78,12 +88,7 @@ a:focus {
   margin: 5px;
 }
 
-.related-links {
-  list-style: none;
-}
-
 .related-link {
-  display: inline;
 }
 
 .license {

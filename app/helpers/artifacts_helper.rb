@@ -7,6 +7,10 @@ module ArtifactsHelper
     [params[:q]].append(search_str).join(' ').gsub(/\s+/, ' ').strip
   end
 
+  def external_link_to text, link
+    link_to("#{text}:", link, rel: 'nofollow', target: '_blank', class: 'external-link')
+  end
+
   def display_license artifact, opt={}
     license = artifact.license.short_name
 
