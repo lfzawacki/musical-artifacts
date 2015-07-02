@@ -22,6 +22,10 @@ module ArtifactsHelper
     if 'public' == license
       link = I18n.t("licenses.link.public")
       text = I18n.t("licenses.text.public")
+    elsif 'cc-sample' == license
+      link = I18n.t("licenses.link.cc_sample")
+      text = I18n.t("licenses.text.cc_sample")
+      img = image_tag("licenses/cc-sample.png")
     else # cc licenses
       link = I18n.t("licenses.link.cc", type: license)
       text = I18n.t("licenses.text.cc")

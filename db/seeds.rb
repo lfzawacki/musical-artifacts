@@ -8,6 +8,7 @@ License.create short_name: 'by-nd', name: 'Creative Commons Attribution-NoDerivs
 License.create short_name: 'by-nc', name: 'Creative Commons Attribution-NonCommercial 4.0 Unported License.'
 License.create short_name: 'by-nc-sa', name: 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.'
 License.create short_name: 'by-nc-nd', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License.'
+License.create short_name: 'cc-sample', name: 'Creative Commons Sampling Plus 1.0'
 License.create short_name: 'copyright', name: 'Copyright'
 
 App.create(
