@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  resources :apps
+  resources :apps, only: [:show, :index]
 
   root to: "artifacts#index"
 
   devise_for :users, ActiveAdmin::Devise.config
 
-  resources :licenses
   resources :artifacts
 
   get '/info/about', to: 'info#about', as: :info_about
