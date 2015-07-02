@@ -17,16 +17,6 @@
 
         .artifact-license
           = display_license(artifact, small: true)
-        %p
-          = link_to edit_artifact_path(artifact), class: 'btn btn-default' do
-            %i.fa.fa-edit
-            = t('_other.edit')
 
-          -if artifact.file.try(:url)
-            = link_to artifact.file.url, class: 'btn btn-download' do
-              %i.fa.fa-download
-              = t('.download')
+        = render partial: 'buttons', locals: { artifact: artifact }
 
-          = link_to artifact, class: 'btn btn-danger', method: :delete, data: { confirm: t('_other.confirm') } do
-            %i.fa.fa-flash
-            = t('_other.destroy')

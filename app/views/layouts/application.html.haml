@@ -30,6 +30,10 @@
               = link_to t('_other.about'), info_about_path
             %li
               %a{:href => "#contact"} Contact
+            - if current_user.present? # logged_in?
+              %li
+                = link_to t('_other.logout'), destroy_user_session_path
+
     .container.with-navbar-on-top
       - flash.each do |name, msg|
         = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", :role => "alert" do

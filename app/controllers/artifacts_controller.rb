@@ -2,6 +2,8 @@ class ArtifactsController < InheritedResources::Base
   before_filter :search_artifacts, only: [:index]
   before_filter :set_software, only: [:index]
 
+  authorize_resource
+
   respond_to :json
 
   def index

@@ -77,3 +77,5 @@ gem 'devise', '~> 3.4.0'
 gem 'activeadmin', github: 'activeadmin'
 
 gem 'acts-as-taggable-on', '~> 3.4'
+
+gem 'cancancan', '~> 1.10'

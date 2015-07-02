@@ -1,6 +1,6 @@
 %h1= @artifact.name
 %p.small
-  by
+  = t('.by')
   = @artifact.author
 
 .artifact-content
@@ -8,13 +8,15 @@
 
 -if @artifact.mirrors.present?
   %p
-    %strong Mirrors:
+    %strong= t('.mirrors')
+    \:
     - @artifact.mirrors.each_with_index do |mirror, i|
       = external_link_to i, mirror
 
 -if @artifact.more_info_urls.present?
   %p
-    %strong More info:
+    %strong= t('.more_info')
+    \:
     - @artifact.more_info_urls.each_with_index do |more, i|
       = external_link_to i, more
 
@@ -22,7 +24,8 @@
   = render 'artifact_tags', artifact: @artifact
 
 %p.artifact-license
-  %strong License:
+  %strong= t('.license')
+  \:
   = display_license(@artifact)
 
 %p
@@ -34,18 +37,8 @@
     = link_to artifact_path(art, class: 'related-link') do
       %i.fa.fa-cog
       = art.name
+
+= render partial: 'buttons', locals: {artifact: @artifact }
+
 %p
-  = link_to edit_artifact_path(@artifact), class: 'btn btn-default' do
-    %i.fa.fa-edit
-    = t('_other.edit')
-
-  -if @artifact.file.try(:url)
-    = link_to @artifact.file.url, class: 'btn btn-download' do
-      %i.fa.fa-download
-      = t('.download')
-
-  = link_to @artifact, class: 'btn btn-danger', method: :delete, data: { confirm: t('_other.confirm') } do
-    %i.fa.fa-flash
-    = t('_other.destroy')
-
-= link_to t('_other.back'), artifacts_path
+  %strong= link_to t('_other.back'), artifacts_path
