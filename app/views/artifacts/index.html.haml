@@ -15,9 +15,14 @@
           %input{type: 'hidden', name: filter}
           %input.switch{type: 'checkbox', 'data-handle-width' => '120px', 'data-label-text' => t(".filters.#{filter}"), name: "switch-#{filter}", checked: false}
 
+  - if (params.keys & ['license', 'tags', 'apps', 'hash']).any?
+    .row
+      %p=t('.using_filters')
+
 #artifact-list
   = render 'artifact_list'
 
-.row
-  .col-lg-12
-    = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
+- if can?(:new, Artifact)
+  .row
+    .col-lg-12
+      = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
