@@ -79,3 +79,5 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'cancancan', '~> 1.10'
+
+gem "compass-rails", git: 'https://github.com/Compass/compass-rails', branch: 'master'

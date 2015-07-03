@@ -19,6 +19,9 @@
  *= require_self
  */
 
+@import "compass";
+@import "compass/css3/border-radius";
+
 $cold: #632d4d;
 $colder: #521c3c;
 $coldy: #854f6f;
@@ -29,6 +32,8 @@ $hoty: #fee355;
 $dark: #222;
 $darky: #555;
 $darker: #111;
+
+$light-dark: #eee;
 
 $white: #fff;
 
@@ -80,6 +85,19 @@ a:focus {
   padding-bottom: 20px;
 }
 
+.row .artifact-item {
+  margin-bottom: 2em;
+  padding-bottom: 4em;
+}
+
+.dark-item {
+  background-color: $light-dark;
+  @include border-radius(8px, 8px);
+}
+
+.light-item {
+}
+
 .artifact-license {
   margin-bottom: 10px;
 }
@@ -95,7 +113,6 @@ a:focus {
 }
 
 .license-terms {
-
 }
 
 .license-label {
@@ -155,6 +172,13 @@ a.btn-new:hover {
 a.btn-scroll-top:hover {
   background-color: $hoty;
   text-decoration: none;
+}
+
+.search-filters {
+}
+
+.filters {
+    margin-bottom: 1em;
 }
 
 .bootstrap-switch.bootstrap-switch-focused {

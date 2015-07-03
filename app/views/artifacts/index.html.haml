@@ -8,13 +8,12 @@
 
       %input.form-control{name: 'q', type: 'hidden' }
 
-  .row
+  .row.search-filters
     %span.input-group.filters
       - ['license', 'tags', 'apps', 'hash'].each do |filter|
-        .col-lg-3
+        %p.col-lg-3
           %input{type: 'hidden', name: filter}
           %input.switch{type: 'checkbox', 'data-handle-width' => '120px', 'data-label-text' => t(".filters.#{filter}"), name: "switch-#{filter}", checked: false}
-
 
 #artifact-list
   = render 'artifact_list'

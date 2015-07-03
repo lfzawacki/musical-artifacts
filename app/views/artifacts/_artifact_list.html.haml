@@ -4,7 +4,7 @@
 - @artifacts.in_groups_of(3, false).each do |group|
   .row
     - group.each do |artifact|
-      .col-sm-4.portfolio-item.artifact-item
+      .col-sm-4.portfolio-item.artifact-item{class: "#{cycle('dark', 'light')}-item"}
         %h3= link_to artifact.name, artifact
         by
         %span= artifact.author
