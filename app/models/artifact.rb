@@ -16,6 +16,14 @@ class Artifact < ActiveRecord::Base
       end
     end
 
+    def more_info_urls=m
+      if m.kind_of?(String)
+        write_attribute(:more_info_urls, m.split(/[,;]/))
+      else
+        write_attribute(:more_info_urls, m)
+      end
+    end
+
     validates :name, presence: true
 
     validates :license, presence: true

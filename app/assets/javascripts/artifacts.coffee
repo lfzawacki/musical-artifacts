@@ -33,6 +33,21 @@ initialize_select =  (field_id, url) ->
 
     $(field_id).select2 'data', values
 
+select_for_http_links = (id) ->
+  if $(id)[0]
+    $(id)?.select2
+      minimumResultsForSearch: Infinity
+      tags: []
+      width: 'resolve'
+      tokenSeparators: [',', ';']
+
+      formatSelection: (object, container) ->
+        # Assume a url has been entered and stick a http:// in front if it's not there
+        if not object.text.match(/^http[s]?\:\/\//)
+          'http://' + object.text
+        else
+          object.text
+
 updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
 
@@ -118,17 +133,6 @@ $(document).on 'page:change', ->
   if $('#artifact_license_id')[0]
     $('#artifact_license_id').select2()
 
-  if $('#artifact_mirrors')[0]
-    $('#artifact_mirrors')?.select2
-      minimumResultsForSearch: Infinity
-      tags: []
-      width: 'resolve'
-      tokenSeparators: [',', ';']
-
-      formatSelection: (object, container) ->
-        # Assume a url has been entered and stick a http:// in front if it's not there
-        if not object.text.match(/^http[s]?\:\/\//)
-          'http://' + object.text
-        else
-          object.text
+  select_for_http_links('#artifact_mirrors')
+  select_for_http_links('#artifact_more_info_urls')
 
