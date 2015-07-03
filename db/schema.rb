@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427011922) do
+ActiveRecord::Schema.define(version: 20150702190258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,9 +46,10 @@ ActiveRecord::Schema.define(version: 20150427011922) do
     t.string   "file_hash"
     t.string   "mirrors"
     t.integer  "license_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "more_info_urls"
+    t.string   "extra_license_text"
   end
 
   create_table "licenses", force: :cascade do |t|
