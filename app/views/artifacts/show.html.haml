@@ -43,5 +43,8 @@
 
 = render partial: 'buttons', locals: {artifact: @artifact }
 
+%p.comments
+  = render 'comments'
+
 %p
   %strong= link_to t('_other.back'), artifacts_path
