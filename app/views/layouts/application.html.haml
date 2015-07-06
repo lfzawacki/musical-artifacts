@@ -32,6 +32,8 @@
               %a{:href => "#contact"} Contact
             - if current_user.present? # logged_in?
               %li
+                = link_to t('.settings'), settings_path
+              %li
                 = link_to t('_other.logout'), destroy_user_session_path
 
     .container.with-navbar-on-top

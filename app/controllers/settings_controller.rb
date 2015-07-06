@@ -3,6 +3,8 @@ class SettingsController < InheritedResources::Base
     @setting = Setting.first
   end
 
+  authorize_resource
+
   def update
     update! { settings_path }
   end
