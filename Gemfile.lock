@@ -242,6 +242,8 @@ GEM
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-throttle (0.4.0)
+      rack (>= 1.0.0)
     rails (4.2.0)
       actionmailer (= 4.2.0)
       actionpack (= 4.2.0)
@@ -359,6 +361,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rack (~> 1.6.2)
+  rack-throttle
   rails (= 4.2.0)
   rails-footnotes
   sass-rails (~> 5.0)
