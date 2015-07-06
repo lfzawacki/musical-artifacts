@@ -1,0 +1,17 @@
+%h1= t('.edit')
+
+= form_for(@setting, url: settings_path, method: :put) do |f|
+  - Setting.data_attributes.each do |field|
+
+    .row
+      .form-group.col-xs-10
+        = f.label field
+        %a.enable-field{href: '#', :'data-field' => "setting_#{field}"}
+          %i.fa.fa-edit
+
+        = f.text_field field, class: 'form-control', disabled: true
+
+  %br
+  .row
+    .form-group.col-xs-12
+      = f.submit

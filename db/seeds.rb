@@ -1,6 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
+require './lib/monkey_patches'
+
 License.create short_name: 'public', name: 'Public Domain'
 License.create short_name: 'by', name: 'Creative Commons Attribution 4.0 Unported License.'
 License.create short_name: 'by-sa', name: 'Creative Commons Attribution-ShareAlike 4.0 Unported License.'
@@ -99,3 +101,7 @@ Artifact.create(
   more_info_urls: ['https://rytmenpinne.wordpress.com/salamander-drumkit/', 'http://www.kvraudio.com/forum/viewtopic.php?p=5329902'],
   license_id: 3
 )
+
+# Settings
+settings = YAML.load(IO.read('config/settings.yml'))['settings']
+Setting.create data: settings.remove_nesting!

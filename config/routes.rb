@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  put '/settings', to: 'settings#update', as: 'settings'
+  get '/settings', to: 'settings#edit', as: 'edit_settings'
+
   resources :apps, only: [:show, :index]
 
   root to: "artifacts#index"
