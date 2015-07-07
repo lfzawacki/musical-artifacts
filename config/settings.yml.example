@@ -3,7 +3,7 @@ settings:
   site_name: Musical Artifacts
 
   juvia:
-    server_url: comments.musical-artifacts.com
+    server_url: http://comments.musical-artifacts.com
     site_key: yourkeyhere
     comment_order: earliest-first
     include_css: true

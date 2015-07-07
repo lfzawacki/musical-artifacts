@@ -1,14 +1,19 @@
+<%- url = @setting.juvia_server_url %>
+<%- key = @setting.juvia_site_key %>
+<%- order = @setting.juvia_comment_order %>
+<%- css = @setting.juvia_include_css %>
+
 <script type="text/javascript" class="juvia">
 (function() {
     var options = {
         container    : '.comments',
-        site_key     : 'mqrk1bnvzmoqjoegqjj7wiahtewmc6u',
+        site_key     : '<%= key %>',
         topic_key    : location.pathname,
         topic_url    : location.href,
         topic_title  : document.title || location.href,
         include_base : !window.Juvia,
-        include_css  : !window.Juvia,
-        comment_order: 'latest-first'
+        include_css  : <%= css %>,
+        comment_order: '<%= order %>'
     };
 
     function makeQueryString(options) {
@@ -30,7 +35,7 @@
         }
 
         var result =
-            'http://comments.musical-artifacts.com/api/show_topic.js' +
+            '<%= url %>/api/show_topic.js' +
             '?_c=' + window._juviaRequestCounter +
             '&' + makeQueryString(options);
         window._juviaRequestCounter++;
