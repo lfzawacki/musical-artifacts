@@ -48,6 +48,31 @@ select_for_http_links = (id) ->
         else
           object.text
 
+initialize_wayback_links = ->
+  wayback_url = 'https://web.archive.org/web/*/'
+  $('#show-wayback-links').on 'click', (e) ->
+    shown = $(this).data('shown')
+
+    # toggle shown status
+    $(this).data 'shown', !shown
+
+    $('.external-link').each ->
+      if !shown
+        $(this).data('old-href', $(this).attr('href'))
+        $(this).attr('href', wayback_url + $(this).attr('href'))
+        $(this).addClass('wayback')
+        $(this).removeClass('normal')
+      else
+        $(this).attr('href', $(this).data('old-href'))
+        $(this).data('old-href', '')
+        $(this).addClass('normal')
+        $(this).removeClass('wayback')
+
+      $('#show-wayback-links .on-shown').toggle()
+      $('#show-wayback-links .on-hidden').toggle()
+
+    e.preventDefault()
+
 updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
 
@@ -135,4 +160,7 @@ $(document).on 'page:change', ->
 
   select_for_http_links('#artifact_mirrors')
   select_for_http_links('#artifact_more_info_urls')
+
+  # ------ show
+  initialize_wayback_links()
 

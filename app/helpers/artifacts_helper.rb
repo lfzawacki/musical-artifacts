@@ -8,7 +8,7 @@ module ArtifactsHelper
   end
 
   def external_link_to text, link
-    link_to("#{text}:", link, rel: 'nofollow', target: '_blank', class: 'external-link')
+    link_to(text, link, rel: 'nofollow', target: '_blank', class: 'external-link normal')
   end
 
   def display_license artifact, opt={}

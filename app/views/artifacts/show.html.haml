@@ -20,6 +20,8 @@
     - @artifact.more_info_urls.each_with_index do |more, i|
       = external_link_to i, more
 
+= render 'wayback_links'
+
 .artifact-tags.big-tags
   = render 'artifact_tags', artifact: @artifact
 

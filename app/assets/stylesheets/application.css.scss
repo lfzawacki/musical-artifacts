@@ -37,8 +37,11 @@ $light-dark: #eee;
 
 $white: #fff;
 
+#show-wayback-links .on-shown {
+  display: none;
+}
+
 a.external-link:after {
-  content: "\f14c";
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
@@ -46,6 +49,14 @@ a.external-link:after {
   text-decoration: inherit;
   margin: 2px;
   padding: 2px;
+}
+
+a.external-link.normal:after {
+  content: "\f14c";
+}
+
+a.external-link.wayback:after {
+  content: "\f08e";
 }
 
 @media(min-width:767px) {
