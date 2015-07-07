@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   put '/settings', to: 'settings#update', as: 'settings'
   get '/settings', to: 'settings#edit', as: 'edit_settings'
 
+  get '/comments_script', to: 'application#comments_script', as: 'comments_script'
+
   resources :apps, only: [:show, :index]
 
   root to: "artifacts#index"

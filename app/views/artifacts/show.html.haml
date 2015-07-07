@@ -26,12 +26,16 @@
   = render 'artifact_tags', artifact: @artifact
 
 %p.artifact-license
-  %strong= t('.license')
-  \:
   = display_license(@artifact)
 
   - if @artifact.extra_license_text.present?
     %p= @artifact.extra_license_text
+
+
+#comments
+  #show-comments
+    %a{href: '#comments'}= t('.show_comments')
+    %i.fa.fa-comment
 
 %p
   %strong
@@ -40,13 +44,10 @@
 
   - @artifact.related.each do |art|
     = link_to artifact_path(art, class: 'related-link') do
-      %i.fa.fa-cog
+      %i.fa.fa-archive
       = art.name
 
 = render partial: 'buttons', locals: {artifact: @artifact }
 
-%p.comments
-  = render 'comments'
-
-%p
-  %strong= link_to t('_other.back'), artifacts_path
+%p.nav-links
+  = link_to t('_other.back'), artifacts_path

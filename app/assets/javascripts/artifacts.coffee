@@ -164,3 +164,12 @@ $(document).on 'page:change', ->
   # ------ show
   initialize_wayback_links()
 
+  # Load juvia comments
+  $('#show-comments').click ->
+    $('#comments').load('/comments_script.html').hide().fadeIn(500);
+
+    $('html, body').animate
+      scrollTop: $("#comments").offset().top - 100
+    , 2000
+
+    e.preventDefault()

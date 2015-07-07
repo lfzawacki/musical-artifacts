@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :load_settings
 
+  # For serving the juvia commenting script in a javascript tag we control
+  def comments_script
+    render layout: nil
+  end
+
+  private
   def load_settings
     @setting = Setting.first
   end

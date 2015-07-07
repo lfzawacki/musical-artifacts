@@ -19,6 +19,7 @@
  *= require_self
  */
 
+@import "bootstrap";
 @import "compass";
 @import "compass/css3/border-radius";
 
@@ -57,6 +58,22 @@ a.external-link.normal:after {
 
 a.external-link.wayback:after {
   content: "\f08e";
+}
+
+#show-comments {
+  @extend .text-center;
+  font-size: 2em;
+}
+
+#comments {
+  padding-top: 0.5em;
+  padding-bottom: 1.5em;
+}
+
+.nav-links {
+  @extend .text-center;
+  @extend strong;
+  font-size: 2em;
 }
 
 @media(min-width:767px) {
@@ -121,6 +138,7 @@ a:focus {
 }
 
 .license {
+  margin-top: 1em;
 }
 
 .license-terms {
