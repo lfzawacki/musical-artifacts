@@ -2,15 +2,15 @@ Musical Artifacts
 ---------------------------
 Helping to catalogue, preserve and free the artifacts you need to produce music.
 
-!()[https://travis-ci.org/lfzawacki/musical-artifacts.svg?branch=master"] !()[https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/gpa.svg] !()[https://hakiri.io/github/lfzawacki/musical-artifacts/master.svg] !()[http://inch-ci.org/github/lfzawacki/musical-artifacts.svg?branch=master]
+![](https://travis-ci.org/lfzawacki/musical-artifacts.svg?branch=master) ![](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/gpa.svg) ![](https://hakiri.io/github/lfzawacki/musical-artifacts/master.svg) ![](http://inch-ci.org/github/lfzawacki/musical-artifacts.svg?branch=master)
 
 # What?
 
-This is a guide, a proof of concept, a catalogue, a tool to be used by musicians, sound engineers and programmers
+TODO: `This is a guide, a proof of concept, a catalogue, a tool to be used by musicians, sound engineers and programmers`
 
 # Why?
 
-Don't repeat ourselves, don't be slaves to any specific tool, music is subjective, creativity is cool, culture of freedom and sharing, battle against copyright but by giving people something better in it's place.
+TODO: `Don't repeat ourselves, don't be slaves to any specific tool, music is subjective, creativity is cool, culture of freedom and sharing, battle against copyright but by giving people something better in it's place.`
 
 # How?
 
