@@ -10,8 +10,10 @@ class ApiThrottle < Rack::Throttle::Minute
   # @param  [Rack::Request] request
   # @return [Boolean]
   def initialize app, options={}
-    throttling = Setting.first.try(:api_throttle_per_minute).try(:to_i)
-    options[:max] = throttling if throttling.present?
+    if ActiveRecord::Base.connection.table_exists? 'settings'
+      throttling = Setting.first.try(:api_throttle_per_minute).try(:to_i)
+      options[:max] = throttling if throttling.present?
+    end
     super
   end
 
