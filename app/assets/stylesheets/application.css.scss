@@ -65,6 +65,12 @@ a.external-link.wayback:after {
   font-size: 2em;
 }
 
+#comments-load {
+  @extend .text-center;
+  font-size: 2em;
+  display: none;
+}
+
 #comments {
   padding-top: 0.5em;
   padding-bottom: 1.5em;
@@ -154,6 +160,10 @@ a:focus {
 
 .label-tag {
   background-color: $coldy;
+}
+
+.label-file-format {
+  background-color: $darky;
 }
 
 .big-tags {

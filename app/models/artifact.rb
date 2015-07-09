@@ -1,28 +1,13 @@
 require 'digest/sha2'
 
 class Artifact < ActiveRecord::Base
-    acts_as_taggable_on :software, :tags
+    acts_as_taggable_on :software, :tags, :file_formats
 
     serialize :mirrors
     serialize :more_info_urls
+    serialize :file_formats
 
     has_many :stored_files
-
-    def mirrors=m
-      if m.kind_of?(String)
-        write_attribute(:mirrors, m.split(/[,;]/))
-      else
-        write_attribute(:mirrors, m)
-      end
-    end
-
-    def more_info_urls=m
-      if m.kind_of?(String)
-        write_attribute(:more_info_urls, m.split(/[,;]/))
-      else
-        write_attribute(:more_info_urls, m)
-      end
-    end
 
     validates :name, presence: true
 
@@ -49,6 +34,30 @@ class Artifact < ActiveRecord::Base
 
     def file
       stored_files.last.try(:file)
+    end
+
+    def file_format
+      file_format_list.first
+    end
+
+    def file_format= format
+      file_format_list.add format
+    end
+
+    def mirrors=m
+      if m.kind_of?(String)
+        write_attribute(:mirrors, m.split(/[,;]/))
+      else
+        write_attribute(:mirrors, m)
+      end
+    end
+
+    def more_info_urls=m
+      if m.kind_of?(String)
+        write_attribute(:more_info_urls, m.split(/[,;]/))
+      else
+        write_attribute(:more_info_urls, m)
+      end
     end
 
     def related max=5
