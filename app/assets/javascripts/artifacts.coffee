@@ -166,13 +166,14 @@ $(document).on 'page:change', ->
 
   # Load juvia comments
   $('#show-comments').click (e) ->
-    $('#comments').load('/comments_script.html').hide().fadeIn(500);
+
+    $('#comments').load('/comments_script.html', ->
+      $('#comments-load').hide()
+      $('html, body').animate
+        scrollTop: $("#comments").offset().top - 100
+      , 2000
+    ).hide().fadeIn(500);
+
     $('#comments-load').show()
-
-    $('html, body').animate
-      scrollTop: $("#comments").offset().top - 100
-    , 2000
-
-    $('#comments-load').hide()
 
     e.preventDefault()
