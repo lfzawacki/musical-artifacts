@@ -6,7 +6,7 @@ require 'minitest/rails/capybara'
 require 'html_reporter'
 
 reporter_options = { color: true }
-Minitest::Reporters.use! [Minitest::Reporters::HtmlReporter.new]
+Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new, Minitest::Reporters::HtmlReporter.new]
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.

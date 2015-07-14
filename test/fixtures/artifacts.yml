@@ -2,14 +2,12 @@
 
 one:
   name: MyString
-  file: mystring.txt
   description: MyText
   author: MyString
   license: by
 
 two:
   name: MyStringa
-  file: mystringa.txt
   description: MyTexta
   author: MyStringa
   license: by
