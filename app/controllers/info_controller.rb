@@ -5,4 +5,7 @@ class InfoController < ApplicationController
 
     render layout: false
   end
+
+  def contact
+  end
 end
