@@ -168,11 +168,17 @@ $(document).on 'page:change', ->
   $('#show-comments').click (e) ->
 
     $('#comments').load('/comments_script.html', ->
-      $('#comments-load').hide()
-      $('html, body').animate
-        scrollTop: $("#comments").offset().top - 100
-      , 2000
-    ).hide().fadeIn(500);
+      setTimeout ->
+
+        $('#comments-load').hide()
+        $('#comments').show()
+
+        $('html, body').animate
+          scrollTop: $("#comments").offset().top - 100
+        , 2000
+
+      , 500
+    ).hide()
 
     $('#comments-load').show()
 
