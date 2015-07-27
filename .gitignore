@@ -18,3 +18,5 @@ log/
 /tmp
 public/test_report.html
 public/uploads/
+config/settings.yml
+config/piwik.yml
