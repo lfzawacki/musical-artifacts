@@ -85,5 +85,3 @@ gem 'cancancan', '~> 1.10'
 gem "compass-rails", git: 'https://github.com/Compass/compass-rails', branch: 'master'
 
 gem 'rack-throttle'
-
-gem 'piwik_analytics', '~> 1.0.1'

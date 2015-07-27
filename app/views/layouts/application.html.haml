@@ -48,4 +48,4 @@
           = msg
       = yield
 
-    = piwik_tracking_tag
+    = render 'application/analytics' if Rails.env.production?
