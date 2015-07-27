@@ -2,8 +2,10 @@
   - artifact.software_list.each do |app|
     .label.label-app= link_to app, artifacts_path(apps: app)
 
+%p
   - artifact.tag_list.each do |tag|
     .label.label-tag= link_to tag, artifacts_path(tags: tag)
 
+%p
   - artifact.file_format_list.each do |ff|
     .label.label-file-format= link_to ff, artifacts_path(file_formats: ff)

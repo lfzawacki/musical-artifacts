@@ -23,7 +23,10 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to t('_other.name'), "/", :class => "navbar-brand"
+          %a.navbar-brand{href: '/'}
+            = t('_other.name')
+            %p.subtitle Beta
+
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li

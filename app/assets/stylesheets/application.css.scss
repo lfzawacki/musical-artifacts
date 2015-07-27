@@ -226,8 +226,8 @@ a.btn-scroll-top:hover {
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
-  background-color: $hot;
-  background: none repeat scroll 0 0 $hot;
+  background-color: $darky;
+  background: none repeat scroll 0 0 $darky;
 }
 
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
@@ -350,6 +350,8 @@ header .intro-text .skills {
 .navbar-brand .subtitle {
   text-transform: none;
   font-size: 60%;
+  padding: 0.2em;
+  color: $coldy;
 }
 
 
