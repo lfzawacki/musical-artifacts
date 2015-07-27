@@ -85,7 +85,9 @@
 
               %p
                 First things first, the resource has to be accessible somewhere.
-              %a{href: '/'} How to host files?
+              %a{href: 'https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting' }
+                %i.fa.fa-external-link
+                How to host files?
 
     %section#licensing
       .container
@@ -97,7 +99,9 @@
 
               %p Think about which rights you grant to the resource's users.
               %p Can they use it commercially? Modify it? Redistribute it?
-              %a{href: '/'} Learn about licenses
+              %a{href: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses'}
+                %i.fa.fa-external-link
+                Learn about open licenses
 
     %section#format.success
       .container
@@ -109,7 +113,9 @@
 
               %p
                 Make it available in a common and openly documented format.
-              %a{href: '/'} List of open formats
+              %a{href: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Formats' }
+                %i.fa.fa-external-link
+                Learn about open formats
 
     %section#documentation
       .container
@@ -121,25 +127,17 @@
 
               %p
                 TELL the world where to find your resource and how they can use it!
-              %a{href: '/'} Register your resource here
+
+              %a{href: 'https://github.com/lfzawacki/musical-artifacts/wiki/New-Artifacts'}
+                %i.fa.fa-external-link
+                Registering new artifacts
 
     %section#about.success
       .container
         .row
           .col-lg-12.text-center
-            %h2 About these guidelines
+            %h2 Shall we start?
             %hr.star-light
-        .row
-          .col-lg-4.col-lg-offset-2
-            %p What I want with this
-            %p What I want with this
-            %p What I want with this
-            %p What I want with this
-          .col-lg-4
-            %p What you gain with this
-            %p What you gain with this
-            %p What you gain with this
-            %p What you gain with this
 
           .col-lg-8.col-lg-offset-2.text-center
             = link_to artifacts_path, class: 'btn btn-lg btn-outline' do
@@ -153,23 +151,39 @@
             .footer-col.col-md-4
               %h3 Legal
               %h4
-                %a{href: '#'} Terms and Conditions
+                %a{href: 'https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions'} Terms and Conditions
 
-            .footer-col.col-md-8
-              %h3 Social
+            .footer-col.col-md-4
+              %h3
+                Contact
+                %h4
+                  %a{href: '/info/contact'}
+                    Contact Us
+
+            .footer-col.col-md-4
+              %h3 Elsewhere
               %ul.list-inline
                 %li
-                  %a.btn-social.btn-outline{:href => "https://github.com/lfzawacki/musical-artifacts"}
+                  %a.btn-social.btn-outline{:href => 'https://github.com/lfzawacki/musical-artifacts'}
                     %i.fa.fa-fw.fa-github
+
                 %li
-                  %a.btn-social.btn-outline{:href => "#"}
+                  %a.btn-social.btn-outline{:href => 'https://twitter.com/musartifacts'}
                     %i.fa.fa-fw.fa-twitter
+
+                %li
+                  %a.btn-social.btn-outline{:href => 'https://github.com/lfzawacki/musical-artifacts/wiki'}
+                    %i.fa.fa-fw.fa-file-text
+
       .footer-below
         .container
           .row
             .col-lg-12
               %p
-                Copyright &copy; Musical Artifacts 2015
+                Copyright &copy;
+                = t('_other.name')
+                = Time.now.year
+
               %p
                 Theme is derived from:
                 %a{href: 'http://startbootstrap.com/template-overviews/freelancer/'} Bootstrap Freelancer
@@ -183,5 +197,4 @@
     %script{:src => "http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"}
     %script{:src => "/assets/classie.js"}
     %script{:src => "/assets/cbpAnimatedHeader.js"}
-    / Contact Form JavaScript
     %script{:src => "/assets/freelancer.js"}

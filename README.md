@@ -62,7 +62,7 @@ Dependencies: `rails4.2 postrgresql >= 9.3 postrgresql-contrib >= 9.3`
 
 #### Running tests
 
-  `Write more tests`
+  `TODO: Write more tests`
   bundle exec rake
 
 ## Reporting a problem
@@ -75,21 +75,24 @@ Each file has a comment section and problems or additional information can be po
 
 Bugs, feature requests, documentation enhancements and almost anything related to development goes on the [github issues page](https://github.com/lfzawacki/musical-artifacts/issues)
 
-# Related projects
-
-  `Explain projects`
-
 # Credits
 
-## Open Source Libraries
+## Open Source Projects
 
   * See gemfile
   * [Juvia](https://github.com/phusion/juvia) for comments
+  * [Piwik](http://piwik.org/) for analytics
 
 ## Art/Graphics
 
   * [The pretty flat icons](http://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free)
   * [The pretty theme](http://startbootstrap.com/template-overviews/freelancer/)
+
+## Related projects / Inspirations
+
+  * [The Internet Archive](https://archive.org/)
+  * [CC Mixter](http://ccmixter.org/)
+  * [Freesound](https://www.freesound.org/)
 
 ## Resources
 
