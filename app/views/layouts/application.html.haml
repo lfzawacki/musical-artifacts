@@ -32,7 +32,7 @@
             %li
               = link_to t('_other.about'), info_about_path
             %li
-              %a{:href => "#contact"} Contact
+              %a{:href => "/info/contact"} Contact
             - if current_user.present? # logged_in?
               %li
                 = link_to t('.settings'), settings_path
