@@ -2,7 +2,7 @@ Musical Artifacts
 ---------------------------
 Helping to catalogue, preserve and free the artifacts you need to produce music.
 
-![](https://travis-ci.org/lfzawacki/musical-artifacts.svg?branch=master) ![](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/gpa.svg) ![](https://hakiri.io/github/lfzawacki/musical-artifacts/master.svg) ![](http://inch-ci.org/github/lfzawacki/musical-artifacts.svg?branch=master)
+![](https://travis-ci.org/lfzawacki/musical-artifacts.svg?branch=master) ![](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/gpa.svg) ![](https://hakiri.io/github/lfzawacki/musical-artifacts/master.svg) ![](http://inch-ci.org/github/lfzawacki/musical-artifacts.svg?branch=master) [Read the docs](https://github.com/lfzawacki/musical-artifacts/wiki)
 
 # What?
 
@@ -18,17 +18,19 @@ This catalogue is constructed abiding by the simple principle that a "musical ar
 
 1. Creation: You've created a musical artifact which can be used to aid in the process of music making. ([What constitutes a musical resource](#))
 
-2. Access: You've made it accessible, available and usable to others in some fashion. ([How to host files?](#))
+2. Access: You've made it accessible, available and usable to others in some fashion. ([How to host files?](https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting))
 
-3. Licensing: You've licensed it using a free/libre license which is not restrictive of different uses, distribution and/or modification. ([Learn about open licenses](#))
+3. Licensing: You've licensed it using a free/libre license which is not restrictive of different uses, distribution and/or modification. ([Learn about open licenses](https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses))
 
-4. Open Format: You've made it available in an open or well documented file format which can be used by a good number of open source software. ([List of open formats](#))
+4. Open Format: You've made it available in an open or well documented file format which can be used by a good number of open source software. ([List of open formats](https://github.com/lfzawacki/musical-artifacts/wiki/Open-Formats))
 
 5. Document it: You've crafted some kind of basic or advanced description of it's usage, technical details, tips n' tricks, and/or sample works created using it. ([Example of good documentation](#))
 
 ## Searching
 
 By using the search bar in the main artifact page.
+
+`TODO explain advanced search`
 
 ## API Access
 
@@ -40,7 +42,7 @@ The application URLS can be request in `json` format for consumption by other ap
 
     GET /artifacts/42.json # get the artifact with id 42
 
-See the [API](#) for more examples and JSON object format or just make a search using the search bar and copy the URL using a JSON format.
+See the [API](https://github.com/lfzawacki/musical-artifacts/wiki/API-Documentation) for more examples and JSON object format or just make a search using the search bar and copy the URL using a JSON format.
 
 ### Limits
 
@@ -79,7 +81,7 @@ Bugs, feature requests, documentation enhancements and almost anything related t
 
 ## Open Source Projects
 
-  * See gemfile
+  * Ruby on Rails + libraries, see gemfile
   * [Juvia](https://github.com/phusion/juvia) for comments
   * [Piwik](http://piwik.org/) for analytics
 
@@ -96,4 +98,4 @@ Bugs, feature requests, documentation enhancements and almost anything related t
 
 ## Resources
 
-Thank all the artists/engineers/programmers who gave resources
+TODO: Thank all the artists/engineers/programmers who gave resources
