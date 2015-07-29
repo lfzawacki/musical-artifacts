@@ -1,6 +1,8 @@
 en:
   _other:
     name: Musical Artifacts
+    about: About
+    contact: Contact
     edit: Edit
     back: Back
     confirm: Are you sure?
@@ -20,7 +22,7 @@ en:
       by: Has to give attribution
       nc: Non commercial use only
       nd: No derivate works
-      sa: Share-Alike
+      sa: Share under the same license
 
   artifacts:
     index:
@@ -32,7 +34,8 @@ en:
         tags: Tagged with...
         apps: Used with app...
         hash: File with hash...
-    show:
+        formar: File with format...
+    buttons:
       download: Download
     wayback_links:
       broken: Broken external links? Click to try links for the Wayback Machine.

@@ -1,0 +1,42 @@
+en:
+  _other:
+    name: Musical Artifacts
+    about: Sobre
+    contact: Contato
+    edit: Editar
+    back: Voltar
+    confirm: Tem certeza?
+
+  licenses:
+    link:
+      cc: http://creativecommons.org/licenses/%{type}/4.0/deed.en
+      public: https://wiki.creativecommons.org/Public_domain
+      copyright: ''
+      cc_sample: https://creativecommons.org/licenses/sampling+/1.0/
+    text:
+      cc: Creative Commons 4.0 Unported License
+      public: Trabalho em Domínio Público
+      copyright: Direitos Reservados a %{author}
+      cc_sample: Creative Commons Sampling+ 1.0
+    parts:
+      by: Dê crédito ao autor
+      nc: Uso não comercial
+      nd: Sem obras derivadas
+      sa: Compartilhe sob a mesma licensa
+
+  artifacts:
+    index:
+      new: Registrar um novo artefato
+      search_for: Buscar por...
+      search: Busca
+      filters:
+        license: Licensa...
+        tags: Tagueado com...
+        apps: Usado com o app...
+        hash: Arquivo com o hash...
+        format: Formato de arquivo...
+    buttons:
+      download: Baixar
+    wayback_links:
+      broken: Links externos estão quebrados? Clique aqui para tentar links do Arquivo da Internet.
+      original: Voltar a ver os links originais.
