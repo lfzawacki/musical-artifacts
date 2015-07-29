@@ -171,13 +171,12 @@ $(document).on 'page:change', ->
       setTimeout ->
 
         $('#comments-load').hide()
-        $('#comments').show()
+        $('#comments').show ->
+          $('html, body').animate
+            scrollTop: $("#comments").offset().top - 100
+          , 2000
 
-        $('html, body').animate
-          scrollTop: $("#comments").offset().top - 100
-        , 2000
-
-      , 500
+      , 1000
     ).hide()
 
     $('#comments-load').show()

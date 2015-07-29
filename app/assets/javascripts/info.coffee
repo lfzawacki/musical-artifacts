@@ -11,4 +11,6 @@ hideElements = ->
   else
     setTimeout(hideElements, 50)
 
-setTimeout(hideElements, 50)
+$(document).on 'page:change', ->
+  if $('#comments.hide-headers')[0]
+    setTimeout(hideElements, 50)
