@@ -16,10 +16,4 @@
 //= require bootstrap
 //= require bootstrap-switch
 //= require select2
-
-//= require jquery.easing.min
-//= require classie
-//= require cbpAnimatedHeader
-//= require freelancer
-
 //= require_tree .

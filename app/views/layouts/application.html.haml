@@ -17,7 +17,7 @@
   %body#page-top.index
     %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
       .container
-        .navbar-header
+        .navbar-header.page-scroll
           %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
             %span.sr-only Toggle navigation
             %span.icon-bar
@@ -28,24 +28,80 @@
             %p.subtitle Beta
 
         #navbar.collapse.navbar-collapse
-          %ul.nav.navbar-nav
+          %ul.nav.navbar-nav.navbar-right
+            %li.hidden
+              %a{:href => "#page-top"}
             %li
               = link_to t('_other.about'), info_about_path
             %li
-              %a{:href => "/info/contact"} Contact
+              = link_to t('_other.contact'), info_contact_path
+
             - if current_user.present? # logged_in?
               %li
                 = link_to t('.settings'), settings_path
               %li
                 = link_to t('_other.logout'), destroy_user_session_path
 
-    .container.with-navbar-on-top
+    - # Don't use a container wrapping the content only on the 'about' section
+    %div{class: "#{'container with-navbar-on-top' unless controller.controller_name == 'info' && controller.action_name == 'about'}"}
       - flash.each do |name, msg|
         = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", :role => "alert" do
           %button.close{"data-dismiss" => "alert", :type => "button"}
             %span{"aria-hidden" => "true"} ×
             %span.sr-only Close
           = msg
+
       = yield
+
+    %footer.text-center
+      .footer-above
+        .container
+          .row
+            .footer-col.col-md-4
+              %h3 Legal
+              %h4
+                %a{href: 'https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions'} Terms and Conditions
+
+            .footer-col.col-md-4
+              %h3
+                Contact
+                %h4
+                  %a{href: '/info/contact'}
+                    Contact Us
+
+            .footer-col.col-md-4
+              %h3 Elsewhere
+              %ul.list-inline
+                %li
+                  %a.btn-social.btn-outline{:href => 'https://github.com/lfzawacki/musical-artifacts'}
+                    %i.fa.fa-fw.fa-github
+
+                %li
+                  %a.btn-social.btn-outline{:href => 'https://twitter.com/musartifacts'}
+                    %i.fa.fa-fw.fa-twitter
+
+                %li
+                  %a.btn-social.btn-outline{:href => 'https://github.com/lfzawacki/musical-artifacts/wiki'}
+                    %i.fa.fa-fw.fa-file-text
+
+      .footer-below
+        .container
+          .row
+            .col-lg-12
+              %p
+                Copyright &copy;
+                = t('_other.name')
+                = Time.now.year
+
+              %p
+                Theme is derived from:
+                %a{href: 'http://startbootstrap.com/template-overviews/freelancer/'} Bootstrap Freelancer
+
+    / Scroll to Top Button (Only visible on small and extra-small screen sizes)
+    .scroll-top.page-scroll.visible-xs.visible-sm
+      %a.btn.btn-scroll-top{:href => "#page-top"}
+        %i.fa.fa-chevron-up
+
+    = javascript_include_tag 'vendor', 'data-turbolinks-track' => false
 
     = render 'application/analytics' if Rails.env.production?
