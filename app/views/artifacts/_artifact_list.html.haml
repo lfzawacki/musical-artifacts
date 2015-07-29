@@ -6,7 +6,7 @@
     - group.each do |artifact|
       .col-sm-4.portfolio-item.artifact-item{class: "#{cycle('dark', 'light')}-item"}
         %h3= link_to artifact.name, artifact
-        by
+        = t('_other.by')
         %span= artifact.author
 
         .artifact-content

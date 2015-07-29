@@ -1,11 +1,16 @@
 en:
   _other:
     name: Musical Artifacts
+    by: por
     about: Sobre
     contact: Contato
     edit: Editar
     back: Voltar
     confirm: Tem certeza?
+
+  layouts:
+    application:
+      settings: Opções
 
   licenses:
     link:

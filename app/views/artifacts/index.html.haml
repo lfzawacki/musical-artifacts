@@ -23,6 +23,5 @@
   = render 'artifact_list'
 
 - if can?(:new, Artifact)
-  .row
-    .col-lg-12
-      = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
+  %p
+    = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
