@@ -170,7 +170,7 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
-    highline (1.6.21)
+    highline (1.7.2)
     hike (1.2.3)
     hitimes (1.2.2)
     html2haml (2.0.0)
@@ -231,11 +231,11 @@ GEM
       ruby-progressbar
     multi_json (1.11.0)
     nenv (0.2.0)
-    net-scp (1.1.0)
+    net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-sftp (2.1.1)
+    net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.6)
+    net-ssh (2.10.0.beta2)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     nokogiri (1.6.6.2)
@@ -359,7 +359,7 @@ DEPENDENCIES
   bootstrap-switch-rails
   byebug
   cancancan (~> 1.10)
-  capistrano
+  capistrano (~> 2.14.2)
   carrierwave
   coffee-rails (~> 4.1.0)
   compass-rails!
@@ -373,6 +373,7 @@ DEPENDENCIES
   jquery-rails
   minitest-rails-capybara
   minitest-reporters
+  net-ssh (~> 2.10.0.beta2)
   pg
   quiet_assets
   rack (~> 1.6.2)

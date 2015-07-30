@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rack', '~> 1.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -59,7 +58,8 @@ group :development, :test do
   gem 'guard'
   gem 'guard-minitest'
 
-  gem 'capistrano'
+  gem 'net-ssh', '~> 2.10.0.beta2'
+  gem 'capistrano', '~> 2.14.2'
 end
 
 
