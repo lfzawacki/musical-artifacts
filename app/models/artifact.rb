@@ -72,6 +72,8 @@ class Artifact < ActiveRecord::Base
     end
 
     def download_path
-      "artifacts/#{to_param}/#{stored_files.last.name}"
+      if stored_files.last.present?
+        "artifacts/#{to_param}/#{stored_files.last.name}"
+      end
     end
 end
