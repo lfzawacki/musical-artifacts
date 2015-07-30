@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/info/about', to: 'info#about', as: :info_about
   get '/info/contact', to: 'info#contact', as: :info_contact
 
+  get '/artifacts/:id/:filename', to: 'artifacts#download', as: :artifact_download
+
   resources :searches, only: [] do
     collection do
       get :tags

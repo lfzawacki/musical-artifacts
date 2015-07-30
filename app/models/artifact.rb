@@ -66,4 +66,12 @@ class Artifact < ActiveRecord::Base
       .where('id NOT in(?)', self.id)
       .limit(max)
     end
+
+    def get_file_by_name filename
+      stored_files.where(file: filename).first
+    end
+
+    def download_path
+      "artifacts/#{to_param}/#{stored_files.last.name}"
+    end
 end

@@ -6,6 +6,17 @@ class ArtifactsController < InheritedResources::Base
 
   respond_to :json
 
+  def download
+    @artifact = Artifact.find(params[:id])
+
+    file = @artifact.get_file_by_name("#{params[:filename]}.#{params[:format]}")
+    if file.present?
+      send_file file.path
+    else
+      render :file => "#{Rails.root}/public/404.html",  :status => 404
+    end
+  end
+
   private
 
     def artifact_params

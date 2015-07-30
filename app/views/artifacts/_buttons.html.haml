@@ -10,6 +10,6 @@
       = t('_other.destroy')
 
   - if artifact.file.try(:url)
-    = link_to artifact.file.url, class: 'btn btn-download' do
+    = link_to artifact.download_path, class: 'btn btn-download' do
       %i.fa.fa-download
       = t('.download')

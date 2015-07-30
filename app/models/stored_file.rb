@@ -5,6 +5,14 @@ class StoredFile < ActiveRecord::Base
   before_save :generate_file_list
   before_save :save_file_format
 
+  def path
+    file.try(:path)
+  end
+
+  def name
+    file.file.try(:filename)
+  end
+
   def save_file_format
     if file_changed?
       self.format = file.file.try(:extension)
