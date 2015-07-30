@@ -11,7 +11,7 @@ class ArtifactsController < InheritedResources::Base
 
     file = @artifact.get_file_by_name("#{params[:filename]}.#{params[:format]}")
     if file.present?
-      send_file file.path
+      send_file Pathname(file.path).realdirpath
     else
       render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
