@@ -76,4 +76,8 @@ class Artifact < ActiveRecord::Base
         "artifacts/#{to_param}/#{stored_files.last.name}"
       end
     end
+
+    def file_name
+      stored_files.last.name
+    end
 end
