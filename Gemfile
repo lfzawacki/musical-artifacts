@@ -62,7 +62,6 @@ group :development, :test do
   gem 'capistrano', '~> 2.14.2'
 end
 
-
 # My gems
 gem 'font-awesome-rails'
 gem 'bootstrap-switch-rails'
@@ -85,3 +84,5 @@ gem 'cancancan', '~> 1.10'
 gem "compass-rails", git: 'https://github.com/Compass/compass-rails', branch: 'master'
 
 gem 'rack-throttle'
+
+gem 'exception_notification', '~> 4.0.0'

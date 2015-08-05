@@ -1,6 +1,6 @@
 ActiveSupport.on_load(:after_initialize) do
 
-  if Setting.table_exists?
+  if Setting.table_exists? && Setting.first
     conf = Setting.first
 
     # default settings

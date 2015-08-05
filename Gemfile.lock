@@ -136,6 +136,9 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.4.0)
     ffi (1.9.8)
     font-awesome-rails (4.1.0.0)
@@ -364,6 +367,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   compass-rails!
   devise (~> 3.4.0)
+  exception_notification (~> 4.0.0)
   ffi
   font-awesome-rails
   guard
