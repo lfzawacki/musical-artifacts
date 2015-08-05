@@ -14,12 +14,12 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body#page-top.index
+  %body#page-top
     %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
       .container
         .navbar-header.page-scroll
-          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
+          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => ".navbar", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only= t('.toggle_navigation')
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
@@ -74,15 +74,19 @@
               %ul.list-inline
                 %li
                   %a.btn-social.btn-outline{:href => 'https://github.com/lfzawacki/musical-artifacts'}
-                    %i.fa.fa-fw.fa-github
+                    %i.fa.fa-fw.fa-github{title: 'Github'}
 
                 %li
                   %a.btn-social.btn-outline{:href => 'https://twitter.com/musartifacts'}
-                    %i.fa.fa-fw.fa-twitter
+                    %i.fa.fa-fw.fa-twitter{title: 'Twitter'}
+
+                %li
+                  %a.btn-social.btn-outline{:href => 'https://diasporabr.com.br/musartifacts'}
+                    %i.fa.fa-fw.fa-asterisk{title: 'Diaspora'}
 
                 %li
                   %a.btn-social.btn-outline{:href => 'https://github.com/lfzawacki/musical-artifacts/wiki'}
-                    %i.fa.fa-fw.fa-file-text
+                    %i.fa.fa-fw.fa-file-text{title: 'Docs'}
 
       .footer-below
         .container
@@ -101,7 +105,5 @@
     .scroll-top.page-scroll.visible-xs.visible-sm
       %a.btn.btn-scroll-top{:href => "#page-top"}
         %i.fa.fa-chevron-up
-
-    = javascript_include_tag 'vendor', 'data-turbolinks-track' => false
 
     = render 'application/analytics' if Rails.env.production?
