@@ -8,37 +8,42 @@
  * Copyright 2013, Codrops
  * http://www.codrops.com
  */
-var cbpAnimatedHeader = (function() {
 
-	var docElem = document.documentElement,
-		header = document.querySelector( '.navbar-fixed-top' ),
-		didScroll = false,
-		changeHeaderOn = 300;
+$(document).on('page:change', function () {
 
-	function init() {
-		window.addEventListener( 'scroll', function( event ) {
-			if( !didScroll ) {
-				didScroll = true;
-				setTimeout( scrollPage, 250 );
-			}
-		}, false );
-	}
+  var cbpAnimatedHeader = (function() {
 
-	function scrollPage() {
-		var sy = scrollY();
-		if ( sy >= changeHeaderOn ) {
-			classie.add( header, 'navbar-shrink' );
-		}
-		else {
-			classie.remove( header, 'navbar-shrink' );
-		}
-		didScroll = false;
-	}
+    var docElem = document.documentElement,
+      header = document.querySelector( '.navbar-fixed-top' ),
+      didScroll = false,
+      changeHeaderOn = 300;
 
-	function scrollY() {
-		return window.pageYOffset || docElem.scrollTop;
-	}
+    function init() {
+      window.addEventListener( 'scroll', function( event ) {
+        if( !didScroll ) {
+          didScroll = true;
+          setTimeout( scrollPage, 250 );
+        }
+      }, false );
+    }
 
-	init();
+    function scrollPage() {
+      var sy = scrollY();
+      if ( sy >= changeHeaderOn ) {
+        classie.add( header, 'navbar-shrink' );
+      }
+      else {
+        classie.remove( header, 'navbar-shrink' );
+      }
+      didScroll = false;
+    }
 
-})();
+    function scrollY() {
+      return window.pageYOffset || docElem.scrollTop;
+    }
+
+    init();
+
+  })();
+
+});
