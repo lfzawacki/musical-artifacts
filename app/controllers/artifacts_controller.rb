@@ -9,11 +9,23 @@ class ArtifactsController < InheritedResources::Base
   def download
     @artifact = Artifact.find(params[:id])
 
-    file = @artifact.get_file_by_name("#{params[:filename]}.#{params[:format]}")
+    # TODO:
+    # Using user params, is it dangerous? Not really if you understand that
+    # get_file_by_name will only return file paths written to the database
+    # BUT maybe there's some sanitization to be done here?
+    file = @artifact.get_file_by_name(sanitize_filename_from_params)
+
     if file.present?
-      send_file Pathname(file.path).realdirpath
+      file_params = { filename: file.name }
+
+      # If mime type is registered for the file send it
+      mime_type = Mime::Type.lookup_by_extension(file.format)
+      file_params.merge!(type: mime_type) if mime_type.present?
+
+      # Pathname is necessary for X-Send-File to work with Capistrano sym-links
+      send_file Pathname(file.path).realdirpath, file_params
     else
-      render :file => "#{Rails.root}/public/404.html",  :status => 404
+      render :file => "#{Rails.root}/public/404.html", :status => 404
     end
   end
 
@@ -42,4 +54,10 @@ class ArtifactsController < InheritedResources::Base
       @software = params[:app]
     end
 
+    def sanitize_filename_from_params
+      # Since users can input the 'filename' just reject dangerous stuff like './' and '../' paths
+      filename = params[:filename].clone unless /(?:^|\/)[.]{1,2}(?:\/|$)|^\/.*/.match(params[:filename])
+      filename += ".#{params[:format].clone}" if params[:format].present?
+      filename
+    end
 end
