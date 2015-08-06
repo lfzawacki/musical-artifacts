@@ -17,7 +17,7 @@ ActiveSupport.on_load(:after_initialize) do
       end
     end
 
-    ActionMailer::Base.config.default_url_options = { host: conf.hostname }
+    ActionMailer::Base.default_url_options = { :host => conf.try(:hostname) || 'localhost:3000' }
     ActionMailer::Base.delivery_method = :smtp
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.raise_delivery_errors = true
