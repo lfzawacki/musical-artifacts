@@ -60,6 +60,8 @@ group :development, :test do
 
   gem 'net-ssh', '~> 2.10.0.beta2'
   gem 'capistrano', '~> 2.14.2'
+
+  gem 'xray-rails'
 end
 
 # My gems
