@@ -1,7 +1,7 @@
-%h1 Contact
+%h1= t('_other.contact')
 
-Don't forget to leave an email so we can contact you back.
+%p= t('.description')
 
-#comments.hide-headers
+#comments.hide-headers.pad-top
 
 = render template: 'application/comments_script'

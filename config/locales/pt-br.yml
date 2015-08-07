@@ -45,3 +45,9 @@ pt-br:
     wayback_links:
       broken: Links externos estão quebrados? Clique aqui para tentar links do Arquivo da Internet.
       original: Voltar a ver os links originais.
+
+  info:
+    about:
+
+    contact:
+      description: Não esqueça de deixar um email válido para contato.

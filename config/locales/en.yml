@@ -45,3 +45,9 @@ en:
     wayback_links:
       broken: Broken external links? Click to try links for the Wayback Machine.
       original: Go back to seeing the original links.
+
+  info:
+    about:
+
+    contact:
+      description: Don't forget to leave an email so we can contact you back.

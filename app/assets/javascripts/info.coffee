@@ -12,5 +12,8 @@ hideElements = ->
     setTimeout(hideElements, 50)
 
 $(document).on 'page:change', ->
+
+  $('#comments').show()
+
   if $('#comments.hide-headers')[0]
     setTimeout(hideElements, 50)
