@@ -1,15 +1,19 @@
-%p.artifact-buttons
-  - if can?(:edit, artifact)
-    = link_to edit_artifact_path(artifact), class: 'btn btn-default' do
-      %i.fa.fa-edit
-      = t('_other.edit')
+.artifact-buttons
 
-  - if can?(:destroy, artifact)
-    = link_to artifact, class: 'btn btn-danger', method: :delete, data: { confirm: t('_other.confirm') } do
-      %i.fa.fa-flash
-      = t('_other.destroy')
+  %p
+    - if can?(:edit, artifact)
+      = link_to edit_artifact_path(artifact), class: 'btn btn-default' do
+        %i.fa.fa-edit
+        = t('_other.edit')
 
-  - if artifact.file.try(:url)
-    = link_to artifact.download_path, class: 'btn btn-download', download: artifact.file_name do
-      %i.fa.fa-download
-      = t('.download')
+    - if can?(:destroy, artifact)
+      = link_to artifact, class: 'btn btn-danger', method: :delete, data: { confirm: t('_other.confirm') } do
+        %i.fa.fa-flash
+        = t('_other.destroy')
+
+
+  %p.pad-top
+    - if artifact.file.try(:url)
+      = link_to artifact.download_path, class: 'btn btn-download', download: artifact.file_name do
+        %i{class: "fa #{icon_from_extension(artifact.stored_files.last.format)}"}
+        = t('.download')

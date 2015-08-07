@@ -130,7 +130,7 @@ a.external-link.wayback:after {
 
 .row .artifact-item {
   margin-bottom: 2em;
-  padding-bottom: 4em;
+  padding-bottom: 0.5em;
 }
 
 .dark-item {
@@ -230,21 +230,29 @@ a.external-link.wayback:after {
   color: $darky;
 }
 
+.btn-download:hover,
+.btn-download:focus,
+.btn-download:active,
+.btn-download.active {
+    background: $dark;
+}
+
 .btn-download {
   background-color: $dark;
+  color: #444;
+  text-decoration: none;
+  width: 96%;
+  background: #ddd;
+  font-size: 110%;
+  transition: all .1s ease-in-out;
 }
 
 .btn-download:hover {
-  background-color: #000;
+  background-color: #222;
 }
 
-a.btn-download {
-  color: #ddd;
-  text-decoration: none;
-}
-
-a.btn-download:hover {
-  color: $white;
+.btn-download:hover {
+  color: $coldy;
   text-decoration: none;
 }
 

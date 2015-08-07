@@ -11,6 +11,31 @@ module ArtifactsHelper
     link_to(text, link, rel: 'nofollow', target: '_blank', class: 'external-link normal')
   end
 
+  def icon_from_extension ext
+    mime = Mime::Type::lookup_by_extension(ext)
+    icons = {
+      'application/x-bittorrent' => 'tint',
+
+      'application/x-midi' => 'file-midi-o', # music
+
+      'audio/x-soundfont' => 'file-audio-o',
+      'audio/x-riff' => 'file-audio-o',
+      'audio/x-wav' => 'file-audio-o',
+
+      'text/plain' => 'file-text-o',
+      'text/html' => 'file-code-o',
+      'application/xml' => 'file-code-o',
+
+      'application/x-rar' => 'file-archive-o',
+      'application/bzip2' => 'file-archive-o',
+      'application/x-tar' => 'file-archive-o',
+      'application/x-gzip' => 'file-archive-o',
+      'application/zip' => 'file-archive-o'
+    }
+
+    "fa-#{icons[mime.to_s] || 'file-o'}"
+  end
+
   def display_license artifact, opt={}
     license = artifact.license.short_name
 

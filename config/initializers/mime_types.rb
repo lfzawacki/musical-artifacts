@@ -12,8 +12,8 @@ types = {
   midi: 'application/x-midi',
   mid: 'application/x-midi',
 
-  xiz: 'application/gzip',
-  xmz: 'application/gzip',
+  xiz: 'application/x-gzip',
+  xmz: 'application/x-gzip',
   xpf: 'text/html',
 
   torrent: 'application/x-bittorrent',
