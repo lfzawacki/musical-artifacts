@@ -8,7 +8,11 @@ module ArtifactsHelper
   end
 
   def external_link_to text, link
-    link_to(text, link, rel: 'nofollow', target: '_blank', class: 'external-link normal')
+    link_to(text, link, rel: 'nofollow', target: '_blank', class: "external-link normal")
+  end
+
+  def format_from_link link
+    link.split('.')[-1]
   end
 
   def icon_from_extension ext
@@ -21,6 +25,8 @@ module ArtifactsHelper
       'audio/x-soundfont' => 'file-audio-o',
       'audio/x-riff' => 'file-audio-o',
       'audio/x-wav' => 'file-audio-o',
+      'audio/mpeg' => 'file-audio-o',
+      'audio/ogg' => 'file-audio-o',
 
       'text/plain' => 'file-text-o',
       'text/html' => 'file-code-o',

@@ -6,19 +6,9 @@
 .artifact-content
   %p= @artifact.description
 
--if @artifact.mirrors.present?
-  %p
-    %strong= t('.mirrors')
-    \:
-    - @artifact.mirrors.each_with_index do |mirror, i|
-      = external_link_to i, mirror
+= render 'artifact_links'
 
--if @artifact.more_info_urls.present?
-  %p
-    %strong= t('.more_info')
-    \:
-    - @artifact.more_info_urls.each_with_index do |more, i|
-      = external_link_to i, more
+.pad-top
 
 = render 'wayback_links'
 

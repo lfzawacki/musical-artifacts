@@ -28,7 +28,10 @@ types = {
   tar: 'application/x-tar',
   tgz: 'application/x-gzip',
 
-  wav: 'audio/x-wav'
+  wav: 'audio/x-wav',
+  mp3: 'audio/mpeg',
+  ogg: 'audio/ogg',
+  flac: 'audio/flac'
 }
 
 types.each do |type, str|

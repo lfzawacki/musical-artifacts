@@ -39,13 +39,13 @@ $light-dark: #eee;
 $white: #fff;
 
 .pad-bottom {
-  padding-bottom: 1em;
-  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .pad-top {
-  padding-top: 1em;
-  margin-top: 1em;
+  padding-top: 0.5em;
+  margin-top: 0.5em;
 }
 
 a {
@@ -121,6 +121,19 @@ a.external-link.wayback:after {
 }
 
 .related-link {
+}
+
+/* artifact links */
+
+ul.link-list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.link-list i {
+  margin-left: 1em;
+  padding-left: 1em;
 }
 
 /* artifacts/index */
