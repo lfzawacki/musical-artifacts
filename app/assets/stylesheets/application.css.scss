@@ -60,20 +60,37 @@ a.external-link.wayback:after {
   content: "\f08e";
 }
 
+.pad-bottom {
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+
+.pad-top {
+  padding-top: 1em;
+  margin-top: 1em;
+}
+
+#hide-comments {
+  @extend .text-center;
+  font-size: 2em;
+  display: none;
+}
+
 #show-comments {
   @extend .text-center;
   font-size: 2em;
 }
 
-#comments-load {
+#load-comments {
   @extend .text-center;
   font-size: 2em;
   display: none;
 }
 
 #comments {
-  padding-top: 0.5em;
   padding-bottom: 1.5em;
+  margin-bottom: 1.5em;
+  display: none;
 }
 
 .nav-links {
@@ -138,6 +155,9 @@ a:focus {
 
 .artifact-license img {
   margin: 5px;
+}
+
+#related-links {
 }
 
 .related-link {

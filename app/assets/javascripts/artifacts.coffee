@@ -73,6 +73,48 @@ initialize_wayback_links = ->
 
     e.preventDefault()
 
+# Load juvia comments
+# TODO: Document this hacky mess PLZ
+initialize_comments = ->
+  hide_time = 200
+  slow_hide_time = 1000
+  animate_time = 2000
+
+  $('#show-comments').click (e) ->
+
+    # Hide button and show loading
+    $('#show-comments').fadeOut hide_time, ->
+      $('#load-comments').fadeIn()
+
+    # Load juvia comments
+    $('#comments').load '/comments_script.html', ->
+
+      # Wait a while until comments show
+      showComments = ->
+        $('#comments').show ->
+          # Hide loading and show 'Hide Comments'
+          $('#load-comments').fadeOut(hide_time)
+          $('#hide-comments').fadeIn(hide_time)
+
+          # Move screen to the top of the comment section
+          $('html, body').animate
+            scrollTop: $("#comments").offset().top - 120
+          , animate_time
+
+          # Reset comments when clicking the '#hide-comments' button
+          $('#hide-comments a').click (e) ->
+            $('#comments').hide slow_hide_time, ->
+              $(this).empty()
+
+              $('#hide-comments').hide()
+              $('#show-comments').show()
+
+            e.preventDefault()
+
+      setTimeout(showComments, animate_time)
+
+    e.preventDefault()
+
 updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
 
@@ -163,22 +205,4 @@ $(document).on 'page:change', ->
 
   # ------ show
   initialize_wayback_links()
-
-  # Load juvia comments
-  $('#show-comments').click (e) ->
-
-    $('#comments').load('/comments_script.html', ->
-      setTimeout ->
-
-        $('#comments-load').hide()
-        $('#comments').show ->
-          $('html, body').animate
-            scrollTop: $("#comments").offset().top - 100
-          , 2000
-
-      , 1000
-    ).hide()
-
-    $('#comments-load').show()
-
-    e.preventDefault()
+  initialize_comments()

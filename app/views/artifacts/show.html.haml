@@ -31,15 +31,9 @@
   - if @artifact.extra_license_text.present?
     %p= @artifact.extra_license_text
 
-#comments-load
-  %i.fa.fa-spinner.fa-spin
+= render partial: 'buttons', locals: {artifact: @artifact }
 
-#comments
-  #show-comments
-    %a{href: '#comments'}= t('.show_comments')
-    %i.fa.fa-comment
-
-%p
+%p#related-links.pad-top.pad-bottom
   %strong
     = t('.related')
     \:
@@ -49,7 +43,18 @@
       %i.fa.fa-archive
       = art.name
 
-= render partial: 'buttons', locals: {artifact: @artifact }
+#load-comments
+  %i.fa.fa-spinner.fa-spin
 
-%p.nav-links
+#show-comments
+  %a{href: '#comments'}= t('.show_comments')
+  %i.fa.fa-comment
+
+#comments
+
+#hide-comments
+  %a{href: ''}= t('.hide_comments')
+  %i.fa.fa-comment-o
+
+%p.nav-links.pad-top
   = link_to t('_other.back'), artifacts_path
