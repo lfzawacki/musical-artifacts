@@ -60,7 +60,7 @@ TODO: `As of right now, resource registration is done by the admins only.`
 
 #### Setting up a dev environment
 
-Dependencies: `rails4.2 postrgresql >= 9.3 postrgresql-contrib >= 9.3`
+Dependencies: `rails4.2 ruby2 postrgresql >= 9.3 postrgresql-contrib >= 9.3`
 
 #### Running tests
 
