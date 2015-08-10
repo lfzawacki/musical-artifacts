@@ -1,5 +1,5 @@
 ActiveAdmin.register License do
-  permit_params :name
+  permit_params :name, :short_name
 
   index do
     selectable_column
