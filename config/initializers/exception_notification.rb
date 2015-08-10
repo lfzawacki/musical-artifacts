@@ -18,7 +18,7 @@ ExceptionNotification.configure do |config|
 
   # Email notifier sends notifications by email.
   config.add_notifier :email, {
-   :email_prefix     => "#{conf.try(:site_name).downcase || 'musical artifacts'}",
+   :email_prefix     => "#{conf.try(:site_name).try(:downcase) || 'musical artifacts'}",
    :sender_address    => [" \"#{conf.try(:site_name) || "Musical Artifacts"}\" <#{conf.try(:mail_sender) || "noreply@musical-artifacts.com"}>"],
    :exception_recipients => conf.try(:exception_recipients).try(:split, /,;/) || []
   }
