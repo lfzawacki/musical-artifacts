@@ -15,14 +15,16 @@ en:
   licenses:
     link:
       cc: http://creativecommons.org/licenses/%{type}/4.0/deed.en
-      public: https://wiki.creativecommons.org/Public_domain
-      copyright: ''
       cc_sample: https://creativecommons.org/licenses/sampling+/1.0/
+      copyleft: https://www.gnu.org/copyleft/copyleft.en.html
+      copyright: ''
+      public: https://wiki.creativecommons.org/Public_domain
     text:
       cc: Creative Commons 4.0 Unported License
-      public: Work in the Public Domain
-      copyright: Copyright to %{author}
       cc_sample: Creative Commons Sampling+ 1.0
+      copyleft: Copyleft %{author}
+      copyright: Copyright to %{author}
+      public: Work in the Public Domain
     parts:
       by: Has to give attribution
       nc: Non commercial use only

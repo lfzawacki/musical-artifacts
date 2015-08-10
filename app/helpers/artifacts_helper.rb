@@ -45,18 +45,14 @@ module ArtifactsHelper
   def display_license artifact, opt={}
     license = artifact.license.short_name
 
-    # copyright is boring
+    # copyright is boring, return just text
     return I18n.t("licenses.text.copyright", author: artifact.author) if license == 'copyright'
 
     img = image_tag(artifact.license.image_url(opt[:small]))
 
-    if 'public' == license
-      link = I18n.t("licenses.link.public")
-      text = I18n.t("licenses.text.public")
-    elsif 'cc-sample' == license
-      link = I18n.t("licenses.link.cc_sample")
-      text = I18n.t("licenses.text.cc_sample")
-      img = image_tag("licenses/cc-sample.png")
+    if ['public', 'cc-sample', 'copyleft'].include?(license)
+      link = I18n.t("licenses.link.#{license.gsub('-','_')}")
+      text = I18n.t("licenses.text.#{license.gsub('-','_')}", author: artifact.author)
     else # cc licenses
       link = I18n.t("licenses.link.cc", type: license)
       text = I18n.t("licenses.text.cc")
