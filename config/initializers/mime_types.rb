@@ -14,7 +14,7 @@ types = {
 
   xiz: 'application/x-gzip',
   xmz: 'application/x-gzip',
-  xpf: 'text/html',
+  xpf: 'application/xml',
 
   torrent: 'application/x-bittorrent',
 
