@@ -1,9 +1,11 @@
+- content_for :title, t('.new')
+
 %section#form
   .container
 
     .row
       .col-lg-12.text-center
-        %h2 New Artifact
+        %h2= t('.new')
         %hr.star-primary
 
     = render 'form'

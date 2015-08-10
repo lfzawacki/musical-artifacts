@@ -1,3 +1,5 @@
+- content_for :title, t('.edit')
+
 %h1= t('.edit')
 
 = form_for(@setting, url: settings_path, method: :put) do |f|

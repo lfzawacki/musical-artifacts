@@ -7,7 +7,7 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
-    %title Musical Artifacts
+    %title= "#{content_for :title } | #{@setting.site_name}"
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
       <haml_loud> javascript_include_tag &quot;https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js&quot;, &quot;https://oss.maxcdn.com/respond/1.4.2/respond.min.js&quot; </haml_loud>

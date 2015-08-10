@@ -31,6 +31,7 @@ pt-br:
 
   artifacts:
     index:
+      all: Todos
       new: Registrar um novo artefato
       search_for: Buscar por...
       search: Busca
@@ -45,6 +46,14 @@ pt-br:
     wayback_links:
       broken: Links externos estão quebrados? Clique aqui para tentar links do Arquivo da Internet.
       original: Voltar a ver os links originais.
+    edit:
+      edit: Editando %{name}
+    new:
+      new: Criando novo artefato
+
+  settings:
+    edit:
+      edit: Editando configurações
 
   info:
     about:

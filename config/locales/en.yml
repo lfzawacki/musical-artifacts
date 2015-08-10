@@ -31,6 +31,7 @@ en:
 
   artifacts:
     index:
+      all: All
       new: Register a new artifact
       search_for: Search for...
       search: Search
@@ -45,6 +46,14 @@ en:
     wayback_links:
       broken: Broken external links? Click to try links for the Wayback Machine.
       original: Go back to seeing the original links.
+    edit:
+      edit: Editing %{name}
+    new:
+      new: Create new artifact
+
+  settings:
+    edit:
+      edit: Editing Settings
 
   info:
     about:
