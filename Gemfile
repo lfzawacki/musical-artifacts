@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rack', '~> 1.6.2'
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.3'
 
 gem 'pg'
 
@@ -28,14 +28,14 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'rails-footnotes'
-
+  # Debugging views gems
+  gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'xray-rails'
 
-  gem 'quiet_assets'
-
+  # Testing gems
+  gem 'm', '~> 1.3.1'
   gem 'minitest-reporters'
-
   gem 'minitest-rails-capybara'
 
   gem 'ffi'
@@ -46,7 +46,7 @@ group :development, :test do
   gem 'net-ssh', '~> 2.10.0.beta2'
   gem 'capistrano', '~> 2.14.2'
 
-  gem 'xray-rails'
+  gem 'quiet_assets'
 end
 
 # My gems
