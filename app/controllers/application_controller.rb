@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     render layout: nil
   end
 
+  def admin_dashboard_access_denied exception
+    redirect_to artifacts_path
+  end
+
   private
   def load_settings
     @setting = Setting.first

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root to: "artifacts#index"
 
-  devise_for :users, ActiveAdmin::Devise.config
+  devise_for :users, ActiveAdmin::Devise.config.merge(:path => 'users')
 
   resources :artifacts
 
