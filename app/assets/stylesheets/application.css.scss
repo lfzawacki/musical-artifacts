@@ -138,7 +138,6 @@ ul.link-list {
 
 /* artifacts/index */
 #artifact-list {
-  padding-bottom: 20px;
 }
 
 .row .artifact-item {
@@ -239,43 +238,29 @@ ul.link-list {
 }
 
 /*  _buttons */
-.btn-dark {
-  color: $darky;
-}
-
 .btn-download:hover,
 .btn-download:focus,
 .btn-download:active,
 .btn-download.active {
-    background: $dark;
+    background: $darker;
+    color: $cold;
 }
 
 .btn-download {
   background-color: $dark;
-  color: #444;
   text-decoration: none;
-  width: 96%;
-  background: #ddd;
   font-size: 110%;
-}
-
-.btn-download:hover {
-  background-color: #222;
-}
-
-.btn-download:hover {
   color: $coldy;
-  text-decoration: none;
 }
 
-a.btn-new {
+.btn-new {
   background-color: $cold;
   color: $white;
 }
 
-a.btn-new:hover {
+.btn-new:hover {
   background-color: $colder;
-  color: $dark;
+  color: $white;
 }
 
 .btn-scroll-top {

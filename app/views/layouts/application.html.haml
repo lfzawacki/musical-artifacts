@@ -24,23 +24,29 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand{href: '/'}
-            = t('_other.name')
+            = @setting.site_name || '/'
             %p.subtitle Beta
 
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
             %li.hidden
               %a{:href => "#page-top"}
-            %li
-              = link_to t('_other.about'), info_about_path
-            %li
-              = link_to t('_other.contact'), info_contact_path
 
-            - if current_user.present? # logged_in?
-              %li
-                = link_to t('.settings'), settings_path
-              %li
-                = link_to t('_other.logout'), destroy_user_session_path
+            - if can? :edit, @setting
+              %li= link_to t('.settings'), settings_path
+
+            - if can? :read, ActiveAdmin::Page
+              %li= link_to t('.admin'), admin_root_path
+
+            - if current_user.present?
+              %li= link_to t('_other.logout'), destroy_user_session_path
+            - else
+              %li= link_to t('_other.login'), new_user_session_path
+              %li= link_to t('_other.sign_up'), new_user_registration_path
+
+            %li= link_to t('_other.about'), info_about_path
+            %li= link_to t('_other.contact'), info_contact_path
+
 
     - # Don't use a container wrapping the content only on the 'about' section
     %div{class: "#{'container with-navbar-on-top' unless controller.controller_name == 'info' && controller.action_name == 'about'}"}

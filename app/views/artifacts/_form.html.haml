@@ -1,5 +1,4 @@
 .row
-  .col-lg-8.col-lg-offset-2
 
   = form_for(@artifact) do |f|
     - if @artifact.errors.any?
@@ -67,10 +66,9 @@
     .row.control-group
       .form-group.col-xs-12.floating-label-form-group.controls
         = f.label :extra_license_text
-        = f.text_field :extra_license_text
+        = f.text_area :extra_license_text, class: 'form-control'
 
-    %br
-      #success
-        .row
-          .form-group.col-xs-12
-            = f.submit#, class: 'btn btn-success btn-lg'
+    #success.pad-top
+      .row
+        .form-group.col-xs-12
+          = f.submit class: 'btn btn-new btn-lg btn-group-justified'

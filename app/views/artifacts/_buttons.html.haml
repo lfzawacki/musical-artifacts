@@ -13,6 +13,6 @@
 
   %p.pad-top
     - if artifact.file.try(:url)
-      = link_to artifact.download_path, class: 'btn btn-download', download: artifact.file_name do
+      = link_to artifact.download_path, class: 'btn btn-group-justified btn-download', download: artifact.file_name do
         %i{class: "fa #{icon_from_extension(artifact.stored_files.last.format)}"}
         = t('.download')
