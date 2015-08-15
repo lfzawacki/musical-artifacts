@@ -26,11 +26,9 @@ This catalogue is constructed abiding by the simple principle that a "musical ar
 
 5. Document it: You've crafted some kind of basic or advanced description of it's usage, technical details, tips n' tricks, and/or sample works created using it. ([Example of good documentation](#))
 
-## Searching
+## Registering a new resource
 
-By using the search bar in the main artifact page.
-
-`TODO explain advanced search`
+Resources can be registered in the new artifact page in '/artifacts/new'
 
 ## API Access
 
@@ -43,18 +41,6 @@ The application URLS can be request in `json` format for consumption by other ap
     GET /artifacts/42.json # get the artifact with id 42
 
 See the [API](https://github.com/lfzawacki/musical-artifacts/wiki/API-Documentation) for more examples and JSON object format or just make a search using the search bar and copy the URL using a JSON format.
-
-### Limits
-
-TODO: `Explain public API limits.`
-
-### Authenticated access
-
-TODO: `Exlpain how to authenticate api calls and get a bigger access limit.`
-
-## Registering a new resource
-
-Resources can be registered in the new artifact page in '/artifacts/new'
 
 ### Development
 
@@ -89,10 +75,6 @@ Make some modifications in the file before seeding the database if you want. The
 To run tests type:
 
     bundle exec rake
-
-Before sending a patch or pull request remember to run the tests and add new ones.
-
-Tests live inside the `tests/` directory and use the [minitest](http://blowmage.com/minitest-rails) and [capybara](http://blowmage.com/minitest-rails-capybara/) frameworks.
 
 ## Reporting a problem
 
