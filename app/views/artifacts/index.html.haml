@@ -24,6 +24,5 @@
 #artifact-list
   = render 'artifact_list'
 
-- if can?(:new, Artifact)
-  %p.pad-bottom
-    = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
+%p.pad-bottom
+  = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'

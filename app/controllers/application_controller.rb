@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     redirect_to artifacts_path
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+    artifacts_path
+  end
+
   private
   def load_settings
     @setting = Setting.first
