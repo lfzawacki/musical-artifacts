@@ -2,7 +2,7 @@ Musical Artifacts
 ---------------------------
 Helping to catalogue, preserve and free the artifacts you need to produce music.
 
-![](https://travis-ci.org/lfzawacki/musical-artifacts.svg?branch=master) ![](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/gpa.svg) ![](https://hakiri.io/github/lfzawacki/musical-artifacts/master.svg) ![](http://inch-ci.org/github/lfzawacki/musical-artifacts.svg?branch=master) [Read the docs](https://github.com/lfzawacki/musical-artifacts/wiki)
+[![](https://travis-ci.org/lfzawacki/musical-artifacts.svg?branch=master)](https://travis-ci.org/lfzawacki/musical-artifacts) [![](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/gpa.svg)](https://codeclimate.com/github/lfzawacki/musical-artifacts) [![](https://hakiri.io/github/lfzawacki/musical-artifacts/master.svg)](https://hakiri.io/github/lfzawacki/musical-artifacts/master) [![](http://inch-ci.org/github/lfzawacki/musical-artifacts.svg?branch=master)](https://inch-ci.org/github/lfzawacki/musical-artifacts) [Read the docs](https://github.com/lfzawacki/musical-artifacts/wiki)
 
 # What?
 
@@ -54,18 +54,45 @@ TODO: `Exlpain how to authenticate api calls and get a bigger access limit.`
 
 ## Registering a new resource
 
-TODO: `As of right now, resource registration is done by the admins only.`
+Resources can be registered in the new artifact page in '/artifacts/new'
 
 ### Development
 
+For more details see the [Development page](https://github.com/lfzawacki/musical-artifacts/wiki/Development) on the wiki.
+
 #### Setting up a dev environment
 
-Dependencies: `rails4.2 ruby2 postrgresql >= 9.3 postrgresql-contrib >= 9.3`
+##### Dependencies
 
-#### Running tests
+    rails4.2 ruby2.1.2 postrgresql >= 9.3 postrgresql-contrib >= 9.3
 
-  `TODO: Write more tests`
-  bundle exec rake
+##### Install gems
+
+    bundle install
+
+##### Crate and seed the database
+
+First copy the example settings file:
+
+    cp config/settings.yml.example config/settings.yml
+
+Make some modifications in the file before seeding the database if you want. Then run:
+
+    bundle exec rake db:reset
+
+##### Run the server
+
+    bundle exec rails s
+
+#### Tests
+
+To run tests type:
+
+    bundle exec rake
+
+Before sending a patch or pull request remember to run the tests and add new ones.
+
+Tests live inside the `tests/` directory and use the [minitest](http://blowmage.com/minitest-rails) and [capybara](http://blowmage.com/minitest-rails-capybara/) frameworks.
 
 ## Reporting a problem
 
