@@ -12,5 +12,23 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  # To open files
+  def fixture_file file
+    File.open(File.join(Rails.root, '/test/fixtures/files', file))
+  end
+
+  # For features
+  def show_page
+    save_page Rails.root.join( 'public', 'capybara.html' )
+    %x(launchy http://localhost:6666/capybara.html)
+  end
+
+  def login_with user, password
+    visit new_user_session_path
+
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: password
+    click_button 'Login'
+  end
+
 end

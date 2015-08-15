@@ -1,9 +1,7 @@
 class SettingsController < InheritedResources::Base
-  before_filter only: [:edit, :update] do
-    @setting = Setting.first
-  end
 
   authorize_resource
+  rescue_from CanCan::AccessDenied, with: :handle_access_denied
 
   def update
     update! { settings_path }
@@ -11,5 +9,10 @@ class SettingsController < InheritedResources::Base
 
   def setting_params
       params.require(:setting).permit(Setting.data_attributes)
+  end
+
+  private
+  def handle_access_denied
+    redirect_to root_path, notice: t('_other.access_denied')
   end
 end

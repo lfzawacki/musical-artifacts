@@ -1,10 +1,23 @@
 class ArtifactsController < InheritedResources::Base
-  before_filter :search_artifacts, only: [:index]
   before_filter :set_software, only: [:index]
 
-  authorize_resource
+  load_and_authorize_resource
+  rescue_from CanCan::AccessDenied, with: :handle_access_denied
+
+  before_filter :search_artifacts, only: [:index]
+  before_filter :find_approved_artifacts, only: [:index]
+  before_filter :check_approved_artifact, only: [:show, :edit, :update, :download]
 
   respond_to :json
+
+  def create
+    if cannot?(:approve, @artifact)
+      @artifact.update_attributes approved: false
+      create!(notice: I18n.t('artifacts.create.not_approved')) { artifacts_path }
+    else
+      create!
+    end
+  end
 
   def download
     @artifact = Artifact.find(params[:id])
@@ -59,5 +72,23 @@ class ArtifactsController < InheritedResources::Base
       filename = params[:filename].clone unless /(?:^|\/)[.]{1,2}(?:\/|$)|^\/.*/.match(params[:filename])
       filename += ".#{params[:format].clone}" if params[:format].present?
       filename
+    end
+
+    def find_approved_artifacts
+      @artifacts = @artifacts.approved
+    end
+
+    def check_approved_artifact
+      redirect_to(artifacts_path, notice: I18n.t('_other.access_denied')) if !@artifact.approved
+    end
+
+    def handle_access_denied exception
+      if [:edit, :update, :download].include?(exception.action)
+        redirect_to artifact_path(@artifact), notice: t('_other.access_denied')
+      elsif [:new].include?(exception.action)
+        redirect_to new_user_session_path
+      else
+        redirect_to artifacts_path(), notice: t('_other.access_denied')
+      end
     end
 end

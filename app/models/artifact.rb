@@ -1,6 +1,8 @@
 require 'digest/sha2'
 
 class Artifact < ActiveRecord::Base
+    scope :approved, -> { where(approved: true) }
+
     acts_as_taggable_on :software, :tags, :file_formats
 
     serialize :mirrors
@@ -36,6 +38,14 @@ class Artifact < ActiveRecord::Base
       stored_files.last.try(:file)
     end
 
+    def get_file_by_name filename
+      stored_files.where(file: filename).first
+    end
+
+    def file_name
+      stored_files.last.name
+    end
+
     def file_format
       file_format_list.first
     end
@@ -67,17 +77,9 @@ class Artifact < ActiveRecord::Base
       .limit(max)
     end
 
-    def get_file_by_name filename
-      stored_files.where(file: filename).first
-    end
-
     def download_path
       if stored_files.last.present?
         "/artifacts/#{to_param}/#{stored_files.last.name}"
       end
-    end
-
-    def file_name
-      stored_files.last.name
     end
 end

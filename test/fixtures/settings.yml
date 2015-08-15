@@ -1,0 +1,4 @@
+default:
+  data:
+    hostname: tests.musical-artifacts.com
+    site_name: The Musical Artifact Experience

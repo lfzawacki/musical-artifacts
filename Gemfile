@@ -37,6 +37,7 @@ group :development, :test do
   gem 'm', '~> 1.3.1'
   gem 'minitest-reporters'
   gem 'minitest-rails-capybara'
+  gem 'launchy'
 
   gem 'ffi'
 

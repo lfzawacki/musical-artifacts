@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class ArtifactsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
+    @setting = settings(:default)
     @artifact = artifacts(:one)
+    @user = User.create(email: 'frederik@opeth.se', password: 'lotuseater')
+    @admin = User.create(email: 'mikael@opeth.se', password: 'demonofthefall', admin: true)
   end
 
   test "should get index" do
@@ -11,19 +16,55 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:artifacts)
   end
 
-  test "should get new" do
+  test "different kinds of searches" do
+    skip
+  end
+
+  test ".json searches" do
+    skip
+  end
+
+  test "should ask for login on new" do
     get :new
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should show new for logged in user" do
+    sign_in(@user)
+    get :new
+
     assert_response :success
   end
 
-  test "should create artifact" do
-    assert_difference('Artifact.count') do
+  test "should show new for admin" do
+    sign_in(@admin)
+    get :new
+
+    assert_response :success
+  end
+
+  test "should create artifact as admin" do
+    sign_in(@admin)
+
+    assert_difference('Artifact.approved.count', 1) do
       post :create, artifact:
-        { name: @artifact.name, author: @artifact.author,
-          description: @artifact.description, license_id: licenses(:by).id }
+        { name: 'Acoustic passages', author: 'Mikael', description: 'Classical guitar acoustic passages', license_id: licenses(:by).id }
     end
 
     assert_redirected_to artifact_path(assigns(:artifact))
+    assert_equal flash[:notice], I18n.t('artifacts.create.success')
+  end
+
+  test "should create unapproved artifact as a normal user" do
+    sign_in(@user)
+
+    assert_difference('Artifact.count', 1) do
+      post :create, artifact:
+        { name: 'Death metal riffs', author: 'Mikael', description: 'Bathory like death metal riffs', license_id: licenses(:by).id }
+    end
+
+    assert_redirected_to artifacts_path
+    assert_equal flash[:notice], I18n.t('artifacts.create.not_approved')
   end
 
   test "should show artifact" do
@@ -31,23 +72,66 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should get edit as admin" do
+    sign_in(@admin)
+
     get :edit, id: @artifact
     assert_response :success
   end
 
-  test "should update artifact" do
+  test "should not get edit as logged out user" do
+    get :edit, id: @artifact
+    assert_redirected_to artifact_path(@artifact)
+    assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
+  test "should not get edit as normal user" do
+    sign_in(@user)
+
+    get :edit, id: @artifact
+    assert_redirected_to artifact_path(@artifact)
+    assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
+  test "should download artifact with correct link" do
+    @artifact.update_attributes(file: fixture_file('example.gx'))
+
+    get :download, id: @artifact, filename: 'example.gx'
+    assert_response :success
+  end
+
+  test "should render 404 with wrong link" do
+    @artifact.update_attributes(file: fixture_file('example.gx'))
+
+    get :download, id: @artifact, filename: 'inexistent.gx'
+    assert_response 404
+  end
+
+  test "should update artifact as admin" do
+    sign_in(@admin)
+
     patch :update, id: @artifact, artifact:
       { author: @artifact.author, description: @artifact.description,
         file_hash: @artifact.file_hash, name: @artifact.name }
+
     assert_redirected_to artifact_path(assigns(:artifact))
   end
 
-  test "should destroy artifact" do
+  test "should destroy artifact as admin" do
+    sign_in(@admin)
+
     assert_difference('Artifact.count', -1) do
       delete :destroy, id: @artifact
     end
 
     assert_redirected_to artifacts_path
+  end
+
+  test "should render show in json format" do
+    skip
+  end
+
+  test "should render index in json format" do
+    skip
   end
 end

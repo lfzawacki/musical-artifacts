@@ -19,5 +19,6 @@ log/
 public/test_report.html
 public/uploads/
 public/assets/
+public/capybara.html
 config/settings.yml
 config/piwik.yml

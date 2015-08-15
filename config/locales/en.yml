@@ -1,12 +1,13 @@
 en:
   _other:
-    name: Musical Artifacts
+    access_denied: You don't have sufficient permissions to do this.
     by: by
     about: About
     contact: Contact
     edit: Edit
     back: Back
     confirm: Are you sure?
+    destroy: Destroy
 
   layouts:
     application:
@@ -52,6 +53,10 @@ en:
       edit: Editing %{name}
     new:
       new: Create new artifact
+
+    create:
+      success: Artifact was successfully created.
+      not_approved: Your artifact was created and is waiting moderation.
 
   settings:
     edit:
