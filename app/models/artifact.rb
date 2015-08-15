@@ -24,9 +24,12 @@ class Artifact < ActiveRecord::Base
       true
     end
 
-    after_save :save_new_file
+    before_save :save_new_file
     def save_new_file
-      stored_files.last.save if @new_file
+      if @new_file
+        stored_files.last.save
+        file_format_list.add stored_files.last.format
+      end
     end
 
     def file= file_io
