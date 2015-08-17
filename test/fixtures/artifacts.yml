@@ -5,9 +5,13 @@ one:
   description: MyText
   author: MyString
   license: by
+  downloadable: true
+  approved: true
 
 two:
   name: MyStringa
   description: MyTexta
   author: MyStringa
   license: by
+  downloadable: true
+  approved: true

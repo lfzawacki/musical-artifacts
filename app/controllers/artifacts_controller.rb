@@ -5,8 +5,6 @@ class ArtifactsController < InheritedResources::Base
   rescue_from CanCan::AccessDenied, with: :handle_access_denied
 
   before_filter :search_artifacts, only: [:index]
-  before_filter :find_approved_artifacts, only: [:index]
-  before_filter :check_approved_artifact, only: [:show, :edit, :update, :download]
 
   respond_to :json
 
@@ -20,7 +18,6 @@ class ArtifactsController < InheritedResources::Base
   end
 
   def download
-    @artifact = Artifact.find(params[:id])
 
     # TODO:
     # Using user params, is it dangerous? Not really if you understand that
@@ -52,7 +49,7 @@ class ArtifactsController < InheritedResources::Base
     end
 
     def search_artifacts
-      @artifacts = Artifact.all
+      @artifacts = Artifact.approved
 
       # searches by hash, tags, apps, licenses
       @artifacts = Searches.artifacts_with_hash(@artifacts, params[:hash])
@@ -72,14 +69,6 @@ class ArtifactsController < InheritedResources::Base
       filename = params[:filename].clone unless /(?:^|\/)[.]{1,2}(?:\/|$)|^\/.*/.match(params[:filename])
       filename += ".#{params[:format].clone}" if params[:format].present?
       filename
-    end
-
-    def find_approved_artifacts
-      @artifacts = @artifacts.approved
-    end
-
-    def check_approved_artifact
-      redirect_to(artifacts_path, notice: I18n.t('_other.access_denied')) if !@artifact.approved
     end
 
     def handle_access_denied exception

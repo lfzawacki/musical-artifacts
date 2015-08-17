@@ -72,6 +72,23 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should not show unapproved artifact to logged out user" do
+    @artifact.update_attributes approved: false
+
+    get :show, id: @artifact
+    assert_redirected_to artifacts_path
+    assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
+  test "should not show unapproved artifact to normal user" do
+    sign_in(@user)
+    @artifact.update_attributes approved: false
+
+    get :show, id: @artifact
+    assert_redirected_to artifacts_path
+    assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
   test "should get edit as admin" do
     sign_in(@admin)
 
@@ -107,6 +124,39 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_response 404
   end
 
+  test "should not download artifact if downloadable=false" do
+    @artifact.update_attributes(file: fixture_file('example.gx'), downloadable: false)
+
+    get :download, id: @artifact, filename: 'example.gx'
+    assert_redirected_to artifact_path(@artifact)
+    assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
+  test "should not download artifact if approved=false" do
+    @artifact.update_attributes(file: fixture_file('example.gx'), approved: false)
+
+    get :download, id: @artifact, filename: 'example.gx'
+    assert_redirected_to artifact_path(@artifact)
+    assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
+  test "user should not download artifact if downloadable=false" do
+    sign_in(@user)
+    @artifact.update_attributes(file: fixture_file('example.gx'), downloadable: false)
+
+    get :download, id: @artifact, filename: 'example.gx'
+    assert_redirected_to artifact_path(@artifact)
+    assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
+  test "admin should download artifact even if downloadable=false" do
+    sign_in(@admin)
+    @artifact.update_attributes(file: fixture_file('example.gx'), downloadable: false)
+
+    get :download, id: @artifact, filename: 'example.gx'
+    assert_response :success
+  end
+
   test "should update artifact as admin" do
     sign_in(@admin)
 
@@ -115,6 +165,25 @@ class ArtifactsControllerTest < ActionController::TestCase
         file_hash: @artifact.file_hash, name: @artifact.name }
 
     assert_redirected_to artifact_path(assigns(:artifact))
+  end
+
+  test "should not update artifact as normal user" do
+    sign_in(@user)
+
+    patch :update, id: @artifact, artifact:
+      { author: @artifact.author, description: @artifact.description,
+        file_hash: @artifact.file_hash, name: @artifact.name }
+
+    assert_redirected_to artifact_path(@artifact)
+    assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
+  test "should not destroy artifact as normal user" do
+    sign_in(@user)
+
+    assert_difference('Artifact.count', 0) do
+      delete :destroy, id: @artifact
+    end
   end
 
   test "should destroy artifact as admin" do
