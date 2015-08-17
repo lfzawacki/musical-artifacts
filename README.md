@@ -16,7 +16,7 @@ TODO: `Don't repeat ourselves, don't be slaves to any specific tool, music is su
 
 This catalogue is constructed abiding by the simple principle that a "musical artifact" is some kind of tool, file or idea which can be used to aid in the making of music, also it should preferably be distributed using a free (libre) license as to make it useful to the community at large. This usefulness is measured sequentially by these 5 simple steps. You can stop at any one of them, but the closer you get to the end the better:
 
-1. Creation: You've created a musical artifact which can be used to aid in the process of music making. ([What constitutes a musical resource](#))
+1. Creation: You've created a musical artifact which can be used to aid in the process of music making. ([What constitutes a musical artifact](https://github.com/lfzawacki/musical-artifacts/wiki/Creating-a-new-artifact))
 
 2. Access: You've made it accessible, available and usable to others in some fashion. ([How to host files?](https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting))
 
@@ -28,7 +28,9 @@ This catalogue is constructed abiding by the simple principle that a "musical ar
 
 ## Registering a new resource
 
-Resources can be registered in the new artifact page in '/artifacts/new'
+Read more on the [Creating a new artifact](https://github.com/lfzawacki/musical-artifacts/wiki/Creating-a-new-artifact) wiki page.
+
+Resources can be registered in the new artifact page in '/artifacts/new' and currently need to be approved by an admin before they appear on the index.
 
 ## API Access
 
