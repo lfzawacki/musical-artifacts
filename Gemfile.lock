@@ -26,6 +26,14 @@ GIT
       sass-rails (< 5.1)
       sprockets (< 2.13)
 
+GIT
+  remote: https://github.com/lfzawacki/auto_html.git
+  revision: da24b27114af453724066317a6465d8e0aea19c9
+  specs:
+    auto_html (1.6.4)
+      redcarpet (~> 3.1)
+      rinku (~> 1.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,9 +79,6 @@ GEM
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.3)
-    auto_html (1.6.4)
-      redcarpet (~> 3.1)
-      rinku (~> 1.5.0)
     bcrypt (3.1.10)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -309,7 +314,7 @@ GEM
     redcarpet (3.3.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rinku (1.5.1)
+    rinku (1.7.3)
     ruby-progressbar (1.7.5)
     ruby_parser (3.6.5)
       sexp_processor (~> 4.1)
@@ -364,7 +369,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   acts-as-taggable-on (~> 3.4)
-  auto_html
+  auto_html!
   better_errors
   binding_of_caller
   bootstrap-generators (~> 3.3.1)

@@ -80,7 +80,12 @@ class Artifact < ActiveRecord::Base
       return [] if more_info_urls.blank?
 
       multimedia = more_info_urls.map do |link|
-        auto_html(link) { html_escape; youtube; vimeo; soundcloud; image(width: 100, height: 100); }
+        auto_html(link) {
+          youtube
+          vimeo
+          soundcloud(width: 420, height: 315, show_artwork: true, show_comments: true)
+          image
+        }
       end
 
       # Links with multimedia without the normal links
