@@ -74,3 +74,5 @@ gem "compass-rails", git: 'https://github.com/Compass/compass-rails', branch: 'm
 gem 'rack-throttle'
 
 gem 'exception_notification', '~> 4.0.0'
+
+gem 'auto_html'

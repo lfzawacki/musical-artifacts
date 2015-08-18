@@ -1,6 +1,8 @@
 require 'digest/sha2'
 
 class Artifact < ActiveRecord::Base
+    include AutoHtml
+
     scope :approved, -> { where(approved: true) }
 
     acts_as_taggable_on :software, :tags, :file_formats
@@ -71,6 +73,18 @@ class Artifact < ActiveRecord::Base
       else
         write_attribute(:more_info_urls, m)
       end
+    end
+
+    # Get the links which can be shown as multimedia content
+    def multimedia_content
+      return [] if more_info_urls.blank?
+
+      multimedia = more_info_urls.map do |link|
+        auto_html(link) { html_escape; youtube; vimeo; soundcloud; image(width: 100, height: 100); }
+      end
+
+      # Links with multimedia without the normal links
+      multimedia -= more_info_urls
     end
 
     def related max=5

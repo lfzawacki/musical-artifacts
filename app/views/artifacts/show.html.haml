@@ -5,37 +5,48 @@
   = t('_other.by')
   = @artifact.author
 
-.artifact-content
-  %p= @artifact.description
+.row
+  .col-lg-8.col-md-8.col-sm-8.pad-bottom
+    .artifact-description
+      %p.small= @artifact.description
 
-= render 'artifact_links'
+    = render 'artifact_links'
 
-.pad-top
+    .pad-top
 
-= render 'wayback_links'
+    = render 'wayback_links'
 
-.artifact-tags.big-tags
-  = render 'artifact_tags', artifact: @artifact
+    .artifact-tags.big-tags
+      = render 'artifact_tags', artifact: @artifact
 
-%p.artifact-license
-  = display_license(@artifact)
+    %p.artifact-license
+      = display_license(@artifact)
 
-  - if @artifact.extra_license_text.present?
-    %p= @artifact.extra_license_text
+      - if @artifact.extra_license_text.present?
+        %p= @artifact.extra_license_text
 
-= render partial: 'buttons', locals: {artifact: @artifact }
+  - # Preview multimedia content linked as more info urls
+  .col-lg-4.col-md-4.col-sm-4
+    #multimedia-content-area
+      - @artifact.multimedia_content.each do |link|
+        .multimedia-content.pad-bottom
+          = link
 
-%p#related-links.pad-top.pad-bottom
-  %strong
-    = t('.related')
-    \:
+.row
 
-  - @artifact.related.each do |art|
-    = link_to artifact_path(art, class: 'related-link') do
-      %i.fa.fa-archive
-      = art.name
+  = render partial: 'buttons', locals: {artifact: @artifact }
 
-= render partial: 'comments'
+  %p#related-links.pad-top.pad-bottom
+    %strong
+      = t('.related')
+      \:
 
-%p.nav-links.pad-top
-  = link_to t('_other.back'), artifacts_path
+    - @artifact.related.each do |art|
+      = link_to artifact_path(art, class: 'related-link') do
+        %i.fa.fa-archive
+        = art.name
+
+  = render partial: 'comments'
+
+  %p.nav-links.pad-top
+    = link_to t('_other.back'), artifacts_path
