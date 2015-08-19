@@ -2,7 +2,7 @@ module ArtifactsHelper
 
   def value_from_params
     search_str = Artifact.search_fields.map do |p|
-      "#{p}: #{params[p]}" if params[p]
+      "#{p}: #{unescape_separators(params[p])}" if params[p]
     end
     [params[:q]].append(search_str).join(' ').gsub(/\s+/, ' ').strip
   end
@@ -80,6 +80,13 @@ module ArtifactsHelper
         content
       end
     end
+  end
+
+  private
+
+  # Only unescape ' ' and ','
+  def unescape_separators str
+    str.gsub('%20',' ').gsub('%2C', ',')
   end
 
 end

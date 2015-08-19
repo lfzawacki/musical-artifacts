@@ -30,21 +30,21 @@ class Searches
 
   def self.artifacts_tagged_with artifacts, terms
     if terms.present?
-      artifacts = artifacts.tagged_with(terms.split(','), on: 'tags')
+      artifacts = artifacts.tagged_with(split_terms(terms), on: 'tags')
     end
     artifacts
   end
 
   def self.artifacts_app_tagged_with artifacts, terms
     if terms.present?
-      artifacts = artifacts.tagged_with(terms.split(','), on: 'software')
+      artifacts = artifacts.tagged_with(split_terms(terms), on: 'software')
     end
     artifacts
   end
 
   def self.artifacts_licensed_as artifacts, terms
     if terms.present?
-      licenses = License.where(short_name: terms.split(','))
+      licenses = License.where(short_name: split_terms(terms))
       artifacts = artifacts.where(license: licenses)
     end
     artifacts
@@ -55,5 +55,11 @@ class Searches
       artifacts = artifacts.where(file_hash: hash)
     end
     artifacts
+  end
+
+  private
+  # Split ignoring spaces and unescape ' ' and ','
+  def self.split_terms terms
+    terms.gsub('%20',' ').gsub('%2C', ',').split(/\s*,\s*/)
   end
 end
