@@ -180,7 +180,12 @@ ul.link-list {
 }
 
 .filters {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
+}
+
+label.filter {
+  font-size: 120%;
+  padding-left: 0.2em;
 }
 
 .bootstrap-switch.bootstrap-switch-focused {

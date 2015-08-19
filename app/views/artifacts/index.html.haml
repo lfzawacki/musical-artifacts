@@ -1,23 +1,25 @@
 - content_for :title, t('.all')
 
-%form#artifact_search_form{method: :get}
+%form.pad-top#artifact_search_form{method: :get}
   .row
     .col-lg-12.input-group.search-field
       %span.input-group-btn
-        %button#artifacts_search_btn.btn.btn-default{type: "submit", value: 'submit'}= t('.search')
+        %button#artifacts_search_btn.btn.btn-default.btn-lg{type: "submit", value: 'submit'}= t('.search')
 
-      %input#artifact_search.form-control{name: 'search', placeholder: t('.search_for'), type: 'text', value: value_from_params }
+      %input#artifact_search.form-control.input-lg{name: 'search', placeholder: t('.search_for'), type: 'text', value: value_from_params }
 
       %input.form-control{name: 'q', type: 'hidden' }
 
-  .row.search-filters
-    %span.input-group.filters
-      - ['license', 'tags', 'apps', 'hash'].each do |filter|
-        %p.col-lg-3
-          %input{type: 'hidden', name: filter}
-          %input.switch{type: 'checkbox', 'data-handle-width' => '120px', 'data-label-text' => t(".filters.#{filter}"), name: "switch-#{filter}", checked: false}
+  .row.search-filters.container-fluid.pad-bottom
+    %form.input-group.filters.text-center
+      -  Artifact.search_fields.each do |filter|
+        .col-lg-2.col-md-3.col-sm-4.col-xs-6
+          %input.filter{type: 'checkbox', id: filter, name: filter, checked: false}
+          %label.filter{for: filter}= t(".filters.#{filter}")
 
-  - if (params.keys & ['license', 'tags', 'apps', 'hash']).any?
+  .row.search-buttons.container-fluid.pad-bottom
+
+  - if (params.keys & Artifact.search_fields).any?
     .row
       %p=t('.using_filters')
 

@@ -2,7 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-initialize_select =  (field_id, url) ->
+artifact_search_fields = ['apps', 'tags', 'license', 'hash', 'formats']
+
+initialize_select = (field_id, url) ->
   return if not $(field_id)[0]
 
   $(field_id).select2
@@ -118,28 +120,35 @@ initialize_comments = ->
 updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
 
-  for field in ['apps', 'license', 'hash', 'tags', 'q']
+  for field in artifact_search_fields.concat(['q'])
     if params[field]?
       $("[name='#{field}']").attr('value', params[field])
     else
       $("[name='#{field}']")[0].disabled = true
 
   $("[name='search']")[0].disabled = true
-  for field in ['apps', 'license', 'hash', 'tags']
-    $("[name='switch-#{field}']")[0].disabled = true
 
 updateSearchField = (field, state) ->
   search_field = $('#artifact_search')[0]
 
-  field = field.replace(/(switch\-)/, '')
-
   # adding a field
   if state
-    search_field.value = search_field.value + ' ' + field + ':'
+    search_field.value = search_field.value
+    if search_field.value.length > 0 && search_field.value.slice(-1) != ' '
+      search_field.value = search_field.value + ' '
+
+    search_field.value = search_field.value + field + ': '
+
   else # removing
-    regexp = RegExp(".*(#{field}:.*)(apps:|license:|tags:|hash:)?.*")
+    possible_fields = ("#{f}:" for f in artifact_search_fields)
+
+    regexp = RegExp(".*(#{field}:.*)(#{possible_fields.join('|')})?.*")
     found = search_field.value.match(regexp)[1]
     search_field.value = search_field.value.replace(found, '')
+
+    # check for an empty field with whitespace
+    if search_field.value.match(RegExp("^\s*$"))
+      search_field.value = ''
 
 paramsToString = (params) ->
   str = ''
@@ -155,13 +164,14 @@ paramsToString = (params) ->
   str
 
 parseQueryString = (str) ->
-  filters = ['apps', 'tags', 'license', 'hash']
   params = {}
 
   # gets the value of one parameter and deletes it
   parseItem = (param) ->
-    regexp1 = RegExp("(#{param}:(.*))(apps:|license:|tags:|hash:)")
-    regexp2 = RegExp("(#{param}:(.*))(apps:|license:|tags:|hash:)?")
+    possible_fields = ("#{f}:" for f in artifact_search_fields)
+
+    regexp1 = RegExp("(#{param}:(.*))(#{possible_fields.join('|')})")
+    regexp2 = RegExp("(#{param}:(.*))(#{possible_fields.join('|')})?")
     match = str.match(regexp1) or str.match(regexp2)
 
     if match
@@ -169,7 +179,7 @@ parseQueryString = (str) ->
       params[param] = encodeURIComponent(text) if text.length > 0 # store the param if it's not empty
       str = str.replace(match[1], '') # remove the param from the url
 
-  parseItem(filter) for filter in filters
+  parseItem(filter) for filter in artifact_search_fields
 
   str = $.trim(str) # the rest is the query
   params['q'] = str if str.length > 0
@@ -185,13 +195,15 @@ $(document).on 'page:change', ->
     $('form#artifact_search_form').submit ->
       updateFormParameters()
 
-  # ------ switches
-  $("input.switch[name='switch-#{filter}']").bootstrapSwitch('state', String(window.location).match(filter + '=')) for filter in ['apps', 'license', 'tags', 'hash']
-  $('input.switch').on 'switchChange.bootstrapSwitch', (event, state) ->
-    updateSearchField($(this).attr('name'), state)
+  # ------ search filters
+  for filter in artifact_search_fields
+    $("input.filter[name='#{filter}']").attr('checked', String(window.location).match(filter + '='))
+
+  $('input.filter').change (event) ->
+    updateSearchField($(this).attr('name'), $(this).is(':checked'))
     setTimeout ->
       $('#artifact_search').focus()
-    , '300'
+    , 300
 
   # ------ _form
   initialize_select '#artifact_tag_list', '/searches/tags'

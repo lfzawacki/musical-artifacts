@@ -1,7 +1,7 @@
 module ArtifactsHelper
 
   def value_from_params
-    search_str = [:apps, :tags, :license, :hash].map do |p|
+    search_str = Artifact.search_fields.map do |p|
       "#{p}: #{params[p]}" if params[p]
     end
     [params[:q]].append(search_str).join(' ').gsub(/\s+/, ' ').strip

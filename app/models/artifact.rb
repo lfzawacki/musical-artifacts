@@ -18,6 +18,11 @@ class Artifact < ActiveRecord::Base
     validates :license, presence: true
     belongs_to :license
 
+    # Search fields to be used in views, controllers, ...
+    def self.search_fields
+      ['license', 'tags', 'apps', 'hash', 'formats']
+    end
+
     before_save :generate_file_hash
     def generate_file_hash
       if file.present? && file_hash.blank?
