@@ -11,6 +11,9 @@ class Artifact < ActiveRecord::Base
     serialize :more_info_urls
     serialize :file_formats
 
+    # The creator of the artifact on the site, not the author
+    belongs_to :user
+
     has_many :stored_files
 
     validates :name, presence: true

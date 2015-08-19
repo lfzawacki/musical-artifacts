@@ -53,6 +53,7 @@ class ArtifactsControllerTest < ActionController::TestCase
 
     assert_redirected_to artifact_path(assigns(:artifact))
     assert_equal flash[:notice], I18n.t('artifacts.create.success')
+    assert_equal Artifact.last.user, @admin
   end
 
   test "should create unapproved artifact as a normal user" do
@@ -65,6 +66,7 @@ class ArtifactsControllerTest < ActionController::TestCase
 
     assert_redirected_to artifacts_path
     assert_equal flash[:notice], I18n.t('artifacts.create.not_approved')
+    assert_equal Artifact.last.user, @user
   end
 
   test "should show artifact" do

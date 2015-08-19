@@ -10,9 +10,10 @@ class ArtifactsController < InheritedResources::Base
 
   def create
     if cannot?(:approve, @artifact)
-      @artifact.update_attributes approved: false
+      @artifact.update_attributes approved: false, user: current_user
       create!(notice: I18n.t('artifacts.create.not_approved')) { artifacts_path }
     else
+      @artifact.update_attributes user: current_user
       create!
     end
   end
