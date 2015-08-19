@@ -58,6 +58,7 @@ class ArtifactsController < InheritedResources::Base
       @artifacts = Searches.artifacts_licensed_as(@artifacts, params[:license])
 
       @artifacts = Searches.artifacts_by_metadata(@artifacts, params[:q])
+      @artifacts = @artifacts.order('created_at DESC')
     end
 
     def set_software
