@@ -13,6 +13,11 @@ class Ability
     if user.present?
 
       can :manage, :all if user.admin?
+
+      can :edit, Artifact do |artifact|
+        artifact.user == user
+      end
+
       can :create, Artifact
     end
 

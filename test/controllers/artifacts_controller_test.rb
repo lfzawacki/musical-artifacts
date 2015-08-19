@@ -112,6 +112,14 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_equal flash[:notice], I18n.t('_other.access_denied')
   end
 
+  test "should get edit as normal user who created the artifact" do
+    sign_in(@user)
+    @artifact.update_attributes user: @user
+
+    get :edit, id: @artifact
+    assert_response :success
+  end
+
   test "should download artifact with correct link" do
     @artifact.update_attributes(file: fixture_file('example.gx'))
 
@@ -178,6 +186,17 @@ class ArtifactsControllerTest < ActionController::TestCase
 
     assert_redirected_to artifact_path(@artifact)
     assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
+  test "should update artifact as normal user who is the creator" do
+    sign_in(@user)
+    @artifact.update_attributes user: @user
+
+    patch :update, id: @artifact, artifact:
+      { author: @artifact.author, description: @artifact.description,
+        file_hash: @artifact.file_hash, name: @artifact.name }
+
+    assert_redirected_to artifact_path(assigns(:artifact))
   end
 
   test "should not destroy artifact as normal user" do
