@@ -85,7 +85,8 @@ HTML
         if test.passed?
           "<a class=\"btn btn-success btn-circle\">P</a> #{name}"
         elsif test.skipped?
-          "<a class=\"btn btn-alert btn-circle\">S</a> #{name}"
+          link, href = location(e)
+          "<a href=\"#{href}\" class=\"btn btn-alert btn-circle\">S</a> #{name} [#{link}]"
         elsif test.failure
           link, href = location(e)
           "<a href=\"#{href}\" class=\"btn btn-danger btn-circle\">F</a> #{name} [#{link}]: #{e.message}"
