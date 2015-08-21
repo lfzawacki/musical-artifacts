@@ -57,6 +57,20 @@ class Searches
     artifacts
   end
 
+  def self.artifacts_with_file_format artifacts, formats
+    if formats.present?
+      with_format = Artifact.none
+
+      split_terms(formats).each do |term|
+        with_format = with_format.union(artifacts.tagged_with(term, on: 'file_formats'))
+      end
+
+      artifacts = with_format
+    end
+    artifacts
+  end
+
+
   private
   # Split ignoring spaces and unescape ' ' and ','
   def self.split_terms terms
