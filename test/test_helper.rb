@@ -4,13 +4,14 @@ require 'rails/test_help'
 require 'minitest/reporters'
 require 'minitest/rails/capybara'
 require 'html_reporter'
+require 'forgery'
 
 reporter_options = { color: true }
 Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new, Minitest::Reporters::HtmlReporter.new]
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+
+  self.use_transactional_fixtures = true
 
   # To open files
   def fixture_file file

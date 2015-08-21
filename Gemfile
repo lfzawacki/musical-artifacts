@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rack', '~> 1.6.2'
 gem 'rails', '4.2.3'
+gem 'active_record_union' # because active record doesnt have an OR method ... WAHT THE HECK GAME DESIGNEERRS??!?1?
 
 gem 'pg'
 
@@ -48,6 +49,9 @@ group :development, :test do
   gem 'capistrano', '~> 2.14.2'
 
   gem 'quiet_assets'
+
+  gem 'forgery'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 # My gems

@@ -4,10 +4,13 @@ class ArtifactsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @setting = settings(:default)
-    @artifact = artifacts(:one)
-    @user = User.create(email: 'frederik@opeth.se', password: 'lotuseater')
-    @admin = User.create(email: 'mikael@opeth.se', password: 'demonofthefall', admin: true)
+    @setting = Setting.first
+    @artifact = FactoryGirl.create(:artifact)
+
+    @user = FactoryGirl.create(:user, email: 'frederik@opeth.se', password: 'lotuseater')
+    @admin = FactoryGirl.create(:user, email: 'mikael@opeth.se', password: 'demonofthefall', admin: true)
+
+    @by = License.find('by')
   end
 
   test "should get index" do
@@ -48,7 +51,7 @@ class ArtifactsControllerTest < ActionController::TestCase
 
     assert_difference('Artifact.approved.count', 1) do
       post :create, artifact:
-        { name: 'Acoustic passages', author: 'Mikael', description: 'Classical guitar acoustic passages', license_id: licenses(:by).id }
+        { name: 'Acoustic passages', author: 'Mikael', description: 'Classical guitar acoustic passages', license_id: @by.id }
     end
 
     assert_redirected_to artifact_path(assigns(:artifact))
@@ -61,7 +64,7 @@ class ArtifactsControllerTest < ActionController::TestCase
 
     assert_difference('Artifact.count', 1) do
       post :create, artifact:
-        { name: 'Death metal riffs', author: 'Mikael', description: 'Bathory like death metal riffs', license_id: licenses(:by).id }
+        { name: 'Death metal riffs', author: 'Mikael', description: 'Bathory like death metal riffs', license_id: @by.id }
     end
 
     assert_redirected_to artifacts_path

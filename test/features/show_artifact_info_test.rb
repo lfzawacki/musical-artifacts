@@ -3,9 +3,10 @@ require "test_helper"
 class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
   setup do
-    @artifact = artifacts(:one)
-    @admin = User.create email: 'peter@genes.is', password: 'watcheroftheskies', admin: true
-    @user = User.create email: 'phil@genes.is', password: 'musicalbox'
+    @setting = Setting.first
+    @artifact = FactoryGirl.create(:artifact)
+    @admin = FactoryGirl.create(:user, email: 'peter@genes.is', password: 'watcheroftheskies', admin: true)
+    @user = FactoryGirl.create(:user, email: 'phil@genes.is', password: 'musicalbox')
   end
 
   test "show artifact simple data" do

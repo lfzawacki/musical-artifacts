@@ -3,9 +3,8 @@ require 'test_helper'
 class ArtifactTest < ActiveSupport::TestCase
 
   setup do
-    @artifact = artifacts(:one)
-    @artifact.update_attributes file: fixture_file('example.gx')
-    @no_file = artifacts(:two)
+    @artifact = FactoryGirl.create(:artifact, file: fixture_file('example.gx'))
+    @no_file = FactoryGirl.create(:artifact)
   end
 
   test 'validations' do

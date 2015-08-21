@@ -4,9 +4,9 @@ class SettingsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @setting = settings(:default)
-    @user = User.create email: 'devin@hevydevy.ca', password: 'deadhead'
-    @admin = User.create email: 'ziltoid@ziltoida.ca', password: 'fetidcoffee', admin: true
+    @setting = Setting.first
+    @user = FactoryGirl.create :user, email: 'devin@hevydevy.ca', password: 'deadhead'
+    @admin = FactoryGirl.create :user, email: 'ziltoid@ziltoida.ca', password: 'fetidcoffee', admin: true
   end
 
   test "admin can edit setting" do

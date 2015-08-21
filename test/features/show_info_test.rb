@@ -2,7 +2,7 @@ require "test_helper"
 
 class ShowInfoTest < Capybara::Rails::TestCase
   setup do
-    @setting = settings(:default)
+    @setting = Setting.first
   end
 
   test "show about link on main page" do
