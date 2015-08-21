@@ -35,6 +35,7 @@ en:
   artifacts:
     index:
       all: All
+      clear_search: Clear
       new: Register a new artifact
       search_for: Search for...
       search: Search

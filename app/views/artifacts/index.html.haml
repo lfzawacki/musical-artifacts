@@ -8,6 +8,10 @@
 
       %input#artifact_search.form-control.input-lg{name: 'search', placeholder: t('.search_for'), type: 'text', value: value_from_params }
 
+      %span.input-group-btn
+        %button#artifacts_search_clear.btn.btn-clear.btn-lg{href: '#'}
+          = t('.clear_search')
+
       %input.form-control{name: 'q', type: 'hidden' }
 
   .row.search-filters.container-fluid.pad-bottom

@@ -34,6 +34,7 @@ pt-br:
   artifacts:
     index:
       all: Todos
+      clear: Limpar
       new: Registrar um novo artefato
       search_for: Buscar por...
       search: Busca

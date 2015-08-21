@@ -189,11 +189,24 @@ $(document).on 'page:change', ->
 
   # ------ index
   if $('#artifact_search')[0]
-    input = $('#artifacts_search')
+    input = $('#artifact_search')
     input.focus().val(input.val())
 
+    # Send form
     $('form#artifact_search_form').submit ->
       updateFormParameters()
+
+    # Clear form
+    $('button#artifacts_search_clear').click (e) ->
+      input = $('#artifact_search')[0]
+      input.value = ''
+
+      for field in artifact_search_fields
+        if $("##{field}").is(':checked')
+          $("##{field}").attr('checked', false)
+
+      e.preventDefault()
+
 
   # ------ search filters
   for filter in artifact_search_fields
