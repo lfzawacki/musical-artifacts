@@ -223,7 +223,8 @@ $(document).on 'page:change', ->
   initialize_select '#artifact_software_list', '/searches/software'
 
   if $('#artifact_license_id')[0]
-    $('#artifact_license_id').select2()
+    $('#artifact_license_id').select2
+      width: 'element'
 
   select_for_http_links('#artifact_mirrors')
   select_for_http_links('#artifact_more_info_urls')

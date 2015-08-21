@@ -61,7 +61,7 @@
     .row.control-group
       .form-group.col-xs-12.floating-label-form-group.controls
         = f.label :license
-        = f.select :license_id, Hash[License.pluck(:name).zip(License.pluck(:id))], class: 'form-control'
+        = f.select :license_id, Hash[License.pluck(:name).zip(License.pluck(:id))], class: 'form-control license-select'
 
     .row.control-group
       .form-group.col-xs-12.floating-label-form-group.controls

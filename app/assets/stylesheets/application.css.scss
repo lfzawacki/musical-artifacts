@@ -181,7 +181,6 @@ ul.link-list {
 
 #artifacts_search_clear {
   margin-left: -0.5em;
-  /*z-index: -1;*/
 }
 
 .filters {
@@ -284,6 +283,11 @@ label.filter {
 a.btn-scroll-top:hover {
   background-color: $hoty;
   text-decoration: none;
+}
+
+/* artifacts/show */
+.license-select {
+  width: 100%;
 }
 
 /*
@@ -508,7 +512,6 @@ hr.star-primary:after {
 }
 
 .floating-label-form-group {
-    /*position: relative;*/
     margin-bottom: 0;
     padding-bottom: .5em;
     border-bottom: 1px solid #eee;
@@ -518,8 +521,6 @@ hr.star-primary:after {
 
 .floating-label-form-group input,
 .floating-label-form-group textarea {
-    /*z-index: 1;*/
-    /*position: relative;*/
     padding-right: 0;
     padding-left: 0;
     border: 0;
@@ -531,9 +532,6 @@ hr.star-primary:after {
 }
 
 .floating-label-form-group label {
-    /*display: block;*/
-    /*z-index: 0;*/
-    /*position: relative;*/
     top: 2em;
     margin: 0;
     font-size: .85em;
