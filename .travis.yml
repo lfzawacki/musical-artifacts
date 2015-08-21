@@ -4,5 +4,6 @@ bundler_args: "--without production development"
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+  - cp config/settings.yml.example config/settings.yml
 
 script: bundle exec rake db:reset; bundle exec rake
