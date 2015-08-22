@@ -90,6 +90,7 @@ class Artifact < ActiveRecord::Base
         auto_html(link) {
           youtube
           vimeo
+          audio
           soundcloud(width: 420, height: 315, show_artwork: true, show_comments: true)
           image
         }

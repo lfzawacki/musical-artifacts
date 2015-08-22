@@ -1,0 +1,1 @@
+require './lib/auto_html_filters'

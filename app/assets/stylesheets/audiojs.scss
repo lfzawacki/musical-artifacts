@@ -1,0 +1,65 @@
+.audiojs {
+  width: 420px;
+  height: 42px;
+  background: #404040;
+
+  .play-pause {
+    width: 2em;
+    height: 45px;
+    padding: 0.8em 1em 0px 0px;
+  }
+
+  p {
+    width: 2em;
+    height: 2em;
+    margin: -3px 0px 0px -1px;
+  }
+
+  .scrubber {
+    background: #5a5a5a;
+    width: 280px;
+    height: 20px;
+    margin: 10px 0px 10px 5px;
+  }
+
+  .progress {
+    height: 20px;
+    width: 0px;
+    background: #ccc;
+  }
+
+  .loaded {
+    height: 20px;
+    background: #000;
+  }
+
+  .time {
+    float: left;
+    height: 45px;
+    line-height: 45px;
+  }
+
+  .error-message {
+    width: 80%; height: 44px;line-height: 44px;
+  }
+}
+
+.track-details {
+  clear: both;
+  height: 40px;
+  width: 420px;
+  padding: 1px 6px;
+  background: #eee;
+  color: #222;
+  font-family: monospace;
+  font-size: 130%;
+  line-height: 40px;
+  -webkit-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.15);
+
+  em {
+    color: #999;
+  }
+}
+
+.track-details:before { content: '♬ '; }

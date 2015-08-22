@@ -118,6 +118,10 @@ initialize_comments = ->
 
     e.preventDefault()
 
+initialize_audio_player = ->
+  audiojs.events.ready ->
+    as = audiojs.createAll()
+
 updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
 
@@ -208,7 +212,6 @@ $(document).on 'page:change', ->
 
       e.preventDefault()
 
-
   # ------ search filters
   for filter in artifact_search_fields
     $("input.filter[name='#{filter}']").attr('checked', String(window.location).match(filter + '='))
@@ -234,3 +237,4 @@ $(document).on 'page:change', ->
   # ------ show
   initialize_wayback_links()
   initialize_comments()
+  initialize_audio_player()
