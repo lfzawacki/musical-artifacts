@@ -21,6 +21,13 @@ class Searches
     query
   end
 
+  def self.file_format_tags terms
+    query = ActsAsTaggableOn::Tag.includes(:taggings).where(taggings: {context: 'file_formats'})
+
+    query = query.named_like(terms) if terms.present?
+    query
+  end
+
   def self.artifacts_by_metadata artifacts, terms
     if terms.present?
       artifacts = artifacts.where('name ILIKE ? OR description ILIKE ?', "%#{terms}%", "%#{terms}%")

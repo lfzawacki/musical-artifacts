@@ -60,6 +60,11 @@
 
     .row.control-group
       .form-group.col-xs-12.floating-label-form-group.controls
+        = f.label :file_format_list
+        = f.text_field :file_format_list, value: @artifact.file_format_list.try(:join, ','), class: 'form-control'
+
+    .row.control-group
+      .form-group.col-xs-12.floating-label-form-group.controls
         = f.label :license
         = f.select :license_id, Hash[License.pluck(:name).zip(License.pluck(:id))], class: 'form-control license-select'
 

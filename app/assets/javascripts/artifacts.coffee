@@ -221,6 +221,7 @@ $(document).on 'page:change', ->
   # ------ _form
   initialize_select '#artifact_tag_list', '/searches/tags'
   initialize_select '#artifact_software_list', '/searches/software'
+  initialize_select '#artifact_file_format_list', '/searches/file_formats'
 
   if $('#artifact_license_id')[0]
     $('#artifact_license_id').select2

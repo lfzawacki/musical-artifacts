@@ -45,7 +45,7 @@ class ArtifactsController < InheritedResources::Base
     def artifact_params
       params.require(:artifact).permit(
         :name, :description, :author, :file, :license_id, :more_info_urls,
-        :software_list, :tag_list, :file_hash, :mirrors, :extra_license_text
+        :software_list, :tag_list, :file_format_list, :file_hash, :mirrors, :extra_license_text
       )
     end
 

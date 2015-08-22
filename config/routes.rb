@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     collection do
       get :tags
       get :software
+      get :file_formats
     end
   end
 

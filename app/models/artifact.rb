@@ -9,7 +9,6 @@ class Artifact < ActiveRecord::Base
 
     serialize :mirrors
     serialize :more_info_urls
-    serialize :file_formats
 
     # The creator of the artifact on the site, not the author
     belongs_to :user
