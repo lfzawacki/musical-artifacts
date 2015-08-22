@@ -25,15 +25,12 @@
         = f.label :author
         = f.text_field :author, class: 'form-control'
 
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :mirrors
-        = f.text_field :mirrors, value: @artifact.mirrors.try(:join, ','), class: 'form-control'
-
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :file_hash
-        = f.text_field :file_hash, class: 'form-control'
+    - # Lists of links
+    - [:mirrors, :more_info_urls].each do |list|
+      .row.control-group
+        .form-group.col-xs-12.floating-label-form-group.controls
+          = f.label list
+          = f.text_field list, value: @artifact.send(list).try(:join, ','), class: 'form-control'
 
     .row.control-group
       .form-group.col-xs-12.floating-label-form-group.controls
@@ -45,23 +42,15 @@
 
     .row.control-group
       .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :more_info_urls
-        = f.text_field :more_info_urls, value: @artifact.more_info_urls.try(:join, ','), class: 'form-control'
+        = f.label :file_hash
+        = f.text_field :file_hash, class: 'form-control'
 
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :software_list
-        = f.text_field :software_list, value: @artifact.software_list.try(:join, ','), class: 'form-control'
-
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :tag_list
-        = f.text_field :tag_list, value: @artifact.tag_list.try(:join, ','), class: 'form-control'
-
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :file_format_list
-        = f.text_field :file_format_list, value: @artifact.file_format_list.try(:join, ','), class: 'form-control'
+    - # Tags lists list
+    - [:tag_list, :software_list, :file_format_list].each do |list|
+      .row.control-group
+        .form-group.col-xs-12.floating-label-form-group.controls
+          = f.label list
+          = f.text_field list, class: 'form-control', value: @artifact.send(list).join(',')
 
     .row.control-group
       .form-group.col-xs-12.floating-label-form-group.controls

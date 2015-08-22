@@ -30,8 +30,9 @@ initialize_select = (field_id, url) ->
 
   $(field_id).ready ->
     values = []
-    for value in $(field_id).val()?.split(',')
-      values.push {id: value, text: value}
+
+    for value in $(field_id).val().split(',')
+      values.push {id: value, text: value} if value != ''
 
     $(field_id).select2 'data', values
 
