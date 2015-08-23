@@ -114,3 +114,5 @@
         %i.fa.fa-chevron-up
 
     = render 'application/analytics' if Rails.env.production?
+
+    %div#audiojs-data{imageLocation: asset_path('player-graphics.gif'), swfLocation: asset_path('audiojs.swf') }

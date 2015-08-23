@@ -120,7 +120,9 @@ initialize_comments = ->
 
 initialize_audio_player = ->
   audiojs.events.ready ->
-    as = audiojs.createAll()
+    as = audiojs.createAll
+      imageLocation: $('#audiojs-data').attr('imageLocation')
+      swfLocation: $('#audiojs-data').attr('swfLocation')
 
 updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
