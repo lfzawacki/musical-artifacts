@@ -10,7 +10,7 @@
         %span= artifact.author
 
         .artifact-content
-          %p= artifact.description.truncate(140)
+          %p.small= artifact.description.truncate(140)
 
         .artifact-tags
           = render 'artifact_tags', artifact: artifact

@@ -82,6 +82,14 @@ class Artifact < ActiveRecord::Base
       end
     end
 
+    # Get a markdown generated HTML from the artifact description
+    def description_html
+      auto_html(description) {
+        html_escape
+        redcarpet
+      }
+    end
+
     # Get the links which can be shown as multimedia content
     def multimedia_content
       return [] if more_info_urls.blank?

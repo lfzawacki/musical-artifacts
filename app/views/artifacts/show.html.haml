@@ -8,7 +8,7 @@
 .row
   .col-lg-8.col-md-8.col-sm-8.pad-bottom
     .artifact-description
-      %p.small= @artifact.description
+      = @artifact.description_html
 
     = render 'artifact_links'
 
@@ -22,8 +22,8 @@
     %p.artifact-license
       = display_license(@artifact)
 
-      - if @artifact.extra_license_text.present?
-        %p= @artifact.extra_license_text
+    - if @artifact.extra_license_text.present?
+      %p.small= @artifact.extra_license_text
 
   - # Preview multimedia content linked as more info urls
   .col-lg-4.col-md-4.col-sm-4
