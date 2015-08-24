@@ -194,21 +194,6 @@ label.filter {
   padding-left: 0.2em;
 }
 
-.bootstrap-switch.bootstrap-switch-focused {
-    border-color: #cacaca;
-    outline: $hot !important;;
-}
-
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
-  background-color: $darky;
-  background: none repeat scroll 0 0 $darky;
-}
-
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
-  color: $white;
-  background-color: $dark;
-}
-
 @media(min-width:767px) {
   .with-navbar-on-top {
     padding-top: 120px;
