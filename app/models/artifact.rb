@@ -87,6 +87,7 @@ class Artifact < ActiveRecord::Base
       auto_html(description) {
         html_escape
         redcarpet
+        js_email
       }
     end
 
