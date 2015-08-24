@@ -23,7 +23,7 @@
       = display_license(@artifact)
 
     - if @artifact.extra_license_text.present?
-      %p.small= @artifact.extra_license_text
+      %p.small= @artifact.extra_license_text_html
 
   - # Preview multimedia content linked as more info urls
   .col-lg-4.col-md-4.col-sm-4

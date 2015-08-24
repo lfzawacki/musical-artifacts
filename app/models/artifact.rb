@@ -91,6 +91,14 @@ class Artifact < ActiveRecord::Base
       }
     end
 
+    # Get an html escaped version but transform links into tags
+    def extra_license_text_html
+      auto_html(extra_license_text) {
+        html_escape
+        link
+      }
+    end
+
     # Get the links which can be shown as multimedia content
     def multimedia_content
       return [] if more_info_urls.blank?
