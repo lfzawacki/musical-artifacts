@@ -16,12 +16,23 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Recent Artifacts" do
           ul do
-            Artifact.order('created_at DESC').first(8).map do |art|
+            Artifact.order('created_at DESC').first(15).map do |art|
               li link_to(art.name, admin_artifact_path(art))
             end
           end
         end
       end
+
+      column do
+        panel "Recent Users" do
+          ul do
+            User.order('created_at DESC').first(15).map do |user|
+              li link_to(user.email, admin_user_path(user))
+            end
+          end
+        end
+      end
+
     end
 
     columns do
