@@ -8,10 +8,12 @@ en:
     back: Back
     confirm: Are you sure?
     destroy: Destroy
+    logout: Log out
 
   layouts:
     application:
       settings: Settings
+      admin: Admin
 
   licenses:
     link:

@@ -37,7 +37,11 @@
               %li= link_to t('.settings'), settings_path
 
             - if can? :read, ActiveAdmin::Page
-              %li= link_to t('.admin'), admin_root_path
+              %li
+                = link_to admin_root_path do
+                  - if @unapproved_artifacts.present?
+                    %span.badge.badge-unapproved= @unapproved_artifacts
+                  = t('.admin')
 
             - if current_user.present?
               %li= link_to t('_other.logout'), destroy_user_session_path

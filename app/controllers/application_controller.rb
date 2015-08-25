@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :load_settings
+  before_filter :count_unapproved_artifacts
 
   # For serving the juvia commenting script in a javascript tag we control
   def comments_script
@@ -21,6 +22,10 @@ class ApplicationController < ActionController::Base
   private
   def load_settings
     @setting = Setting.first
+  end
+
+  def count_unapproved_artifacts
+    @unapproved_artifacts = Artifact.where(approved: false).count
   end
 
 end

@@ -288,6 +288,11 @@ a.btn-scroll-top:hover {
 /*
  * About page + main application CSS
  */
+.badge-unapproved {
+  color: $darky;
+  background-color: $white;
+}
+
 section.success {
     color: $white;
     background: $coldy;
