@@ -9,8 +9,12 @@
         = t('_other.by')
         %span= artifact.author
 
-        .artifact-content
-          %p.small= artifact.description.truncate(140)
+        .artifact-content.pad-top
+          %p.small
+            = artifact.description.truncate(140)
+
+        %p.more-info
+          = link_to t('.more_info'), artifact_path(artifact)
 
         .artifact-tags
           = render 'artifact_tags', artifact: artifact

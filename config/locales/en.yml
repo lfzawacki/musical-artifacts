@@ -50,6 +50,8 @@ en:
         formats: With format...
       page_description: page %{page}
       showing: Showing %{title}
+    artifact_list:
+      more_info: More info...
     buttons:
       download: Download
     wayback_links:
