@@ -19,8 +19,9 @@
     %form.input-group.filters.text-center
       -  Artifact.search_fields.each do |filter|
         .col-lg-2.col-md-3.col-sm-4.col-xs-6
-          %input.filter{type: 'checkbox', id: filter, name: filter, checked: false}
-          %label.filter{for: filter}= t(".filters.#{filter}")
+          %input.form-control{name: filter, type: 'hidden'}
+          %input.filter{type: 'checkbox', id: "checkbox_#{filter}", name: "checkbox_#{filter}", checked: false}
+          %label.filter{for: "checkbox_#{filter}"}= t(".filters.#{filter}")
 
   .row.search-buttons.container-fluid
 

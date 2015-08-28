@@ -135,6 +135,9 @@ updateFormParameters = ->
 
   $("[name='search']")[0].disabled = true
 
+  for field in artifact_search_fields
+    $("[name=checkbox_#{field}]")[0].disabled = true
+
 updateSearchField = (field, state) ->
   search_field = $('#artifact_search')[0]
 
@@ -216,10 +219,12 @@ $(document).on 'page:change', ->
 
   # ------ search filters
   for filter in artifact_search_fields
-    $("input.filter[name='#{filter}']").attr('checked', String(window.location).match(filter + '='))
+    $("input.filter[name='checkbox_#{filter}']").attr('checked', String(window.location).match(filter + '='))
 
   $('input.filter').change (event) ->
-    updateSearchField($(this).attr('name'), $(this).is(':checked'))
+    field = $(this).attr('name').match(RegExp("checkbox_(.*)"))[1]
+
+    updateSearchField(field, $(this).is(':checked'))
     setTimeout ->
       $('#artifact_search').focus()
     , 300
