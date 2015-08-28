@@ -89,4 +89,9 @@ module ArtifactsHelper
     str.gsub('%20',' ').gsub('%2C', ',')
   end
 
+  # Only unescape "'" and '"' ... it's confusing
+  def remove_quotes str
+    str.gsub('"','')
+  end
+
 end

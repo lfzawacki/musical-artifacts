@@ -1,4 +1,5 @@
-- content_for :title, t('.all')
+- title = params[:q].present? ? t('.search_description', query: params[:q]) : t('.all')
+- content_for :title, remove_quotes(title)
 
 %form.pad-top#artifact_search_form{method: :get}
   .row
@@ -21,11 +22,20 @@
           %input.filter{type: 'checkbox', id: filter, name: filter, checked: false}
           %label.filter{for: filter}= t(".filters.#{filter}")
 
-  .row.search-buttons.container-fluid.pad-bottom
+  .row.search-buttons.container-fluid
 
-  - if (params.keys & Artifact.search_fields).any?
-    .row
-      %p=t('.using_filters')
+  .row.search-description.container-fluid
+
+    %p.page.pad-bottom
+      - if (params[:q].present? || params[:page].present?)
+        = t('.showing', title: title.downcase)
+
+      - if (params[:page].present?)
+        \-
+        = t('.page_description', page: params[:page])
+
+    -# if (params.keys & Artifact.search_fields).any?
+      %p=#t('.using_filters')
 
 #artifact-list
   = render 'artifact_list'

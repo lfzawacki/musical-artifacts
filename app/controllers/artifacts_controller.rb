@@ -60,7 +60,7 @@ class ArtifactsController < InheritedResources::Base
       @artifacts = Searches.artifacts_with_file_format(@artifacts, params[:formats])
 
       @artifacts = Searches.artifacts_by_metadata(@artifacts, params[:q])
-      @artifacts = @artifacts.order('created_at DESC')
+      @artifacts = @artifacts.page(params[:page]).per(15).order('created_at DESC')
     end
 
     def set_software

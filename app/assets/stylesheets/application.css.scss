@@ -177,6 +177,38 @@ ul.link-list {
   margin-right: 5px;
 }
 
+/* _pagination */
+ul.pagination {
+
+  font-size: 120%;
+
+  li a:active {
+    color: $cold;
+  }
+
+  li a:visited {
+    color: $cold;
+  }
+
+  li a {
+    color: $coldy;
+  }
+
+  li a:hover {
+    color: $colder;
+  }
+
+  li.active a {
+    background-color: $coldy;
+    border-color: $coldy;
+  }
+
+  li.active a:hover {
+    background-color: $colder;
+    border-color: $colder;
+  }
+}
+
 /* artifact_search */
 .search-filters {
 }

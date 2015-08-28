@@ -79,3 +79,5 @@ gem 'rack-throttle'
 gem 'exception_notification', '~> 4.0.0'
 
 gem 'auto_html', git: 'https://github.com/lfzawacki/auto_html.git'
+
+gem 'kaminari'
