@@ -27,7 +27,7 @@
 
   .row.search-description.container-fluid
 
-    %p.page.pad-bottom
+    %p.page
       - if (params[:q].present? || params[:page].present?)
         = t('.showing', title: title.downcase)
 
@@ -39,7 +39,16 @@
       %p=#t('.using_filters')
 
 #artifact-list
-  = render 'artifact_list'
+  .row
+    .col-sm-8
+      = render 'artifact_list'
 
-%p.pad-bottom
-  = link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
+    .col-sm-4
+      %p.pad-top= link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
+
+    .col-sm-4
+      = render 'filter_by_tags'
+
+  .row.pad-bottom
+    = paginate @artifacts, :left => 10, :right => 10
+

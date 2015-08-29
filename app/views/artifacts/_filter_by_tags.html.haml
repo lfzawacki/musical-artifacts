@@ -1,0 +1,9 @@
+- [:tags, :apps, :formats].each do |tag_type|
+  %h3.tag-title.pad-top= t("artifacts.index.filters.#{tag_type}")
+  - tag_cloud(@tags[tag_type], %w(tag-xs tag-sm tag-md tag-lg tag-xl tag-xxl)) do |tag, css_class|
+    = link_to tag.name, artifacts_path(params.slice(*Artifact.search_fields).merge(tag_type => tag.name)), :class => "#{css_class} #{tag_type.to_s.singularize}-tag"
+
+%h3.tag-title.pad-top= t(".filters.license")
+- @licenses.each do |license|
+  = link_to artifacts_path(license: license.short_name) do
+    = image_tag license.image_url(true), alt: license.name, class: 'license-tag'

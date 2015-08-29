@@ -4,6 +4,7 @@ class ArtifactsController < InheritedResources::Base
   load_and_authorize_resource
   rescue_from CanCan::AccessDenied, with: :handle_access_denied
 
+  before_filter :load_tag_filters, only: [:index]
   before_filter :search_artifacts, only: [:index]
 
   respond_to :json
@@ -61,6 +62,15 @@ class ArtifactsController < InheritedResources::Base
 
       @artifacts = Searches.artifacts_by_metadata(@artifacts, params[:q])
       @artifacts = @artifacts.page(params[:page]).per(15).order('created_at DESC')
+    end
+
+    def load_tag_filters
+      @tags = {
+        tags: Artifact.tag_counts_on(:tags),
+        apps: Artifact.tag_counts_on(:software),
+        formats: Artifact.tag_counts_on(:file_formats)
+      }
+      @licenses = License.where ['short_name != ?', 'copyright']
     end
 
     def set_software

@@ -52,6 +52,7 @@ en:
       showing: Showing %{title}
     artifact_list:
       more_info: More info...
+      none: Nothing to see here!
     buttons:
       download: Download
     wayback_links:

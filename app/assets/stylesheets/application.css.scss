@@ -28,6 +28,7 @@ $cold: #632d4d;
 $colder: #521c3c;
 $coldy: #854f6f;
 
+$hotter: #dcb803;
 $hot: #feda25;
 $hoty: #fee355;
 
@@ -146,8 +147,8 @@ ul.link-list {
 }
 
 .row .artifact-item {
-  margin-bottom: 2em;
-  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding: 0.5em;
 }
 
 .dark-item {
@@ -210,6 +211,12 @@ ul.pagination {
 }
 
 /* artifact_search */
+.artifact-item.empty-search {
+  padding: 40px 0px 480px 20px;
+
+  p { font-size: 300%; }
+}
+
 .search-filters {
 }
 
@@ -246,27 +253,66 @@ label.filter {
   }
 }
 
+.artifact-tags a {
+  text-decoration: none;
+}
+
 /*  _artifact_tags */
 .label-app {
   background-color: $hot;
+
+  a { color: $cold; }
+  transition: 1s;
+}
+
+.label-app:hover {
+  background-color: $hotter;
 }
 
 .label-tag {
   background-color: $coldy;
+  a { color: $white; }
+  transition: 1s;
+}
+
+.label-tag:hover {
+  background-color: $colder;
 }
 
 .label-file-format {
   background-color: $darky;
+  a { color: $white; }
+  transition: 1s;
+}
+
+.label-file-format:hover {
+  background-color: $darker;
 }
 
 .big-tags {
   font-size: 150%;
 }
 
-.artifact-tags a {
-  color: $white;
-  text-decoration: none;
+.license-tag {
+  padding: 0.1em;
 }
+
+/* tag clouds */
+.tag-title {
+  text-transform: none;
+  color: #222;
+}
+
+.normal-tag { color: $colder;}
+.app-tag { color: $hotter; }
+.format-tag { color: $darky;}
+
+.tag-xs { font-size: 1.2em; }
+.tag-sm { font-size: 1.8em; }
+.tag-md { font-size: 2.2em; }
+.tag-lg { font-size: 2.8em; }
+.tag-xl { font-size: 3.4em; }
+.tag-xxl { font-size: 4.0em; }
 
 /*  _buttons */
 .btn-download:hover,
@@ -284,14 +330,18 @@ label.filter {
   color: $coldy;
 }
 
-.btn-new {
+.btn-new.btn-lg {
   background-color: $cold;
   color: $white;
+  font-size: 150%;
+  transition: 1s;
+  margin-bottom: 1em;
+  white-space: normal;
 }
 
 .btn-new:hover {
   background-color: $colder;
-  color: $white;
+  color: #eee;
 }
 
 .btn-scroll-top {

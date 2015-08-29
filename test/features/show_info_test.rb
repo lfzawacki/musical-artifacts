@@ -51,7 +51,7 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_no_link page, '1', admin_root_path
+    assert_no_link page, admin_root_path, '1'
   end
 
   test "show logout link for normal user" do
