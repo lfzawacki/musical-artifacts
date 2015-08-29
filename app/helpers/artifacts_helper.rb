@@ -53,6 +53,10 @@ module ArtifactsHelper
     if ['public', 'cc-sample', 'copyleft'].include?(license)
       link = I18n.t("licenses.link.#{license.gsub('-','_')}")
       text = I18n.t("licenses.text.#{license.gsub('-','_')}", author: artifact.author)
+    elsif license.match(/gpl\-?(v2|v3)?/)
+      version = $1.try(:chomp) || '1'
+      link = I18n.t("licenses.link.gpl", version: "#{version}.0")
+      text = I18n.t("licenses.text.gpl", version: "#{version}.0")
     else # cc licenses
       link = I18n.t("licenses.link.cc", type: license)
       text = I18n.t("licenses.text.cc")

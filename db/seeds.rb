@@ -4,6 +4,7 @@
 require './lib/monkey_patches'
 
 License.create short_name: 'public', name: 'Public Domain'
+
 License.create short_name: 'by', name: 'Creative Commons Attribution 4.0 Unported License.'
 License.create short_name: 'by-sa', name: 'Creative Commons Attribution-ShareAlike 4.0 Unported License.'
 License.create short_name: 'by-nd', name: 'Creative Commons Attribution-NoDerivs 4.0 Unported License.'
@@ -11,8 +12,13 @@ License.create short_name: 'by-nc', name: 'Creative Commons Attribution-NonComme
 License.create short_name: 'by-nc-sa', name: 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.'
 License.create short_name: 'by-nc-nd', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License.'
 License.create short_name: 'cc-sample', name: 'Creative Commons Sampling Plus 1.0'
+
 License.create short_name: 'copyright', name: 'Copyright'
+
 License.create short_name: 'copyleft', name: 'Copyleft'
+License.create short_name: 'gpl', name: 'GNU General Public License'
+License.create short_name: 'gpl-v2', name: 'GNU General Public License Version 2'
+License.create short_name: 'gpl-v3', name: 'GNU General Public License Version 3'
 
 App.create(
   name: "Guitarix",

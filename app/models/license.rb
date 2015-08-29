@@ -2,7 +2,14 @@ class License < ActiveRecord::Base
   has_many :artifacts
 
   def image_url small=false
-    img = "licenses/#{short_name}#{small ? '-small' : ''}"
+    name = short_name
+
+    # All gpls use the same image
+    if name.match(/gpl/)
+      name = 'gpl'
+    end
+
+    img = "licenses/#{name}#{small ? '-small' : ''}"
     extension = 'svg'
 
     # find the correct image extension

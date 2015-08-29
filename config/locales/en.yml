@@ -22,12 +22,14 @@ en:
       copyleft: https://www.gnu.org/copyleft/copyleft.en.html
       copyright: ''
       public: https://wiki.creativecommons.org/Public_domain
+      gpl: https://opensource.org/licenses/GPL-%{version}
     text:
       cc: Creative Commons 4.0 Unported License
       cc_sample: Creative Commons Sampling+ 1.0
       copyleft: Copyleft %{author}
       copyright: Copyright to %{author}
       public: Work in the Public Domain
+      gpl: GNU General Public License %{version}
     parts:
       by: Has to give attribution
       nc: Non commercial use only
