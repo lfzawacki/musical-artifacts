@@ -1,6 +1,19 @@
 class License < ActiveRecord::Base
   has_many :artifacts
 
+  def self.license_types
+    License.all.pluck(:license_type).uniq
+  end
+
+  # TODO: Maybe move this whole code to attributes in the database?
+  def self.type_image type
+    "licenses/#{type}.svg"
+  end
+
+  def self.type_name type
+    type
+  end
+
   def image_url small=false
     name = short_name
 

@@ -70,7 +70,8 @@ class ArtifactsController < InheritedResources::Base
         apps: Artifact.tag_counts_on(:software),
         formats: Artifact.tag_counts_on(:file_formats)
       }
-      @licenses = License.where ['short_name != ?', 'copyright']
+      @licenses = License.license_types - ['copyright']
+      @copyright = License.find('copyright') # always the black sheep
     end
 
     def set_software

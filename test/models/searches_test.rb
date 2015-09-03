@@ -7,7 +7,7 @@ class SearchesTest < ActiveSupport::TestCase
         name: 'Sounfont file',
         description: 'An artifact for a soundfont file',
         author: 'Smarmy',
-        license: FactoryGirl.create(:license, short_name: 'by'),
+        license: License.find('by'),
         file_format_list: ['sf2'],
         tag_list: ['soundfont', 'samples'],
         software_list: ['fluidsynth', 'saffronse', 'timidity']
@@ -16,7 +16,7 @@ class SearchesTest < ActiveSupport::TestCase
         name: 'Guitar file',
         description: 'An artifact with a guitar related file',
         author: 'Ziggy',
-        license: FactoryGirl.create(:license, short_name: 'public'),
+        license: License.find('public'),
         file_format_list: ['gx'],
         tag_list: ['guitar', 'preset', 'tone'],
         software_list: ['guitarix']
@@ -25,7 +25,7 @@ class SearchesTest < ActiveSupport::TestCase
         name: 'Zip file',
         description: 'An artifact with content compressed in a zip file',
         author: 'Zippy',
-        license: FactoryGirl.create(:license, short_name: 'copyright'),
+        license: License.find('copyright'),
         file_format_list: ['zip'],
         tag_list: ['compressed', 'samples']
       ),
@@ -33,7 +33,7 @@ class SearchesTest < ActiveSupport::TestCase
         name: 'Drum package',
         description: 'An artifact of a drumkit, with drum samples',
         author: 'Drumbrum',
-        license: FactoryGirl.create(:license, short_name: 'by-sa'),
+        license: License.find('by-sa'),
         file_format_list: ['rar'],
         tag_list: ['drums', 'drumkit', 'samples'],
         software_list: ['hydrogen']
@@ -42,10 +42,28 @@ class SearchesTest < ActiveSupport::TestCase
         name: 'A synth sound preset',
         description: 'An artifact with synth sound presets',
         author: 'Moogaloog',
-        license: FactoryGirl.create(:license, short_name: 'copyright'),
+        license: License.find('copyright'),
         file_format_list: ['xmz'],
         tag_list: ['synth', 'preset'],
         software_list: ['zynaddsubfx', 'timidity']
+      ),
+      FactoryGirl.create(:artifact,
+        name: 'Acoustic guitar',
+        description: 'A soundfont with sampled acoustic guitar sounds',
+        author: 'Fire Mann',
+        license: License.find('gpl-v2'),
+        file_format_list: ['gig'],
+        tag_list: ['acoustic guitar', 'samples'],
+        software_list: ['linuxsampler']
+      ),
+      FactoryGirl.create(:artifact,
+        name: 'Banjo',
+        description: 'A soundfont with sampled Banjo sounds',
+        author: 'Fire Mann',
+        license: License.find('gpl'),
+        file_format_list: ['gig'],
+        tag_list: ['banjo', 'samples'],
+        software_list: ['linuxsampler']
       )]
 
     @scope = Artifact.all
@@ -147,6 +165,24 @@ class SearchesTest < ActiveSupport::TestCase
     assert search.count, 2
     assert_includes search, @artifacts[0]
     assert_includes search, @artifacts[1]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_licensed_as ('cc' as a license_type)" do
+    search = Searches::artifacts_licensed_as(@scope, 'cc')
+
+    assert search.count, 2
+    assert_includes search, @artifacts[0]
+    assert_includes search, @artifacts[3]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_licensed_as ('gpl' as a license_type)" do
+    search = Searches::artifacts_licensed_as(@scope, 'gpl')
+
+    assert search.count, 2
+    assert_includes search, @artifacts[5]
+    assert_includes search, @artifacts[6]
     assert_kind_of ActiveRecord::Relation, search
   end
 
