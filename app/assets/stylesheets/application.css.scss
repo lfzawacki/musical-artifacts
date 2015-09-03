@@ -233,6 +233,18 @@ label.filter {
   padding-left: 0.2em;
 }
 
+/*
+  Only site admins need this, when the top nav doesnt have enough width to contain all options
+  the search bar will be almost hidden
+*/
+@media(min-width:767px) and (max-width: 980px) {
+
+  form#artifact_search_form {
+    margin-top: 30px;
+  }
+
+}
+
 @media(min-width:767px) {
   .with-navbar-on-top {
     padding-top: 120px;
