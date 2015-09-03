@@ -200,7 +200,6 @@ $(document).on 'page:change', ->
   # ------ index
   if $('#artifact_search')[0]
     input = $('#artifact_search')
-    input.focus().val(input.val())
 
     # Send form
     $('form#artifact_search_form').submit ->
