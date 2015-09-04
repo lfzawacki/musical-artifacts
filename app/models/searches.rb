@@ -30,7 +30,11 @@ class Searches
 
   def self.artifacts_by_metadata artifacts, terms
     if terms.present?
-      artifacts = artifacts.where('name ILIKE ? OR description ILIKE ?', "%#{terms}%", "%#{terms}%")
+      search_by_data =
+        artifacts.where('name ILIKE ? OR description ILIKE ? OR author ILIKE ? OR extra_license_text ILIKE ?',
+        "%#{terms}%", "%#{terms}%", "%#{terms}%", "%#{terms}%")
+
+      artifacts = search_by_data.union(artifacts_tagged_with(artifacts, terms))
     end
     artifacts
   end

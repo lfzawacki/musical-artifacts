@@ -49,12 +49,12 @@ en:
         apps: Used with app...
         hash: File with hash...
         formats: With format...
+      search_description: "Search results for \"%{query}\""
 
     artifact_search_description:
       filtering: Filtering by
       page_description: page %{page}
       showing: Showing %{title}
-      search_description: "Search results for \"%{query}\""
     artifact_list:
       more_info: More info...
       none: Nothing to see here!

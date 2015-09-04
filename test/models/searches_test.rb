@@ -10,7 +10,8 @@ class SearchesTest < ActiveSupport::TestCase
         license: License.find('by'),
         file_format_list: ['sf2'],
         tag_list: ['soundfont', 'samples'],
-        software_list: ['fluidsynth', 'saffronse', 'timidity']
+        software_list: ['fluidsynth', 'saffronse', 'timidity'],
+        extra_license_text: 'Please include my name'
       ),
       FactoryGirl.create(:artifact,
         name: 'Guitar file',
@@ -18,12 +19,13 @@ class SearchesTest < ActiveSupport::TestCase
         author: 'Ziggy',
         license: License.find('public'),
         file_format_list: ['gx'],
-        tag_list: ['guitar', 'preset', 'tone'],
-        software_list: ['guitarix']
+        tag_list: ['guitar', 'preset', 'tone', 'heavy metal'],
+        software_list: ['guitarix'],
+        extra_license_text: 'DWTFYW license'
       ),
       FactoryGirl.create(:artifact,
         name: 'Zip file',
-        description: 'An artifact with content compressed in a zip file',
+        description: 'An artifact with content compressed in a zip file and a crappy license',
         author: 'Zippy',
         license: License.find('copyright'),
         file_format_list: ['zip'],
@@ -69,8 +71,68 @@ class SearchesTest < ActiveSupport::TestCase
     @scope = Artifact.all
   end
 
-  test "#artifacts_by_metadata" do
-    skip
+  test "#artifacts_by_metadata (search matching one tag)" do
+    search = Searches::artifacts_by_metadata(@scope, 'heavy metal')
+
+    assert_equal search.count, 1
+    assert_includes search, @artifacts[1]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (search matching multiple from description)" do
+    search = Searches::artifacts_by_metadata(@scope, 'artifact')
+
+    assert_equal search.count, 5
+    assert_includes search, @artifacts[0]
+    assert_includes search, @artifacts[1]
+    assert_includes search, @artifacts[2]
+    assert_includes search, @artifacts[3]
+    assert_includes search, @artifacts[4]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (search matching title or description)" do
+    search = Searches::artifacts_by_metadata(@scope, 'guit')
+
+    assert_equal search.count, 2
+    assert_includes search, @artifacts[1]
+    assert_includes search, @artifacts[5]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (search matching one author)" do
+    search = Searches::artifacts_by_metadata(@scope, 'Fire Mann')
+
+    assert_equal search.count, 2
+    assert_includes search, @artifacts[5]
+    assert_includes search, @artifacts[6]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (search matching multiple authors)" do
+    search = Searches::artifacts_by_metadata(@scope, 'zi')
+
+    assert_equal search.count, 2
+    assert_includes search, @artifacts[1]
+    assert_includes search, @artifacts[2]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (search matching via extra license text)" do
+    search = Searches::artifacts_by_metadata(@scope, 'DWTFYW')
+
+    assert_equal search.count, 1
+    assert_includes search, @artifacts[1]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (search matching multiple fields)" do
+    search = Searches::artifacts_by_metadata(@scope, 'license')
+
+    assert_equal search.count, 2
+    assert_includes search, @artifacts[1]
+    assert_includes search, @artifacts[2]
+    assert_kind_of ActiveRecord::Relation, search
   end
 
   test "#artifacts_tagged_with (none found)" do
