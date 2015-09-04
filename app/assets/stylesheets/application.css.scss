@@ -217,6 +217,10 @@ ul.pagination {
   p { font-size: 300%; }
 }
 
+.search-description {
+  font-size: 150%;
+}
+
 .search-filters {
 }
 
@@ -272,32 +276,31 @@ label.filter {
 /*  _artifact_tags */
 .label-app {
   background-color: $hot;
-
-  a { color: $cold; }
-  transition: 1s;
+  color: #222;
+  transition: 0.4s;
 }
 
 .label-app:hover {
-  background-color: $hotter;
+  background-color: $hoty;
 }
 
 .label-tag {
   background-color: $coldy;
   a { color: $white; }
-  transition: 1s;
+  transition: 0.4s;
 }
 
 .label-tag:hover {
   background-color: $colder;
 }
 
-.label-file-format {
+.label-format {
   background-color: $darky;
   a { color: $white; }
   transition: 1s;
 }
 
-.label-file-format:hover {
+.label-format:hover {
   background-color: $darker;
 }
 

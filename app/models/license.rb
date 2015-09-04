@@ -6,16 +6,8 @@ class License < ActiveRecord::Base
   end
 
   # TODO: Maybe move this whole code to attributes in the database?
-  def self.type_image type
-    "licenses/#{type}.svg"
-  end
-
-  def self.type_name type
-    type
-  end
-
-  def image_url small=false
-    name = short_name
+  def self.type_image type, small=false
+    name = type
 
     # All gpls use the same image
     if name.match(/gpl/)
@@ -32,6 +24,14 @@ class License < ActiveRecord::Base
 
     # Return full image path
     "#{img}.#{extension}"
+  end
+
+  def self.type_name type
+    type
+  end
+
+  def image_url small=false
+    License.type_image(short_name, small)
   end
 
   # Override find to use the shortname and then try the ID

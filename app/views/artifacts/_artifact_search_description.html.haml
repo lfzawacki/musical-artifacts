@@ -1,0 +1,18 @@
+-if (params.keys & ['apps', 'tags', 'formats', 'license']).present?
+  .tags-description.pad-bottom
+    = t('.filtering')
+    - ['apps', 'tags', 'formats'].each do |field|
+      - if params[field].present?
+        - split_param_terms(params[field]).each do |tag|
+          .label.label-big{class: "label-#{field.singularize}"}= tag
+
+    - if params[:license].present?
+      = image_tag License.type_image(params[:license], true)
+
+- if (params[:q].present? || params[:page].present?)
+  .page.pad-bottom
+    = t('.showing', title: title.downcase)
+
+    - if (params[:page].present?)
+      \-
+      = t('.page_description', page: params[:page])

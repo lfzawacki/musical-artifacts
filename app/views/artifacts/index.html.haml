@@ -24,19 +24,11 @@
           / %label.filter{for: "checkbox_#{filter}"}= t(".filters.#{filter}")
 
   .row.search-buttons.container-fluid
+    / Filled by JS code
 
   .row.search-description.container-fluid
+    = render 'artifact_search_description', title: title
 
-    %p.page
-      - if (params[:q].present? || params[:page].present?)
-        = t('.showing', title: title.downcase)
-
-      - if (params[:page].present?)
-        \-
-        = t('.page_description', page: params[:page])
-
-    -# if (params.keys & Artifact.search_fields).any?
-      %p=#t('.using_filters')
 
 #artifact-list
   .row

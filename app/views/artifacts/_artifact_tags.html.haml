@@ -8,4 +8,4 @@
 
 %p
   - artifact.file_format_list.each do |ff|
-    .label.label-file-format= link_to ff, artifacts_path(formats: ff)
+    .label.label-format= link_to ff, artifacts_path(formats: ff)
