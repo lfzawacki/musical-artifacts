@@ -3,7 +3,7 @@
 #
 require './lib/monkey_patches'
 
-License.create short_name: 'public', name: 'Public Domain'
+License.create short_name: 'public', license_type: 'public', name: 'Public Domain'
 
 License.create short_name: 'by', license_type: 'cc', name: 'Creative Commons Attribution 4.0 Unported License.'
 License.create short_name: 'by-sa', license_type: 'cc', name: 'Creative Commons Attribution-ShareAlike 4.0 Unported License.'

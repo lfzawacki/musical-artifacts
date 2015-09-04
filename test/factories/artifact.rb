@@ -7,7 +7,7 @@ FactoryGirl.define do
     downloadable true
     approved true
 
-    association :license
+    license { License.find('by') }
   end
 
 end

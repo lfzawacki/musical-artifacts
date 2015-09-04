@@ -94,11 +94,13 @@ module ArtifactsHelper
 
   # Only unescape ' ' and ','
   def unescape_separators str
+    return '' if str.blank?
     str.gsub('%20',' ').gsub('%2C', ',')
   end
 
   # Only unescape "'" and '"' ... it's confusing
   def remove_quotes str
+    return '' if str.blank?
     str.gsub('"','')
   end
 
