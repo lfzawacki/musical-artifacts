@@ -12,7 +12,13 @@
         = t('_other.destroy')
 
   %p.pad-top
-    - if can?(:download, artifact) && artifact.file.try(:url)
-      = link_to artifact.download_path, class: 'btn btn-group-justified btn-download', download: artifact.file_name do
-        %i{class: "fa #{icon_from_extension(artifact.stored_files.last.format)}"}
-        = t('.download')
+    - if can?(:download, artifact)
+      - if artifact.file.try(:url)
+        = link_to artifact.download_path, class: 'btn btn-group-justified btn-download', download: artifact.file_name do
+          %i{class: "fa #{icon_from_extension(artifact.stored_files.last.format)}"}
+          = t('.download')
+      - elsif artifact.mirrors.present?
+        - mirror = artifact.mirrors.first
+        = external_link_to mirror, class: 'btn btn-group-justified btn-download' do
+          %i{class: "fa #{icon_from_extension(format_from_link(mirror))}"}
+          = t('.download_mirror', domain: domain_from_link(mirror))

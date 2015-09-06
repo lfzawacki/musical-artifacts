@@ -60,6 +60,7 @@ en:
       none: Nothing to see here!
     buttons:
       download: Download
+      download_mirror: Download from (%{domain})
     wayback_links:
       broken: Broken external links? Click to try links for the Wayback Machine.
       original: Go back to seeing the original links.

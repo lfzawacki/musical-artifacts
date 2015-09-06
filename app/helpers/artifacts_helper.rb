@@ -11,8 +11,20 @@ module ArtifactsHelper
     remove_quotes(unescape_separators(terms)).split(',')
   end
 
-  def external_link_to text, link
-    link_to(text, link, rel: 'nofollow', target: '_blank', class: "external-link normal")
+  def external_link_to text, link=nil, opt=nil
+    if block_given?
+      link ||={}
+      link_to(text, rel: 'nofollow', target: '_blank', class: link[:class] || "external-link normal") do
+        yield
+      end
+    else
+      opt ||={}
+      link_to(text, link, rel: 'nofollow', target: '_blank', class: opt[:class] || "external-link normal")
+    end
+  end
+
+  def domain_from_link link
+    URI.parse(link).host
   end
 
   def format_from_link link
