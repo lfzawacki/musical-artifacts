@@ -50,4 +50,36 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_link I18n.t('artifacts.buttons.download')
   end
 
+  test "see download button for mirror if no file is present" do
+    @artifact.update_attributes(mirrors: 'https://download.from.here')
+
+    visit artifact_path(@artifact)
+
+    assert_link I18n.t('artifacts.buttons.download_mirror', domain: 'download.from.here')
+  end
+
+  test "see download button only for first mirror if no file is present" do
+    @artifact.update_attributes(mirrors: 'https://hey.here, http://not.from.here')
+
+    visit artifact_path(@artifact)
+
+    assert_link I18n.t('artifacts.buttons.download_mirror', domain: 'hey.here')
+  end
+
+  test "don't break application if first mirror link is an invalid URL" do
+    @artifact.update_attributes(mirrors: 'I am an invalid URL, http://not.from.here')
+
+    visit artifact_path(@artifact)
+
+    assert_link I18n.t('artifacts.buttons.download_mirror', domain: '')
+  end
+
+  test "see download button, but not for mirror if file is present" do
+    @artifact.update_attributes(file: fixture_file('example.gx'), mirrors: 'https://validmirror.com')
+
+    visit artifact_path(@artifact)
+    assert_link I18n.t('artifacts.buttons.download')
+    assert_no_link I18n.t('artifacts.buttons.download_mirror', domain: 'validmirror.com')
+  end
+
 end

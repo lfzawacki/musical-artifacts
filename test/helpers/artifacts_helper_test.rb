@@ -10,6 +10,10 @@ class ArtifactsHelperTest < ActionView::TestCase
     skip
   end
 
+  test ".domain_from_link" do
+    skip
+  end
+
   test ".format_from_link" do
     skip
   end

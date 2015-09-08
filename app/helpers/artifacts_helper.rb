@@ -24,7 +24,11 @@ module ArtifactsHelper
   end
 
   def domain_from_link link
-    URI.parse(link).host
+    begin
+      URI.parse(link).host
+    rescue URI::InvalidURIError
+      ''
+    end
   end
 
   def format_from_link link
