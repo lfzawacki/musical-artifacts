@@ -4,16 +4,18 @@
 %form.pad-top#artifact_search_form{method: :get}
   .row
     .col-lg-12.input-group.search-field
-      %span.input-group-btn
-        %button#artifacts_search_btn.btn.btn-default.btn-lg{type: "submit", value: 'submit'}= t('.search')
-
       %input#artifact_search.form-control.input-lg{name: 'search', placeholder: t('.search_for'), type: 'text', value: value_from_params }
 
-      %span.input-group-btn
-        %button#artifacts_search_clear.btn.btn-clear.btn-lg{href: '#'}
-          = t('.clear_search')
-
       %input.form-control{name: 'q', type: 'hidden' }
+
+      %span.input-group-btn
+        %button#artifacts_search_btn.btn.btn-default.btn-lg{type: "submit", value: 'submit'}
+          %i.fa.fa-search
+          = t('.search')
+
+        %a#artifacts_search_clear.btn.btn-default.btn-clear.btn-lg{href: artifacts_path}
+          %i.fa.fa-times
+          = t('.clear_search')
 
   .row.search-filters.container-fluid
     %form.input-group.filters.text-center

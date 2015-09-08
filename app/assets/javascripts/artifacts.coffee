@@ -205,17 +205,6 @@ $(document).on 'page:change', ->
     $('form#artifact_search_form').submit ->
       updateFormParameters()
 
-    # Clear form
-    $('button#artifacts_search_clear').click (e) ->
-      input = $('#artifact_search')[0]
-      input.value = ''
-
-      for field in artifact_search_fields
-        if $("##{field}").is(':checked')
-          $("##{field}").attr('checked', false)
-
-      e.preventDefault()
-
   # ------ search filters
   for filter in artifact_search_fields
     $("input.filter[name='checkbox_#{filter}']").attr('checked', String(window.location).match(filter + '='))
