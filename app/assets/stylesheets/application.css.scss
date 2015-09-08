@@ -275,12 +275,12 @@ label.filter {
 /*  _artifact_tags */
 .label-app {
   background-color: $hot;
-  color: #222;
+  a { color: $white; }
   transition: 0.4s;
 }
 
 .label-app:hover {
-  background-color: $hoty;
+  background-color: $hotter;
 }
 
 .label-tag {
@@ -301,6 +301,12 @@ label.filter {
 
 .label-format:hover {
   background-color: $darker;
+}
+
+.label-delete {
+  padding-right: 10px;
+  margin-left: -2px;
+  a { color: #aaa; }
 }
 
 .big-tags {

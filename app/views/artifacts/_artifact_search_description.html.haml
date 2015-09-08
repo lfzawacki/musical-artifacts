@@ -1,13 +1,29 @@
--if (params.keys & ['apps', 'tags', 'formats', 'license']).present?
+- search_fields = Artifact.search_fields + ['q']
+
+- if (params.keys & ['apps', 'tags', 'formats', 'license']).present?
   .tags-description.pad-bottom
     = t('.filtering')
     - ['apps', 'tags', 'formats'].each do |field|
       - if params[field].present?
-        - split_param_terms(params[field]).each do |tag|
+        - split_params = split_param_terms(params[field])
+        - split_params.each do |tag|
+
+          - # TODO: this is getting ugly fast, refactor into helpers
+          - content_without_tag = split_params - [tag]
+          - new_search = params.slice(*search_fields)
+
+          - if content_without_tag.present?
+            - new_search.merge!(field => content_without_tag.join(','))
+          - else
+            - new_search.delete(field)
+
           .label.label-big{class: "label-#{field.singularize}"}= tag
+          %span.label-delete= link_to '×', artifacts_path(new_search)
 
     - if params[:license].present?
       = image_tag License.type_image(params[:license], true)
+      %span.label-delete= link_to '×', artifacts_path(params.slice(*search_fields).except(:license))
+
 
 - if (params[:q].present? || params[:page].present?)
   .page.pad-bottom
