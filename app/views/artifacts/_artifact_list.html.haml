@@ -11,7 +11,7 @@
 
     .artifact-content.pad-top
       %p.small
-        = artifact.description.truncate(480)
+        = strip_tags(artifact.description_html).truncate(480)
 
     %p.more-info
       = link_to t('.more_info'), artifact_path(artifact)
