@@ -126,21 +126,30 @@ class ArtifactsControllerTest < ActionController::TestCase
   test "should download artifact with correct link" do
     @artifact.update_attributes(file: fixture_file('example.gx'))
 
-    get :download, id: @artifact, filename: 'example.gx'
+    assert_difference('StoredFile.last.download_count', 1) do
+      get :download, id: @artifact, filename: 'example.gx'
+    end
+
     assert_response :success
   end
 
   test "should render 404 with wrong link" do
     @artifact.update_attributes(file: fixture_file('example.gx'))
 
-    get :download, id: @artifact, filename: 'inexistent.gx'
+    assert_difference('StoredFile.last.download_count', 0) do
+      get :download, id: @artifact, filename: 'inexistent.gx'
+    end
+
     assert_response 404
   end
 
   test "should not download artifact if downloadable=false" do
     @artifact.update_attributes(file: fixture_file('example.gx'), downloadable: false)
 
-    get :download, id: @artifact, filename: 'example.gx'
+    assert_difference('StoredFile.last.download_count', 0) do
+      get :download, id: @artifact, filename: 'example.gx'
+    end
+
     assert_redirected_to artifact_path(@artifact)
     assert_equal flash[:notice], I18n.t('_other.access_denied')
   end
@@ -148,7 +157,10 @@ class ArtifactsControllerTest < ActionController::TestCase
   test "should not download artifact if approved=false" do
     @artifact.update_attributes(file: fixture_file('example.gx'), approved: false)
 
-    get :download, id: @artifact, filename: 'example.gx'
+    assert_difference('StoredFile.last.download_count', 0) do
+      get :download, id: @artifact, filename: 'example.gx'
+    end
+
     assert_redirected_to artifact_path(@artifact)
     assert_equal flash[:notice], I18n.t('_other.access_denied')
   end
@@ -157,7 +169,10 @@ class ArtifactsControllerTest < ActionController::TestCase
     sign_in(@user)
     @artifact.update_attributes(file: fixture_file('example.gx'), downloadable: false)
 
-    get :download, id: @artifact, filename: 'example.gx'
+    assert_difference('StoredFile.last.download_count', 0) do
+      get :download, id: @artifact, filename: 'example.gx'
+    end
+
     assert_redirected_to artifact_path(@artifact)
     assert_equal flash[:notice], I18n.t('_other.access_denied')
   end
@@ -166,7 +181,10 @@ class ArtifactsControllerTest < ActionController::TestCase
     sign_in(@admin)
     @artifact.update_attributes(file: fixture_file('example.gx'), downloadable: false)
 
-    get :download, id: @artifact, filename: 'example.gx'
+    assert_difference('StoredFile.last.download_count', 1) do
+      get :download, id: @artifact, filename: 'example.gx'
+    end
+
     assert_response :success
   end
 

@@ -36,6 +36,8 @@ class ArtifactsController < InheritedResources::Base
 
       # Pathname is necessary for X-Send-File to work with Capistrano sym-links
       send_file Pathname(file.path).realdirpath, file_params
+
+      file.increment!(:download_count)
     else
       render :file => "#{Rails.root}/public/404.html", :status => 404
     end
