@@ -27,6 +27,7 @@ types = {
   gz: 'application/x-gzip',
   tar: 'application/x-tar',
   tgz: 'application/x-gzip',
+  xz: 'application/x-xz-compressed-tar',
 
   wav: 'audio/x-wav',
   mp3: 'audio/mpeg',

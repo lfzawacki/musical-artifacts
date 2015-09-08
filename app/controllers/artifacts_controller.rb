@@ -81,7 +81,6 @@ class ArtifactsController < InheritedResources::Base
     def sanitize_filename_from_params
       # Since users can input the 'filename' just reject dangerous stuff like './' and '../' paths
       filename = params[:filename].clone unless /(?:^|\/)[.]{1,2}(?:\/|$)|^\/.*/.match(params[:filename])
-      filename += ".#{params[:format].clone}" if params[:format].present?
       filename
     end
 
