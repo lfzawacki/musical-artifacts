@@ -53,6 +53,8 @@ class ArtifactsController < InheritedResources::Base
     end
 
     def search_artifacts
+      remove_duplicated_tags_from_searches # HACKY, read the comments above this method
+
       @artifacts = Artifact.approved
 
       # searches by hash, tags, apps, licenses, formats
@@ -95,4 +97,36 @@ class ArtifactsController < InheritedResources::Base
         redirect_to artifacts_path(), notice: t('_other.access_denied')
       end
     end
+
+    # Chaining acts_as_taggable_on searches like we're doing ends up with a
+    # "PG::DuplicateAlias: ERROR: table name" if two tag categories are queried for the same value.
+    # For example {'tags': 'sfz', 'formats': 'sfz'}
+    # Generally this kind of search is not the most sensical, so we'll just remove one and try to make the right
+    # choice, because the application breaks with a 500 error otherwise
+    # TODO: there's probably some ruby magic that can be done to DRY this up
+    def remove_duplicated_tags_from_searches
+      tag_fields = [:tags, :apps, :formats]
+      counts = {}
+      reversed = {}
+
+      # count repetitions
+      tag_fields.each do |key|
+        reversed[params[key]] ||= []
+        counts[params[key]] ||= 0
+
+        reversed[params[key]] += [key]
+        counts[params[key]] += 1
+      end
+
+      # delete repetitions from parameters
+      counts.each do |val, count|
+        if val != nil
+          2.upto(count) do |i|
+            Rails.logger.info " *** [PG::DuplicateAlias] deleting duplicated param #{reversed[val][i-1]}"
+            params.delete(reversed[val][i-1])
+          end
+        end
+      end
+    end
+
 end
