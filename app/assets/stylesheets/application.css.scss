@@ -275,7 +275,8 @@ label.filter {
 /*  _artifact_tags */
 .label-app {
   background-color: $hot;
-  a { color: $white; }
+  color: $darker;
+  a { color: $darker; }
   transition: 0.4s;
 }
 
