@@ -10,7 +10,10 @@ Musical Artifacts is a web application with the objective of helping musicians f
 
 # Why?
 
-Artists want to work with art. Musiciains want to make music. When I found myself struggling to find the samples I needed online and when I saw that some free music libraries that I had in my hard drive where now almost impossible to retrieve online I had the idea of creating this application. Let musicians find what they're looking for quicker so that they have more time to work on their craft.
+Artists want to work with art.
+Musicians want to make music.
+
+I had the idea of creating this application when I found myself struggling to find the samples I needed online and saw that some free music libraries that I had in my hard drive where now almost impossible to find anywhere. Let musicians find what they're looking for quicker so that they have more time to work on their craft.
 
 Another big concern is to promote resources which are **free** but also use **open licenses** and are not restrictive of derivative works or distribution. Artists tend to be protective of their intelectual creations and more often than not want to limit the kind of uses or distribution that is made of it, which in turn creates situations where if the original creator is gone or doesn't care anymore his contributions could get lost in the ether of the web. That is why **open licensing** and **preserving** the artifacts is a vital part of this project.
 
