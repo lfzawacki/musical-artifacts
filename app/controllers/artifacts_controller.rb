@@ -105,7 +105,7 @@ class ArtifactsController < InheritedResources::Base
     # choice, because the application breaks with a 500 error otherwise
     # TODO: there's probably some ruby magic that can be done to DRY this up
     def remove_duplicated_tags_from_searches
-      tag_fields = [:tags, :apps, :formats]
+      tag_fields = [:q, :tags, :apps, :formats]
       counts = {}
       reversed = {}
 
