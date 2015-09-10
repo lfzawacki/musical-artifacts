@@ -1,5 +1,10 @@
 .row
 
+  = link_to t('info.about.new_artifact_url') do
+    %i.fa.fa-question-circle
+  %span.new-artifact-help
+    = t('.new_artifact_help_html', link: t('info.about.new_artifact_url'))
+
   = form_for(@artifact) do |f|
     - if @artifact.errors.any?
       #error_explanation

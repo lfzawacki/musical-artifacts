@@ -50,6 +50,8 @@ en:
         hash: File with hash...
         formats: With format...
       search_description: "Search results for \"%{query}\""
+    form:
+      new_artifact_help_html: "Need tips on how to create a good artifact? <a target=\"_blank\" href=\"%{link}\">Read this!</a>"
 
     artifact_search_description:
       filtering: Filtering by
@@ -79,6 +81,7 @@ en:
 
   info:
     about:
+      new_artifact_url: https://github.com/lfzawacki/musical-artifacts/wiki/Creating-a-new-artifact
 
     contact:
       description: Don't forget to leave an email so we can contact you back.
