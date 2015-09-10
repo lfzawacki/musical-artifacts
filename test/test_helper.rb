@@ -6,6 +6,9 @@ require 'minitest/rails/capybara'
 require 'html_reporter'
 require 'forgery'
 
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 reporter_options = { color: true }
 Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new, Minitest::Reporters::HtmlReporter.new]
 
