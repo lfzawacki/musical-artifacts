@@ -2,7 +2,7 @@ Musical Artifacts
 ---------------------------
 Helping to catalog, preserve and free the artifacts you need to produce music.
 
-[![](https://travis-ci.org/lfzawacki/musical-artifacts.svg?branch=master)](https://travis-ci.org/lfzawacki/musical-artifacts) [![](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/gpa.svg)](https://codeclimate.com/github/lfzawacki/musical-artifacts) [![](https://hakiri.io/github/lfzawacki/musical-artifacts/master.svg)](https://hakiri.io/github/lfzawacki/musical-artifacts/master) [![](http://inch-ci.org/github/lfzawacki/musical-artifacts.svg?branch=master)](https://inch-ci.org/github/lfzawacki/musical-artifacts) [Read the docs](https://github.com/lfzawacki/musical-artifacts/wiki)
+[![](https://travis-ci.org/lfzawacki/musical-artifacts.svg?branch=master)](https://travis-ci.org/lfzawacki/musical-artifacts) [![](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/gpa.svg)](https://codeclimate.com/github/lfzawacki/musical-artifacts) [![Test Coverage](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/coverage.svg)](https://codeclimate.com/github/lfzawacki/musical-artifacts/coverage) [![](https://hakiri.io/github/lfzawacki/musical-artifacts/master.svg)](https://hakiri.io/github/lfzawacki/musical-artifacts/master) [![](http://inch-ci.org/github/lfzawacki/musical-artifacts.svg?branch=master)](https://inch-ci.org/github/lfzawacki/musical-artifacts) [Read the docs](https://github.com/lfzawacki/musical-artifacts/wiki)
 
 # What?
 
