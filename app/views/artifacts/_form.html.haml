@@ -8,7 +8,7 @@
   = form_for(@artifact) do |f|
     - if @artifact.errors.any?
       #error_explanation
-        %h2
+        %h4
           = pluralize(@artifact.errors.count, "error")
           prohibited this artifact from being saved:
         %ul

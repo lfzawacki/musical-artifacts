@@ -7,8 +7,31 @@ class ArtifactTest < ActiveSupport::TestCase
     @no_file = FactoryGirl.create(:artifact)
   end
 
-  test 'validations' do
-    skip
+  test 'validate name presence on create' do
+    artifact = FactoryGirl.build(:artifact, name: nil)
+
+    artifact.save
+    assert !artifact.valid?
+
+    assert_includes artifact.errors, :name
+  end
+
+  test 'validate license presence on create' do
+    artifact = FactoryGirl.build(:artifact, license: nil)
+
+    artifact.save
+    assert !artifact.valid?
+
+    assert_includes artifact.errors, :license
+  end
+
+  test 'validates author presence on create' do
+    artifact = FactoryGirl.build(:artifact, author: nil)
+
+    artifact.save
+    assert !artifact.valid?
+
+    assert_includes artifact.errors, :author
   end
 
   test '.generate_file_hash' do
