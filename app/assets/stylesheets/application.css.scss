@@ -438,6 +438,12 @@ header .intro-text .name {
     font-weight: 700;
 }
 
+header .documentation-link {
+  a { color: $white; }
+
+  padding-top: 2em;
+}
+
 header .intro-text .skills {
     font-size: 1.25em;
     font-weight: 300;

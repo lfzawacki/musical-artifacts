@@ -90,6 +90,9 @@ en:
 
   info:
     about:
+      documentation: "Read the wiki for the 'long story'"
+      documentation_url: https://github.com/lfzawacki/musical-artifacts/wiki/Home
+
       new_artifact_url: https://github.com/lfzawacki/musical-artifacts/wiki/Creating-a-new-artifact
 
     contact:
