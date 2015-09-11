@@ -7,6 +7,20 @@ class ShowInfoTest < Capybara::Rails::TestCase
     @user = FactoryGirl.create(:user, email: 'vinnie@dio.io', password: 'holydiver')
   end
 
+  test "show user email and salutation when logged in (user)" do
+    login_with(@user, 'holydiver')
+    visit '/'
+
+    assert_link page, I18n.t('layouts.application.current_user', user: @user.email), my_artifacts_path
+  end
+
+  test "show user email and salutation when logged in (admin)" do
+    login_with(@admin, 'sunsetsuperman')
+    visit '/'
+
+    assert_link page, I18n.t('layouts.application.current_user', user: @admin.email), my_artifacts_path
+  end
+
   test "show about link on main page" do
     visit '/'
 
@@ -52,6 +66,39 @@ class ShowInfoTest < Capybara::Rails::TestCase
     visit '/'
 
     assert_no_link page, admin_root_path, '1'
+  end
+
+  test "show number of artifacts for an admin (2, 1 for other user)" do
+    login_with @admin, 'sunsetsuperman'
+
+    FactoryGirl.create(:artifact, user: @user)
+    FactoryGirl.create(:artifact, user: @admin)
+    FactoryGirl.create(:artifact, user: @admin)
+
+    visit '/'
+
+    assert_link page, '2', my_artifacts_path
+  end
+
+  test "show number of artifacts for a user (none)" do
+    login_with @user, 'holydiver'
+
+    visit '/'
+
+    assert_link page, '0', my_artifacts_path
+  end
+
+  test "show number of artifacts for a user (3, 1 for other user)" do
+    login_with @user, 'holydiver'
+
+    FactoryGirl.create(:artifact, user: @user)
+    FactoryGirl.create(:artifact, user: @user)
+    FactoryGirl.create(:artifact, user: @user)
+    FactoryGirl.create(:artifact, user: @admin)
+
+    visit '/'
+
+    assert_link page, '3', my_artifacts_path
   end
 
   test "show logout link for normal user" do

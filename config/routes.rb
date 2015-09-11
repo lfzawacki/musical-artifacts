@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: "artifacts#index"
 
   devise_for :users, ActiveAdmin::Devise.config.merge(:path => 'users')
+  get 'my_artifacts', to: 'users#show', as: :my_artifacts
 
   resources :artifacts
   get '/artifacts/:id/*filename', to: 'artifacts#download', as: :artifact_download, format: false

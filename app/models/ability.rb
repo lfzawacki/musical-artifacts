@@ -19,6 +19,8 @@ class Ability
       end
 
       can :create, Artifact
+
+      can :show, User
     end
 
   end

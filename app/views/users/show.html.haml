@@ -1,0 +1,12 @@
+= content_for :title, t('.your_artifacts')
+
+.row
+  %h3= t('.your_artifacts')
+
+  %p= t('.description', user: @user.email)
+
+.row.pad-top
+  = render 'artifacts/artifact_list'
+
+.row.pad-bottom
+  = paginate @artifacts, :left => 10, :right => 10

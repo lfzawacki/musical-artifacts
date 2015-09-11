@@ -34,6 +34,17 @@
             %li.hidden
               %a{:href => "#page-top"}
 
+            - if current_user.present?
+              %li
+                = link_to my_artifacts_path do
+                  %span.badge.badge-artifacts= current_user.artifacts.count
+                  = t('.current_user', user: current_user.email)
+
+              %li= link_to t('_other.logout'), destroy_user_session_path
+            - else
+              %li= link_to t('_other.login'), new_user_session_path
+              %li= link_to t('_other.sign_up'), new_user_registration_path
+
             - if can? :edit, @setting
               %li= link_to t('.settings'), settings_path
 
@@ -43,12 +54,6 @@
                   - if @unapproved_artifacts.present?
                     %span.badge.badge-unapproved= @unapproved_artifacts
                   = t('.admin')
-
-            - if current_user.present?
-              %li= link_to t('_other.logout'), destroy_user_session_path
-            - else
-              %li= link_to t('_other.login'), new_user_session_path
-              %li= link_to t('_other.sign_up'), new_user_registration_path
 
             %li= link_to t('_other.about'), info_about_path
             %li= link_to t('_other.contact'), info_contact_path

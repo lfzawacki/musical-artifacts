@@ -17,9 +17,9 @@
       = link_to t('.more_info'), artifact_path(artifact)
 
     .artifact-tags
-      = render 'artifact_tags', artifact: artifact
+      = render 'artifacts/artifact_tags', artifact: artifact
 
     .artifact-license
       = display_license(artifact, small: true)
 
-    = render partial: 'buttons', locals: { artifact: artifact }
+    = render partial: 'artifacts/buttons', locals: { artifact: artifact }

@@ -14,6 +14,7 @@ en:
     application:
       settings: Settings
       admin: Admin
+      current_user: "Hey %{user}!"
 
   licenses:
     link:
@@ -77,6 +78,11 @@ en:
     create:
       success: Artifact was successfully created.
       not_approved: Your artifact was created and is waiting moderation.
+
+  users:
+    show:
+      your_artifacts: Your Musical Artifacts
+      description: "Hey, %{user}! Here are all the artifacts you have registered on the site."
 
   settings:
     edit:
