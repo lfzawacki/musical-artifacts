@@ -15,8 +15,33 @@ class ArtifactsControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
+
     assert_response :success
     assert_not_nil assigns(:artifacts)
+    assert_equal assigns(:artifacts).size, 1
+  end
+
+  test "should get index with 3 artifacts" do
+    FactoryGirl.create(:artifact)
+    FactoryGirl.create(:artifact)
+
+    get :index
+
+    assert_response :success
+    assert_not_nil assigns(:artifacts)
+    assert_equal assigns(:artifacts).size, 3
+  end
+
+  test "should get index and not include unapproved" do
+    FactoryGirl.create(:artifact)
+    unapproved = FactoryGirl.create(:artifact, approved: false)
+
+    get :index
+
+    assert_response :success
+    assert_not_nil assigns(:artifacts)
+    assert_equal assigns(:artifacts).size, 2
+    refute_includes assigns(:artifacts), unapproved
   end
 
   test "different kinds of searches" do
@@ -67,7 +92,7 @@ class ArtifactsControllerTest < ActionController::TestCase
         { name: 'Death metal riffs', author: 'Mikael', description: 'Bathory like death metal riffs', license_id: @by.id }
     end
 
-    assert_redirected_to artifacts_path
+    assert_redirected_to artifact_path(assigns(:artifact))
     assert_equal flash[:notice], I18n.t('artifacts.create.not_approved')
     assert_equal Artifact.last.user, @user
   end
@@ -92,6 +117,15 @@ class ArtifactsControllerTest < ActionController::TestCase
     get :show, id: @artifact
     assert_redirected_to artifacts_path
     assert_equal flash[:notice], I18n.t('_other.access_denied')
+  end
+
+  test "should show unapproved artifact to artifact's creator" do
+    sign_in(@user)
+    @artifact.update_attributes approved: false, user: @user
+
+    get :show, id: @artifact
+
+    assert_response :success
   end
 
   test "should get edit as admin" do
@@ -188,24 +222,33 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "creator should download artifact no matter what" do
+    sign_in(@user)
+    @artifact.update_attributes(user: @user, file: fixture_file('example.gx'), approved: false, downloadable: false)
+
+    assert_difference('StoredFile.last.download_count', 1) do
+      get :download, id: @artifact, filename: 'example.gx'
+    end
+
+    assert_response :success
+  end
+
   test "should update artifact as admin" do
     sign_in(@admin)
 
-    patch :update, id: @artifact, artifact:
-      { author: @artifact.author, description: @artifact.description,
-        file_hash: @artifact.file_hash, name: @artifact.name }
+    author = 'Coheed'
+    patch :update, id: @artifact, artifact: { author: author }
 
-    assert_redirected_to artifact_path(assigns(:artifact))
+    assert_redirected_to artifact_path(@artifact)
+    assert_equal assigns(:artifact).author, author
   end
 
   test "should not update artifact as normal user" do
     sign_in(@user)
 
-    patch :update, id: @artifact, artifact:
-      { author: @artifact.author, description: @artifact.description,
-        file_hash: @artifact.file_hash, name: @artifact.name }
+    patch :update, id: @artifact, artifact: { author: @artifact.author }
 
-    assert_redirected_to artifact_path(@artifact)
+    assert_redirected_to artifact_path(assigns(:artifact))
     assert_equal flash[:notice], I18n.t('_other.access_denied')
   end
 
@@ -213,11 +256,22 @@ class ArtifactsControllerTest < ActionController::TestCase
     sign_in(@user)
     @artifact.update_attributes user: @user
 
-    patch :update, id: @artifact, artifact:
-      { author: @artifact.author, description: @artifact.description,
-        file_hash: @artifact.file_hash, name: @artifact.name }
+    new_desc = 'So bye bye world'
+    patch :update, id: @artifact, artifact: { description: new_desc }
 
     assert_redirected_to artifact_path(assigns(:artifact))
+    assert_equal assigns(:artifact).description, new_desc
+  end
+
+  test "should update unapproved artifact as normal user who is the creator" do
+    sign_in(@user)
+    @artifact.update_attributes user: @user, approved: false
+
+    new_desc = 'What did I do to deserve? OOOOOH-OOOOH-OH-OH-OOOOH'
+    patch :update, id: @artifact, artifact: { description: new_desc }
+
+    assert_redirected_to artifact_path(assigns(:artifact))
+    assert_equal assigns(:artifact).description, new_desc
   end
 
   test "should not destroy artifact as normal user" do

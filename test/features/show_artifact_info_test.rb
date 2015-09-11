@@ -43,6 +43,16 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_no_link I18n.t('_other.destroy')
   end
 
+  test "see warning if artifact is unapproved" do
+    login_with(@user, 'musicalbox')
+
+    @artifact.update_attributes(user: @user, approved: false, file: fixture_file('example.gx'))
+
+    visit artifact_path(@artifact)
+    assert_content page, I18n.t('artifacts.show.unapproved')
+    assert_link I18n.t('artifacts.buttons.download')
+  end
+
   test "see download button if file is present" do
     @artifact.update_attributes(file: fixture_file('example.gx'))
 

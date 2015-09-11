@@ -1,5 +1,8 @@
 - content_for :title, @artifact.name
 
+- if !@artifact.approved?
+  %p.alert.alert-warning.unapproved= t('.unapproved')
+
 %h1= @artifact.name
 %p.small
   = t('_other.by')
