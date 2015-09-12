@@ -8,6 +8,8 @@ ActiveAdmin.register StoredFile do
     column :format
     column :compressed
     column :artifact
+    column :download_count
+    column :file_list
     actions
   end
 
