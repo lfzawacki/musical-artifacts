@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  # Normal form authentication
+  protect_from_forgery with: :exception, unless: :is_api_call?
+  # API specific authentication
+  before_action :api_authenticate, if: :is_api_call?
 
   before_filter :load_settings
   before_filter :count_unapproved_artifacts
@@ -20,6 +22,23 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  # Extracted from the Knock::Authenticatable module because it interfered with devise
+  # https://github.com/nsarno/knock/blob/master/lib/knock/authenticable.rb#L4
+  def api_authenticate
+    begin
+      token = request.headers['Authorization'].split(' ').last
+      @current_user = Knock::AuthToken.new(token: token).current_user
+    rescue
+      head :unauthorized
+    end
+  end
+
+  # Test for write calls which are JSON, so that we authenticate
+  # with JWT using it instead of  Devise via HTTP
+  def is_api_call?
+    request.method == 'POST' && request.format == 'json'
+  end
+
   def load_settings
     @setting = Setting.first
   end

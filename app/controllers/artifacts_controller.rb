@@ -1,9 +1,9 @@
 class ArtifactsController < InheritedResources::Base
-  before_filter :set_software, only: [:index]
 
   load_and_authorize_resource
   rescue_from CanCan::AccessDenied, with: :handle_access_denied
 
+  before_filter :set_software, only: [:index]
   before_filter :load_tag_filters, only: [:index]
   before_filter :search_artifacts, only: [:index]
 
@@ -12,7 +12,7 @@ class ArtifactsController < InheritedResources::Base
   def create
     if cannot?(:approve, @artifact)
       @artifact.update_attributes approved: false, user: current_user
-      create!(notice: I18n.t('artifacts.create.not_approved')) { artifact_path(@artifact) }
+      create!(notice: I18n.t('artifacts.create.not_approved'))
     else
       @artifact.update_attributes user: current_user
       create!

@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
 
   # Artifacts created by this user
   has_many :artifacts
+
+  # For knock api auth
+  def authenticate pass
+    valid_password? pass
+  end
 end
