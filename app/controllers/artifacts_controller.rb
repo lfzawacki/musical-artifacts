@@ -1,13 +1,15 @@
 class ArtifactsController < InheritedResources::Base
-
   load_and_authorize_resource
   rescue_from CanCan::AccessDenied, with: :handle_access_denied
 
-  before_filter :set_software, only: [:index]
-  before_filter :load_tag_filters, only: [:index]
-  before_filter :search_artifacts, only: [:index]
-
+  # For API calls
   respond_to :json
+
+  before_filter only: [:index] do
+    load_tag_filters
+    search_artifacts
+    paginate unless request.format == 'json'
+  end
 
   def create
     if cannot?(:approve, @artifact)
@@ -65,6 +67,9 @@ class ArtifactsController < InheritedResources::Base
       @artifacts = Searches.artifacts_with_file_format(@artifacts, params[:formats])
 
       @artifacts = Searches.artifacts_by_metadata(@artifacts, params[:q])
+    end
+
+    def paginate
       @artifacts = @artifacts.page(params[:page]).per(20).order('created_at DESC')
     end
 
@@ -76,10 +81,6 @@ class ArtifactsController < InheritedResources::Base
       }
       @licenses = License.license_types - ['copyright']
       @copyright = License.find('copyright') # always the black sheep
-    end
-
-    def set_software
-      @software = params[:app]
     end
 
     def sanitize_filename_from_params
