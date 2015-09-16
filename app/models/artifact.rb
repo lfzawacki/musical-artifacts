@@ -15,7 +15,7 @@ class Artifact < ActiveRecord::Base
 
     has_many :stored_files
 
-    validates :name, presence: true
+    validates :name, presence: true, uniqueness: true
     validates :author, presence: true
 
     validates :license, presence: true

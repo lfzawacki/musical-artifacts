@@ -16,6 +16,20 @@ class ArtifactTest < ActiveSupport::TestCase
     assert_includes artifact.errors, :name
   end
 
+  test 'validates name is unique on create' do
+    artifact1 = FactoryGirl.build(:artifact, name: 'Volte-face')
+    artifact2 = FactoryGirl.build(:artifact, name: 'Volte-face')
+
+    artifact1.save
+    assert artifact1.valid?
+    assert artifact1.persisted?
+
+    artifact2.save
+    assert !artifact2.valid?
+
+    assert_includes artifact2.errors, :name
+  end
+
   test 'validate license presence on create' do
     artifact = FactoryGirl.build(:artifact, license: nil)
 
