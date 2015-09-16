@@ -26,7 +26,7 @@ initialize_select = (field_id, url) ->
       data: (term, page) ->
         q: term
       results: (data, page) ->
-        results: data
+        results: data.map (term) -> {id: term, text: term}
 
   $(field_id).ready ->
     values = []
@@ -219,7 +219,7 @@ $(document).on 'page:change', ->
 
   # ------ _form
   initialize_select '#artifact_tag_list', '/searches/tags'
-  initialize_select '#artifact_software_list', '/searches/software'
+  initialize_select '#artifact_software_list', '/searches/apps'
   initialize_select '#artifact_file_format_list', '/searches/file_formats'
 
   if $('#artifact_license_id')[0]
