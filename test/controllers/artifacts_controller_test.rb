@@ -44,14 +44,6 @@ class ArtifactsControllerTest < ActionController::TestCase
     refute_includes assigns(:artifacts), unapproved
   end
 
-  test "different kinds of searches" do
-    skip
-  end
-
-  test ".json searches" do
-    skip
-  end
-
   test "should ask for login on new" do
     get :new
     assert_redirected_to new_user_session_path
@@ -292,11 +284,119 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_redirected_to artifacts_path
   end
 
-  test "should render show in json format" do
-    skip
+  #
+  # -- JSON API tests
+  #
+  def api_authenticate user
+    token = Knock::AuthToken.new(payload: { sub: user.id }).token
+    request.env['HTTP_AUTHORIZATION'] = "bearer #{token}"
+  end
+
+  def json_body
+    JSON.parse(response.body)
   end
 
   test "should render index in json format" do
-    skip
+    get :index, format: :json
+    assert_response :success
+    assert_equal json_body.size, 1
   end
+
+  test ".json simple search" do
+    FactoryGirl.create(:artifact, name: 'Sunset Superman')
+    FactoryGirl.create(:artifact, name: 'Two Suns in the Sunset')
+    get :index, q: 'sunset', format: :json
+
+    assert_response :success
+    assert_equal json_body.size, 2
+  end
+
+  test "should render show in json format" do
+    get :show, id: @artifact.id, format: :json
+    assert_response :success
+  end
+
+  test "should not create without api_authenticate" do
+    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+
+    assert_difference('Artifact.count', 0) do
+      post :create, artifact: params, format: :json
+    end
+
+    assert_response :unauthorized
+  end
+
+  test "should create an artifact with valid params" do
+    api_authenticate(@user)
+    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+
+    assert_difference('Artifact.count', 1) do
+      post :create, artifact: params, format: :json
+    end
+
+    assert_response :success
+    assert_equal Artifact.last.user, @user
+    assert_equal Artifact.last.approved, false
+    assert_equal json_body['name'], params[:name]
+    assert_equal json_body['author'], params[:author]
+    assert_equal json_body['license_id'], params[:license_id]
+  end
+
+  test "should create an artifact with tags and app tags" do
+    api_authenticate(@user)
+
+    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    params.merge!({tag_list: 'guitar, heavy metal', software_list: 'guitarix'})
+
+    assert_difference('Artifact.count', 1) do
+      post :create, artifact: params, format: :json
+    end
+
+    assert_response :success
+    assert_includes Artifact.last.tag_list, 'guitar'
+    assert_includes Artifact.last.tag_list, 'heavy metal'
+    assert_includes Artifact.last.software_list, 'guitarix'
+  end
+
+  test "should create an artifact with tags, app tags and file" do
+    api_authenticate(@user)
+
+    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    params.merge!({tag_list: 'synth, wubwub, bass', software_list: 'helm'})
+
+    assert_difference('Artifact.count', 1) do
+      post :create, artifact: params, format: :json
+    end
+
+    assert_response :success
+
+    assert_includes Artifact.last.tag_list, 'synth'
+    assert_includes Artifact.last.tag_list, 'wubwub'
+    assert_includes Artifact.last.tag_list, 'bass'
+    assert_includes Artifact.last.software_list, 'helm'
+  end
+
+  test "should not create an artifact with invalid params (missing author)" do
+    api_authenticate(@user)
+
+    assert_difference('Artifact.count', 0) do
+      post :create, artifact: {name: 'Van Der Graaf Generation', license_id: @by.id}, format: :json
+    end
+
+    assert_response :unprocessable_entity
+    refute_nil json_body['errors']['author']
+  end
+
+  test "should not create an artifact with invalid params (missing license_id, name)" do
+    api_authenticate(@user)
+
+    assert_difference('Artifact.count', 0) do
+      post :create, artifact: {author: 'An music software user'}, format: :json
+    end
+
+    assert_response :unprocessable_entity
+    refute_nil json_body['errors']['license']
+    refute_nil json_body['errors']['name']
+  end
+
 end
