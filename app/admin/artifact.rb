@@ -25,14 +25,14 @@ ActiveAdmin.register Artifact do
       f.input :downloadable
       f.input :author
       f.input :file_hash
-      f.input :mirrors, input_html: { value: f.artifact.mirrors.join(',') }
-      f.input :more_info_urls, input_html: { value: f.artifact.more_info_urls.join(',') }
+      f.input :mirrors, input_html: { value: f.artifact.mirrors.try(:join, ',') }
+      f.input :more_info_urls, input_html: { value: f.artifact.more_info_urls.try(:join, ',') }
       f.input :license
       f.input :extra_license_text, as: :text
       f.input :stored_files
-      f.input :tag_list, input_html: { value: f.artifact.tag_list.join(',') }
-      f.input :software_list, input_html: { value: f.artifact.software_list.join(',') }
-      f.input :file_format_list, input_html: { value: f.artifact.file_format_list.join(',') }
+      f.input :tag_list, input_html: { value: f.artifact.tag_list.try(:join, ',') }
+      f.input :software_list, input_html: { value: f.artifact.software_list.try(:join, ',') }
+      f.input :file_format_list, input_html: { value: f.artifact.file_format_list.try(:join, ',') }
     end
     f.actions
   end
