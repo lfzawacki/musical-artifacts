@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   # Test for write calls which are JSON, so that we authenticate
   # with JWT using it instead of  Devise via HTTP
   def is_api_call?
-    request.method == 'POST' && request.format == 'json'
+    ['POST', 'PUT'].include?(request.method) && request.format == 'application/json'
   end
 
   def load_settings

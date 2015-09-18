@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :searches, only: [], defaults: { format: :json } do
     collection do
       get :tags
-      get '/apps', to: :software
+      get '/apps', action: :software
       get :file_formats
     end
   end

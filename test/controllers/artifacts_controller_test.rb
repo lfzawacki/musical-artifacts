@@ -339,7 +339,7 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_equal Artifact.last.approved, false
     assert_equal json_body['name'], params[:name]
     assert_equal json_body['author'], params[:author]
-    assert_equal json_body['license_id'], params[:license_id]
+    assert_equal json_body['license'], @by.short_name
   end
 
   test "should create an artifact with tags and app tags" do
