@@ -67,6 +67,10 @@ en:
     buttons:
       download: Download
       download_mirror: Download from (%{domain})
+      download_count:
+        one: Downloaded once.
+        other: Downloaded %{count} times.
+
     wayback_links:
       broken: Broken external links? Click to try links for the Wayback Machine.
       original: Go back to seeing the original links.

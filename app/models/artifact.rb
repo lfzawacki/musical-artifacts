@@ -126,7 +126,7 @@ class Artifact < ActiveRecord::Base
     end
 
     def download_count
-      file.try(:download_count) || 0
+      stored_files.last.try(:download_count) || 0
     end
 
     def download_path
