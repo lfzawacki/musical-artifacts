@@ -8,6 +8,8 @@ en:
     back: Back
     confirm: Are you sure?
     destroy: Destroy
+    signup: Sign Up
+    login: Log in
     logout: Log out
 
   layouts:

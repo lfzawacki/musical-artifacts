@@ -32,7 +32,7 @@ class ActiveSupport::TestCase
 
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: password
-    click_button 'Login'
+    click_button I18n.t('_other.login')
   end
 
 end
