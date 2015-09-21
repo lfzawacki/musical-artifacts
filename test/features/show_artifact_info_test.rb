@@ -53,6 +53,27 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_link I18n.t('artifacts.buttons.download')
   end
 
+  test "see wayback switch link if there's more info urls" do
+    @artifact.update_attributes(mirrors: [], more_info_urls: 'https://eltonjo.hn')
+
+    visit artifact_path(@artifact)
+    assert_link I18n.t('artifacts.wayback_links.broken')
+  end
+
+  test "see wayback switch link if there's mirrors" do
+    @artifact.update_attributes(mirrors: ['https//ghost.bc'], more_info_urls: [])
+
+    visit artifact_path(@artifact)
+    assert_link I18n.t('artifacts.wayback_links.broken')
+  end
+
+  test "don't see wayback switch link if there's no mirrors nor more_info_urls" do
+    @artifact.update_attributes(mirrors: [], more_info_urls: [])
+
+    visit artifact_path(@artifact)
+    assert_no_link I18n.t('artifacts.wayback_links.broken')
+  end
+
   test "see download button if file is present" do
     @artifact.update_attributes(file: fixture_file('example.gx'))
 

@@ -19,3 +19,8 @@
       %li
         %i{class: icon}
         = external_link_to more, more
+
+- if @artifact.more_info_urls.present? || @artifact.mirrors.present?
+
+  .pad-top
+  = render 'wayback_links'
