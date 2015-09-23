@@ -91,7 +91,9 @@ class ArtifactsController < InheritedResources::Base
     end
 
     def handle_access_denied exception
-      if [:edit, :update, :download].include?(exception.action)
+      if request.format.json?
+        head :unauthorized
+      elsif [:edit, :update, :download].include?(exception.action)
         redirect_to artifact_path(@artifact), notice: t('_other.access_denied')
       elsif [:new].include?(exception.action)
         redirect_to new_user_session_path

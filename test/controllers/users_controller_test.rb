@@ -59,4 +59,35 @@ class UsersControllerTest < ActionController::TestCase
     assert_includes assigns(:artifacts), artifacts[2]
   end
 
+  #
+  # -- JSON API tests
+  #
+  test "should not render show in json format without api authentication" do
+    get :show, format: :json
+
+    assert_response :unauthorized
+  end
+
+  test "should render show in json format and with no artifacts" do
+    api_authenticate(@user)
+
+    get :show, format: :json
+
+    assert_response :success
+    assert_equal json_body.size, 0
+  end
+
+  test "should render show in json format and with 2 artifacts" do
+    api_authenticate(@user)
+
+    artifacts = [ FactoryGirl.create(:artifact, user: @user), FactoryGirl.create(:artifact, user: @user) ]
+
+    get :show, format: :json
+
+    assert_response :success
+    assert_equal json_body.size, 2
+    assert_equal artifacts[1].name, json_body[0]['name']
+    assert_equal artifacts[0].name, json_body[1]['name']
+  end
+
 end

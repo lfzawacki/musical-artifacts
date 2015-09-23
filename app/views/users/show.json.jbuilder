@@ -1,0 +1,1 @@
+json.partial! 'artifacts/artifact_list'

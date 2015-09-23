@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # Normal form authentication
   protect_from_forgery with: :exception, unless: :is_api_call?
+
   # API specific authentication
-  before_action :api_authenticate, if: :is_api_call?
+  before_action :api_authenticate
 
   before_filter :load_settings
   before_filter :count_unapproved_artifacts
@@ -25,11 +26,9 @@ class ApplicationController < ActionController::Base
   # Extracted from the Knock::Authenticatable module because it interfered with devise
   # https://github.com/nsarno/knock/blob/master/lib/knock/authenticable.rb#L4
   def api_authenticate
-    begin
+    if current_user.blank? && request.headers['Authorization'].present?
       token = request.headers['Authorization'].split(' ').last
       @current_user = Knock::AuthToken.new(token: token).current_user
-    rescue
-      head :unauthorized
     end
   end
 

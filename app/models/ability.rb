@@ -15,7 +15,7 @@ class Ability
       can :manage, :all if user.admin?
 
       can [:edit, :update, :show, :download], Artifact do |artifact|
-        artifact.user == user
+        artifact.owned_by?(user)
       end
 
       can :create, Artifact

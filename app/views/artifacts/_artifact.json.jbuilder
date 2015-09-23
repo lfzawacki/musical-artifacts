@@ -12,3 +12,7 @@ if @artifact.file.present?
   json.download_count @artifact.download_count
   json.file @artifact.download_path
 end
+
+if @artifact.owned_by?(current_user)
+  json.owner true
+end

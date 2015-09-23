@@ -111,4 +111,15 @@ class ArtifactTest < ActiveSupport::TestCase
     assert_equal @artifact.download_path, "/artifacts/#{@artifact.id}/#{@artifact.file_name}"
   end
 
+  test '.owned_by?(user)' do
+    user = FactoryGirl.create(:user)
+
+    # Better treat the case where user=nil and NOT return true then
+    assert_equal @artifact.owned_by?(nil), false
+    assert_equal @artifact.owned_by?(user), false
+
+    @artifact.update_attributes(user: user)
+
+    assert_equal @artifact.owned_by?(user), true
+  end
 end

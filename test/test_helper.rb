@@ -35,4 +35,12 @@ class ActiveSupport::TestCase
     click_button I18n.t('_other.login')
   end
 
+  def api_authenticate user
+    token = Knock::AuthToken.new(payload: { sub: user.id }).token
+    request.env['HTTP_AUTHORIZATION'] = "bearer #{token}"
+  end
+
+  def json_body
+    JSON.parse(response.body)
+  end
 end

@@ -12,6 +12,9 @@ class Artifact < ActiveRecord::Base
 
     # The creator of the artifact on the site, not the author
     belongs_to :user
+    def owned_by?(user)
+      self.user.present? && self.user == user
+    end
 
     has_many :stored_files
 

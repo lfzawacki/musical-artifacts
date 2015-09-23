@@ -287,15 +287,6 @@ class ArtifactsControllerTest < ActionController::TestCase
   #
   # -- JSON API tests
   #
-  def api_authenticate user
-    token = Knock::AuthToken.new(payload: { sub: user.id }).token
-    request.env['HTTP_AUTHORIZATION'] = "bearer #{token}"
-  end
-
-  def json_body
-    JSON.parse(response.body)
-  end
-
   test "should render index in json format" do
     get :index, format: :json
     assert_response :success
