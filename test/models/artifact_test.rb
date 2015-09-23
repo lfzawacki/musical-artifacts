@@ -65,6 +65,10 @@ class ArtifactTest < ActiveSupport::TestCase
     assert_nil @artifact.get_file_by_name('inexistent')
   end
 
+  test '.get_file_by_name filename (2 files with the same name, finds last one)' do
+    skip
+  end
+
   test '.file_name' do
     assert_equal @artifact.file_name, 'example.gx'
   end

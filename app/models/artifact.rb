@@ -52,7 +52,7 @@ class Artifact < ActiveRecord::Base
     end
 
     def get_file_by_name filename
-      stored_files.where(file: filename).first
+      stored_files.where(file: filename).order('created_at DESC').first
     end
 
     def file_name
