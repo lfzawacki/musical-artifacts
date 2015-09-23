@@ -65,8 +65,20 @@ class ArtifactTest < ActiveSupport::TestCase
     assert_nil @artifact.get_file_by_name('inexistent')
   end
 
-  test '.get_file_by_name filename (2 files with the same name, finds last one)' do
-    skip
+  test '.get_file_by_name filename (2 files with the same name, finds most recent one)' do
+    # add a second file with the same name
+    @artifact.update_attributes(file: fixture_file('example.gx'))
+
+    # TODO a way to downlaod older files
+    assert @artifact.get_file_by_name('example.gx')
+    assert_equal @artifact.get_file_by_name('example.gx'), @artifact.stored_files.last
+  end
+
+  test '.get_file_by_name filename (2 files finds both by name)' do
+    @artifact.update_attributes(file: fixture_file('file.zip'))
+
+    assert @artifact.get_file_by_name('example.gx')
+    assert @artifact.get_file_by_name('file.zip')
   end
 
   test '.file_name' do
@@ -81,7 +93,7 @@ class ArtifactTest < ActiveSupport::TestCase
     @no_file.update_attributes file_format: 'zip'
 
     assert_equal @no_file.file_format, 'zip'
-    # assert_include @no_file.file_formats, 'zip'
+    assert_includes @no_file.file_format_list, 'zip'
   end
 
   test '.mirrors=m' do
