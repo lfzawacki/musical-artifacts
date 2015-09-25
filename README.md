@@ -53,36 +53,6 @@ See the [API](https://github.com/lfzawacki/musical-artifacts/wiki/API-Documentat
 
 For more details see the [Development page](https://github.com/lfzawacki/musical-artifacts/wiki/Development) on the wiki.
 
-#### Setting up a dev environment
-
-##### Dependencies
-
-    rails4.2 ruby2.1.2 postrgresql >= 9.3 postrgresql-contrib >= 9.3
-
-##### Install gems
-
-    bundle install
-
-##### Crate and seed the database
-
-First copy the example settings file:
-
-    cp config/settings.yml.example config/settings.yml
-
-Make some modifications in the file before seeding the database if you want. Then run:
-
-    bundle exec rake db:reset
-
-##### Run the server
-
-    bundle exec rails s
-
-#### Tests
-
-To run tests type:
-
-    bundle exec rake
-
 ## Reporting a problem
 
 ### On a hosted file
