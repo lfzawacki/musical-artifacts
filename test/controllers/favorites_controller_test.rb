@@ -113,4 +113,13 @@ class FavoritesControllerTest < ActionController::TestCase
     assert_equal user2.favorite_artifacts.count, 1
     assert_equal user3.favorite_artifacts.count, 1
   end
+
+  #
+  # -- JSON API tests
+  #
+  test 'create a favorite' do
+  end
+
+  test 'destroy a favorite' do
+  end
 end

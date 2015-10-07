@@ -7,6 +7,7 @@ json.formats @artifact.file_format_list
 json.mirrors @artifact.mirrors
 json.more_info @artifact.more_info_urls
 json.license @artifact.license.short_name
+json.favorite_count @artifact.favorite_count
 
 if @artifact.file.present?
   json.download_count @artifact.download_count
