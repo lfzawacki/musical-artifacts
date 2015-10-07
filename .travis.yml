@@ -6,7 +6,7 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - cp config/settings.yml.example config/settings.yml
 
-script: bundle exec rake db:migrate; bundle exec rake db:reset; bundle exec rake
+script: bundle exec rake db:create; bundle exec rake db:reset; bundle exec rake
 
 addons:
   code_climate:
