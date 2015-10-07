@@ -36,7 +36,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
   end
 
   test "see no buttons if a normal user is logged in" do
-    login_with(@user, 'watcheroftheskies')
+    login_with(@user, 'musicalbox')
     visit artifact_path(@artifact)
 
     assert_no_link I18n.t('_other.edit')
@@ -111,6 +111,89 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     visit artifact_path(@artifact)
     assert_link I18n.t('artifacts.buttons.download')
     assert_no_link I18n.t('artifacts.buttons.download_mirror', domain: 'validmirror.com')
+  end
+
+  test "see favorite icon and number in artifact when logged out" do
+
+    visit artifact_path(@artifact)
+    assert_css '.inactive-favorite'
+    assert_no_css 'a.favorite'
+    assert_no_css 'a.unfavorite'
+
+    within('.favorite-count') do
+      assert_content 0
+    end
+  end
+
+  test "see favorite number for lots of favorites" do
+    visit artifact_path(@artifact)
+    1.upto(5) do
+      Favorite.create artifact: @artifact, user: FactoryGirl.create(:user)
+    end
+
+    visit artifact_path(@artifact)
+
+    within('.favorite-count') do
+      assert_content 5
+    end
+  end
+
+  test "see favorite icon and favorite link when logged in" do
+    login_with(@user, 'musicalbox')
+
+    visit artifact_path(@artifact)
+
+    assert_no_css '.inactive-favorite'
+    assert_css '.favorite'
+    assert_css '.unfavorite.hidden'
+
+    within('.favorite-count') do
+      assert_content 0
+    end
+
+    # Now favorite it
+    find('.favorite').click
+
+    visit artifact_path(@artifact)
+    assert_no_css '.inactive-favorite'
+    assert_css '.favorite.hidden'
+    assert_css '.unfavorite'
+
+    within('.favorite-count') do
+      assert_content 1
+    end
+
+  end
+
+  test "see unfavorite icon and unfavorite link when logged in and favorited" do
+    login_with(@user, 'musicalbox')
+    Favorite.create artifact: @artifact, user: @user
+
+    visit artifact_path(@artifact)
+
+    assert_no_css '.inactive-favorite'
+    assert_css '.favorite.hidden'
+    assert_css '.unfavorite'
+
+    within('.favorite-count') do
+      assert_content 1
+    end
+
+    # Now unfavorite it
+    find('.unfavorite').click
+
+    visit artifact_path(@artifact)
+    assert_no_css '.inactive-favorite'
+    assert_css '.favorite'
+    assert_css '.unfavorite.hidden'
+
+    within('.favorite-count') do
+      assert_content 0
+    end
+
+  end
+
+  test "see download count on the icon" do
   end
 
 end

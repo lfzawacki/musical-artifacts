@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   resources :artifacts
   get '/artifacts/:id/*filename', to: 'artifacts#download', as: :artifact_download, format: false
 
+  post '/artifacts/:artifact_id/favorite/', to: 'favorites#create', as: :favorite_artifact, defaults: { format: :json }
+  delete '/artifacts/:artifact_id/favorite/', to: 'favorites#destroy', as: :unfavorite_artifact, defaults: { format: :json }
+
   get '/info/about', to: 'info#about', as: :info_about
   get '/info/contact', to: 'info#contact', as: :info_contact
 

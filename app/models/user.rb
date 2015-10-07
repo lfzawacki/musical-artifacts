@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   # Artifacts created by this user
   has_many :artifacts
+  # Artifacts favorites by the user
+  has_many :favorites
+  has_many :favorite_artifacts, through: :favorites, source: :artifact
 
   # For knock api auth
   def authenticate pass

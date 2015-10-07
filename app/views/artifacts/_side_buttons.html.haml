@@ -1,0 +1,20 @@
+%span.pull-right.side-buttons
+  .side-button.favorite-artifact
+    %span.favorite-count= artifact.favorite_count
+
+    - favorite_class = "favorite #{"hidden" if !can?(:favorite, artifact)}"
+    - unfavorite_class = "unfavorite #{"hidden" if !can?(:unfavorite, artifact)}"
+    - if current_user.present?
+      = link_to favorite_artifact_path(artifact), remote: true, class: favorite_class, method: :post do
+        %i.fa.fa-star
+
+      = link_to unfavorite_artifact_path(artifact), remote: true, class: unfavorite_class, method: :delete do
+        %i.fa.fa-star
+
+    - else
+      %i.fa.fa-star.inactive-favorite
+
+  - if artifact.download_count > 0
+    .side-button.download-count
+      = artifact.download_count
+      %i.fa.fa-download

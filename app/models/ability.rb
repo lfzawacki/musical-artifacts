@@ -12,7 +12,10 @@ class Ability
 
     if user.present?
 
-      can :manage, :all if user.admin?
+      if user.admin?
+        can :manage, :all
+        cannot [:favorite, :unfavorite], Artifact
+      end
 
       can [:edit, :update, :show, :download], Artifact do |artifact|
         artifact.owned_by?(user)
@@ -21,6 +24,14 @@ class Ability
       can :create, Artifact
 
       can :show, User
+
+      can :favorite, Artifact do |artifact|
+        Favorite.where(artifact_id: artifact.id, user_id: user.id).empty?
+      end
+
+      can :unfavorite, Artifact do |artifact|
+        Favorite.where(artifact_id: artifact.id, user_id: user.id).any?
+      end
     end
 
   end

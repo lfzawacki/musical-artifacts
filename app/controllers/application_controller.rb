@@ -3,11 +3,18 @@ class ApplicationController < ActionController::Base
   # Normal form authentication
   protect_from_forgery with: :exception, unless: :is_api_call?
 
+  rescue_from CanCan::AccessDenied, with: :handle_access_denied
+
   # API specific authentication
   before_action :api_authenticate
 
   before_filter :load_settings
   before_filter :count_unapproved_artifacts
+
+  # When a controller gets the user via current_user
+  def load_user
+    @user = current_user
+  end
 
   # For serving the juvia commenting script in a javascript tag we control
   def comments_script

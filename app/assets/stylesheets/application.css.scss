@@ -147,7 +147,7 @@ ul.link-list {
 }
 
 .row .artifact-item {
-  padding: 0.01em 1.4em 0.4em 1.4em;
+  padding: 0.4em 1.4em 0.8em 1.4em;
 }
 
 .dark-item {
@@ -335,10 +335,33 @@ label.filter {
 .tag-xl { font-size: 3.4em; }
 .tag-xxl { font-size: 4.0em; }
 
+.side-buttons {
+  padding-top: 0.3em;
+}
+
+.favorite-artifact {
+
+  transition: 1s;
+  a.unfavorite {
+    color: $hot;
+  }
+
+  a.unfavorite:hover {
+    color: $hoty;
+  }
+
+  a.favorite {
+    color: $dark;
+  }
+
+  a.favorite:hover {
+    color: $hoty;
+  }
+}
+
 .download-count {
   padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  font-size: 95%;
+  padding-bottom: 0.2em;
 }
 
 /*  _buttons */

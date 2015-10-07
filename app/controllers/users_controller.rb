@@ -19,10 +19,6 @@ class UsersController < InheritedResources::Base
     end
   end
 
-  def load_user
-    @user = current_user
-  end
-
   def load_artifacts
     @artifacts = @user.artifacts.page(params[:page]).per(20).order('created_at DESC')
   end

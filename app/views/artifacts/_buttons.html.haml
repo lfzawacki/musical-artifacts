@@ -11,9 +11,6 @@
         %i.fa.fa-flash
         = t('_other.destroy')
 
-  - if artifact.download_count > 0
-    .download-count= t('.download_count', count: artifact.download_count)
-
   %p
     - if can?(:download, artifact)
       - if artifact.file.try(:url)

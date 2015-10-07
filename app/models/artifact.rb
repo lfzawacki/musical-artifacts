@@ -16,6 +16,11 @@ class Artifact < ActiveRecord::Base
       self.user.present? && self.user == user
     end
 
+    has_many :favorites
+    def favorite_count
+      favorites.count
+    end
+
     has_many :stored_files
 
     validates :name, presence: true, uniqueness: true

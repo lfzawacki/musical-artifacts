@@ -4,7 +4,11 @@
 
 - @artifacts.each do |artifact|
   .artifact-item{class: "#{cycle('dark', 'light')}-item"}
-    %h3= link_to artifact.name, artifact
+    %h3
+      = link_to artifact.name, artifact
+
+      = render "artifacts/side_buttons", artifact: artifact
+
     %span
       = t('_other.by')
       = artifact.author

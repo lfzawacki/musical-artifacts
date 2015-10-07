@@ -1,6 +1,5 @@
 class ArtifactsController < InheritedResources::Base
   load_and_authorize_resource
-  rescue_from CanCan::AccessDenied, with: :handle_access_denied
 
   # For API calls
   respond_to :json
