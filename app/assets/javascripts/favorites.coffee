@@ -23,7 +23,7 @@ $(document).on 'page:change', ->
 
   # favorite/unfavorite buttons
   changeCount = (e, n) ->
-    count = $('span.count', e.parent())[0]
+    count = $('span.favorite-count', e.parent())[0]
     count.innerHTML = parseInt(count.innerHTML) + n
 
   swapClasses = (e) ->
