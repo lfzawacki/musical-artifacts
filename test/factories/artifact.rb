@@ -7,7 +7,7 @@ FactoryGirl.define do
     downloadable true
     approved true
 
-    license License.find('by')
+    license { License.find('by') }
   end
 
 end
