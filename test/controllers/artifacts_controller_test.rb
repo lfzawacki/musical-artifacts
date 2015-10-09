@@ -390,4 +390,37 @@ class ArtifactsControllerTest < ActionController::TestCase
     refute_nil json_body['errors']['name']
   end
 
+  test "should update an artifact with valid params" do
+    api_authenticate(@user)
+    artifact = FactoryGirl.create(:artifact, name: 'Ship To Wreck', author: 'Florence', user: @user)
+
+    put :update, id: artifact.id, artifact: {name: 'New Ship To Wreck', author: 'The Machine' }, format: :json
+
+    assert_response :success
+    assert_equal json_body['name'], 'New Ship To Wreck'
+    assert_equal json_body['author'], 'The Machine'
+    assert_equal json_body['license'], @by.short_name
+  end
+
+  test "should not update an artifact with invalid params" do
+    api_authenticate(@user)
+    artifact = FactoryGirl.create(:artifact, name: 'How Big', author: 'Florence +', user: @user)
+
+    put :update, id: artifact.id, artifact: {name: 'How Blue', author: '' }, format: :json
+
+    assert_response :unprocessable_entity
+    refute_nil json_body['errors']['author']
+  end
+
+  test "should not update an artifact without the permissions" do
+    api_authenticate(@user)
+    other_user = FactoryGirl.create(:user)
+
+    artifact = FactoryGirl.create(:artifact, name: 'How Beautiful', author: 'Florence + The Machine', user: other_user)
+
+    put :update, id: artifact.id, artifact: {tag_list: 'big, blue, beautiful'}, format: :json
+
+    assert_response :unauthorized
+  end
+
 end
