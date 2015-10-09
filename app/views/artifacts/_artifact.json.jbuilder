@@ -12,7 +12,7 @@ json.url artifact_url(artifact, format: :json)
 
 if artifact.file.present?
   json.download_count artifact.download_count
-  json.file artifact.download_path
+  json.file artifact_download_url(artifact, artifact.file_name)
 end
 
 if artifact.owned_by?(current_user)
