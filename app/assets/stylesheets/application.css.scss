@@ -712,25 +712,29 @@ form .row:first-child .floating-label-form-group {
 }
 
 footer {
-    color: $white;
-}
+  color: $white;
 
-footer h3 {
+  h3 {
     margin-bottom: 30px;
-}
+  }
 
-footer .footer-above {
+  .footer-above {
     padding-top: 50px;
     background-color: $darker;
-}
+  }
 
-footer .footer-col {
+  .footer-col {
     margin-bottom: 50px;
-}
+  }
 
-footer .footer-below {
+  .footer-below {
     padding: 25px 0;
     background-color: #000;
+  }
+
+  #opt-out {
+    font-size: 90%;
+  }
 }
 
 .btn-social {

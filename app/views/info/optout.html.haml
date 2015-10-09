@@ -1,0 +1,7 @@
+- content_for :title, t('.title')
+
+%h3= content_for :title
+
+= render 'application/analytics_optout'
+
+%p.pad-bottom= t('.description_html')

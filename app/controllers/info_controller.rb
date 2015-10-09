@@ -6,4 +6,8 @@ class InfoController < ApplicationController
 
   def contact
   end
+
+  def optout
+  end
+
 end

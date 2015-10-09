@@ -18,6 +18,10 @@ en:
       admin: Admin
       current_user: "Hey %{user}!"
 
+      footer:
+        legal: "Legal & Privacy"
+        terms: Terms and Conditions
+
   licenses:
     link:
       cc: http://creativecommons.org/licenses/%{type}/4.0/deed.en
@@ -100,3 +104,7 @@ en:
 
     contact:
       description: Don't forget to leave an email so we can contact you back.
+
+    optout:
+      title: Opt-out from Traffic Analytics
+      description_html: "For more information about the website's data collection policies read <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">this page</a>."

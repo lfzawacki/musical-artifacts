@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get '/info/about', to: 'info#about', as: :info_about
   get '/info/contact', to: 'info#contact', as: :info_contact
+  get '/analytics_optout', to: 'info#optout', as: :analytics_optout
 
   # For licenses api
   resources :licenses, only: [:index], defaults: { format: :json }
