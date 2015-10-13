@@ -14,4 +14,9 @@ class User < ActiveRecord::Base
   def authenticate pass
     valid_password? pass
   end
+
+  # For admin dashboard
+  def name
+    email
+  end
 end
