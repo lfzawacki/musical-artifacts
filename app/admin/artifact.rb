@@ -1,6 +1,6 @@
 ActiveAdmin.register Artifact do
   permit_params :name, :approved, :downloadable, :author, :user, :file_hash, :mirrors, :license,
-    :more_info_urls, :extra_license_text, :stored_files, :tag_list, :software_list, :file_format_list
+    :more_info_urls, :extra_license_text, :stored_files, :tag_list, :software_list, :file_format_list, :user, :user_id
 
   index do
     selectable_column
