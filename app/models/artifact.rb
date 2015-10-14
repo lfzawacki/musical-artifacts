@@ -17,9 +17,6 @@ class Artifact < ActiveRecord::Base
     end
 
     has_many :favorites
-    def favorite_count
-      favorites.count
-    end
 
     has_many :stored_files
 

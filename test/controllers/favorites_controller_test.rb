@@ -33,7 +33,7 @@ class FavoritesControllerTest < ActionController::TestCase
       post :create, artifact_id: @artifact.id
     end
 
-    assert_equal @artifact.favorite_count, 1
+    assert_equal @artifact.reload.favorite_count, 1
     assert_equal @user.favorite_artifacts.count, 1
   end
 
@@ -45,7 +45,7 @@ class FavoritesControllerTest < ActionController::TestCase
       delete :destroy, artifact_id: @artifact.id
     end
 
-    assert_equal @artifact.favorite_count, 0
+    assert_equal @artifact.reload.favorite_count, 0
     assert_equal @user.favorite_artifacts.count, 0
   end
 
@@ -76,15 +76,15 @@ class FavoritesControllerTest < ActionController::TestCase
     post :create, artifact_id: artifact2.id
     post :create, artifact_id: artifact3.id
 
-    assert_equal @artifact.favorite_count, 1
-    assert_equal artifact2.favorite_count, 1
-    assert_equal artifact3.favorite_count, 1
+    assert_equal @artifact.reload.favorite_count, 1
+    assert_equal artifact2.reload.favorite_count, 1
+    assert_equal artifact3.reload.favorite_count, 1
 
     assert_equal @user.favorite_artifacts.count, 3
 
     delete :destroy, artifact_id: artifact3.id
 
-    assert_equal artifact3.favorite_count, 0
+    assert_equal artifact3.reload.favorite_count, 0
 
     assert_equal @user.favorite_artifacts.count, 2
   end
@@ -107,7 +107,7 @@ class FavoritesControllerTest < ActionController::TestCase
 
     post :create, artifact_id: @artifact.id
 
-    assert_equal @artifact.favorite_count, 3
+    assert_equal @artifact.reload.favorite_count, 3
 
     assert_equal @user.favorite_artifacts.count, 1
     assert_equal user2.favorite_artifacts.count, 1
