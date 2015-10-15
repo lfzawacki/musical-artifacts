@@ -13,6 +13,7 @@
  *= require select2
  *= require select2-bootstrap
  *= require font-awesome
+
  *= require_self
  */
 
@@ -39,6 +40,12 @@ $darker: #111;
 $light-dark: #eee;
 
 $white: #fff;
+
+$nprogress-color: $hoty;
+$nprogress-height: 2px;
+
+@import 'nprogress';
+@import 'nprogress-bootstrap';
 
 .pad-bottom {
   padding-bottom: 0.5em;

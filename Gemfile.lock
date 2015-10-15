@@ -275,6 +275,7 @@ GEM
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    nprogress-rails (0.1.6.7)
     orm_adapter (0.5.0)
     pg (0.18.1)
     polyamorous (1.1.0)
@@ -419,6 +420,7 @@ DEPENDENCIES
   minitest-rails-capybara
   minitest-reporters
   net-ssh (~> 2.10.0.beta2)
+  nprogress-rails
   pg
   quiet_assets
   rack (~> 1.6.2)
