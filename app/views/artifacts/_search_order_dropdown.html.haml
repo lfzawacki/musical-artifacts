@@ -1,0 +1,17 @@
+.dropdown.pad-bottom#search-order-dropdown
+  %button.btn.btn-default.dropdown-toggle{type: 'button', id: 'search-order-button', :'data-toggle' => 'dropdown'}
+    = t('.order_by')
+    = t(".#{params[:order] || 'created_at'}_#{params[:asc] ? 'asc' : 'desc'}").downcase
+    %span.caret
+  %ul.dropdown-menu
+    - current_params = params.slice(*Artifact.search_fields)
+    %li
+      = link_to t('.top_rated_desc'), artifacts_path(current_params.merge(order: 'top_rated'))
+    %li
+      = link_to t('.name_asc'), artifacts_path(current_params.merge(order: 'name', asc: 'true'))
+    %li
+      = link_to t('.name_desc'), artifacts_path(current_params.merge(order: 'name'))
+    %li
+      = link_to t('.created_at_asc'), artifacts_path(current_params.merge(order: 'created_at', asc: 'true'))
+    %li
+      = link_to t('.created_at_desc'), artifacts_path(current_params.merge(order: 'created_at'))

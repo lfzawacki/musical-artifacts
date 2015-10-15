@@ -74,6 +74,14 @@ en:
       download: Download
       download_mirror: Download from (%{domain})
 
+    search_order_dropdown:
+      created_at_asc: Date (oldest first)
+      created_at_desc: Date (newest first)
+      name_asc: Name (ascending)
+      name_desc: Name (descending)
+      order_by: Ordered by
+      top_rated_desc: Best rating
+
     side_buttons:
       favorite: Mark as favorite
       unfavorite: Remove favorite

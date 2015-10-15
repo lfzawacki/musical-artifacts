@@ -25,16 +25,13 @@
           %input.filter{type: 'hidden', id: "checkbox_#{filter}", name: "checkbox_#{filter}", checked: false}
           / %label.filter{for: "checkbox_#{filter}"}= t(".filters.#{filter}")
 
-  .row.search-buttons.container-fluid
-    / Filled by JS code
-
   .row.search-description.container-fluid
     = render 'artifact_search_description', title: title
-
 
 #artifact-list
   .row
     .col-sm-8
+      = render 'search_order_dropdown'
       = render 'artifact_list'
 
     .col-sm-4

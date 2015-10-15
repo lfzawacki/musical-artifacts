@@ -8,6 +8,7 @@ class ArtifactsController < InheritedResources::Base
     load_tag_filters
     search_artifacts
     paginate unless request.format == 'json'
+    order_by_params
   end
 
   def create
@@ -66,11 +67,23 @@ class ArtifactsController < InheritedResources::Base
       @artifacts = Searches.artifacts_with_file_format(@artifacts, params[:formats])
 
       @artifacts = Searches.artifacts_by_metadata(@artifacts, params[:q])
-      @artifacts = @artifacts.order('created_at DESC')
     end
 
     def paginate
       @artifacts = @artifacts.page(params[:page]).per(20)
+    end
+
+    def order_by_params
+      order_str = params[:order] || 'created_at'
+      direction = params[:asc] ? 'ASC' : 'DESC'
+
+      if ['top_rated', 'name', 'created_at'].include?(order_str)
+        order_str = 'favorite_count' if order_str == 'top_rated'
+
+        @artifacts = @artifacts.order("#{order_str} #{direction}")
+      else
+        @artifacts = @artifacts.order('created_at DESC')
+      end
     end
 
     def load_tag_filters
