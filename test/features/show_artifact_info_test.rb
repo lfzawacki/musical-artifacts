@@ -147,7 +147,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_css '.favorite'
     assert_css '.unfavorite.hidden'
 
-    within('.favorite-count') do
+    within('.unfavorite .favorite-count') do
       assert_content 0
     end
 
@@ -159,7 +159,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_css '.favorite.hidden'
     assert_css '.unfavorite'
 
-    within('.favorite-count') do
+    within('.favorite .favorite-count') do
       assert_content 1
     end
 
@@ -175,7 +175,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_css '.favorite.hidden'
     assert_css '.unfavorite'
 
-    within('.favorite-count') do
+    within('.favorite .favorite-count') do
       assert_content 1
     end
 
@@ -187,7 +187,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_css '.favorite'
     assert_css '.unfavorite.hidden'
 
-    within('.favorite-count') do
+    within('.unfavorite .favorite-count') do
       assert_content 0
     end
 

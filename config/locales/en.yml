@@ -74,6 +74,11 @@ en:
       download: Download
       download_mirror: Download from (%{domain})
 
+    side_buttons:
+      favorite: Mark as favorite
+      unfavorite: Remove favorite
+      download: Download
+
     wayback_links:
       broken: Broken external links? Click to try links for the Wayback Machine.
       original: Go back to seeing the original links.

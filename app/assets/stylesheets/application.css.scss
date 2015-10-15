@@ -336,32 +336,42 @@ label.filter {
 .tag-xxl { font-size: 4.0em; }
 
 .side-buttons {
-  padding-top: 0.3em;
-}
+  transition: 2s;
 
-.favorite-artifact {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 
-  transition: 1s;
-  a.unfavorite {
+  .btn {
+    font-size: 24px;
+    font-weight: bold;
+
+    .small-label {
+      font-size: 10px;
+      text-transform: none;
+    }
+  }
+
+  a.unfavorite i {
     color: $hot;
   }
 
-  a.unfavorite:hover {
-    color: $hoty;
-  }
-
-  a.favorite {
+  a.favorite i {
     color: $dark;
   }
 
-  a.favorite:hover {
-    color: $hoty;
+}
+
+.favorite-artifact:hover {
+  a.unfavorite i {
+    color: $hot;
+  }
+
+  a.favorite i {
+    color: $hotter;
   }
 }
 
 .download-count {
-  padding-top: 0.5em;
-  padding-bottom: 0.2em;
 }
 
 /*  _buttons */

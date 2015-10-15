@@ -1,20 +1,30 @@
 %span.pull-right.side-buttons
-  .side-button.favorite-artifact
-    %span.favorite-count= artifact.favorite_count
 
-    - favorite_class = "favorite #{"hidden" if !can?(:favorite, artifact)}"
-    - unfavorite_class = "unfavorite #{"hidden" if !can?(:unfavorite, artifact)}"
+  - common_class = "btn btn-default"
+  - favorite_class = "#{common_class} favorite #{"hidden" if !can?(:favorite, artifact)}"
+  - unfavorite_class = "#{common_class} unfavorite #{"hidden" if !can?(:unfavorite, artifact)}"
+
+  %span.side-button.favorite-artifact
     - if current_user.present?
       = link_to favorite_artifact_path(artifact), remote: true, class: favorite_class, method: :post do
+        %span.favorite-count= artifact.favorite_count
         %i.fa.fa-star
+        %p.small-label= t('.favorite')
 
       = link_to unfavorite_artifact_path(artifact), remote: true, class: unfavorite_class, method: :delete do
+        %span.favorite-count= artifact.favorite_count
         %i.fa.fa-star
+        %p.small-label= t('.unfavorite')
 
     - else
-      %i.fa.fa-star.inactive-favorite
+      = link_to new_user_session_path, class: "#{common_class} inactive-favorite" do
+        %span.favorite-count= artifact.favorite_count
+        %i.fa.fa-star
+        %p.small-label= t('.favorite')
 
-  - if artifact.download_count > 0
-    .side-button.download-count
-      = artifact.download_count
-      %i.fa.fa-download
+  - if can?(:download, artifact) && artifact.file.try(:url)
+    = link_to artifact_download_path(artifact, filename: artifact.file_name) do
+      %span.side-button.download-count.btn.btn-default
+        = artifact.download_count
+        %i.fa.fa-download
+        %p.small-label= t('.download')

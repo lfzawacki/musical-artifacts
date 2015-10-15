@@ -23,8 +23,8 @@ $(document).on 'page:change', ->
 
   # favorite/unfavorite buttons
   changeCount = (e, n) ->
-    count = $('span.favorite-count', e.parent())[0]
-    count.innerHTML = parseInt(count.innerHTML) + n
+    $('span.favorite-count', e.parent()).each (i, count) ->
+      count.innerHTML = parseInt(count.innerHTML) + n
 
   swapClasses = (e) ->
     $('a.favorite', e.parent()[0]).toggleClass('hidden')
