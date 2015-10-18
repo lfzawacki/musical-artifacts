@@ -1,4 +1,6 @@
 en:
+  locale_name: English
+
   _other:
     access_denied: You don't have sufficient permissions to do this.
     by: by
@@ -19,8 +21,14 @@ en:
       current_user: "Hey %{user}!"
 
       footer:
+        contact: Contact
+        contact_us: Contact Us
+        language: Language
         legal: "Legal & Privacy"
+        more_links: Elsewhere
+        switch_language: Switch Language
         terms: Terms and Conditions
+        theme_credit: "Theme is derived from:"
 
   licenses:
     link:
@@ -110,10 +118,37 @@ en:
 
   info:
     about:
+      access_description: "First things first, the resource has to be accessible somewhere."
+
+      how_to_host: "How to host files?"
+      how_to_host_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting'
+
+      call_for_action: "But how can you help?"
+      creation_description: "So you created some cool musical resource and want to share it which other artists?"
+      description: "Helping to catalogue, preserve and free the artifacts you need to produce music."
       documentation: "Read the wiki for the 'long story'"
       documentation_url: https://github.com/lfzawacki/musical-artifacts/wiki/Home
+      document_it: Document it!
+      document_it_description: "TELL the world where to find your resource and how they can use it!"
 
+      licensing: Licensing
+      licensing_rights: "Think about which rights you grant to the resource's users."
+      licensing_rights_questions: "Can they use it commercially? Modify it? Redistribute it?"
+
+      open_licenses: Learn about open licenses
+      open_licenses_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses'
+
+      open_format: "Open Format"
+      open_format_description: "Make it available in a common and openly documented format."
+
+      open_formats: "Learn about open formats"
+      open_formats_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Formats'
+
+      new_artifact: Registering new artifacts
       new_artifact_url: https://github.com/lfzawacki/musical-artifacts/wiki/Creating-a-new-artifact
+
+      shall_we_start: Shall we start?
+      find_what: Find what you're looking for
 
     contact:
       description: Don't forget to leave an email so we can contact you back.

@@ -1,4 +1,21 @@
-pt-br:
+pt-BR:
+  locale_name: Português (BR)
+
+  activerecord:
+    attributes:
+      artifact:
+        name: Nome
+        description: Descrição
+        author: Autor
+        mirrors: Espelhos de Arquivo
+        more_info_urls: URLs de mais informações
+        file: Arquivo
+        software_list: Software compatível
+        tag_list: Tags
+        file_format_list: Formatos de Arquivo
+        license: Licensa
+        extra_license_text: Text extra à licensa
+
   _other:
     access_denied: Você não tem permissão para realizar essa ação.
     by: por
@@ -7,10 +24,26 @@ pt-br:
     edit: Editar
     back: Voltar
     confirm: Tem certeza?
+    destroy: Destruir
+    signup: Registrar-se
+    login: Entrar
+    logout: Sair
 
   layouts:
     application:
       settings: Opções
+      admin: Administrar
+      current_user: "Olá %{user}!"
+
+      footer:
+        contact: Contato
+        contact_us: Contate-nos
+        language: Linguagem
+        legal: "Legal & Privacidade"
+        more_links: Mais informações
+        switch_language: Trocar linguagem
+        terms: Termos e Condições
+        theme_credit: "Tema derivado de:"
 
   licenses:
     link:
@@ -34,7 +67,7 @@ pt-br:
   artifacts:
     index:
       all: Todos
-      clear: Limpar
+      clear_search: Limpar
       new: Registrar um novo artefato
       search_for: Buscar por...
       search: Busca
@@ -44,8 +77,15 @@ pt-br:
         apps: Usado com o app...
         hash: Arquivo com o hash...
         formats: Formato de arquivo...
+
+    form:
+      new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
+
+
     buttons:
       download: Baixar
+      download_mirror: Baixar de (%{domain})
+
     wayback_links:
       broken: Links externos estão quebrados? Clique aqui para tentar links do Arquivo da Internet.
       original: Voltar a ver os links originais.
@@ -54,6 +94,37 @@ pt-br:
     new:
       new: Criando novo artefato
 
+    artifact_list:
+      more_info: Mais informação...
+      none: Nada para se ver aqui!
+
+    search_order_dropdown:
+      created_at_asc: Data (mais antigo primeiro)
+      created_at_desc: Data (mais novo primeiro)
+      name_asc: Nome (ascendente)
+      name_desc: Name (descendente)
+      order_by: Ordenado por
+      top_rated_desc: Mais recomendados
+
+    show:
+      related: Relacionados
+      unapproved: 'Este artefato não está visível no momento. Espere até um administrador aprová-lo.'
+
+    artifact_search_description:
+      filtering: Filtrando por
+      page_description: página %{page}
+      showing: Mostrando %{title}
+
+    side_buttons:
+      favorite: Marcar favorito
+      unfavorite: Remover favorito
+      download: Baixar
+
+  users:
+    show:
+      your_artifacts: Seus Artefatos Musicais
+      description: "Olá, %{user}! Aqui estão todos os artefatos que você registrou no site!"
+
   settings:
     edit:
       edit: Editando configurações
@@ -61,5 +132,46 @@ pt-br:
   info:
     about:
 
+      access: Acesso
+      access_description: "Antes de mais nada, o recurso precisa estar acessível em algum lugar."
+
+      call_for_action: "Mas como você pode ajudar?"
+
+      how_to_host: "Como hospedar arquivos?"
+      how_to_host_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting'
+
+      creation: Criação
+      creation_description: "Então você criou um recurso musical legal e quer compartilhar ele com outros artistas?"
+
+      document_it: Documente!
+      document_it_description: "CONTE ao mundo onde achar e como usar o seu recurso!"
+
+      licensing: Licenciamento
+      licensing_rights: "Pense em quais direitos você estende aos usuários deste recurso."
+      licensing_rights_questions: "Podem usá-lo comercialmente? Modificá-lo? Redistribuí-lo?"
+
+      open_licenses: Aprenda sobre licensas livres
+      open_licenses_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses'
+
+      open_format: "Formato Aberto"
+      open_format_description: "Torne-o disponível sob um formato comum, aberto e bem documentado."
+
+      open_formats: "Aprenda sobre formatos abertos"
+      open_formats_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Formats'
+
+      description: "Ajudando a catalogar, preservar e libertar os artefatos que você precisa para produzir música."
+      documentation: "Para saber da 'longa história' leia a nossa wiki"
+      documentation_url: https://github.com/lfzawacki/musical-artifacts/wiki/Home
+
+      new_artifact: Registrando um novo artefato
+      new_artifact_url: https://github.com/lfzawacki/musical-artifacts/wiki/Creating-a-new-artifact
+
+      shall_we_start: Vamos começar?
+      find_what: Encontre o que você está procurando
+
     contact:
       description: Não esqueça de deixar um email válido para contato.
+
+    optout:
+      title: Opt-out da análise de tráfego
+      description_html: "Para mais informações sobre a política de coleta de dados do website leia <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">esta página</a>."
