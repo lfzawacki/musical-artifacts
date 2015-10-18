@@ -111,6 +111,9 @@ en:
     show:
       your_artifacts: Your Musical Artifacts
       description: "Hey, %{user}! Here are all the artifacts you have registered on the site."
+      your_favorites: Favorites
+      favorite_description: These are the artifacts you have marked as your favorites
+      show_favorites_html: "Looking for you %{link}?"
 
   settings:
     edit:

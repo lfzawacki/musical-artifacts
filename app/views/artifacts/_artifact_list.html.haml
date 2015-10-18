@@ -1,29 +1,36 @@
-- if @artifacts.empty?
+- if artifacts.empty?
   .artifact-item.empty-search
     %p= t('.none')
 
-- @artifacts.each do |artifact|
-  .artifact-item{class: "#{cycle('dark', 'light')}-item"}
-    %h3
-      = link_to artifact.name, artifact
+- artifacts.in_groups_of(per_row, false).each do |group|
 
-      = render "artifacts/side_buttons", artifact: artifact
+  %div{class: "#{'row' if per_row > 1}"}
+    - group.each do |artifact|
 
-    %span
-      = t('_other.by')
-      = artifact.author
+      - if per_row.present? && per_row > 0
+        - col_class = "col-sm-#{12 / per_row}"
 
-    .artifact-content.pad-top
-      %p.small
-        = strip_tags(artifact.description_html).truncate(480)
+      .artifact-item{class: "#{cycle('dark', 'light')}-item #{col_class}"}
+        %h3
+          = link_to artifact.name, artifact
 
-    %p.more-info
-      = link_to t('.more_info'), artifact_path(artifact)
+          = render "artifacts/side_buttons", artifact: artifact
 
-    .artifact-tags
-      = render 'artifacts/artifact_tags', artifact: artifact
+        %span
+          = t('_other.by')
+          = artifact.author
 
-    .artifact-license
-      = display_license(artifact, small: true)
+        .artifact-content.pad-top
+          %p.small
+            = strip_tags(artifact.description_html).truncate(480)
 
-    = render partial: 'artifacts/buttons', locals: { artifact: artifact }
+        %p.more-info
+          = link_to t('.more_info'), artifact_path(artifact)
+
+        .artifact-tags
+          = render 'artifacts/artifact_tags', artifact: artifact
+
+        .artifact-license
+          = display_license(artifact, small: true)
+
+        = render partial: 'artifacts/buttons', locals: { artifact: artifact }

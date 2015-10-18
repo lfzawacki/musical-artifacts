@@ -125,6 +125,9 @@ pt-BR:
     show:
       your_artifacts: Seus Artefatos Musicais
       description: "Olá, %{user}! Aqui estão todos os artefatos que você registrou no site!"
+      your_favorites: Favoritos
+      favorite_description: Estes são os artefatos que você marcou como favoritos.
+      show_favorites_html: "Procurando por seus %{link}?"
 
   settings:
     edit:

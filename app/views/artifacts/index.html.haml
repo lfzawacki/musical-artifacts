@@ -32,7 +32,7 @@
   .row
     .col-sm-8
       = render 'search_order_dropdown'
-      = render 'artifact_list'
+      = render 'artifact_list', artifacts: @artifacts, per_row: 1
 
     .col-sm-4
       %p.pad-top= link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'

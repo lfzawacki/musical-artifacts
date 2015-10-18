@@ -20,6 +20,7 @@ class UsersController < InheritedResources::Base
   end
 
   def load_artifacts
-    @artifacts = @user.artifacts.page(params[:page]).per(20).order('created_at DESC')
+    @artifacts = @user.artifacts.order('created_at DESC')
+    @favorite_artifacts = @user.favorite_artifacts.order('created_at DESC')
   end
 end

@@ -1,12 +1,19 @@
 = content_for :title, t('.your_artifacts')
 
-.row
-  %h3= t('.your_artifacts')
+.row#your-artifacts
+  %h2= t('.your_artifacts')
 
   %p= t('.description', user: @user.email)
+  %p
+    = t('.show_favorites_html', link: link_to(t('.your_favorites'), '#your-favorites', id: 'go-to-favorites'))
 
 .row.pad-top
-  = render 'artifacts/artifact_list'
+  = render 'artifacts/artifact_list', artifacts: @artifacts, per_row: 3
 
-.row.pad-bottom
-  = paginate @artifacts, :left => 10, :right => 10
+.row#your-favorites
+  %h2= t('.your_favorites')
+
+  %p= t('.favorite_description')
+
+.row.pad-top
+  = render 'artifacts/artifact_list', artifacts: @favorite_artifacts, per_row: 3
