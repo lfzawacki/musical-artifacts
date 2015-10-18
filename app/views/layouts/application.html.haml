@@ -74,7 +74,7 @@
       .footer-above
         .container
           .row
-            .footer-col.col-md-4
+            .footer-col.col-md-3
               %h3= t('.footer.legal')
               %h4
                 %a{href: 'https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions'}
@@ -82,15 +82,14 @@
 
               #opt-out= link_to t('info.optout.title'), analytics_optout_path
 
-            .footer-col.col-md-4
+            .footer-col.col-md-3
               %h3
-                Contact
+                = t('.footer.contact')
                 %h4
-                  %a{href: '/info/contact'}
-                    Contact Us
+                  = link_to t('.footer.contact_us'), info_contact_path
 
             .footer-col.col-md-4
-              %h3 Elsewhere
+              %h3= t('.footer.more_links')
               %ul.list-inline
                 %li
                   %a.btn-social.btn-outline{:href => 'https://github.com/lfzawacki/musical-artifacts'}
@@ -108,6 +107,16 @@
                   %a.btn-social.btn-outline{:href => 'https://github.com/lfzawacki/musical-artifacts/wiki'}
                     %i.fa.fa-fw.fa-file-text{title: 'Docs'}
 
+            .footer-col.col-md-2
+              %h3= t('.footer.language')
+              .dropdown#locale-selector-dropdown{role: 'menu'}
+                %button.btn.btn-default.dropdown-toggle{type: 'button', id: 'locale-selector-button', :'data-toggle' => 'dropdown'}
+                  = t('.footer.switch_language')
+                  %span.caret
+                %ul.dropdown-menu
+                  - I18n.available_locales.each do |l|
+                    %li= link_to t('locale_name', locale: l), set_locale_path(locale: l), method: :post
+
       .footer-below
         .container
           .row
@@ -118,7 +127,7 @@
                 = Time.now.year
 
               %p
-                Theme is derived from:
+                = t('.footer.theme_credit')
                 %a{href: 'http://startbootstrap.com/template-overviews/freelancer/'} Bootstrap Freelancer
 
     / Scroll to Top Button (Only visible on small and extra-small screen sizes)

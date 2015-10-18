@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :load_settings
   before_filter :count_unapproved_artifacts
+  before_filter :set_current_locale
 
   # When a controller gets the user via current_user
   def load_user
@@ -30,6 +31,18 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def set_current_locale
+    I18n.locale = get_current_locale
+  end
+
+  def get_current_locale
+    locale = I18n.default_locale
+
+    locale = session[:locale] if session[:locale].present?
+
+    locale.to_sym
+  end
+
   # Extracted from the Knock::Authenticatable module because it interfered with devise
   # https://github.com/nsarno/knock/blob/master/lib/knock/authenticable.rb#L4
   def api_authenticate

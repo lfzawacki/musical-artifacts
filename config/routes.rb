@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get '/info/contact', to: 'info#contact', as: :info_contact
   get '/analytics_optout', to: 'info#optout', as: :analytics_optout
 
+  post '/locale/:locale', to: 'locales#set_locale', as: :set_locale
+
   # For licenses api
   resources :licenses, only: [:index], defaults: { format: :json }
 
