@@ -58,6 +58,7 @@ pt-BR:
       copyleft: Copyleft %{author}
       copyright: Direitos Reservados a %{author}
       public: Trabalho em Domínio Público
+      gpl: GNU General Public License %{version}
     parts:
       by: Dê crédito ao autor
       nc: Uso não comercial
@@ -71,6 +72,7 @@ pt-BR:
       new: Registrar um novo artefato
       search_for: Buscar por...
       search: Busca
+      search_description: "Resultados para \"%{query}\""
       filters:
         license: Licensa...
         tags: Tagueado com...
@@ -80,7 +82,6 @@ pt-BR:
 
     form:
       new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
-
 
     buttons:
       download: Baixar
