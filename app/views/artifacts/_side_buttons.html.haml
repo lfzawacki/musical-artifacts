@@ -23,7 +23,7 @@
         %p.small-label= t('.favorite')
 
   - if can?(:download, artifact) && artifact.file.try(:url)
-    = link_to artifact_download_path(artifact, filename: artifact.file_name) do
+    = download_link(artifact) do
       %span.side-button.download-count.btn.btn-default
         = artifact.download_count
         %i.fa.fa-download

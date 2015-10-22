@@ -106,6 +106,13 @@ module ArtifactsHelper
     end
   end
 
+  def download_link artifact, opt = {}
+    url = artifact_download_url(artifact, filename: artifact.file_name)
+    link_to url, class: opt[:class], title: artifact.file_name, download: artifact.file_name, data: {no_turbolink: true} do
+      yield
+    end
+  end
+
   private
 
   # Only unescape ' ' and ','
