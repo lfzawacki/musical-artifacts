@@ -63,6 +63,12 @@ Each file has a comment section and problems or additional information can be po
 
 Bugs, feature requests, documentation enhancements and almost anything related to development goes on the [github issues page](https://github.com/lfzawacki/musical-artifacts/issues)
 
+## Website Data
+
+All the files and databases collected as part of the Musical Artifacts project can be downloaded from: <https://data.musical-artifacts.com>. There you'll find a database of all the artifacts, all the uploaded files as well as a json representation of all the data.
+
+There's also [repository](https://github.com/nodiscc/musical-artifacts-data) for this json data if you like this kind of stuff.
+
 # Credits
 
 ## Open Source Projects
