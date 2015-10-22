@@ -12,6 +12,9 @@ require 'forgery'
 reporter_options = { color: true }
 Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new, Minitest::Reporters::HtmlReporter.new]
 
+# To get mock emails in test environment
+ActionMailer::Base.default_url_options = { host: 'https://musical-artifacts.com' }
+
 class ActiveSupport::TestCase
 
   self.use_transactional_fixtures = true

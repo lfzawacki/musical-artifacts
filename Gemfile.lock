@@ -310,6 +310,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails-observers (0.1.2)
+      activemodel (~> 4.0)
     railties (4.2.3)
       actionpack (= 4.2.3)
       activesupport (= 4.2.3)
@@ -426,6 +428,7 @@ DEPENDENCIES
   rack (~> 1.6.2)
   rack-throttle
   rails (= 4.2.3)
+  rails-observers
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   select2-rails

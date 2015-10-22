@@ -1,6 +1,6 @@
 ActiveSupport.on_load(:after_initialize) do
 
-  if Setting.table_exists? && Setting.first
+  if Rails.env != 'test' && Setting.table_exists? && Setting.first
     conf = Setting.first
 
     # default settings

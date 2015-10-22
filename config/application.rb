@@ -25,6 +25,9 @@ module MusicalArtifacts
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    # Add observers
+    config.active_record.observers = :artifact_observer
+
     # configure throttling options, 60 requests per minute to the artifacts and apps controllers
     config.middleware.use ApiThrottle, max: 60 # this value can be ovewritten in the settings
   end

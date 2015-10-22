@@ -87,3 +87,5 @@ gem 'kaminari'
 
 # JSON API authentication with JWT
 gem 'knock'
+
+gem 'rails-observers'
