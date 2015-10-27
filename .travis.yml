@@ -7,7 +7,3 @@ before_script:
   - cp config/settings.yml.example config/settings.yml
 
 script: bundle exec rake db:reset; bundle exec rake
-
-addons:
-  code_climate:
-    repo_token: 81485df48b297bfd0c207ff704b5524fd3963fcba289eb06094fa258691ef939
