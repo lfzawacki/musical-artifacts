@@ -27,6 +27,7 @@
 
 - if (params[:q].present? || params[:page].present?)
   .page.pad-bottom
+    - title ||= t('artifacts.index.all')
     = t('.showing', title: title.downcase)
 
     - if (params[:page].present?)
