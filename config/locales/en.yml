@@ -19,6 +19,7 @@ en:
       settings: Settings
       admin: Admin
       current_user: "Hey %{user}!"
+      default_title: "Libre resources for music making"
 
       footer:
         contact: Contact

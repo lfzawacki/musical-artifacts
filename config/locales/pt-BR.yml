@@ -34,6 +34,7 @@ pt-BR:
       settings: Opções
       admin: Administrar
       current_user: "Olá %{user}!"
+      default_title: "Recursos livres para produção musical"
 
       footer:
         contact: Contato

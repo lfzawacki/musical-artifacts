@@ -1,4 +1,4 @@
-- title = params[:q].present? ? t('.search_description', query: params[:q]) : t('.all')
+- title = t('.search_description', query: params[:q]) if params[:q].present?
 - content_for :title, remove_quotes(title)
 
 %form.pad-top#artifact_search_form{method: :get}
