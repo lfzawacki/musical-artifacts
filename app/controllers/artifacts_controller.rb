@@ -88,7 +88,7 @@ class ArtifactsController < InheritedResources::Base
 
     def load_tag_filters
       @tags = {
-        tags: Artifact.tag_counts_on(:tags),
+        tags: Artifact.tag_counts_on(:tags).where('taggings_count > 1'),
         apps: Artifact.tag_counts_on(:software),
         formats: Artifact.tag_counts_on(:file_formats)
       }
