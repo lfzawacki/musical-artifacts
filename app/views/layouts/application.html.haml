@@ -120,15 +120,31 @@
       .footer-below
         .container
           .row
-            .col-lg-12
-              %p
-                Copyright &copy;
+            .col-sm-5
+              %p.small
                 = @setting.site_name
                 = Time.now.year
+                ,
+                = t('.footer.author_html')
 
-              %p
+              %p.small
                 = t('.footer.theme_credit')
                 %a{href: 'http://startbootstrap.com/template-overviews/freelancer/'} Bootstrap Freelancer
+
+            .col-sm-3
+              %a{href: "http://www.adfreeblog.org/", target: "_blank"}
+                = image_tag 'icons/adfreesite_buttonsm.png'
+
+              = link_to 'http://www.adfreeblog.org/' do
+                %p.smallest= t('.footer.adfree')
+
+            .col-sm-4
+              %a{href: 'http://creativecommons.org/licenses/by-sa/4.0/', rel: 'license'}
+                = image_tag 'licenses/by-sa.svg'
+
+              = link_to 'http://creativecommons.org/licenses/by-sa/4.0/', rel: 'license' do
+                %p.smallest= t('.footer.site_license')
+
 
     / Scroll to Top Button (Only visible on small and extra-small screen sizes)
     .scroll-top.page-scroll.visible-xs.visible-sm
