@@ -273,6 +273,34 @@ label.filter {
   .search-field {
     padding-bottom: 10px;
   }
+
+  .artifact-item {
+    p {
+      font-size: 14px;
+    }
+
+    p.small {
+      font-size: 12px;
+    }
+
+    .side-buttons {
+      .btn {
+        font-size: 18px;
+        padding-top: 0.3em;
+        padding-bottom: 0em;
+        padding-left: 0.4em;
+        padding-right: 0.4em;
+      }
+
+      .small-label {
+        margin-bottom: 0.5em;
+        margin-left: 0em;
+        margin-right: 0em;
+      }
+    }
+
+  }
+
 }
 
 .artifact-tags a {
