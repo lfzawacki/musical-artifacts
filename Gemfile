@@ -89,3 +89,7 @@ gem 'kaminari'
 gem 'knock'
 
 gem 'rails-observers'
+
+gem 'rubyzip'
+
+gem "jstree-rails-4"

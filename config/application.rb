@@ -26,7 +26,7 @@ module MusicalArtifacts
     config.active_record.raise_in_transactional_callbacks = true
 
     # Add observers
-    config.active_record.observers = :artifact_observer
+    config.active_record.observers = [:artifact_observer, :stored_file_observer]
 
     # configure throttling options, 60 requests per minute to the artifacts and apps controllers
     config.middleware.use ApiThrottle, max: 60 # this value can be ovewritten in the settings

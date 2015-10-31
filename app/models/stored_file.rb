@@ -1,9 +1,12 @@
+require './lib/file_extractors/file_extractor'
+
 class StoredFile < ActiveRecord::Base
   mount_uploader :file, ArtifactFileUploader
   belongs_to :artifact
 
-  before_save :generate_file_list
   before_save :save_file_format
+
+  serialize :file_list, Array
 
   def path
     file.try(:path)
@@ -16,18 +19,32 @@ class StoredFile < ActiveRecord::Base
   def save_file_format
     if file_changed?
       self.format = file.file.try(:extension)
+      self.compressed = StoredFile.compressed_formats.include?(format)
     end
     true
   end
 
-  # How to get file list of all different types?
-  def generate_file_list
-    ext = ['zip', 'rar', '7z', 'lzma', 'tar.gz']
+  def fetch_metadata_from_file
+    xt = FileExtractor.get_extractor(self.file)
 
-    if file_changed?
-      self.compressed = ext.include?(file.file.try(:extension))
+    if xt.present?
+      attrs = {}
+      # TODO: metadata for different files
+      # attrs[:metadata] = xt.get_data
+
+      # Getting file for kinds of files which are packages or compressed
+      if self.compressed?
+        attrs[:file_list] = xt.file_list
+      end
+
+      self.update_attributes attrs
     end
-    true
+  end
+
+  private
+
+  def self.compressed_formats
+    ['zip', 'rar', '7z', 'lzma', 'tar.gz']
   end
 
 end

@@ -27,12 +27,22 @@
     - if @artifact.extra_license_text.present?
       %p.small= @artifact.extra_license_text_html
 
-  - # Preview multimedia content linked as more info urls
+  - # Preview file list and multimedia content linked as more info urls
   .col-lg-4.col-md-4.col-sm-4
-    #multimedia-content-area
-      - @artifact.multimedia_content.each do |link|
-        .multimedia-content.pad-bottom
-          = link
+
+    - file = @artifact.stored_files.last
+    - if file.try(:file_list).present?
+      %h4= t('.file_contents')
+      #file-tree.pad-bottom
+        = file_tree file
+
+    - multimedia = @artifact.multimedia_content
+    - if multimedia.any?
+      %h4= t('.multimedia_content')
+      #multimedia-content-area
+        - multimedia.each do |link|
+          .multimedia-content.pad-bottom
+            = link
 
 .row
 

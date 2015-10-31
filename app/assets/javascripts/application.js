@@ -21,6 +21,7 @@
 //= require bootstrap
 //= require select2
 
+//= require jstree
 //= require_tree .
 
 Turbolinks.enableTransitionCache();
