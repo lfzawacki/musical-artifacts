@@ -100,26 +100,25 @@ a.external-link.wayback:after {
 }
 
 /*  _comments */
+.comments {
+  font-size: 2em;
+}
+
 #hide-comments {
   @extend .text-center;
-  font-size: 2em;
   display: none;
 }
 
 #show-comments {
   @extend .text-center;
-  font-size: 2em;
 }
 
 #load-comments {
   @extend .text-center;
-  font-size: 2em;
   display: none;
 }
 
 #comments {
-  padding-bottom: 1.5em;
-  margin-bottom: 1.5em;
   display: none;
 }
 
@@ -274,7 +273,54 @@ label.filter {
     padding-bottom: 10px;
   }
 
+  #artifact_search {
+    font-size: 16px;
+    height: 2.4em;
+  }
+
+  .search-field {
+    margin-left: 0.7em;
+    margin-right: 0.7em;
+    .btn { font-size: 12px; }
+  }
+
+  .comments {
+    font-size: 1.5em;
+  }
+
+  .artifact-description {
+
+    p {
+      font-size: 12px;
+    }
+
+    p.small {
+      font-size: 12px;
+    }
+  }
+
+  .big-tags {
+    font-size: 120%;
+  }
+
   .artifact-item {
+    padding: 0.1em 0.9em 0.1em 0.9em;
+  }
+
+  a.btn-download {
+    font-size: 16px;
+  }
+
+  .artifact-item {
+
+    h1 {
+      font-size: 22px;
+    }
+
+    h3 {
+      font-size: 20px;
+    }
+
     p {
       font-size: 14px;
     }
@@ -453,14 +499,6 @@ a.btn-scroll-top:hover {
 /* artifacts/show */
 .license-select {
   width: 100%;
-}
-
-.artifact-description {
-
-  p {
-    font-size: 16px;
-  }
-
 }
 
 p.more-info {
