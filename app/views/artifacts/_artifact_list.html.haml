@@ -20,7 +20,7 @@
           = t('_other.by')
           = artifact.author
 
-        .artifact-content.pad-top
+        .artifact-description.pad-top
           %p
             = strip_tags(artifact.description_html).truncate(480)
 
