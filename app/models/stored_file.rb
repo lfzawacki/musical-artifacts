@@ -13,6 +13,11 @@ class StoredFile < ActiveRecord::Base
     file.file.try(:filename)
   end
 
+  def increment_download_count
+    increment!(:download_count)
+    artifact.increment!(:download_count)
+  end
+
   def save_file_format
     if file_changed?
       self.format = file.file.try(:extension)
