@@ -451,7 +451,7 @@ label.filter {
 }
 
 .favorite-artifact:hover {
-  a.unfavorite i {
+  a.unfavorite i, a.inactive-favorite i {
     color: $hot;
   }
 
