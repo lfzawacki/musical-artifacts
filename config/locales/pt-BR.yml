@@ -108,6 +108,7 @@ pt-BR:
       created_at_desc: Data (mais novo primeiro)
       name_asc: Nome (ascendente)
       name_desc: Name (descendente)
+      most_downloaded_desc: Mais baixados
       order_by: Ordenado por
       top_rated_desc: Mais recomendados
 

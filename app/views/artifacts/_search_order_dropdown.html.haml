@@ -8,6 +8,8 @@
     %li
       = link_to t('.top_rated_desc'), artifacts_path(current_params.merge(order: 'top_rated'))
     %li
+      = link_to t('.most_downloaded_desc'), artifacts_path(current_params.merge(order: 'most_downloaded'))
+    %li
       = link_to t('.name_asc'), artifacts_path(current_params.merge(order: 'name', asc: 'true'))
     %li
       = link_to t('.name_desc'), artifacts_path(current_params.merge(order: 'name'))

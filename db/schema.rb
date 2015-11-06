@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014153140) do
+ActiveRecord::Schema.define(version: 20151104142628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20151014153140) do
     t.boolean  "downloadable",       default: true
     t.integer  "user_id"
     t.integer  "favorite_count",     default: 0
+    t.integer  "download_count",     default: 0
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -81,7 +82,7 @@ ActiveRecord::Schema.define(version: 20151014153140) do
 
   create_table "stored_files", force: :cascade do |t|
     t.string   "file"
-    t.string   "file_list"
+    t.text     "file_list"
     t.string   "format"
     t.boolean  "compressed"
     t.integer  "artifact_id"

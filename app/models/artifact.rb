@@ -131,10 +131,6 @@ class Artifact < ActiveRecord::Base
       .limit(max)
     end
 
-    def download_count
-      stored_files.last.try(:download_count) || 0
-    end
-
     def download_path
       if stored_files.last.present?
         "/artifacts/#{to_param}/#{stored_files.last.name}"
