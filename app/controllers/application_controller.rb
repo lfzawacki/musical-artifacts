@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   before_filter :count_unapproved_artifacts
   before_filter :set_current_locale
 
+  before_filter :store_location
+
   # When a controller gets the user via current_user
   def load_user
     @user = current_user
@@ -22,15 +24,31 @@ class ApplicationController < ActionController::Base
     render layout: nil
   end
 
-  def admin_dashboard_access_denied exception
-    redirect_to artifacts_path
+  private
+  def store_location
+    paths = ['/users/login', '/users/sign_up', '/users/password/new', '/users/password/edit', '/users/confirmation', '/users/logout']
+    names = ['download']
+    if request.method == 'GET' &&
+       !paths.include?(request.path) &&
+       !names.include?(action_name) &&
+       !request.xhr?
+
+      session[:previous_path] = request.fullpath
+    end
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    session[:previous_path] || artifacts_path
   end
 
   def after_sign_out_path_for(resource_or_scope)
     artifacts_path
   end
 
-  private
+  def admin_dashboard_access_denied exception
+    redirect_to artifacts_path
+  end
+
   def set_current_locale
     I18n.locale = get_current_locale
   end
