@@ -124,6 +124,11 @@ initialize_audio_player = ->
       imageLocation: $('#audiojs-data').attr('imageLocation')
       swfLocation: $('#audiojs-data').attr('swfLocation')
 
+initialize_file_tree = ->
+  # Only called if #file-tree div is present
+  # TODO: find a way to disable file select as it doesnt make sense
+  $('#file-tree').jstree()
+
 updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
 
@@ -233,3 +238,4 @@ $(document).on 'page:change', ->
   initialize_wayback_links()
   initialize_comments()
   initialize_audio_player()
+  initialize_file_tree()

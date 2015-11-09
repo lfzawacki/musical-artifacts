@@ -59,7 +59,11 @@ module ArtifactsHelper
       'application/zip' => 'file-archive-o'
     }
 
-    "fa-#{icons[mime.to_s] || 'file-o'}"
+    if ext == '' # most likely a folder
+      "fa-folder-o"
+    else
+      "fa-#{icons[mime.to_s] || 'file-o'}"
+    end
   end
 
   def display_license artifact, opt={}
@@ -113,6 +117,30 @@ module ArtifactsHelper
     end
   end
 
+  def hash_list_tag(hash)
+    content = ''
+
+    hash.keys.map do |key|
+      ext = File.extname(key).delete('.')
+      icon = "{\"icon\": \"fa #{icon_from_extension(ext)}\"}"
+      if hash[key].present?
+        content << content_tag(:li, "#{key} #{hash_list_tag(hash[key])}".html_safe, :'data-jstree' => icon)
+      else
+        content << content_tag(:li, key, :'data-jstree' => icon)
+      end
+    end
+
+    content_tag(:ul, content.html_safe)
+  end
+
+  def file_tree file
+    name = file.name
+
+    tree = {name => build_file_tree(file.file_list)}
+
+    hash_list_tag(tree)
+  end
+
   private
 
   # Only unescape ' ' and ','
@@ -125,6 +153,28 @@ module ArtifactsHelper
   def remove_quotes str
     return '' if str.blank?
     str.gsub('"','')
+  end
+
+  def build_file_tree file_list
+    tree = {}
+
+    file_list.each do |file_path|
+      split_path = file_path.split('/')
+      tree = insert_hash(tree, split_path, {})
+    end
+
+    tree
+  end
+
+  # Taken from http://stackoverflow.com/a/11470890/414642
+  def insert_hash(hash, path, value)
+    head, *tail = path
+    if tail.empty?
+      hash.merge(head => value)
+    else
+      h = insert_hash(hash[head] || {}, tail, value)
+      hash.merge(head => hash.has_key?(head) ? hash[head].merge(h) : h)
+    end
   end
 
 end
