@@ -126,6 +126,12 @@ pt-BR:
       unfavorite: Que legal!
       download: Baixar
 
+    file_listing:
+      title: Conteúdo do Arquivo
+
+    more_info_multimedia:
+      title: Conteúdo Multimídia
+
   users:
     show:
       your_artifacts: Seus Artefatos Musicais

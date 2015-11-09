@@ -108,6 +108,12 @@ en:
     new:
       new: Create new artifact
 
+    file_listing:
+      title: File content
+
+    more_info_multimedia:
+      title: Multimedia Content
+
     create:
       success: Artifact was successfully created.
       not_approved: Your artifact was created and is waiting moderation.

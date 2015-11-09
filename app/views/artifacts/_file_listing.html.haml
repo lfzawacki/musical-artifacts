@@ -1,0 +1,6 @@
+- file = @artifact.stored_files.last
+
+- if file.try(:file_list).present?
+  %h4= t('.title')
+  #file-tree.pad-bottom
+    = file_tree file

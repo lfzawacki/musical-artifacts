@@ -32,23 +32,13 @@
     - # Preview file list and multimedia content linked as more info urls
     .col-lg-4.col-md-4.col-sm-4
 
-      - file = @artifact.stored_files.last
-      - if file.try(:file_list).present?
-        %h4= t('.file_contents')
-        #file-tree.pad-bottom
-          = file_tree file
+      = render 'file_listing'
 
-      - multimedia = @artifact.multimedia_content
-      - if multimedia.any?
-        %h4= t('.multimedia_content')
-        #multimedia-content-area
-          - multimedia.each do |link|
-            .multimedia-content.pad-bottom
-              = link
+      = render 'more_info_multimedia'
 
   .row
 
-    = render partial: 'buttons', locals: {artifact: @artifact }
+    = render 'buttons', artifact: @artifact
 
     %p#related-links.pad-top.pad-bottom
       %strong
