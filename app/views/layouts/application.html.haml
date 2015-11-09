@@ -43,7 +43,7 @@
               %li= link_to t('_other.logout'), destroy_user_session_path
             - else
               %li= link_to t('_other.login'), new_user_session_path
-              %li= link_to t('_other.sign_up'), new_user_registration_path
+              %li= link_to t('_other.signup'), new_user_registration_path
 
             - if can? :edit, @setting
               %li= link_to t('.settings'), settings_path
