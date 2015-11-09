@@ -23,8 +23,8 @@ class StoredFile < ActiveRecord::Base
 
   def save_file_format
     if file_changed?
-      self.format = file.file.try(:extension)
-      self.compressed = StoredFile.compressed_formats.include?(format)
+      self.format = file.file.try(:extension).try(:downcase)
+      self.compressed = StoredFile.compressed_formats.include?(format.downcase)
     end
     true
   end

@@ -5,7 +5,7 @@ module FileExtractor
 
   def self.get_extractor file
 
-    case file.file.extension
+    case file.file.extension.downcase
     when 'zip'
       FileExtractor::ZipExtractor.new(file.path)
     else
