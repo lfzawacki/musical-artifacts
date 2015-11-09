@@ -93,8 +93,8 @@ class Artifact < ActiveRecord::Base
       auto_html(description) {
         html_escape
         redcarpet
-        link
         js_email
+        link
       }
     end
 

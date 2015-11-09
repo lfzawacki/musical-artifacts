@@ -7,22 +7,28 @@ end
 AutoHtml.add_filter(:js_email) do |text|
   text.gsub(/([A-Za-z0-9_.+]+@)([^\n\s<>]+)[\s]*/) do |match|
   text = <<JS
-<SCRIPT TYPE="text/javascript">
-<!--
-// protected email script by Joe Maller
-// JavaScripts available at http://www.joemaller.com
-// this script is free to use and distribute
-// but please credit me and/or link to my site
+<div id="secure-mail">
+</div>
 
-emailE=("#{$1}" + "#{$2}")
-document.write('<a href="mailto:' + emailE + '">' + emailE + '</a>')
- //-->
+<script TYPE="text/javascript">
+  $(document).on('page:change', function() {
+    <!--
+    // protected email script by Joe Maller
+    // JavaScripts available at http://www.joemaller.com
+    // this script is free to use and distribute
+    // but please credit me and/or link to my site
+
+    emailE=("#{$1}" + "#{$2}")
+    $('#secure-mail').html('<a href="mailto:' + emailE + '">' + emailE + '</a>')
+     //-->
+  });
 </script>
 
-<NOSCRIPT>
-    <em>Email address protected by JavaScript.
-    Please enable JavaScript to read it.</em>
-</NOSCRIPT>
+<noscript>
+  <em>Email address protected by JavaScript.
+  Please enable JavaScript to read it.</em>
+</noscript>
+
 JS
   end
 end
