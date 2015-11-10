@@ -73,6 +73,12 @@ a:focus {
 
 /* artifacts/show */
 
+#file-tree {
+  overflow:auto;
+  height: 280px;
+  width: 420px;
+}
+
 .multimedia-content img {
   width: 420px;
 }
