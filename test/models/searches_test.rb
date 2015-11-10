@@ -302,12 +302,15 @@ class SearchesTest < ActiveSupport::TestCase
   end
 
   test "#tags (list all)" do
+    skip
   end
 
   test "#tags (find some)" do
+    skip
   end
 
   test "#tags (find none)" do
+    skip
   end
 
   test "#app_tags (list all)" do

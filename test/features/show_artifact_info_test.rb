@@ -3,7 +3,6 @@ require "test_helper"
 class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
   setup do
-    @setting = Setting.first
     @artifact = FactoryGirl.create(:artifact)
     @admin = FactoryGirl.create(:user, email: 'peter@genes.is', password: 'watcheroftheskies', admin: true)
     @user = FactoryGirl.create(:user, email: 'phil@genes.is', password: 'musicalbox')
@@ -194,6 +193,78 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
   end
 
   test "see download count on the icon" do
+    @artifact.update_attributes(file: fixture_file('example.gx'))
+
+    # With no downloads
+    visit artifact_path(@artifact)
+
+    within('.download-count') do
+      assert_content 0
+    end
+
+    # After a download
+    find('a.btn-download').click
+    visit artifact_path(@artifact)
+
+    within('.download-count') do
+      assert_content 1
+    end
+
+    # With an arbitrary value
+    @artifact.update_attributes(download_count: 10)
+    visit artifact_path(@artifact)
+
+    within('.download-count') do
+      assert_content 10
+    end
+  end
+
+  test "see file content list for zip files" do
+    @artifact.update_attributes(file: fixture_file('under.zip'))
+
+    visit artifact_path(@artifact)
+
+    assert_content I18n.t('artifacts.file_listing.title')
+  end
+
+  test "see more info url for audio files" do
+    ['mp3', 'wav', 'ogg', 'flac'].each do |audio_format|
+      @artifact.update_attributes(more_info_urls: ["https://audiofiles.xyz/audio.#{audio_format}"])
+
+      visit artifact_path(@artifact)
+
+      assert_content I18n.t('artifacts.more_info_multimedia.title')
+    end
+  end
+
+  test "see more info url for youtube" do
+    @artifact.update_attributes(more_info_urls: ["https://www.youtube.com/watch?v=vidyos"])
+
+    visit artifact_path(@artifact)
+
+    assert_content I18n.t('artifacts.more_info_multimedia.title')
+  end
+
+  test "see more info url for images" do
+    ['jpg', 'jpeg', 'png', 'gif'].each do |img_format|
+      @artifact.update_attributes(more_info_urls: ["https://imgdump.net/img.#{img_format}"])
+
+      visit artifact_path(@artifact)
+
+      assert_content I18n.t('artifacts.more_info_multimedia.title')
+    end
+  end
+
+  test "see more info url for soundcloud" do
+    @artifact.update_attributes(more_info_urls: ["https://soundcloud.com/somesongs/arecool"])
+
+    visit artifact_path(@artifact)
+
+    assert_content I18n.t('artifacts.more_info_multimedia.title')
+  end
+
+  test "see email filter on description" do
+    skip
   end
 
 end

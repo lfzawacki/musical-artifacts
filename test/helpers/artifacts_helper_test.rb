@@ -29,4 +29,17 @@ class ArtifactsHelperTest < ActionView::TestCase
   test ".unescape_separators" do
     skip
   end
+
+  test '.download_link' do
+    skip
+  end
+
+  test '.hash_list_tag' do
+    skip
+  end
+
+  test '.file_tree' do
+    skip
+  end
+
 end
