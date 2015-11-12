@@ -29,6 +29,8 @@ module MusicalArtifacts
     config.active_record.observers = [:artifact_observer, :stored_file_observer]
 
     # configure throttling options, 60 requests per minute to the artifacts and apps controllers
-    config.middleware.use ApiThrottle, max: 60 # this value can be ovewritten in the settings
+    if Rails.env == 'production'
+      config.middleware.use ApiThrottle, max: 60 # this value can be ovewritten in the settings
+    end
   end
 end
