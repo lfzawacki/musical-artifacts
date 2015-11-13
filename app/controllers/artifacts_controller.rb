@@ -57,16 +57,13 @@ class ArtifactsController < InheritedResources::Base
     def search_artifacts
       remove_duplicated_tags_from_searches # HACKY, read the comments above this method
 
+      search_params = { hash: :with_hash, tags: :tagged_with, apps: :app_tagged_with,
+        license: :licensed_as, formats: :with_file_format, q: :by_metadata}
+
       @artifacts = Artifact.approved
-
-      # searches by hash, tags, apps, licenses, formats
-      @artifacts = Searches.artifacts_with_hash(@artifacts, params[:hash])
-      @artifacts = Searches.artifacts_tagged_with(@artifacts, params[:tags])
-      @artifacts = Searches.artifacts_app_tagged_with(@artifacts, params[:apps])
-      @artifacts = Searches.artifacts_licensed_as(@artifacts, params[:license])
-      @artifacts = Searches.artifacts_with_file_format(@artifacts, params[:formats])
-
-      @artifacts = Searches.artifacts_by_metadata(@artifacts, params[:q])
+      search_params.each do |param, search|
+        @artifacts = Searches.send("artifacts_#{search}", @artifacts, params[param])
+      end
     end
 
     def paginate
