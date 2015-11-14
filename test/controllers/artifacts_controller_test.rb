@@ -423,4 +423,12 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
+  #
+  # -- ATOM Feed tests
+  #
+  test "should render index in .atom format" do
+    get :index, format: :atom
+    assert_response :success
+  end
+
 end

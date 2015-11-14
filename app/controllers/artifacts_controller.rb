@@ -2,7 +2,7 @@ class ArtifactsController < InheritedResources::Base
   load_and_authorize_resource
 
   # For API calls
-  respond_to :json
+  respond_to :json, :atom
 
   before_filter only: [:index] do
     load_tag_filters
