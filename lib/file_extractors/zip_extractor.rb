@@ -13,7 +13,11 @@ module FileExtractor
 
       begin
         list = Zip::File.open(@file) do |zip_file|
-          zip_file.map(&:name)
+          # This is a source of external strings which are shown in the interface
+          # so I'll just convert it to UTF-8 here to prevent problems
+          zip_file.map do |file|
+            file.name.force_encoding("UTF-8")
+          end
         end
 
       rescue Zip::Error => e
