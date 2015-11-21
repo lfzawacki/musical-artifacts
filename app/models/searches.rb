@@ -28,13 +28,18 @@ class Searches
     query
   end
 
+  # The main search in the website. Looks into name, description, author and license text
+  # It will also match artifacts tagged, app_tagged of with a file format if it exactly
+  # matches the searched terms, e.g., 'guitar', 'zip', 'guitarix'
   def self.artifacts_by_metadata artifacts, terms
     if terms.present?
       search_by_data =
         artifacts.where('name ILIKE ? OR description ILIKE ? OR author ILIKE ? OR extra_license_text ILIKE ?',
         "%#{terms}%", "%#{terms}%", "%#{terms}%", "%#{terms}%")
 
-      artifacts = search_by_data.union(artifacts_tagged_with(artifacts, terms))
+      search_by_data = search_by_data.union(artifacts_tagged_with(artifacts, terms))
+      search_by_data = search_by_data.union(artifacts_app_tagged_with(artifacts, terms))
+      artifacts = search_by_data.union(artifacts_with_file_format(artifacts, terms))
     end
     artifacts
   end

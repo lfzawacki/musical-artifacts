@@ -79,6 +79,23 @@ class SearchesTest < ActiveSupport::TestCase
     assert_kind_of ActiveRecord::Relation, search
   end
 
+  test "#artifacts_by_metadata (search matching one app tag)" do
+    search = Searches::artifacts_by_metadata(@scope, 'guitarix')
+
+    assert_equal search.count, 1
+    assert_includes search, @artifacts[1]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (search matching one format)" do
+    search = Searches::artifacts_by_metadata(@scope, 'gig')
+
+    assert_equal search.count, 2
+    assert_includes search, @artifacts[5]
+    assert_includes search, @artifacts[6]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
   test "#artifacts_by_metadata (search matching multiple from description)" do
     search = Searches::artifacts_by_metadata(@scope, 'artifact')
 
