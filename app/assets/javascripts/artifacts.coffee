@@ -71,8 +71,8 @@ initialize_wayback_links = ->
         $(this).addClass('normal')
         $(this).removeClass('wayback')
 
-      $('#show-wayback-links .on-shown').toggle()
-      $('#show-wayback-links .on-hidden').toggle()
+    $('#show-wayback-links .on-shown').toggle()
+    $('#show-wayback-links .on-hidden').toggle()
 
     e.preventDefault()
 
