@@ -34,12 +34,11 @@
       = render 'search_order_dropdown'
       = render 'artifact_list', artifacts: @artifacts, per_row: 1
 
+      .pad-bottom
+        = paginate @artifacts, :left => 10, :right => 10
+
     .col-sm-4
       %p.pad-top= link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
 
     .col-sm-4
       = render 'filter_by_tags'
-
-  .row.pad-bottom
-    = paginate @artifacts, :left => 10, :right => 10
-
