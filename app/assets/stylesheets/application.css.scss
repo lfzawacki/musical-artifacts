@@ -585,8 +585,8 @@ header .intro-text .skills {
 
 @media(min-width:768px) {
     header .container {
-        padding-top: 150px;
-        padding-bottom: 80px;
+        padding-top: 100px;
+        padding-bottom: 50px;
     }
 
     header .intro-text .name {
@@ -598,7 +598,7 @@ header .intro-text .skills {
     }
 
     .navbar-fixed-top {
-        padding: 25px 0;
+        padding: 10px 0;
         -webkit-transition: padding .3s;
         -moz-transition: padding .3s;
         transition: padding .3s;
@@ -669,6 +669,11 @@ section h2 {
 }
 
 @media(max-width:767px) {
+    header .container {
+        padding-top: 80px;
+        padding-bottom: 30px;
+    }
+
     section {
         padding: 75px 0;
     }
