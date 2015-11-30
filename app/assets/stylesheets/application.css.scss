@@ -596,9 +596,7 @@ header .intro-text .skills {
     header .intro-text .skills {
         font-size: 1.75em;
     }
-}
 
-@media(min-width:768px) {
     .navbar-fixed-top {
         padding: 25px 0;
         -webkit-transition: padding .3s;
@@ -619,6 +617,12 @@ header .intro-text .skills {
 
     .navbar-fixed-top.navbar-shrink .navbar-brand {
         font-size: 1.5em;
+    }
+
+    .navbar-brand {
+      background: transparent image_url('icons/main.png') center left no-repeat;
+      padding-left: 64px;
+      height: 56px;
     }
 }
 
@@ -675,6 +679,11 @@ section h2 {
 
     .navbar-header {
       padding-bottom: 10px;
+    }
+
+    .navbar-brand {
+      background: transparent image_url('icons/main_small.png') center left no-repeat;
+      padding-left: 58px;
     }
 }
 
