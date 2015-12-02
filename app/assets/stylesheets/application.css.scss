@@ -171,9 +171,17 @@ ul.link-list {
   padding: 0.4em 1.4em 0.8em 1.4em;
 }
 
+.artifact-sidebar {
+  padding-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 .dark-item {
   background-color: $light-dark;
-  @include border-radius(8px, 8px);
+  @include border-radius(2px, 2px);
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0px 2px 2px 0px;
 }
 
 .light-item {
@@ -637,7 +645,8 @@ header .intro-text .skills {
       input {
         border: solid 2px #9d9d9d;
         background: 0 0;
-        width: 420px;
+        width: 320px;
+        font-size: 16px;
       }
 
       .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {

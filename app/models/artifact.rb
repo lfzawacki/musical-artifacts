@@ -112,10 +112,10 @@ class Artifact < ActiveRecord::Base
 
       multimedia = more_info_urls.map do |link|
         auto_html(link) {
-          youtube
+          youtube(width: 360)
           vimeo
           audio
-          soundcloud(width: 420, height: 315, show_artwork: true, show_comments: true)
+          soundcloud(width: 360, height: 315, show_artwork: true, show_comments: true)
           image
         }
       end

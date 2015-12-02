@@ -1,8 +1,8 @@
 - multimedia = @artifact.multimedia_content
 
 - if multimedia.any?
-  %h4= t('.title')
-  #multimedia-content-area
+  #multimedia-content-area.col-lg-4.col-md-4.col-sm-4.dark-item.artifact-sidebar
+    %h4= t('.title')
     - multimedia.each do |link|
       .multimedia-content.pad-bottom
         = link
