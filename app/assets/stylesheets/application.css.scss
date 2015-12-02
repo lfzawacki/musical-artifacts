@@ -271,11 +271,15 @@ label.filter {
 
 @media(min-width:767px) {
   .with-navbar-on-top {
-    padding-top: 120px;
+    padding-top: 80px;
   }
 
   .search-field {
     padding-bottom: 20px;
+  }
+
+  .artifact-list-wrapper {
+    padding-left: 0px !important;
   }
 }
 
@@ -716,15 +720,14 @@ section h2 {
 
     .navbar-search-field {
       margin-top: 12px;
-      margin-left: 54px;
       color: #9d9d9d;
 
       input {
         border: solid 1px #9d9d9d;
         background: 0 0;
+        margin-left: -10px;
         width: 220px;
         height: 36px;
-        line-height: 1.5;
         font-size: 12px;
       }
 
