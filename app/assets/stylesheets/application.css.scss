@@ -624,6 +624,29 @@ header .intro-text .skills {
       padding-left: 64px;
       height: 56px;
     }
+
+    .navbar-search-field {
+      margin-top: 8px;
+      margin-left: 64px;
+      color: #9d9d9d;
+
+      input {
+        border: solid 2px #9d9d9d;
+        background: 0 0;
+        width: 420px;
+      }
+
+      .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+        margin-left: -50px;
+        z-index: 2;
+      }
+
+      button {
+        border: hidden 2px #9d9d9d;
+        line-height: 1.1;
+        background: 0 0;
+      }
+    }
 }
 
 .navbar {
@@ -689,6 +712,33 @@ section h2 {
     .navbar-brand {
       background: transparent image_url('icons/main_small.png') center left no-repeat;
       padding-left: 58px;
+    }
+
+    .navbar-search-field {
+      margin-top: 12px;
+      margin-left: 54px;
+      color: #9d9d9d;
+
+      input {
+        border: solid 1px #9d9d9d;
+        background: 0 0;
+        width: 220px;
+        height: 36px;
+        line-height: 1.5;
+        font-size: 12px;
+      }
+
+      .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+        margin-left: -46px;
+        z-index: 2;
+      }
+
+      button {
+        border: hidden 1px #9d9d9d;
+        line-height: 1;
+        background: 0 0;
+        font-size: 12px;
+      }
     }
 }
 

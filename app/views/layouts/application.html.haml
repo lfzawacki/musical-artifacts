@@ -25,9 +25,20 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
+          - show_search = !(controller.controller_name == 'artifacts' && controller.action_name == 'index')
           %a.navbar-brand{href: '/'}
-            = @setting.site_name || '/'
-            %p.subtitle Beta
+            - if !show_search
+              = @setting.site_name || '/'
+              %p.subtitle Beta
+
+          - if show_search
+            %form.navbar-search-field{method: :get, action: artifacts_path}
+              .input-group
+                %input.input-lg{name: 'q', placeholder: t('artifacts.index.search_for'), type: 'text' }
+
+                %span.input-group-btn
+                  %button#artifacts_search_btn.btn.btn-lg{type: "submit", value: 'submit'}
+                    %i.fa.fa-search
 
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
