@@ -1,5 +1,5 @@
 .audiojs {
-  width: 360px;
+  width: $sidebar-width;
   height: 42px;
   background: #404040;
 
@@ -47,7 +47,7 @@
 .track-details {
   clear: both;
   height: 40px;
-  width: 360px;
+  width: $sidebar-width;
   padding: 1px 6px;
   background: #eee;
   color: #222;

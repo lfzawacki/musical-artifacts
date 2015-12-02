@@ -24,8 +24,6 @@
 @import "compass";
 @import "compass/css3/border-radius";
 
-@import "audiojs";
-
 $cold: #632d4d;
 $colder: #521c3c;
 $coldy: #854f6f;
@@ -44,6 +42,10 @@ $white: #fff;
 
 $nprogress-color: $hoty;
 $nprogress-height: 2px;
+
+$sidebar-width: 360px;
+
+@import "audiojs";
 
 @import 'nprogress';
 @import 'nprogress-bootstrap';
@@ -76,7 +78,7 @@ a:focus {
 #file-tree {
   overflow:auto;
   max-height: 280px;
-  width: 420px;
+  width: $sidebar-width;
 }
 
 .multimedia-content img {
