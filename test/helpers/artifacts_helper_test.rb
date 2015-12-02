@@ -34,6 +34,10 @@ class ArtifactsHelperTest < ActionView::TestCase
     skip
   end
 
+  test '.download_url' do
+    skip
+  end
+
   test '.hash_list_tag' do
     skip
   end

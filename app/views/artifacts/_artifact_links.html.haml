@@ -2,8 +2,12 @@
   %p
     %strong= t('.mirrors')
 
+  - mirrors = @artifact.mirrors
+  - if @artifact.file.present?
+    - mirrors.unshift(download_url(@artifact))
+
   %ul.link-list
-    - @artifact.mirrors.each do |mirror|
+    - mirrors.each do |mirror|
       - icon = "fa #{icon_from_extension(format_from_link(mirror))}"
       %li
         %i{class: icon}

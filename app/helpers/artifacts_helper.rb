@@ -117,6 +117,10 @@ module ArtifactsHelper
     end
   end
 
+  def download_url artifact
+    "#{request.protocol}#{@setting.hostname}#{artifact.download_path}"
+  end
+
   def hash_list_tag(hash)
     content = ''
 
