@@ -129,6 +129,21 @@ initialize_file_tree = ->
   # TODO: find a way to disable file select as it doesnt make sense
   $('#file-tree').jstree()
 
+initialize_mirror_links = ->
+  $('.mirror-link').on 'click', (e) ->
+  # Get the first mirror (which is our own)
+  url = $('ul#mirrors a:first').attr('href')
+  clicked_url = $('a:first', $(this)).attr('href')
+
+  reg = new RegExp(location.host)
+
+  # Tests if the first mirror is present (we have the file hosted in musical artifacts)
+  if reg.test(url) and clicked_url != url
+    # Do a head request to increase download count
+    http = new XMLHttpRequest()
+    http.open('HEAD', url)
+    http.send()
+
 updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
 
@@ -239,3 +254,4 @@ $(document).on 'page:change', ->
   initialize_comments()
   initialize_audio_player()
   initialize_file_tree()
+  initialize_mirror_links()

@@ -3,13 +3,14 @@
     %strong= t('.mirrors')
 
   - mirrors = @artifact.mirrors
+  / Add our download file as the first mirror
   - if @artifact.file.present?
     - mirrors.unshift(download_url(@artifact))
 
-  %ul.link-list
+  %ul#mirrors.link-list
     - mirrors.each do |mirror|
       - icon = "fa #{icon_from_extension(format_from_link(mirror))}"
-      %li
+      %li.mirror-link
         %i{class: icon}
         = external_link_to mirror, mirror
 
