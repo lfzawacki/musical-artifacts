@@ -17,8 +17,7 @@
           = render "artifacts/side_buttons", artifact: artifact
 
         %span
-          = t('_other.by')
-          = artifact.author
+          = render "artifacts/created_by", artifact: artifact
 
         .artifact-description.pad-top
           %p
