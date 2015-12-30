@@ -16,6 +16,14 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_content page, @artifact.author
   end
 
+  test "see uploaded date next to author name" do
+    skip
+  end
+
+  test "see updated date next to uploaded date when different" do
+    skip
+  end
+
   test "see buttons if an admin is logged in" do
     login_with(@admin, 'watcheroftheskies')
     visit artifact_path(@artifact)
