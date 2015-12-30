@@ -11,7 +11,8 @@
         - col_class = "col-sm-#{12 / per_row}"
 
       .artifact-item{class: "#{cycle('dark', 'light')}-item #{col_class}"}
-        %h3
+
+        %h3.artifact-name
           = link_to artifact.name, artifact
 
           = render "artifacts/side_buttons", artifact: artifact

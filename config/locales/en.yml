@@ -1,6 +1,10 @@
 en:
   locale_name: English
 
+  time:
+    formats:
+      default: "%b %d, %Y"
+
   _other:
     access_denied: You don't have sufficient permissions to do this.
     by: by
@@ -56,6 +60,10 @@ en:
       sa: Share under the same license
 
   artifacts:
+    created_by:
+      created_at: "Uploaded on "
+      updated_at: "and last updated on"
+
     index:
       all: All
       clear_search: Clear

@@ -161,6 +161,10 @@ ul.link-list {
 #artifact-list {
 }
 
+.artifact-name {
+  display:inline;
+}
+
 .artifact-description {
 
   p {
@@ -169,8 +173,25 @@ ul.link-list {
 
 }
 
+.artifact-times {
+  padding-top: 0.5em;
+  font-size: 90%;
+  font-style: italic;
+
+  .updated-at {
+    color: #aaa;
+  }
+}
+
+/* standalone artifact container */
+.artifact-item {
+  padding-top: 1.8em;
+}
+
+/* artifact container when in a list */
 .row .artifact-item {
-  padding: 0.4em 1.4em 0.8em 1.4em;
+  padding: 1.8em 1.4em 0.8em 1.4em;
+  margin-bottom: 2em;
 }
 
 .artifact-sidebar {
@@ -333,7 +354,7 @@ label.filter {
   }
 
   .artifact-item {
-    padding: 0.1em 0.9em 0.1em 0.9em;
+    padding: 1em 0.9em 0.1em 0.9em;
   }
 
   a.btn-download {

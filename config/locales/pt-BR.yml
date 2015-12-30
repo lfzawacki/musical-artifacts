@@ -1,6 +1,13 @@
 pt-BR:
   locale_name: Português (BR)
 
+  time:
+    formats:
+      default: "%b %d, %Y"
+
+  date:
+    abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dec]
+
   activerecord:
     attributes:
       artifact:
@@ -70,6 +77,10 @@ pt-BR:
       sa: Compartilhe sob a mesma licensa
 
   artifacts:
+    created_by:
+      created_at: "Adicionado em "
+      updated_at: "e atualizado em"
+
     index:
       all: Todos
       clear_search: Limpar
