@@ -18,7 +18,7 @@ class StoredFile < ActiveRecord::Base
 
   def increment_download_count
     increment!(:download_count)
-    artifact.increment!(:download_count)
+    artifact.update_column(:download_count, artifact.download_count + 1)
   end
 
   def save_file_format
