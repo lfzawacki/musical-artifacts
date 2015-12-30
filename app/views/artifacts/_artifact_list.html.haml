@@ -11,6 +11,8 @@
         - col_class = "col-sm-#{12 / per_row}"
 
       .artifact-item{class: "#{cycle('dark', 'light')}-item #{col_class}"}
+        - # If the artifact is new to the user, put a little ribbon on it
+        = render 'artifacts/new_artifact_ribbon', artifact: artifact
 
         %h3.artifact-name
           = link_to artifact.name, artifact

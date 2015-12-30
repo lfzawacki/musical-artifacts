@@ -1,0 +1,6 @@
+- # TODO: move this variable to a controller if performance is bad here
+- last_login = current_user.try(:last_sign_in_at) || Time.now
+- if artifact.created_at > last_login
+  .ribbon-wrapper.right
+    .ribbon
+      %span= t('.new')

@@ -116,6 +116,9 @@ en:
     new:
       new: Create new artifact
 
+    new_artifact_ribbon:
+      new: "New!"
+
     file_listing:
       title: File content
 

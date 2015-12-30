@@ -110,6 +110,9 @@ pt-BR:
     new:
       new: Criando novo artefato
 
+    new_artifact_ribbon:
+      new: "Novo!"
+
     artifact_list:
       more_info: Mais informação...
       none: Nada para se ver aqui!

@@ -50,6 +50,8 @@ $sidebar-width: 360px;
 @import 'nprogress';
 @import 'nprogress-bootstrap';
 
+@import "ribbon";
+
 .pad-bottom {
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;
@@ -197,6 +199,13 @@ ul.link-list {
 .artifact-sidebar {
   padding-top: 0.5em;
   margin-bottom: 0.5em;
+}
+
+.light-item {
+  background-color: #f8f8f8;
+  border-color: #efefef;
+  border-style: solid;
+  border-width: 0px 2px 2px 0px;
 }
 
 .dark-item {
