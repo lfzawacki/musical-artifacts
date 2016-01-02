@@ -70,11 +70,17 @@ pt-BR:
       copyright: Direitos Reservados a %{author}
       public: Trabalho em Domínio Público
       gpl: GNU General Public License %{version}
+      various: "Arquivos disponibilizados em várias licensas diferentes. Leia a descrição, os links de mais informação, conteúdos ou contate o autor para se informar melhor."
+      gray: "Os arquivos tem uma licensa desconhecida, foram obtidos de fontes desconhecidas ou compilados a partir de material feito por terceiros."
     parts:
       by: Dê crédito ao autor
       nc: Uso não comercial
       nd: Sem obras derivadas
       sa: Compartilhe sob a mesma licensa
+    name:
+      various: "Várias licensas"
+      gray: "Licensa em área cinza"
+
 
   artifacts:
     created_by:

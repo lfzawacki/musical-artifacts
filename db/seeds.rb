@@ -20,6 +20,10 @@ License.create short_name: 'gpl', license_type: 'gpl', name: 'GNU General Public
 License.create short_name: 'gpl-v2', license_type: 'gpl', name: 'GNU General Public License Version 2'
 License.create short_name: 'gpl-v3', license_type: 'gpl', name: 'GNU General Public License Version 3'
 
+License.create short_name: 'various', license_type: 'various', name: 'Various Licenses'
+
+License.create short_name: 'gray', license_type: 'gray', name: 'Gray Area'
+
 App.create(
   name: "Guitarix",
   description: "Guitarix is a virtual guitar amplifier for Linux running on Jack Audio Connection Kit. It is free as in speech and free as in beer. The available sourcecode allows to build it on other UNIX-like systems, too, namely for BSD and for MacOSX.",

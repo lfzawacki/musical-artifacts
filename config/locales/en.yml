@@ -53,11 +53,16 @@ en:
       copyright: Copyright to %{author}
       public: Work in the Public Domain
       gpl: GNU General Public License %{version}
+      various: "These files are made available through a mix of different licenses. Read the description, more info links, file contents or contact the author in order to get the full information."
+      gray: "These files have an unknown license, were obtained from unkown sources or were compiled from third party material."
     parts:
       by: Has to give attribution
       nc: Non commercial use only
       nd: No derivate works
       sa: Share under the same license
+    name:
+      various: "Various Licenses"
+      gray: "Licensing Gray Area"
 
   artifacts:
     created_by:

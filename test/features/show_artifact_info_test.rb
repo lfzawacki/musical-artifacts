@@ -294,7 +294,6 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
       assert_link '', artifacts_path(license: license.short_name)
     end
 
-
   end
 
 end
