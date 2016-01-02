@@ -66,50 +66,6 @@ module ArtifactsHelper
     end
   end
 
-  def display_license artifact, opt={}
-    license = artifact.license.short_name
-
-    # copyright is boring, return just text
-    return I18n.t("licenses.text.copyright", author: artifact.author) if license == 'copyright'
-
-    img = image_tag(artifact.license.image_url(opt[:small]))
-
-    if ['public', 'cc-sample', 'copyleft'].include?(license)
-      link = I18n.t("licenses.link.#{license.gsub('-','_')}")
-      text = I18n.t("licenses.text.#{license.gsub('-','_')}", author: artifact.author)
-    elsif license.match(/gpl\-?(v2|v3)?/)
-      version = $1.try(:chomp) || '1'
-      link = I18n.t("licenses.link.gpl", version: "#{version}.0")
-      text = I18n.t("licenses.text.gpl", version: "#{version}.0")
-    else # cc licenses
-      link = I18n.t("licenses.link.cc", type: license)
-      text = I18n.t("licenses.text.cc")
-      parts = license.split('-').map do |part|
-        I18n.t("licenses.parts.#{part}")
-      end
-    end
-
-    if opt[:small]
-      content_tag :div, class: 'license' do
-        content_tag(:a, img, href: artifacts_path(license: license)) +
-        content_tag(:a, text, href: artifacts_path(license: license))
-      end
-    else
-      content_tag :div, class: 'license' do
-        content = content_tag(:a, img, href: link)
-
-        inner_content = content_tag(:a, text, href: link)
-        inner_content += tag(:br)
-        parts.each do |part|
-          inner_content += content_tag(:span, part, class: 'label license-label label-default')
-        end if parts.present?
-
-        content += content_tag(:div, inner_content, class: 'license-terms')
-        content
-      end
-    end
-  end
-
   def download_link artifact, opt = {}
     url = artifact_download_url(artifact, filename: artifact.file_name)
     link_to url, class: opt[:class], title: artifact.file_name, download: artifact.file_name, data: {no_turbolink: true} do

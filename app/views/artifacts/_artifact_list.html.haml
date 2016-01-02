@@ -33,6 +33,6 @@
           = render 'artifacts/artifact_tags', artifact: artifact
 
         .artifact-license
-          = display_license(artifact, small: true)
+          = render 'artifacts/license', artifact: artifact, small: true
 
         = render partial: 'artifacts/buttons', locals: { artifact: artifact }

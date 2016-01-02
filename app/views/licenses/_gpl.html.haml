@@ -1,0 +1,14 @@
+- name = artifact.license.short_name
+- version = name.match(/gpl\-?(v2|v3)?/)[1].try(:chomp) || '1'
+- link = t("licenses.link.gpl", version: "#{version}.0")
+- text = t("licenses.text.gpl", version: "#{version}.0")
+- img = image_tag(artifact.license.image_url(small))
+
+
+- if small
+  = link_to img, artifacts_path(license: name)
+  = link_to text, artifacts_path(license: name)
+
+- else
+  = link_to img, link
+  = link_to text, link

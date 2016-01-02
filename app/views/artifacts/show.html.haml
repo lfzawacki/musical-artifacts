@@ -22,7 +22,7 @@
         = render 'artifact_tags', artifact: @artifact
 
       %p.artifact-license
-        = display_license(@artifact)
+        = render 'artifacts/license', artifact: @artifact, small: false
 
       - if @artifact.extra_license_text.present?
         %p.small= @artifact.extra_license_text_html

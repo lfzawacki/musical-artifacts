@@ -275,4 +275,26 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     skip
   end
 
+  # Test each license more thoroughly (for now just want to know if the page is breaking or not)
+  License.all.each do |license|
+    test "show an artifact licensed as #{license.short_name}" do
+      @artifact.update_attributes(license: license, name: "#{license.short_name} artifact")
+
+      visit artifact_path(@artifact)
+
+      assert_css '.license'
+    end
+
+    test "index with an artifact licensed as #{license.short_name}" do
+      @artifact.update_attributes(license: license, name: "#{license.short_name} artifact")
+
+      visit artifacts_path
+
+      assert_css '.license'
+      assert_link '', artifacts_path(license: license.short_name)
+    end
+
+
+  end
+
 end

@@ -30,4 +30,8 @@ class LicenseTest < ActiveSupport::TestCase
     assert_equal @public.image_url(true), "licenses/public-small.svg"
   end
 
+  test "licenses without images" do
+    skip
+  end
+
 end

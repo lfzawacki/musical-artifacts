@@ -1,0 +1,14 @@
+- name = artifact.license.short_name.gsub('-','_')
+
+- link = t("licenses.link.#{name}")
+- text = t("licenses.text.#{name}", author: artifact.author)
+
+- img = image_tag(artifact.license.image_url(small))
+
+- if small
+  = link_to img, artifacts_path(license: artifact.license.short_name)
+  = link_to text, artifacts_path(license: artifact.license.short_name)
+
+- else
+  = link_to img, link
+  = link_to text, link
