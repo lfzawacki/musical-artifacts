@@ -4,9 +4,11 @@ pt-BR:
   time:
     formats:
       default: "%b %d, %Y"
+      long: "%d de %B, %Y %H:%M"
 
   date:
     abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dec]
+    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
 
   activerecord:
     attributes:
