@@ -9,6 +9,6 @@ class Favorite < ActiveRecord::Base
   validates :user, presence: true
 
   def update_favorite_count
-    artifact.update_attribute :favorite_count, artifact.favorites.count
+    artifact.update_column :favorite_count, artifact.favorites.count
   end
 end
