@@ -215,6 +215,25 @@ parseQueryString = (str) ->
   params['q'] = str if str.length > 0
   params
 
+# UGLY hack, to enable the search bar after a
+# back button (because turbolinks isnt firing an event)
+#
+# Check every 2 seconds to see we have a search bar,
+# if we do and it's disabled and then enable it
+enableSearchBar = ->
+  setInterval ->
+
+    if $('#artifact_search')[0]
+      input = $("input[name=search]")[0]
+      if input and input.disabled
+        input.disabled = false
+
+  , 2000
+
+# Start the search bar hack only on first page load
+$ ->
+  enableSearchBar()
+
 $(document).on 'page:change', ->
 
   # ------ index
