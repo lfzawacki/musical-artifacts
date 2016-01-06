@@ -59,6 +59,7 @@ pt-BR:
         adfree: Este site não mostra publicidade.
 
   licenses:
+    extra_text: "Considerações extras:"
     link:
       cc: http://creativecommons.org/licenses/%{type}/4.0/deed.en
       cc_sample: https://creativecommons.org/licenses/sampling+/1.0/

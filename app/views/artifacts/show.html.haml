@@ -12,7 +12,7 @@
   = render "created_by", artifact: @artifact
 
   .row
-    .col-lg-8.col-md-8.col-sm-8.pad-bottom
+    .col-lg-8.col-md-8.col-sm-8.light-item.pad-bottom.pad-top
       .artifact-description
         = @artifact.description_html
 
@@ -23,9 +23,6 @@
 
       %p.artifact-license
         = render 'artifacts/license', artifact: @artifact, small: false
-
-      - if @artifact.extra_license_text.present?
-        %p.small= @artifact.extra_license_text_html
 
     - # Preview file list and multimedia content linked as more info urls
     = render 'file_listing'

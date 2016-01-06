@@ -169,10 +169,18 @@ ul.link-list {
 
 .artifact-description {
 
+  padding-top: 5px;
+  padding-bottom: 5px;
+
   p {
     font-size: 16px;
   }
 
+}
+
+.artifact-sidebar {
+  margin-right: -12px;
+  margin-left: 12px;
 }
 
 .artifact-times {
@@ -192,7 +200,7 @@ ul.link-list {
 
 /* artifact container when in a list */
 .row .artifact-item {
-  padding: 1.8em 1.4em 0.8em 1.4em;
+  padding: 1em 1.4em 0.4em 1.4em;
   margin-bottom: 2em;
 }
 
@@ -533,6 +541,7 @@ label.filter {
   text-decoration: none;
   font-size: 110%;
   color: $coldy;
+  @include border-radius(2px, 2px);
 }
 
 .btn-new.btn-lg {
@@ -577,6 +586,16 @@ p.more-info {
 /*
  * About page + main application CSS
  */
+
+/* Hard edged borders for most of bootstap stuff */
+.btn, .label, .alert, .dropdown-menu, .panel {
+  @include border-radius(2px, 2px);
+}
+
+.alert {
+  padding-top: 10px;
+}
+
 .badge-unapproved {
   color: $darky;
   background-color: $white;

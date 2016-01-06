@@ -39,6 +39,7 @@ en:
         adfree: This site doesn't show you advertisement.
 
   licenses:
+    extra_text: "Extra considerations:"
     link:
       cc: http://creativecommons.org/licenses/%{type}/4.0/deed.en
       cc_sample: https://creativecommons.org/licenses/sampling+/1.0/

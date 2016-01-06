@@ -9,3 +9,9 @@
   - else
     = render "licenses/#{artifact.license.license_type}", artifact: artifact, small: small
 
+  - if artifact.extra_license_text.present?
+    .license-text
+      %strong
+        = t("licenses.extra_text")
+
+      = artifact.extra_license_text_html
