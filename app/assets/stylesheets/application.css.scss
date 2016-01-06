@@ -178,6 +178,16 @@ ul.link-list {
 
 }
 
+.no-description {
+  font-size: 140%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
 .artifact-sidebar {
   margin-right: -12px;
   margin-left: 12px;
@@ -368,6 +378,12 @@ label.filter {
     p.small {
       font-size: 12px;
     }
+  }
+
+  .no-description {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 110%;
   }
 
   .big-tags {
@@ -593,7 +609,7 @@ p.more-info {
 }
 
 .alert {
-  padding-top: 10px;
+  margin-top: 20px;
 }
 
 .badge-unapproved {

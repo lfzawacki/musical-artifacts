@@ -24,6 +24,10 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     skip
   end
 
+  test "see (no description) on artifact with no description" do
+    skip
+  end
+
   test "see buttons if an admin is logged in" do
     login_with(@admin, 'watcheroftheskies')
     visit artifact_path(@artifact)

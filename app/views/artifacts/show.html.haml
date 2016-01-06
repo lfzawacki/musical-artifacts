@@ -14,7 +14,10 @@
   .row
     .col-lg-8.col-md-8.col-sm-8.light-item.pad-bottom.pad-top
       .artifact-description
-        = @artifact.description_html
+        -if @artifact.description.present?
+          = @artifact.description_html
+        - else
+          .no-description= t('.no_description')
 
       = render 'artifact_links'
 

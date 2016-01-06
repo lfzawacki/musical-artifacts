@@ -23,8 +23,10 @@
           = render "artifacts/created_by", artifact: artifact
 
         .artifact-description.pad-top
-          %p
+          -if artifact.description.present?
             = strip_tags(artifact.description_html).truncate(480)
+          - else
+            .no-description= t('artifacts.show.no_description')
 
         %p.more-info
           = link_to t('.more_info'), artifact_path(artifact)

@@ -136,6 +136,7 @@ pt-BR:
       top_rated_desc: Mais recomendados
 
     show:
+      no_description: "(Nenhuma descrição disponível)"
       related: Relacionados
       unapproved: 'Este artefato não está visível no momento. Espere até um administrador aprová-lo.'
 
