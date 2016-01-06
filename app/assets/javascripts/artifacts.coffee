@@ -144,6 +144,13 @@ initialize_mirror_links = ->
       http.open('HEAD', url)
       http.send()
 
+initialize_back_button = ->
+  # Use browser back button instead of redirecting back to a generic page
+  # With js disabled this will just use the normal link
+  $("#back-button").on "click", (e) ->
+    history.back()
+    e.preventDefault()
+
 updateFormParameters = ->
   params = parseQueryString($('#artifact_search').val())
 
@@ -274,3 +281,4 @@ $(document).on 'page:change', ->
   initialize_audio_player()
   initialize_file_tree()
   initialize_mirror_links()
+  initialize_back_button()

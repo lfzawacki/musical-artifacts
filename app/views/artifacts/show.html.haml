@@ -49,4 +49,4 @@
       = render partial: 'comments'
 
     %p.nav-links.pad-top
-      = link_to t('_other.back'), artifacts_path
+      = link_to t('_other.back'), artifacts_path, id: "#{'back-button' if (request.referrer.present? && internal_referrer?)}"

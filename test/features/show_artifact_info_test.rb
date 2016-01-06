@@ -296,4 +296,16 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
   end
 
+  test "see #back-button when coming from an internal referrer" do
+    skip
+  end
+
+  test "don't see #back-button when coming from an external referrer" do
+    skip
+  end
+
+  test "don't see #back-button when no referrer is present" do
+    skip
+  end
+
 end

@@ -8,4 +8,9 @@ module ApplicationHelper
     end
   end
 
+  # Tells whether or not a referrer URL came from our application
+  def internal_referrer?
+    request.referrer && URI.parse(request.referrer).host == request.host
+  end
+
 end
