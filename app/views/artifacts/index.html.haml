@@ -18,7 +18,7 @@
           = t('.clear_search')
 
   .row.search-filters.container-fluid
-    %form.input-group.filters.text-center
+    .input-group.filters.text-center
       -  Artifact.search_fields.each do |filter|
         .col-lg-2.col-md-3.col-sm-4.col-xs-6
           %input.form-control{name: filter, type: 'hidden'}
