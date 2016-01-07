@@ -437,11 +437,24 @@ label.filter {
 
 }
 
-.artifact-tags a {
-  text-decoration: none;
+/*  _artifact_tags */
+.artifact-tags {
+  a {
+    text-decoration: none;
+  }
+
+  .label {
+    display: inline-block;
+    padding: 4px 8px 5px 8px;
+    margin-top: 8px;
+  }
 }
 
-/*  _artifact_tags */
+.big-tags .label {
+  padding: 7px 10px 7px 10px;
+  margin-top: 10px;
+}
+
 .label-app {
   background-color: $hot;
   color: $darker;

@@ -9,22 +9,22 @@
       = link_to favorite_artifact_path(artifact), remote: true, class: favorite_class, method: :post do
         %span.favorite-count= artifact.favorite_count
         %i.fa.fa-star
-        %p.small-label= t('.favorite')
+        .small-label= t('.favorite')
 
       = link_to unfavorite_artifact_path(artifact), remote: true, class: unfavorite_class, method: :delete do
         %span.favorite-count= artifact.favorite_count
         %i.fa.fa-star
-        %p.small-label= t('.unfavorite')
+        .small-label= t('.unfavorite')
 
     - else
       = link_to new_user_session_path, class: "#{common_class} inactive-favorite" do
         %span.favorite-count= artifact.favorite_count
         %i.fa.fa-star
-        %p.small-label= t('.favorite')
+        .small-label= t('.favorite')
 
   - if can?(:download, artifact) && artifact.file.try(:url)
     = download_link(artifact) do
       %span.side-button.download-count.btn.btn-default
         = artifact.download_count
         %i.fa.fa-download
-        %p.small-label= t('.download')
+        .small-label= t('.download')
