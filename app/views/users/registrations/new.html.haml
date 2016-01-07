@@ -18,7 +18,7 @@
             = f.label :password
             - if @minimum_password_length
               %em
-                (#{@minimum_password_length} characters minimum)
+                (#{t('.password_min', count: @minimum_password_length)})
             %br/
             = f.password_field :password, autocomplete: "off", class: 'form-control'
           .form-group

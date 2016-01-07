@@ -11,11 +11,11 @@
         = form_for(resource, as: resource_name, url: session_path(resource_name), class: 'form-horizontal') do |f|
           .form-group
             = f.label :email
-            = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Enter email'
+            = f.email_field :email, autofocus: true, class: 'form-control'
 
           .form-group
             = f.label :password
-            = link_to '(forgot password?)', new_user_password_path
+            = link_to "(#{t('.forgot_password')})", new_user_password_path
             = f.password_field :password, autocomplete: "off", class: 'form-control'
 
           - if devise_mapping.rememberable?

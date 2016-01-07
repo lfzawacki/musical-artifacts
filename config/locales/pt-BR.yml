@@ -25,6 +25,11 @@ pt-BR:
         license: Licensa
         extra_license_text: Text extra à licensa
 
+      user:
+        password: Senha
+        password_confirmation: Confirme sua senha
+        remember_me: Manter logado
+
   _other:
     access_denied: Você não tem permissão para realizar essa ação.
     by: por
@@ -163,6 +168,19 @@ pt-BR:
       your_favorites: Favoritos
       favorite_description: Estes são os artefatos que você marcou como favoritos.
       show_favorites_html: "Procurando por seus %{link}?"
+
+    passwords:
+      new:
+        title: "Esqueceu sua senha?"
+        reset_password: "Receber instruções para a troca de senha"
+
+    registrations:
+      new:
+        password_min: "no mínimo %{count} caracteres"
+
+    sessions:
+      new:
+        forgot_password: "esqueceu sua senha?"
 
   settings:
     edit:

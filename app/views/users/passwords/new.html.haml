@@ -1,4 +1,4 @@
-= content_for :title, 'Forgot your password?'
+= content_for :title, t('.title')
 
 .container.container-login
   .col-md-6.col-md-offset-3
@@ -6,7 +6,7 @@
     .panel.panel-default
       .panel-heading
         %h2.panel-title
-          %strong Forgot your password?
+          %strong= t('.title')
       .panel-body
 
         = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'form-horizontal') do |f|
@@ -15,5 +15,5 @@
             = f.label :email
             = f.email_field :email, autofocus: true, class: 'form-control'
           .actions
-            = f.submit "Send me reset password instructions", class: 'btn btn-default'
+            = f.submit t('.reset_password'), class: 'btn btn-default'
 

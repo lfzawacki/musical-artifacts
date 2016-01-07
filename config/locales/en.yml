@@ -144,6 +144,19 @@ en:
       favorite_description: These are the artifacts you have marked as your favorites
       show_favorites_html: "Looking for you %{link}?"
 
+    passwords:
+      new:
+        title: "Forgot your password?"
+        reset_password: "Send me reset password instructions"
+
+    registrations:
+      new:
+        password_min: "%{count} characters minimum"
+
+    sessions:
+      new:
+        forgot_password: "forgot password?"
+
   settings:
     edit:
       edit: Editing Settings
