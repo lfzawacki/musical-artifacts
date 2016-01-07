@@ -4,7 +4,7 @@
     = t(".#{params[:order] || 'created_at'}_#{params[:asc] ? 'asc' : 'desc'}").downcase
     %span.caret
   %ul.dropdown-menu
-    - current_params = params.slice(*Artifact.search_fields)
+    - current_params = params.slice(*(Artifact.search_fields + ['q']))
     %li
       = link_to t('.top_rated_desc'), artifacts_path(current_params.merge(order: 'top_rated'))
     %li
