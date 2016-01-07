@@ -89,6 +89,23 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_equal Artifact.last.user, @user
   end
 
+  test "should create approved artifact as a normal user that created a few approved artifacts" do
+    sign_in(@user)
+
+    0.upto(Artifact.approved_count_for_trust) do
+      FactoryGirl.create(:artifact, user: @user, approved: true)
+    end
+
+    assert_difference('Artifact.where(approved: true).count', 1) do
+      post :create, artifact:
+        { name: 'Elysian Woes', author: 'Mikael', description: '70s progressive rock', license_id: @by.id }
+    end
+
+    assert_redirected_to artifact_path(assigns(:artifact))
+    refute_equal flash[:notice], I18n.t('artifacts.create.not_approved')
+    assert_equal Artifact.last.user, @user
+  end
+
   test "should show artifact" do
     get :show, id: @artifact
     assert_response :success

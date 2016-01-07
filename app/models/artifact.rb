@@ -31,6 +31,12 @@ class Artifact < ActiveRecord::Base
       ['license', 'tags', 'apps', 'hash', 'formats']
     end
 
+    # If a user has had 3 or more artifacts approved it cnn be auto approved
+    # TODO: Not sure if we'll keep this system, but it's here for now
+    def self.approved_count_for_trust
+      3
+    end
+
     before_save :generate_file_hash
     def generate_file_hash
       if file.present? && file_hash.blank?

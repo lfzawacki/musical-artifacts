@@ -12,12 +12,13 @@ class ArtifactsController < InheritedResources::Base
   end
 
   def create
-    if cannot?(:approve, @artifact)
-      @artifact.update_attributes approved: false, user: current_user
-      create!(notice: I18n.t('artifacts.create.not_approved'))
-    else
-      @artifact.update_attributes user: current_user
+    approved = can?(:approve, @artifact) || user_artifacts_can_be_approved?(current_user)
+    @artifact.update_attributes approved: approved, user: current_user
+
+    if approved
       create!
+    else
+      create!(notice: I18n.t('artifacts.create.not_approved'))
     end
   end
 
@@ -149,6 +150,11 @@ class ArtifactsController < InheritedResources::Base
           end
         end
       end
+    end
+
+    # A user with a certain number of pre-approved won't need approval
+    def user_artifacts_can_be_approved?(user)
+      user.artifacts.where(approved: true).count >= Artifact.approved_count_for_trust
     end
 
 end
