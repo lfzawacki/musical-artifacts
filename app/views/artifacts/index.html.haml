@@ -1,7 +1,7 @@
 - title = t('.search_description', query: params[:q]) if params[:q].present?
 - content_for :title, remove_quotes(title)
 
-%form.pad-top#artifact_search_form{method: :get}
+= form_tag nil, class: 'pad-top', id: 'artifact_search_form', method: :get, enforce_utf8: true do
   .row
     .col-lg-12.input-group.search-field
       %input#artifact_search.form-control.input-lg{name: 'search', placeholder: t('.search_for'), type: 'text', value: value_from_params }
