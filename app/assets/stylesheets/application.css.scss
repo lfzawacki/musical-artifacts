@@ -500,22 +500,31 @@ label.filter {
   padding: 0.1em;
 }
 
-/* tag clouds */
+/* tag filters */
+.filter-sidebar {
+  padding: 1em 1em 1.4em 0.8em;
+  margin-bottom: 1em;
+}
+
 .tag-title {
   text-transform: none;
   color: #222;
+  margin-top: 0;
+}
+
+.tag-filter {
+  font-size: 120%;
+  padding-right: 12px;
+  display: inline-block;
+}
+
+a.tag-filter:hover {
+  font-weight: bold;
 }
 
 .normal-tag { color: $colder;}
 .app-tag { color: $hotter; }
 .format-tag { color: $darky;}
-
-.tag-xs { font-size: 1.2em; }
-.tag-sm { font-size: 1.8em; }
-.tag-md { font-size: 2.2em; }
-.tag-lg { font-size: 2.8em; }
-.tag-xl { font-size: 3.4em; }
-.tag-xxl { font-size: 4.0em; }
 
 .side-buttons {
   transition: 2s;
@@ -579,7 +588,6 @@ label.filter {
   color: $white;
   font-size: 150%;
   transition: 1s;
-  margin-bottom: 1em;
   white-space: normal;
 }
 

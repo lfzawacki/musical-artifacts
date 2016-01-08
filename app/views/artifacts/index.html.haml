@@ -37,7 +37,7 @@
         = paginate @artifacts, :left => 10, :right => 10
 
     .col-sm-4
-      %p.pad-top= link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
+      %p.pad-top.pad-bottom= link_to t('.new'), new_artifact_path, class: 'btn btn-group-justified btn-new btn-lg'
 
     .col-sm-4
       = render 'filter_by_tags'

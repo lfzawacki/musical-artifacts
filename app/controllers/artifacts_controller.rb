@@ -5,8 +5,8 @@ class ArtifactsController < InheritedResources::Base
   respond_to :json, :atom
 
   before_filter only: [:index] do
-    load_tag_filters
     search_artifacts
+    load_tag_filters
     paginate unless request.format == 'json'
     order_by_params
   end
@@ -95,9 +95,9 @@ class ArtifactsController < InheritedResources::Base
 
     def load_tag_filters
       @tags = {
-        tags: Artifact.tag_counts_on(:tags).where('taggings_count > 1'),
-        apps: Artifact.tag_counts_on(:software),
-        formats: Artifact.tag_counts_on(:file_formats)
+        tags: @artifacts.tag_counts_on(:tags).order('taggings_count DESC').select{|tc| tc.count > 1},
+        apps: @artifacts.tag_counts_on(:software).order('taggings_count DESC'),
+        formats: @artifacts.tag_counts_on(:file_formats).order('taggings_count DESC')
       }
       @licenses = License.license_types - ['copyright', 'various', 'gray']
       @copyright = License.find('copyright') # always the black sheep
