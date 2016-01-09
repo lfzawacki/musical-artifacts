@@ -528,7 +528,8 @@ label.filter {
 }
 
 a.tag-filter:hover {
-  font-weight: bold;
+  color: $darker;
+  text-decoration: underline;
 }
 
 .normal-tag { color: $colder;}
