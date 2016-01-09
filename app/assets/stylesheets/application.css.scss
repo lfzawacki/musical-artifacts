@@ -27,6 +27,7 @@
 $cold: #632d4d;
 $colder: #521c3c;
 $coldy: #854f6f;
+$cold-border: #73256A;
 
 $hotter: #dcb803;
 $hot: #feda25;
@@ -311,6 +312,10 @@ ul.pagination {
   background-color: #ddd;
 }
 
+#artifacts_search_clear.btn-lg {
+  border-left: 0px;
+}
+
 .filters {
   margin-bottom: 2em;
 }
@@ -580,24 +585,30 @@ a.tag-filter:hover {
 
 .btn-download {
   white-space: normal;
-  background-color: $dark;
+  background-color: #222;
   text-decoration: none;
   font-size: 110%;
   color: $coldy;
   @include border-radius(2px, 2px);
+  border-color: $colder;
+  border-style: solid;
+  border-width: 0px 1px 1px 0px;
 }
 
 .btn-new.btn-lg {
-  background-color: $cold;
+  border-color: $cold-border;
+  background-color: $coldy;
   color: $white;
   font-size: 150%;
   transition: 1s;
   white-space: normal;
+  border-style: solid;
+  border-width: 0px 2px 2px 0px;
 }
 
-.btn-new:hover {
+a.btn-new:hover {
   background-color: $colder;
-  color: #eee;
+  color: #ddd;
 }
 
 .btn-scroll-top {
