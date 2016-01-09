@@ -4,7 +4,19 @@
   .filter-sidebar.dark-item
     %h3.tag-title= t("artifacts.index.filters.#{tag_type}")
     - @tags[tag_type].each do |tag|
-      = link_to "#{tag.name} (#{tag.count})", artifacts_path(params.slice(*search_fields).merge(tag_type => tag.name)), class: "tag-filter #{tag_type.to_s.singularize}-tag"
+      - tags = params[tag_type].try(:split, ',').to_a
+
+      - if tag_type == :tags
+        - merge_with = ([tag.name] + tags).join(',')
+      - else
+        - merge_with = tag.name
+
+      - new_params = params.slice(*search_fields).merge(tag_type => merge_with)
+
+      - if tags.include?(tag.name)
+        %span.tag-filter.selected-tag= "#{tag.name} (#{tag.count})"
+      - else
+        = link_to "#{tag.name} (#{tag.count})", artifacts_path(new_params), class: "tag-filter #{tag_type.to_s.singularize}-tag"
 
 .filter-sidebar.dark-item
   %h3.tag-title= t("artifacts.index.filters.license")

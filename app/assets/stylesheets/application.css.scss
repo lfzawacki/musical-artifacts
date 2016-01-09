@@ -502,7 +502,7 @@ label.filter {
 
 /* tag filters */
 .filter-sidebar {
-  padding: 1em 1em 1.4em 0.8em;
+  padding: 1em 1em 1em 1em;
   margin-bottom: 1em;
 }
 
@@ -516,6 +516,10 @@ label.filter {
   font-size: 120%;
   padding-right: 12px;
   display: inline-block;
+}
+
+.selected-tag {
+  font-weight: bold;
 }
 
 a.tag-filter:hover {
