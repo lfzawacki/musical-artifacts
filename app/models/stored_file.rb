@@ -38,9 +38,7 @@ class StoredFile < ActiveRecord::Base
       # attrs[:metadata] = xt.get_data
 
       # Getting file for kinds of files which are packages or compressed
-      if self.compressed?
-        attrs[:file_list] = xt.file_list
-      end
+      attrs[:file_list] = xt.file_list
 
       self.update_attributes attrs
     end
