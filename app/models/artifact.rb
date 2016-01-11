@@ -10,6 +10,8 @@ class Artifact < ActiveRecord::Base
     serialize :mirrors
     serialize :more_info_urls
 
+    after_create :enqueue_notification
+
     # The creator of the artifact on the site, not the author
     belongs_to :user
     def owned_by?(user)
@@ -141,5 +143,11 @@ class Artifact < ActiveRecord::Base
       if stored_files.last.present?
         "/artifacts/#{to_param}/#{stored_files.last.name}"
       end
+    end
+
+    private
+
+    def enqueue_notification
+      Resque.enqueue(ArtifactCreatedNotificationWorker, self.id)
     end
 end

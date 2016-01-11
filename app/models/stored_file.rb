@@ -5,6 +5,7 @@ class StoredFile < ActiveRecord::Base
   belongs_to :artifact
 
   before_save :save_file_format
+  after_save :enqueue_fetch_metadata
 
   serialize :file_list, Array
 
@@ -48,6 +49,12 @@ class StoredFile < ActiveRecord::Base
 
   def self.compressed_formats
     ['zip', 'rar', '7z', 'lzma', 'tar.gz']
+  end
+
+  def enqueue_fetch_metadata
+    if self.file_changed?
+      Resque.enqueue(FileExtractorWorker, self.id)
+    end
   end
 
 end

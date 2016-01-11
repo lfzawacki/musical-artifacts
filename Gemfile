@@ -88,8 +88,8 @@ gem 'kaminari'
 # JSON API authentication with JWT
 gem 'knock'
 
-gem 'rails-observers'
-
 gem 'rubyzip'
 
-gem "jstree-rails-4"
+gem 'jstree-rails-4'
+
+gem 'resque'
