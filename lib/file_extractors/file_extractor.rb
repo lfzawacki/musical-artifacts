@@ -4,15 +4,15 @@ require './lib/file_extractors/null_extractor'
 
 module FileExtractor
 
-  def self.get_extractor file
+  def self.get_extractor path, extension
 
-    case file.file.extension.downcase
+    case extension
     when 'zip'
-      FileExtractor::ZipExtractor.new(file.path)
+      FileExtractor::ZipExtractor.new(path)
     when 'sf2'
-      FileExtractor::SF2Extractor.new(file.path)
+      FileExtractor::SF2Extractor.new(path)
     else
-      FileExtractor::NullExtractor.new(file.path)
+      FileExtractor::NullExtractor.new(path)
     end
 
   end

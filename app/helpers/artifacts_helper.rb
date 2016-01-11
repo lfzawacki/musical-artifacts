@@ -40,7 +40,7 @@ module ArtifactsHelper
     icons = {
       'application/x-bittorrent' => 'tint',
 
-      'application/x-midi' => 'file-midi-o', # music
+      'application/x-midi' => 'music',
 
       'audio/x-soundfont' => 'file-audio-o',
       'audio/x-riff' => 'file-audio-o',

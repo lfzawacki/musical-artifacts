@@ -12,6 +12,10 @@ module FileExtractor
     def get_data
       {}
     end
+
+    def null?
+      true
+    end
   end
 
 end

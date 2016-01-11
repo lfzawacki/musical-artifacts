@@ -30,7 +30,7 @@ class StoredFile < ActiveRecord::Base
   end
 
   def fetch_metadata_from_file
-    xt = FileExtractor.get_extractor(self.file)
+    xt = FileExtractor.get_extractor(self.file.path, self.format)
 
     if xt.present?
       attrs = {}
