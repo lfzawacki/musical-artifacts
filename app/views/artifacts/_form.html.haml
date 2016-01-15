@@ -45,11 +45,6 @@
 
         = f.file_field :file, class: 'btn btn-default btn-file form-control'
 
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :file_hash
-        = f.text_field :file_hash, class: 'form-control'
-
     - # Tags lists list
     - [:software_list, :tag_list, :file_format_list].each do |list|
       .row.control-group
@@ -67,7 +62,6 @@
         = f.label :extra_license_text
         = f.text_area :extra_license_text, class: 'form-control'
 
-    #success.pad-top
-      .row
-        .form-group.col-xs-12
-          = f.submit class: 'btn btn-new btn-lg btn-group-justified'
+    .row.pad-top
+      .form-group.col-xs-12
+        = f.submit class: 'btn btn-new btn-lg btn-group-justified'

@@ -170,13 +170,17 @@ ul.link-list {
 
 .artifact-description {
 
-  padding-top: 5px;
+  margin-top: 10px;
   padding-bottom: 5px;
 
-  p {
+  p, ul, ol {
     font-size: 16px;
   }
 
+  h1, h2, h3, h3, h4, h5, h6 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 }
 
 .no-description {
@@ -769,6 +773,19 @@ header .intro-text .skills {
         background: 0 0;
       }
     }
+
+    section#form {
+      padding-top: 5px;
+
+      hr {
+        border-top: solid 4px;
+      }
+
+      hr:after{
+        font-size: 1.5em;
+      }
+    }
+
 }
 
 .navbar {
@@ -817,6 +834,18 @@ section h2 {
     header .container {
         padding-top: 80px;
         padding-bottom: 30px;
+    }
+
+    section#form {
+      padding-top: 10px;
+
+      hr {
+        border-top: solid 3px;
+      }
+
+      hr:after{
+        font-size: 1.4em;
+      }
     }
 
     section {
@@ -921,11 +950,11 @@ hr.star-light:after {
 }
 
 hr.star-primary {
-    border-color: #2c3e50;
+    border-color: #333;
 }
 
 hr.star-primary:after {
-    color: #2c3e50;
+    color: #333;
     background-color: #fff;
 }
 
@@ -951,8 +980,8 @@ hr.star-primary:after {
     margin-bottom: 0;
     padding-bottom: .5em;
     border-bottom: 1px solid #eee;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
 }
 
 .floating-label-form-group input,
@@ -961,7 +990,7 @@ hr.star-primary:after {
     padding-left: 0;
     border: 0;
     border-radius: 0;
-    font-size: 1.5em;
+    font-size: 1.1em;
     background: 0 0;
     box-shadow: none!important;
     resize: none;
@@ -970,8 +999,9 @@ hr.star-primary:after {
 .floating-label-form-group label {
     top: 2em;
     margin: 0;
-    font-size: .85em;
-    line-height: 1.764705882em;
+    margin-bottom: 10px;
+    font-size: 1em;
+    line-height: 1em;
     vertical-align: middle;
     vertical-align: baseline;
     opacity: 1;
