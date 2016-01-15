@@ -36,6 +36,35 @@ initialize_select = (field_id, url) ->
 
     $(field_id).select2 'data', values
 
+initialize_editor = ->
+
+  if $('#artifact_description')[0]
+    # Description editor box
+    opts =
+      autogrow:
+        minHeight: 150
+        maxHeight: 400
+      button:
+        preview: true
+        fullscreen: true
+        bar: true
+      theme:
+        base: $('#epiceditor').data('base-theme')
+        preview: $('#epiceditor').data('preview-theme')
+        editor: $('#epiceditor').data('editor-theme')
+
+    editor = new EpicEditor(opts).load()
+    editor.importFile('epiceditor', $('#artifact_description').text())
+
+    $("#artifact_description").hide()
+
+    editor.on 'update', ->
+      $('#artifact_description').text(editor.exportFile())
+
+    window.onresize = ->
+      editor.reflow()
+
+
 select_for_http_links = (id) ->
   if $(id)[0]
     $(id)?.select2
@@ -264,6 +293,7 @@ $(document).on 'page:change', ->
     , 300
 
   # ------ _form
+  initialize_editor()
   initialize_select '#artifact_tag_list', '/searches/tags'
   initialize_select '#artifact_software_list', '/searches/apps'
   initialize_select '#artifact_file_format_list', '/searches/file_formats'

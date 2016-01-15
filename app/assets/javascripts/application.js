@@ -21,6 +21,7 @@
 //= require bootstrap
 //= require select2
 
+//= require 'epiceditor'
 //= require jstree
 //= require_tree .
 
