@@ -1,6 +1,10 @@
 - if artifacts.empty?
   .artifact-item.empty-search
-    %p= t('.none')
+    %p
+      = t('.none')
+
+      = t('.return_html', path: artifacts_path())
+
 
 - artifacts.in_groups_of(per_row, false).each do |group|
 

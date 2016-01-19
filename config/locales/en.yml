@@ -110,7 +110,9 @@ en:
       showing: Showing %{title}
     artifact_list:
       more_info: More info...
-      none: Nothing to see here!
+      none: Nothing found!
+      return_html: "Shall we try a <a href=\"%{path}\">new search</a>?"
+
     buttons:
       download: Download
       download_mirror: Download from (%{domain})

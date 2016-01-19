@@ -129,7 +129,8 @@ pt-BR:
 
     artifact_list:
       more_info: Mais informação...
-      none: Nada para se ver aqui!
+      none: Nada encontrado!
+      return_html: "Vamos tentar uma <a href=\"%{path}\">nova busca</a>?"
 
     search_order_dropdown:
       created_at_asc: Data (mais antigo primeiro)
