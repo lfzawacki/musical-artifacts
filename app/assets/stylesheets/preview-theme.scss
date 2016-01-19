@@ -5,13 +5,20 @@
 
 body {
   font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+  padding: 17px 10px 10px 15px;
+
+  line-height:1.35em;
+  margin:0;
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+  color: #444;
 }
 
 #epiceditor-preview {
   font-size:15px;
   line-height:1.35em;
 
-  padding: 19px 10px 10px 20px;
+  padding: 9px 10px 10px 7px;
 
   background: $light-dark;
   @include border-radius(2px, 2px);

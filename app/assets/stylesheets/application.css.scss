@@ -26,6 +26,8 @@
 
 @import "application-variables.scss";
 
+@import 'select2-customizations';
+
 @import "audiojs";
 
 @import 'nprogress';
@@ -971,7 +973,6 @@ hr.star-primary:after {
 .floating-label-form-group {
     margin-bottom: 0;
     padding-bottom: .5em;
-    border-bottom: 1px solid #eee;
     padding-top: 15px;
     padding-bottom: 10px;
 }
@@ -983,12 +984,33 @@ hr.star-primary:after {
     border: 0;
     border-radius: 0;
     font-size: 1.1em;
-    background: 0 0;
     box-shadow: none!important;
-    resize: none;
+}
+
+.floating-label-form-group {
+
+  input {
+    border-bottom: 1px solid #ddd;
+    background: #fefefe;
+  }
+
+  textarea {
+    border-color: #ddd;
+    border-style: solid;
+    border-width: 0px 0px 2px 1px;
+  }
+
+  input[type='file'] {
+    border-width: 0;
+  }
+
+  input.form-control, textarea.form-control {
+    width: 80%;
+  }
 }
 
 .floating-label-form-group label {
+    padding-right: 10px;
     top: 2em;
     margin: 0;
     margin-bottom: 10px;
@@ -1001,6 +1023,7 @@ hr.star-primary:after {
     -moz-transition: top .3s ease,opacity .3s ease;
     -ms-transition: top .3s ease,opacity .3s ease;
     transition: top .3s ease,opacity .3s ease;
+    width: 100px;
 }
 
 .floating-label-form-group:not(:first-child) {

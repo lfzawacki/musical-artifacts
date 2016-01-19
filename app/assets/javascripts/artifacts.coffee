@@ -7,9 +7,14 @@ artifact_search_fields = ['apps', 'tags', 'license', 'hash', 'formats']
 initialize_select = (field_id, url) ->
   return if not $(field_id)[0]
 
+  field_to_class =
+    "#artifact_tag_list": "tag"
+    "#artifact_software_list": 'app'
+    "#artifact_file_format_list": 'format'
+
   $(field_id).select2
     minimumInputLength: 1
-    width: 'resolve'
+    width: '80%'
     multiple: true
     tags: true
     tokenSeparators: [',', ';']
@@ -18,7 +23,8 @@ initialize_select = (field_id, url) ->
       { id: term, text: term }
 
     formatSelection: (object, container) ->
-      object.text
+      text = escapeHTML(object.text)
+      "<div class=\"label label-#{field_to_class[field_id]}\"> #{text} </div>"
 
     ajax:
       url: url + '.json'
@@ -42,11 +48,10 @@ initialize_editor = ->
     # Description editor box
     opts =
       autogrow:
-        minHeight: 150
-        maxHeight: 400
+        maxHeight: 430
       button:
         preview: true
-        fullscreen: true
+        fullscreen: false
         bar: true
       theme:
         base: $('#epiceditor').data('base-theme')
@@ -70,15 +75,19 @@ select_for_http_links = (id) ->
     $(id)?.select2
       minimumResultsForSearch: Infinity
       tags: []
-      width: 'resolve'
+      width: '80%'
       tokenSeparators: [',', ';']
 
+      formatNoMatches: ->
+        "Enter a valid URL"
+
       formatSelection: (object, container) ->
+        text = escapeHTML(object.text)
         # Assume a url has been entered and stick a http:// in front if it's not there
         if not object.text.match(/^http[s]?\:\/\//)
-          'http://' + object.text
+          'http://' + text
         else
-          object.text
+          text
 
 initialize_wayback_links = ->
   wayback_url = 'https://web.archive.org/web/*/'
@@ -312,3 +321,12 @@ $(document).on 'page:change', ->
   initialize_file_tree()
   initialize_mirror_links()
   initialize_back_button()
+
+
+# TODO: move to another file
+## Utility functions
+
+escape = document.createElement('textarea')
+escapeHTML =  (html) ->
+  escape.textContent = html;
+  escape.innerHTML;

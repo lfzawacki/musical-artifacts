@@ -5,7 +5,7 @@
   %span.new-artifact-help
     = t('.new_artifact_help_html', link: t('info.about.new_artifact_url'))
 
-  = form_for(@artifact) do |f|
+  = form_for(@artifact, html: { class: 'form-inline' }) do |f|
     - if @artifact.errors.any?
       #error_explanation
         %h4
@@ -15,54 +15,66 @@
           - @artifact.errors.full_messages.each do |message|
             %li= message
 
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :name
-        = f.text_field :name, class: 'form-control'
+    .row.pad-bottom
+
+      .col-sm-12
+        .control-group
+          .form-group.col-xs-12.floating-label-form-group.controls
+            = f.label :name
+            = f.text_field :name, class: 'form-control'
+
+        .control-group
+          .form-group.col-xs-12.floating-label-form-group.controls
+            = f.label :author
+            = f.text_field :author, class: 'form-control'
 
     .row.pad-top.pad-bottom
-      .col-xs-12
-        = f.label :description
-        = f.text_area :description, class: 'form-control', rows: '12'
 
-      #epiceditor.pad-bottom{data: {:'base-theme' => asset_path("base/epiceditor.css"), :'preview-theme' => asset_path("preview-theme.css"), :'editor-theme' => asset_path("editor-theme.css")} }
+      .col-sm-6
 
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :author
-        = f.text_field :author, class: 'form-control'
+        .control-group
+          .form-group.col-xs-12
+            = f.label :description
+            = f.text_area :description, class: 'form-control', rows: '12'
 
-    - # Lists of links
-    - [:mirrors, :more_info_urls].each do |list|
-      .row.control-group
-        .form-group.col-xs-12.floating-label-form-group.controls
-          = f.label list
-          = f.text_field list, value: @artifact.send(list).try(:join, ','), class: 'form-control'
+            #epiceditor{data: {:'base-theme' => asset_path("base/epiceditor.css"), :'preview-theme' => asset_path("preview-theme.css"), :'editor-theme' => asset_path("editor-theme.css")} }
 
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :file
-        -if @artifact.file.present?
-          = @artifact.file.file.identifier
 
-        = f.file_field :file, class: 'btn btn-default btn-file form-control'
+      .col-sm-6
+        .control-group
+          .form-group.col-xs-12.floating-label-form-group.controls
+            = f.label :file
 
-    - # Tags lists list
-    - [:software_list, :tag_list, :file_format_list].each do |list|
-      .row.control-group
-        .form-group.col-xs-12.floating-label-form-group.controls
-          = f.label list
-          = f.text_field list, class: 'form-control', value: @artifact.send(list).join(',')
+            -if @artifact.file.present?
+              = @artifact.file.file.identifier
 
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :license
-        = f.select :license_id, Hash[License.pluck(:name).zip(License.pluck(:id))], class: 'form-control license-select'
+            = f.file_field :file, class: 'btn btn-default btn-file form-control'
 
-    .row.control-group
-      .form-group.col-xs-12.floating-label-form-group.controls
-        = f.label :extra_license_text
-        = f.text_area :extra_license_text, class: 'form-control'
+          - # Lists of links
+          - [:mirrors, :more_info_urls].each do |list|
+            .control-group.dynamic-inputs
+              .form-group.col-xs-12.floating-label-form-group.controls
+                = f.label list
+                = f.text_field list, value: @artifact.send(list).try(:join, ','), class: 'dynamic-form-field'
+
+          - # Tags lists list
+          - [:software_list, :tag_list, :file_format_list].each do |list|
+            .control-group.dynamic-inputs
+              .form-group.col-xs-12.floating-label-form-group.controls
+                = f.label list
+                = f.text_field list, value: @artifact.send(list).join(',')
+
+    .row.pad-top
+      .col-sm-12
+        .control-group
+          .form-group.col-xs-12.floating-label-form-group.controls
+            = f.label :license
+            = f.select :license_id, Hash[License.pluck(:name).zip(License.pluck(:id))], class: 'form-control license-select'
+
+        .control-group
+          .form-group.col-xs-12.floating-label-form-group.controls
+            = f.label :extra_license_text
+            = f.text_area :extra_license_text, class: 'form-control'
 
     .row.pad-top
       .form-group.col-xs-12

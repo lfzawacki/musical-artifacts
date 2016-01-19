@@ -1,13 +1,15 @@
-html { padding:10px 0 10px 15px; }
-
 body {
   border:0;
   font-size:15px;
 
-  padding: 17px 0 0px 13px;
+  padding: 17px 10px 10px 15px;
 
   line-height:1.35em;
   margin:0;
   font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
   color: #444;
+
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0px 0px 2px 1px;
 }
