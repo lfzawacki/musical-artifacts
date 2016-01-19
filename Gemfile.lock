@@ -34,12 +34,6 @@ GIT
       redcarpet (~> 3.1)
       rinku (~> 1.7)
 
-PATH
-  remote: ../epic-editor-rails
-  specs:
-    epic-editor-rails (0.2.4)
-      railties (>= 3.2, < 5.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -154,6 +148,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     docile (1.1.5)
+    epic-editor-rails (0.2.4)
+      railties (>= 3.2, < 5.0)
     erubis (2.7.0)
     exception_notification (4.0.1)
       actionmailer (>= 3.0.4)
@@ -429,7 +425,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   compass-rails!
   devise (~> 3.4.0)
-  epic-editor-rails!
+  epic-editor-rails
   exception_notification (~> 4.0.0)
   factory_girl_rails (~> 4.0)
   ffi

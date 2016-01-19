@@ -94,4 +94,4 @@ gem 'jstree-rails-4'
 
 gem 'resque'
 
-gem 'epic-editor-rails', path: '../epic-editor-rails'
+gem 'epic-editor-rails'
