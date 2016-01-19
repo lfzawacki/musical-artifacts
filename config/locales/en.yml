@@ -5,6 +5,20 @@ en:
     formats:
       default: "%b %d, %Y"
 
+  activerecord:
+    attributes:
+      artifact:
+        name: "This is called"
+        description: "Describe what it is, how to use it, how it was made, etc..."
+        author: "and was created by"
+        mirrors: Mirrored at
+        more_info_urls: Find more info here
+        file: Upload file
+        software_list: Use it with these apps
+        tag_list: Tags
+        file_format_list: File formats
+        license: Licensed as
+
   _other:
     access_denied: You don't have sufficient permissions to do this.
     by: by

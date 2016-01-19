@@ -13,16 +13,16 @@ pt-BR:
   activerecord:
     attributes:
       artifact:
-        name: Nome
-        description: Descrição
-        author: Autor
-        mirrors: Espelhos de Arquivo
-        more_info_urls: URLs de mais informações
-        file: Arquivo
-        software_list: Software compatível
+        name: Isto se chama
+        description: "Descreva o que é, como usar, como foi feito, etc..."
+        author: e foi criado por
+        mirrors: Espelhado em
+        more_info_urls: Mais informações
+        file: Suba um arquivo
+        software_list: Use com estes programas
         tag_list: Tags
         file_format_list: Formatos de Arquivo
-        license: Licensa
+        license: Licensiado como
         extra_license_text: Text extra à licensa
 
       user:
