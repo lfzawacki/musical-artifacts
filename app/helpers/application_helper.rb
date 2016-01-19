@@ -13,4 +13,12 @@ module ApplicationHelper
     request.referrer && URI.parse(request.referrer).host == request.host
   end
 
+  def admin_path_for_current_page
+    if @artifact.present? && @artifact.persisted?
+      edit_admin_artifact_path(@artifact)
+    else
+      admin_root_path
+    end
+  end
+
 end

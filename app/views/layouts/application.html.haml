@@ -61,7 +61,7 @@
 
             - if can? :read, ActiveAdmin::Page
               %li
-                = link_to admin_root_path do
+                = link_to admin_path_for_current_page do
                   - if @unapproved_artifacts.present?
                     %span.badge.badge-unapproved= @unapproved_artifacts
                   = t('.admin')
