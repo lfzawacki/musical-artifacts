@@ -5,20 +5,20 @@ require './lib/monkey_patches'
 
 License.create short_name: 'public', license_type: 'public', name: 'Public Domain'
 
-License.create short_name: 'by', license_type: 'cc', name: 'Creative Commons Attribution 4.0 Unported License.'
-License.create short_name: 'by-sa', license_type: 'cc', name: 'Creative Commons Attribution-ShareAlike 4.0 Unported License.'
-License.create short_name: 'by-nd', license_type: 'cc', name: 'Creative Commons Attribution-NoDerivs 4.0 Unported License.'
-License.create short_name: 'by-nc', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial 4.0 Unported License.'
-License.create short_name: 'by-nc-sa', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.'
-License.create short_name: 'by-nc-nd', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License.'
+License.create short_name: 'by', license_type: 'cc', name: 'Creative Commons Attribution 4.0'
+License.create short_name: 'by-sa', license_type: 'cc', name: 'Creative Commons Attribution-ShareAlike 4.0'
+License.create short_name: 'by-nd', license_type: 'cc', name: 'Creative Commons Attribution-NoDerivs 4.0'
+License.create short_name: 'by-nc', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial 4.0'
+License.create short_name: 'by-nc-sa', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0'
+License.create short_name: 'by-nc-nd', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 4.0'
 License.create short_name: 'cc-sample', license_type: 'cc', name: 'Creative Commons Sampling Plus 1.0'
 
 License.create short_name: 'copyright', license_type: 'copyright', name: 'Copyright'
 
 License.create short_name: 'copyleft', license_type: 'gpl', name: 'Copyleft'
 License.create short_name: 'gpl', license_type: 'gpl', name: 'GNU General Public License'
-License.create short_name: 'gpl-v2', license_type: 'gpl', name: 'GNU General Public License Version 2'
-License.create short_name: 'gpl-v3', license_type: 'gpl', name: 'GNU General Public License Version 3'
+License.create short_name: 'gpl-v2', license_type: 'gpl', name: 'GNU General Public License v2'
+License.create short_name: 'gpl-v3', license_type: 'gpl', name: 'GNU General Public License v3'
 
 License.create short_name: 'various', license_type: 'various', name: 'Various Licenses'
 
