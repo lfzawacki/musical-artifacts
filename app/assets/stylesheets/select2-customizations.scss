@@ -1,29 +1,19 @@
-.select2-choices:after {
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-  text-decoration: inherit;
-  margin: 2px;
-  padding: 2px;
-  content: "\f067";
-  color: #888;
-  font-size: 90%;
-}
-
-.select2-dropdown-open .select2-choices:after {
-  content: "";
-}
-
 .select2-drop {
   border: 0;
   box-shadow: none;
 }
 
+/* Increse element size when opening to give room for the extra text and field */
+.select2-container.select2-dropdown-open {
+  margin-bottom: 25px;
+}
+
+/* Remove most of the formatting, use a border */
 .select2-container {
   margin: 0;
   padding: 0;
-  margin-bottom: 15px;
+  border-left: 1px solid #ddd;
+  padding-left: 5px;
 }
 
 .select2-container .select2-choice {
@@ -32,14 +22,12 @@
   background: none;
 }
 
+/* Color for highlighting results, a background for no-results */
 .select2-results {
 
   .select2-no-results {
-    background: none;
-    margin-bottom: 0;
-    padding-bottom: .5em;
-    border-bottom: 1px solid #ddd;
-    background: #fefefe;
+    background: #ddd;
+    padding-top: .5em;
   }
 
   .select2-highlighted {
@@ -75,6 +63,53 @@
   box-shadow: none;
 }
 
+/* Border for license selector */
+#s2id_artifact_license_id {
+  border-bottom: 1px #ddd solid;
+}
+
+/* Show mirrors and more info links with line breaks */
+#s2id_artifact_mirrors.select2-container-multi .select2-choices .select2-search-choice,
+#s2id_artifact_more_info_urls.select2-container-multi .select2-choices .select2-search-choice {
+  float: none;
+}
+
+/* Show form input when tag field is activated */
+.select2-dropdown-open .select2-choices .select2-search-field {
+  border-bottom: 1px solid #ddd;
+  background: #fefefe;
+}
+
+/* Custom pretty icons showing where to click to edit tag fields */
+.select2-choices:after {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  margin: 2px;
+  padding: 2px;
+  content: "\f067";
+  color: #888;
+  font-size: 90%;
+  float:left;
+}
+
+.select2-search-field:after {
+  content: "...";
+  border-radius: 4px;
+  background: #ccc;
+  padding: 2px 5px 2px 5px;
+}
+
+.select2-container-active {
+  .select2-search-field:after, .select2-choices:after{
+    content: "";
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom color for selections */
 .select2-drop.select2-drop-above.select2-drop-active {
   border-color: $coldy;
   background: #fff;

@@ -1001,7 +1001,8 @@ hr.star-primary:after {
   }
 
   input[type='file'] {
-    border-width: 0;
+    border-bottom: 0;
+    margin-bottom: 10px;
   }
 
   input.form-control, textarea.form-control {

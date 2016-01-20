@@ -62,7 +62,7 @@
             .control-group.dynamic-inputs
               .form-group.col-xs-12.floating-label-form-group.controls
                 = f.label list
-                = f.text_field list, value: @artifact.send(list).join(',')
+                = f.text_field list, value: @artifact.send(list).join(','), class: 'dynamic-form-field'
 
     .row.pad-top
       .col-sm-12
