@@ -67,7 +67,7 @@ gem 'haml-rails', '~> 0.9'
 
 gem 'select2-rails'
 
-gem 'devise', '~> 3.4.0'
+gem 'devise', '~> 3.5.4'
 
 gem 'activeadmin', github: 'activeadmin'
 
