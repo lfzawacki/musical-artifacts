@@ -10,14 +10,16 @@ module FileExtractor
       list = []
 
       begin
+        escape_characters = /([\/])/
         content = IO.popen("sf2text \"#{@file}\"").read
 
         # Search for the pattern for a sounfont preset, like this:
         # (0 "Acoustic Bass" (preset 0) (bank 0)
-        matches = content.scan(/\(([0-9]+) "?([^"]*)"? \(preset [0-9]+\) \(bank [0-9]+\)/)
+        matches = content.scan(/\([0-9]+ "?([^"]*)"? \(preset ([0-9]+)\) \(bank [0-9]+\)/)
 
         matches.each do |preset|
-          list << "#{preset[0]} - #{preset[1]}"
+          preset_name = "#{sprintf "%03d", preset[1]} - #{preset[0].gsub(escape_characters, "\\\1")}"
+          list.unshift(preset_name)
         end
 
         if content.blank? # probably sf2text is not present
@@ -25,7 +27,7 @@ module FileExtractor
         end
       end
 
-      list
+      list.sort
     end
 
     def get_data
