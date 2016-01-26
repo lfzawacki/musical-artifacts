@@ -19,7 +19,7 @@ class License < ActiveRecord::Base
 
     # find the correct image extension
     ['svg', 'png', 'jpg'].each do |ext|
-      extension = ext if Rails.application.assets.find_asset("#{img}.#{ext}")
+      extension = ext if license_image_present?("#{img}.#{ext}")
     end
 
     # Return full image path
@@ -38,4 +38,14 @@ class License < ActiveRecord::Base
   def self.find(id)
     where(short_name: id).first || super
   end
+
+  private
+  def self.license_image_present? filename
+    if Rails.env.production?
+      Rails.application.assets_manifest.assets[filename]
+    else
+      File.exists?(File.join(Rails.root, 'app/assets/images/', filename))
+    end
+  end
+
 end
