@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :favorite_artifacts, through: :favorites, source: :artifact
 
+  validates :username, presence: true
+
   # For knock api auth
   def authenticate pass
     valid_password? pass

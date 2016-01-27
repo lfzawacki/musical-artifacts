@@ -12,8 +12,11 @@
         = form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form-horizontal') do |f|
           = devise_error_messages!
           .form-group
+            = f.label :username
+            = f.text_field :username, autofocus: true, class: 'form-control'
+          .form-group
             = f.label :email
-            = f.email_field :email, autofocus: true, class: 'form-control'
+            = f.email_field :email, class: 'form-control'
           .form-group
             = f.label :password
             - if @minimum_password_length

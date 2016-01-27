@@ -7,15 +7,27 @@ class ShowInfoTest < Capybara::Rails::TestCase
     @user = FactoryGirl.create(:user, email: 'vinnie@dio.io', password: 'holydiver')
   end
 
-  test "show user email and salutation when logged in (user)" do
+  test "show user name and salutation when logged in (admin)" do
+    login_with(@admin, 'sunsetsuperman')
+    visit '/'
+
+    assert_link page, I18n.t('layouts.application.current_user', user: @admin.username), my_artifacts_path
+  end
+
+  test "show user name and salutation when logged in (user)" do
     login_with(@user, 'holydiver')
     visit '/'
 
-    assert_link page, I18n.t('layouts.application.current_user', user: @user.email), my_artifacts_path
+    assert_link page, I18n.t('layouts.application.current_user', user: @user.username), my_artifacts_path
   end
 
-  test "show user email and salutation when logged in (admin)" do
+  test "show user email and salutation when logged in (user) and has no name set" do
     login_with(@admin, 'sunsetsuperman')
+
+    # some old users dont have a username in the DB, so setting it here
+    # with update_column to bypass DB validations
+    @admin.update_column :username, nil
+
     visit '/'
 
     assert_link page, I18n.t('layouts.application.current_user', user: @admin.email), my_artifacts_path

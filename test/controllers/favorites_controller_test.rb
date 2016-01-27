@@ -5,7 +5,7 @@ class FavoritesControllerTest < ActionController::TestCase
 
   setup do
     @artifact = FactoryGirl.create(:artifact)
-    @user = User.create email: 'freddie@que.en', password: 'dontstophim'
+    @user = FactoryGirl.create :user, email: 'freddie@que.en', password: 'dontstophim'
   end
 
   test "can't favorite if it's not logged in" do

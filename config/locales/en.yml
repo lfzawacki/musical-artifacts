@@ -19,6 +19,9 @@ en:
         file_format_list: File formats
         license: Licensed as
 
+      user:
+        username: Nick name
+
   _other:
     access_denied: You don't have sufficient permissions to do this.
     by: by

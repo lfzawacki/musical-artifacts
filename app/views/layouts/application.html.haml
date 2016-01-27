@@ -49,7 +49,7 @@
               %li
                 = link_to my_artifacts_path do
                   %span.badge.badge-artifacts= current_user.artifacts.count
-                  = t('.current_user', user: current_user.email)
+                  = t('.current_user', user: current_user.username || current_user.email)
 
               %li= link_to t('_other.logout'), destroy_user_session_path
             - else
