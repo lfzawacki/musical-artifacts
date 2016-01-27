@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   devise_for :users, ActiveAdmin::Devise.config.merge(:path => 'users', controllers: {passwords: 'users/passwords', registrations: 'users/registrations', sessions: 'users/sessions'})
   get 'my_artifacts', to: 'users#show', as: :my_artifacts
 
+  resources :activities, only: [:index]
+
   resources :artifacts
   get '/artifacts/:id/*filename', to: 'artifacts#download', as: :artifact_download, format: false
 

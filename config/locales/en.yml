@@ -152,6 +152,17 @@ en:
       success: Artifact was successfully created.
       not_approved: Your artifact was created and is waiting moderation.
 
+  public_activity:
+    artifact:
+      create:
+        activity: created the artifact
+      update:
+        activity: updated the artifact
+
+    index: Recent activity on the site
+
+    someone: Some user
+
   users:
     show:
       your_artifacts: Your Musical Artifacts

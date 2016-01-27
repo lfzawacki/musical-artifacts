@@ -15,14 +15,20 @@
 //= require jquery_ujs
 //= require turbolinks
 
+//= require rails-timeago
+//= require rails-timeago-all
+
 //= require nprogress
 //= require nprogress-turbolinks
 
 //= require bootstrap
+
 //= require select2
 
 //= require 'epiceditor'
+
 //= require jstree
+
 //= require_tree .
 
 Turbolinks.enableTransitionCache();

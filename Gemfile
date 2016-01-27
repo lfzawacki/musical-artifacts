@@ -95,3 +95,7 @@ gem 'jstree-rails-4'
 gem 'resque'
 
 gem 'epic-editor-rails'
+
+gem 'public_activity'
+
+gem 'rails-timeago', '~> 2.0'

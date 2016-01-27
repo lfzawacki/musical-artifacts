@@ -1,0 +1,6 @@
+.row
+  .activity.artifact-item.dark-item
+    = user_alias(activity.owner)
+    = t(".#{action}.activity")
+    = link_to_trackable activity.trackable, activity.trackable_type
+    = timeago_tag activity.created_at, :nojs => true, :limit => 1.month.ago, lang: I18n.locale.downcase

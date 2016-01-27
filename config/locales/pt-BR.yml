@@ -10,6 +10,11 @@ pt-BR:
     abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dec]
     month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
 
+    formats:
+      default: "%b %d, %Y"
+      long: "%d de %B, %Y %H:%M"
+
+
   activerecord:
     attributes:
       artifact:
@@ -161,6 +166,17 @@ pt-BR:
 
     more_info_multimedia:
       title: Conteúdo Multimídia
+
+  public_activity:
+    artifact:
+      create:
+        activity: registrou o artefato
+      update:
+        activity: atualizou o artefato
+
+    index: Atividade recente no site
+
+    someone: Alguém
 
   users:
     show:

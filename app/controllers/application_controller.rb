@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include PublicActivity::StoreController
+
   # Prevent CSRF attacks by raising an exception.
   # Normal form authentication
   protect_from_forgery with: :exception, unless: :is_api_call?

@@ -3,6 +3,10 @@ require 'digest/sha2'
 class Artifact < ActiveRecord::Base
     include AutoHtml
 
+    # Collect activity from creates, edits and deletions
+    include PublicActivity::Model
+    tracked owner: Proc.new{ |controller, model| controller.try(:current_user) || model.user }
+
     scope :approved, -> { where(approved: true) }
 
     acts_as_taggable_on :software, :tags, :file_formats
