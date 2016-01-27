@@ -13,7 +13,8 @@ class ArtifactsController < InheritedResources::Base
 
   def create
     approved = can?(:approve, @artifact) || user_artifacts_can_be_approved?(current_user)
-    @artifact.update_attributes approved: approved, user: current_user
+    @artifact.approved = approved
+    @artifact.user = current_user
 
     if approved
       create!
