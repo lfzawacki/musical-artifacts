@@ -3,9 +3,18 @@ require 'digest/sha2'
 class Artifact < ActiveRecord::Base
     include AutoHtml
 
+    # TODO: extract out to another file?
     # Collect activity from creates, edits and deletions
     include PublicActivity::Model
-    tracked owner: Proc.new{ |controller, model| controller.try(:current_user) || model.user }
+    tracked owner: Proc.new { |ctrl, model| model.set_owner_from_current_user(ctrl) },
+      params: {
+        changed: Proc.new { |ctrl, model| model.track_updated_parameters(ctrl) }
+      }
+
+    # Only track activity in these parameters
+    def self.tracked_parameters
+      %w{name description author file mirrors more_info_urls tag_list software_list file_format_list license}
+    end
 
     scope :approved, -> { where(approved: true) }
 
@@ -66,6 +75,11 @@ class Artifact < ActiveRecord::Base
 
     def file
       stored_files.last.try(:file)
+    end
+
+    # Returns true if a new file has been uploaded to the artifact
+    def file_changed?
+      @new_file.present?
     end
 
     def get_file_by_name filename
@@ -146,6 +160,22 @@ class Artifact < ActiveRecord::Base
     def download_path
       if stored_files.last.present?
         "/artifacts/#{to_param}/#{stored_files.last.name}"
+      end
+    end
+
+    def set_owner_from_current_user controller
+      controller.try(:current_user) || self.user
+    end
+
+    # Returns and array of the parameters which were just updated in this object
+    def track_updated_parameters controller
+      if controller.present? && controller.action_name == 'update'
+        changed = self.changes.keys & Artifact.tracked_parameters
+
+        # file is not really an artifact attribute, so adding it separetely
+        changed << 'file' if self.file_changed?
+
+        changed
       end
     end
 
