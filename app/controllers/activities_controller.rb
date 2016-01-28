@@ -1,7 +1,8 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @activities = PublicActivity::Activity.all.order('created_at DESC')
+    @activities = PublicActivity::Activity.where(trackable_type: 'Artifact').where.not(trackable_id: Artifact.where(approved: false))
+    @activities = @activities.order('created_at DESC')
     @activities = @activities.page(params[:page]).per(20)
   end
 
