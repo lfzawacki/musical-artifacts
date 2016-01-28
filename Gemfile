@@ -65,7 +65,7 @@ gem 'carrierwave'
 
 gem 'haml-rails', '~> 0.9'
 
-gem 'select2-rails'
+gem 'select2-rails', '3.5.9.1'
 
 gem 'devise', '~> 3.5.4'
 
