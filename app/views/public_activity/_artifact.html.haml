@@ -1,6 +1,24 @@
+- file_updated = activity.parameters[:changed] && activity.parameters[:changed].include?('file')
+- icon = if activity.key == 'artifact.create' || file_updated
+  - 'upload'
+- else
+  - 'edit'
+
+- image = "icons/color/64px/#{icon}.png"
+
 .row
-  .activity.artifact-item.dark-item
-    = user_alias(activity.owner)
-    = t(".#{action}.activity")
-    = link_to_trackable activity.trackable, activity.trackable_type
-    = timeago_tag activity.created_at, :nojs => true, :limit => 1.month.ago, lang: I18n.locale.downcase
+  .activity.artifact-description.dark-item{class: "activity-#{cycle('left', 'right')}"}
+
+    = image_tag(image)
+
+    .activity-content
+      %strong= user_alias(activity.owner)
+
+      = t(".#{action}.activity")
+
+      = link_to_trackable activity.trackable, activity.trackable_type
+
+      - if activity.parameters[:changed].present?
+        = "(#{activity.parameters[:changed].join(', ')})"
+
+      %em= timeago_tag activity.created_at, :nojs => true, :limit => 1.month.ago, lang: I18n.locale.downcase

@@ -636,6 +636,33 @@ p.more-info {
 }
 
 /*
+ * public_activity/index
+ */
+
+.activity {
+  margin: 10px 0 0 10px;
+  overflow: hidden;
+}
+
+.activity-content {
+  padding: 30px 0 10px 10px;
+}
+
+.activity img {
+  padding: 8px 15px 5px 15px;
+  float: left;
+}
+
+.activity-right {
+  margin-right: 10px;
+  border-right: 2px;
+}
+
+.activity-left {
+  margin-right: 20px;
+}
+
+/*
  * About page + main application CSS
  */
 
