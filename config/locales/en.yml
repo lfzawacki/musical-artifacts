@@ -161,6 +161,8 @@ en:
         activity: created the artifact
       update:
         activity: updated the artifact
+      favorite:
+        activity: favorited
 
     index: Recent activity on the site
 
