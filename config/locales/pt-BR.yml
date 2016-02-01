@@ -178,7 +178,12 @@ pt-BR:
         activity: registrou o artefato
       update:
         activity: atualizou o artefato
+      favorite:
+        activity: marcou como favorito o artefato
+      destroy:
+        activity: deletou o artefato
 
+    deleted: (deletado)
     index: Atividade recente no site
 
     someone: Alguém

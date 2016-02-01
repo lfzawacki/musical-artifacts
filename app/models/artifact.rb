@@ -8,7 +8,8 @@ class Artifact < ActiveRecord::Base
     include PublicActivity::Model
     tracked owner: Proc.new { |ctrl, model| model.set_owner_from_current_user(ctrl) },
       params: {
-        changed: Proc.new { |ctrl, model| model.track_updated_parameters(ctrl) }
+        changed: Proc.new { |ctrl, model| model.track_updated_parameters(ctrl) },
+        name: Proc.new { |ctrl, model| model.name }
       }
 
     # Only track activity in these parameters
@@ -63,6 +64,7 @@ class Artifact < ActiveRecord::Base
     before_save :save_new_file
     def save_new_file
       if @new_file
+        # TODO: prevent update activity on creation of artifact
         stored_files.last.save
         file_format_list.add stored_files.last.format
       end

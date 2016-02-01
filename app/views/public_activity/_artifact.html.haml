@@ -16,7 +16,7 @@
 
       = t(".#{action}.activity")
 
-      = link_to_trackable activity.trackable, activity.trackable_type
+      = link_to_trackable activity.trackable, activity.parameters[:name]
 
       - if activity.parameters[:changed].present?
         = "(#{activity.parameters[:changed].join(', ')})"

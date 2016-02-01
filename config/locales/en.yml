@@ -167,7 +167,10 @@ en:
         activity: updated the artifact
       favorite:
         activity: favorited
+      destroy:
+        activity: deleted the artifact
 
+    deleted: (deleted)
     index: Recent activity on the site
 
     someone: Some user
