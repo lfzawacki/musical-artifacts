@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
     provider = auth['provider']
     uid = auth['uid']
     email = auth['info']['email']
-    name = auth['info']['nickname'] || auth['info']['name']
+    name = auth['info']['nickname'] || auth['info']['name'] || auth['info']['login']
     image = auth['info']['image']
 
     user = User.where(email: email).first

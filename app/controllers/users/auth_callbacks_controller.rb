@@ -42,7 +42,7 @@ class Users::AuthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user
     else
       alert = @user.errors[:email] ? t('auth_callbacks.email_error') : t('auth_callbacks.unknown_error', provider: data.provider)
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path alert: alert
     end
   end
 
