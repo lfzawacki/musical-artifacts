@@ -1,0 +1,28 @@
+= content_for :title, t('_other.signup')
+
+.container.container-login
+  .col-md-6.col-md-offset-3
+
+    .panel.panel-default
+      .panel-heading
+        %h2.panel-title
+          %strong= t('.almost')
+
+      .panel-body.oauth-body
+
+        = image_tag(@image, class: 'oauth-avatar', width: '64', height: '64')
+
+        .oauth-text
+          = t('.explanation_html', provider: @provider.capitalize, username: @username)
+
+        .oauth-note
+          = t('.note')
+
+        = form_for(@user, url: create_with_omniauth_path, class: 'form-horizontal') do |f|
+          .form-group
+            = f.label :email
+            = f.email_field :email, autofocus: true, class: 'form-control'
+
+          = f.submit t('_other.signup') , class: 'btn btn-default'
+
+          = link_to t('_other.back'), new_user_session_path, class: 'btn btn-warning pull-right'

@@ -16,7 +16,17 @@ Rails.application.routes.draw do
 
   root to: "artifacts#index"
 
-  devise_for :users, ActiveAdmin::Devise.config.merge(:path => 'users', controllers: {passwords: 'users/passwords', registrations: 'users/registrations', sessions: 'users/sessions'})
+  devise_for :users, ActiveAdmin::Devise.config.merge(:path => 'users',
+    controllers: {
+      passwords: 'users/passwords', registrations: 'users/registrations',
+      sessions: 'users/sessions', omniauth_callbacks: 'users/auth_callbacks'
+    }
+  )
+
+  devise_scope :user do
+    post '/users/auth/', as: 'create_with_omniauth', controller: 'users/auth_callbacks', action: 'create_with_omniauth'
+  end
+
   get 'my_artifacts', to: 'users#show', as: :my_artifacts
 
   resources :activities, only: [:index]

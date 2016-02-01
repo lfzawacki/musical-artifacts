@@ -34,9 +34,11 @@ class ApplicationController < ActionController::Base
   private
   def store_location
     paths = ['/users/login', '/users/sign_up', '/users/password/new', '/users/password/edit', '/users/confirmation', '/users/logout']
+    auth_paths = /^\/users\/auth\//
     names = ['download']
     if request.method == 'GET' &&
        !paths.include?(request.path) &&
+       !auth_paths.match(request.path) &&
        !names.include?(action_name) &&
        !request.xhr?
 

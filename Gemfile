@@ -99,3 +99,11 @@ gem 'epic-editor-rails'
 gem 'public_activity'
 
 gem 'rails-timeago', '~> 2.0'
+
+# Omniauth
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-soundcloud'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-linuxfr'

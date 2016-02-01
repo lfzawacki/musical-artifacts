@@ -55,6 +55,10 @@ en:
         author_html: "created by <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: This site doesn't show you advertisement.
 
+  auth_callbacks:
+    email_error: "The email entered was either already taken or invalid. Try again with another provider or use \'Forgot passsword?\'"
+    unknown_error: "Unknown error while trying to signup with %{provider}. Try again or test it with another provider."
+
   licenses:
     extra_text: "Extra considerations:"
     link:
@@ -169,6 +173,11 @@ en:
     someone: Some user
 
   users:
+    create_without_email:
+      almost: "We're almost there..."
+      explanation_html: "Hey <strong>%{username}</strong>! <br> <strong>%{provider}</strong> doesn't provide an email address so we'll need one before your account is ready."
+      note: "This only needs to be done the first time you sign in."
+
     show:
       your_artifacts: Your Musical Artifacts
       description: "Hey, %{user}! Here are all the artifacts you have registered on the site."
@@ -184,6 +193,9 @@ en:
     registrations:
       new:
         password_min: "%{count} characters minimum"
+
+    omniauth_providers:
+      title: "Log in with other sites:"
 
     sessions:
       new:

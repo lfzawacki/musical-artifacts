@@ -635,6 +635,43 @@ p.more-info {
   padding-bottom: 2em;
 }
 
+/* users/_omniauth_providers */
+#auth-providers {
+  i {
+    padding: 0 2px 0 8px;
+  }
+
+  a {
+    padding-right: 8px;
+  }
+
+  padding-bottom: 2px;
+}
+
+
+/* users/_create_without_email */
+
+.oauth-body {
+
+  font-size: 90%;
+
+  .oauth-avatar {
+    @include border-radius(32px, 32px);
+    margin: 5px 15px 15px 5px;
+
+    float: left;
+    overflow: hidden;
+  }
+
+  .oauth-text {
+    margin: 0 0 5px 5px;
+  }
+
+  .oauth-note {
+    font-style: italic;
+  }
+}
+
 /*
  * public_activity/index
  */

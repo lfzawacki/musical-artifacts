@@ -29,3 +29,5 @@
             = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
           .actions
             = f.submit t('_other.signup'), class: 'btn btn-default'
+
+    = render 'users/omniauth_providers'
