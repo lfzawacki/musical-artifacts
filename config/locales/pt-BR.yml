@@ -69,6 +69,10 @@ pt-BR:
         author_html: "criado por <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: Este site não mostra publicidade.
 
+  auth_callbacks:
+    email_error: "O email que você digitou já está registrado ou é inválido. Tente com outro site ou use \'Esqueceu sua senha?\'"
+    unknown_error: "Erro desconhecido ao tentar se registrar com %{provider}. Tente novamente ou teste com outro site."
+
   licenses:
     extra_text: "Considerações extras:"
     link:
@@ -180,12 +184,20 @@ pt-BR:
     someone: Alguém
 
   users:
+    create_without_email:
+      almost: "Estamos quase lá..."
+      explanation_html: "Olá <strong>%{username}</strong>! <br> <strong>%{provider}</strong> não nos prove se endereço de email então precisamos de um antes de criar sua conta."
+      note: "Isto só é feito na primeira vez que você entrar no site."
+
     show:
       your_artifacts: Seus Artefatos Musicais
       description: "Olá, %{user}! Aqui estão todos os artefatos que você registrou no site!"
       your_favorites: Favoritos
       favorite_description: Estes são os artefatos que você marcou como favoritos.
       show_favorites_html: "Procurando por seus %{link}?"
+
+    omniauth_providers:
+      title: "Entre com outros sites:"
 
     passwords:
       new:
