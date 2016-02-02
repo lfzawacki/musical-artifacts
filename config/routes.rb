@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   get 'my_artifacts', to: 'users#show', as: :my_artifacts
 
-  resources :activities, only: [:index]
+  resources :activities, only: [:index], as: 'activities'
 
   resources :artifacts
   get '/artifacts/:id/*filename', to: 'artifacts#download', as: :artifact_download, format: false

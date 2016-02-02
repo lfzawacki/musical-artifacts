@@ -55,6 +55,7 @@ pt-BR:
       admin: Administrar
       current_user: "Olá %{user}!"
       default_title: "Recursos livres para produção musical"
+      recent_activity: Atividade recente
 
       footer:
         contact: Contato

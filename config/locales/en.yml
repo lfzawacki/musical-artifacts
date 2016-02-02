@@ -41,6 +41,7 @@ en:
       admin: Admin
       current_user: "Hey %{user}!"
       default_title: "Libre resources for music making"
+      recent_activity: Recent activity
 
       footer:
         contact: Contact

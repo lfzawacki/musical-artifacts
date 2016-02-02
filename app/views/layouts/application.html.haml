@@ -66,8 +66,11 @@
                     %span.badge.badge-unapproved= @unapproved_artifacts
                   = t('.admin')
 
-            %li= link_to t('_other.about'), info_about_path
-            %li= link_to t('_other.contact'), info_contact_path
+            %li= link_to t('.recent_activity'), activities_path
+
+            - if !current_user.try(:admin)
+              %li= link_to t('_other.about'), info_about_path
+              %li= link_to t('_other.contact'), info_contact_path
 
 
     - # Don't use a container wrapping the content only on the 'about' section
