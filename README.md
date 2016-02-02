@@ -94,6 +94,7 @@ There's also [repository](https://github.com/nodiscc/musical-artifacts-data) for
   * [The Internet Archive](https://archive.org/)
   * [CC Mixter](http://ccmixter.org/)
   * [Freesound](https://www.freesound.org/)
+  * [LMMS Sharing Platform](https://lmms.io/lsp/)
 
 ## Resources
 
