@@ -14,6 +14,7 @@
 # Ignore all logfiles and tempfiles.
 log/
 /log/*
+
 !/log/.keep
 /tmp
 public/test_report.html
@@ -22,3 +23,5 @@ public/assets/
 public/capybara.html
 config/settings.yml
 config/piwik.yml
+
+vendor/external_projects/*
