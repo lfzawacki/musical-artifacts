@@ -268,3 +268,11 @@ pt-BR:
     optout:
       title: Opt-out da análise de tráfego
       description_html: "Para mais informações sobre a política de coleta de dados do website leia <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">esta página</a>."
+
+  views:
+    pagination:
+      truncate: '...'
+      next: Próxima
+      last: Última
+      first: Primeira
+      previous: Anterior
