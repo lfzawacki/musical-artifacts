@@ -1,5 +1,9 @@
-- title = t('.search_description', query: params[:q]) if params[:q].present?
-- content_for :title, remove_quotes(title)
+- title = t('.search_description', query: params[:q])
+
+- if params[:q].present?
+  - content_for :title, remove_quotes(title)
+- else
+  - content_for :title, title_from_tags(params.slice(:tags, :apps, :formats))
 
 = form_tag artifacts_path, class: 'pad-top', id: 'artifact_search_form', method: :get, enforce_utf8: true do
   .row

@@ -1,5 +1,24 @@
 module ArtifactsHelper
 
+  # Make a cool page title from parameters from a tag filtering
+  def title_from_tags tags
+    title = ''
+
+    if tags[:apps]
+      title += tags[:apps].split(',').join(', ')
+    end
+
+    if tags[:tags]
+      title += ' ' + tags[:tags].split(',').join(' ')
+    end
+
+    if tags[:formats]
+      title += ' ' + tags[:formats].split(',').map {|f| ".#{f}" }.join(' ')
+    end
+
+    unescape_separators(title)
+  end
+
   def value_from_params
     search_str = Artifact.search_fields.map do |p|
       "#{p}: #{unescape_separators(params[p])}" if params[p]
