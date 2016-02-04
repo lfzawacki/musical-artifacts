@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   post '/artifacts/:artifact_id/favorite/', to: 'favorites#create', as: :favorite_artifact, defaults: { format: :json }
   delete '/artifacts/:artifact_id/favorite/', to: 'favorites#destroy', as: :unfavorite_artifact, defaults: { format: :json }
 
-  get '/hydrogen_drumkits', to: 'hydrogen_drumkits#index', as: 'hydrogen_drumkits'
+  get '/hydrogen_drumkits', to: 'hydrogen_drumkits#index', as: 'hydrogen_drumkits', defaults: { format: :xml }
 
   get '/info/about', to: 'info#about', as: :info_about
   get '/info/contact', to: 'info#contact', as: :info_contact

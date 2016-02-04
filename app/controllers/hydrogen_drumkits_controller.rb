@@ -11,7 +11,7 @@ class HydrogenDrumkitsController < InheritedResources::Base
     @drumkits = @drumkits.map do |drumkit|
       {
         name: drumkit.name, url: url_from_artifact(drumkit),
-        info: drumkit.description, author: drumkit.author, license: drumkit.license.name
+        info: drumkit.description_html, author: drumkit.author, license: drumkit.license.name
       }
     end
 
