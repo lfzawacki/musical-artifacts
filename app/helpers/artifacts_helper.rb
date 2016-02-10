@@ -9,14 +9,16 @@ module ArtifactsHelper
     end
 
     if tags[:tags]
-      title += ' ' + tags[:tags].split(',').join(' ')
+      title += ' ' if title.present?
+      title += tags[:tags].split(',').join(' ')
     end
 
     if tags[:formats]
-      title += ' ' + tags[:formats].split(',').map {|f| ".#{f}" }.join(' ')
+      title += ' ' if title.present?
+      title += tags[:formats].split(',').map {|f| ".#{f}" }.join(' ')
     end
 
-    unescape_separators(title)
+    unescape_separators(title).capitalize
   end
 
   def value_from_params
