@@ -69,6 +69,7 @@ en:
       copyright: ''
       public: https://wiki.creativecommons.org/Public_domain
       gpl: https://opensource.org/licenses/GPL-%{version}
+      falv13: http://artlibre.org/licence/lal/en/
     text:
       cc: Creative Commons 4.0 Unported License
       cc_sample: Creative Commons Sampling+ 1.0
@@ -78,6 +79,7 @@ en:
       gpl: GNU General Public License %{version}
       various: "These files are made available through a mix of different licenses. Read the description, more info links, file contents or contact the author in order to get the full information."
       gray: "These files have an unknown license, were obtained from unkown sources or were compiled from third party material."
+      falv13: Free Art License 1.3
     parts:
       by: Has to give attribution
       nc: Non commercial use only

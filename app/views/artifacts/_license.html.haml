@@ -1,6 +1,6 @@
 .license
 
-  - if ['public', 'cc-sample', 'copyleft'].include? artifact.license.short_name
+  - if ['public', 'cc-sample', 'copyleft', 'falv13'].include? artifact.license.short_name
     = render "licenses/image_only_license", artifact: artifact, small: small
 
   - elsif ['various', 'gray'].include? artifact.license.short_name
