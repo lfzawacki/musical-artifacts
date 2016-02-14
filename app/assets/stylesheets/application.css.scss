@@ -290,7 +290,7 @@ ul.pagination {
 }
 
 .search-description {
-  font-size: 150%;
+  font-size: 115%;
 }
 
 .search-filters {
@@ -506,6 +506,10 @@ label.filter {
 .filter-sidebar {
   padding: 1em 1em 1em 1em;
   margin-bottom: 1em;
+}
+
+.filter-sidebar.filter-licenses {
+  font-size: 120%;
 }
 
 .tag-title {

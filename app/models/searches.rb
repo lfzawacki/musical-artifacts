@@ -61,10 +61,16 @@ class Searches
   def self.artifacts_licensed_as artifacts, terms
     if terms.present?
       all_terms = split_terms(terms)
-      # search by short_name and license_type, e.g.
-      # 'by' for CC Attribution and 'cc' for all CC licenses
-      licenses = License.where(short_name: all_terms)
-      licenses = licenses.union(License.where(license_type: all_terms))
+
+      if all_terms.include? 'free'
+        licenses = License.where(free: true)
+      else
+        # search by short_name and license_type, e.g.
+        # 'by' for CC Attribution and 'cc' for all CC licenses
+        licenses = License.where(short_name: all_terms)
+        licenses = licenses.union(License.where(license_type: all_terms))
+      end
+
       artifacts = artifacts.where(license: licenses)
     end
     artifacts

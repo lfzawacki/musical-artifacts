@@ -141,6 +141,10 @@ pt-BR:
         hash: Arquivo com o hash...
         formats: Formato de arquivo...
 
+    filter_by_tags:
+      free_licenses: Apenas licensas livres
+      all_licenses: Mostrar com todas licensas
+
     form:
       new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
       free_licenses: Licensas Livres
@@ -184,6 +188,7 @@ pt-BR:
       filtering: Filtrando por
       page_description: página %{page}
       showing: Mostrando %{title}
+      free_licenses: Licensas Livres
 
     side_buttons:
       favorite: Que legal!

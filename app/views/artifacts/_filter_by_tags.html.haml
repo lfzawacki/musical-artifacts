@@ -1,5 +1,20 @@
 - search_fields = Artifact.search_fields + ['q']
 
+.filter-sidebar.light-item.filter-licenses
+  %h3.tag-title= t("artifacts.index.filters.license")
+
+  - license_params = params.slice(*search_fields)
+  - if params[:license] == 'free'
+    - text = t('.all_licenses')
+    - path = artifacts_path(license_params.except(:license))
+  - else
+    - text = t('.free_licenses')
+    - path = artifacts_path(license_params.merge(license: 'free'))
+
+  = link_to path do
+    %i.fa.fa-book
+    = text
+
 - [:tags, :apps, :formats].each do |tag_type|
   - if @tags[tag_type].any?
     .filter-sidebar.dark-item
@@ -18,11 +33,3 @@
           %span.tag-filter.selected-tag= "#{tag.name} (#{tag.count})"
         - else
           = link_to "#{tag.name} (#{tag.count})", artifacts_path(new_params), class: "tag-filter #{tag_type.to_s.singularize}-tag"
-
-.filter-sidebar.dark-item
-  %h3.tag-title= t("artifacts.index.filters.license")
-  - @licenses.each do |license_type|
-    = link_to artifacts_path(params.slice(*search_fields).merge(license: license_type)) do
-      = image_tag License.type_image(license_type), alt: License.type_name(license_type), class: 'license-tag'
-
-  %p= link_to @copyright.name, artifacts_path(params.slice(*search_fields).merge(license: @copyright.short_name))

@@ -21,7 +21,11 @@
           %span.label-delete= link_to '×', artifacts_path(new_search)
 
     - if params[:license].present?
-      = image_tag License.type_image(params[:license], true)
+
+      - if params[:license] == 'free'
+        .label.label-big.label-default= t('.free_licenses')
+      - else
+        = image_tag License.type_image(params[:license], true)
       %span.label-delete= link_to '×', artifacts_path(params.slice(*search_fields).except(:license))
 
 
