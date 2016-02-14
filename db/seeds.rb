@@ -3,28 +3,28 @@
 #
 require './lib/monkey_patches'
 
-License.create short_name: 'public', license_type: 'public', name: 'Public Domain'
+License.create short_name: 'public', license_type: 'public', name: 'Public Domain', free: true
 
-License.create short_name: 'by', license_type: 'cc', name: 'Creative Commons Attribution 4.0'
-License.create short_name: 'by-sa', license_type: 'cc', name: 'Creative Commons Attribution-ShareAlike 4.0'
+License.create short_name: 'by', license_type: 'cc', name: 'Creative Commons Attribution 4.0', free: true
+License.create short_name: 'by-sa', license_type: 'cc', name: 'Creative Commons Attribution-ShareAlike 4.0', free: true
 License.create short_name: 'by-nd', license_type: 'cc', name: 'Creative Commons Attribution-NoDerivs 4.0'
 License.create short_name: 'by-nc', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial 4.0'
 License.create short_name: 'by-nc-sa', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0'
 License.create short_name: 'by-nc-nd', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 4.0'
-License.create short_name: 'cc-sample', license_type: 'cc', name: 'Creative Commons Sampling Plus 1.0'
+License.create short_name: 'cc-sample', license_type: 'cc', name: 'Creative Commons Sampling Plus 1.0', free: true
 
 License.create short_name: 'copyright', license_type: 'copyright', name: 'Copyright'
 
-License.create short_name: 'copyleft', license_type: 'gpl', name: 'Copyleft'
-License.create short_name: 'gpl', license_type: 'gpl', name: 'GNU General Public License'
-License.create short_name: 'gpl-v2', license_type: 'gpl', name: 'GNU General Public License v2'
-License.create short_name: 'gpl-v3', license_type: 'gpl', name: 'GNU General Public License v3'
+License.create short_name: 'copyleft', license_type: 'gpl', name: 'Copyleft', free: true
+License.create short_name: 'gpl', license_type: 'gpl', name: 'GNU General Public License', free: true
+License.create short_name: 'gpl-v2', license_type: 'gpl', name: 'GNU General Public License v2', free: true
+License.create short_name: 'gpl-v3', license_type: 'gpl', name: 'GNU General Public License v3', free: true
 
 License.create short_name: 'various', license_type: 'various', name: 'Various Licenses'
 
 License.create short_name: 'gray', license_type: 'gray', name: 'Gray Area'
 
-License.create short_name: 'falv13', license_type: 'fal', name: 'Free Art License v1.3'
+License.create short_name: 'falv13', license_type: 'fal', name: 'Free Art License v1.3', free: true
 
 App.create(
   name: "Guitarix",

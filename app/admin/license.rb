@@ -1,5 +1,5 @@
 ActiveAdmin.register License do
-  permit_params :name, :short_name, :license_type
+  permit_params :name, :short_name, :license_type, :free
 
   index do
     selectable_column
@@ -8,6 +8,7 @@ ActiveAdmin.register License do
     column :short_name
     column :license_type
     column :created_at
+    column :free
     actions
   end
 
@@ -21,6 +22,7 @@ ActiveAdmin.register License do
       f.input :name
       f.input :short_name
       f.input :license_type
+      f.input :free
     end
     f.actions
   end
