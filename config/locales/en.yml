@@ -73,8 +73,8 @@ en:
     text:
       cc: Creative Commons 4.0 Unported License
       cc_sample: Creative Commons Sampling+ 1.0
-      copyleft: Copyleft %{author}
-      copyright: Copyright to %{author}
+      copyleft: Some rights reserved to %{author}
+      copyright: All Rights Reserved to %{author}
       public: Work in the Public Domain
       gpl: GNU General Public License %{version}
       various: "These files are made available through a mix of different licenses. Read the description, more info links, file contents or contact the author in order to get the full information."
@@ -86,8 +86,27 @@ en:
       nd: No derivate works
       sa: Share under the same license
     name:
+      public: Public Domain
+
+      cc_sample: Creative Commons Sampling Plus 1.0
+      by: Creative Commons Attribution 4.0
+      by_sa: Creative Commons Attribution-ShareAlike 4.0
+      by_nd: Creative Commons Attribution-NoDerivs 4.0
+      by_nc: Creative Commons Attribution-NonCommercial 4.0
+      by_nc_sa: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+      by_nc_nd: Creative Commons Attribution-NonCommercial-NoDerivs 4.0
+
+      copyright: All Rights Reserved
+
+      copyleft: Copyleft
+      gpl: GNU General Public License
+      gpl_v2: GNU General Public License v2
+      gpl_v3: GNU General Public License v3
+
       various: "Various Licenses"
       gray: "Licensing Gray Area"
+
+      falv13: Free Art License v1.3
 
   artifacts:
     created_by:
@@ -109,6 +128,8 @@ en:
       search_description: "Search results for \"%{query}\""
     form:
       new_artifact_help_html: "Need tips on how to create a good artifact? <a target=\"_blank\" href=\"%{link}\">Read this!</a>"
+      free_licenses: Free Licenses
+      non_free_licenses: Non-Free Licenses
 
     show:
       no_description: "(No description available)"

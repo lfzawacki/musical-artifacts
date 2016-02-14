@@ -39,7 +39,6 @@
 
             #epiceditor{data: {:'base-theme' => asset_path("base/epiceditor.css"), :'preview-theme' => asset_path("preview-theme.css"), :'editor-theme' => asset_path("editor-theme.css")} }
 
-
       .col-sm-6
         .control-group
           .form-group.col-xs-12.floating-label-form-group.controls
@@ -68,8 +67,10 @@
       .col-sm-12
         .control-group
           .form-group.col-xs-12.floating-label-form-group.controls
+            - grouped_options = [ [t('.free_licenses'), @free_licenses], [t('.non_free_licenses'), @non_free_licenses] ]
+
             = f.label :license
-            = f.select :license_id, Hash[License.pluck(:name).zip(License.pluck(:id))], class: 'form-control license-select'
+            = f.select :license_id, grouped_options_for_select(grouped_options, @artifact.license_id), class: 'form-control license-select'
 
         .control-group
           .form-group.col-xs-12.floating-label-form-group.controls

@@ -86,8 +86,8 @@ pt-BR:
     text:
       cc: Creative Commons 4.0 Unported License
       cc_sample: Creative Commons Sampling+ 1.0
-      copyleft: Copyleft %{author}
-      copyright: Direitos Reservados a %{author}
+      copyleft: Alguns Direitos Reservados a %{author}
+      copyright: Todos Direitos Reservados a %{author}
       public: Trabalho em Domínio Público
       gpl: GNU General Public License %{version}
       various: "Arquivos disponibilizados em várias licensas diferentes. Leia a descrição, os links de mais informação, conteúdos ou contate o autor para se informar melhor."
@@ -99,6 +99,25 @@ pt-BR:
       nd: Sem obras derivadas
       sa: Compartilhe sob a mesma licensa
     name:
+      public: Domínio Público
+
+      cc_sample: Creative Commons Sampling Plus 1.0
+      by: Creative Commons Attribution 4.0
+      by_sa: Creative Commons Attribution-ShareAlike 4.0
+      by_nd: Creative Commons Attribution-NoDerivs 4.0
+      by_nc: Creative Commons Attribution-NonCommercial 4.0
+      by_nc_sa: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+      by_nc_nd: Creative Commons Attribution-NonCommercial-NoDerivs 4.0
+
+      copyright: Todos Direitos Reservados
+
+      copyleft: Copyleft
+      gpl: GNU General Public License
+      gpl_v2: GNU General Public License v2
+      gpl_v3: GNU General Public License v3
+
+      falv13: Licensa da Arte Livre v1.3
+
       various: "Várias licensas"
       gray: "Licensa em área cinza"
 
@@ -124,6 +143,8 @@ pt-BR:
 
     form:
       new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
+      free_licenses: Licensas Livres
+      non_free_licenses: Licensas não livres
 
     buttons:
       download: Baixar

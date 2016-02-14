@@ -39,6 +39,17 @@ class License < ActiveRecord::Base
     where(short_name: id).first || super
   end
 
+  def translation_short_name
+    short_name.gsub('-', '_')
+  end
+
+  def license_for_group_select
+    [
+      I18n.t("licenses.name.#{self.translation_short_name}"),
+      self.id
+    ]
+  end
+
   private
   def self.license_image_present? filename
     if Rails.env.production?

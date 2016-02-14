@@ -11,6 +11,8 @@ class ArtifactsController < InheritedResources::Base
     order_by_params
   end
 
+  before_filter :load_licenses, only: [:new, :edit]
+
   def create
     approved = can?(:approve, @artifact) || user_artifacts_can_be_approved?(current_user)
     @artifact.approved = approved
@@ -92,6 +94,11 @@ class ArtifactsController < InheritedResources::Base
       else
         @artifacts = @artifacts.order('created_at DESC')
       end
+    end
+
+    def load_licenses
+      @free_licenses = License.where(free: true).map(&:license_for_group_select).sort_by(&:first)
+      @non_free_licenses = License.where(free: false).map(&:license_for_group_select).sort_by(&:first)
     end
 
     def load_tag_filters
