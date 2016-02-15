@@ -9,6 +9,18 @@
   - else
     = render "licenses/#{artifact.license.license_type}", artifact: artifact, small: small
 
+  - if !artifact.license.free
+    .label.label-non-free
+      - url = t("licenses.non_free.#{artifact.license.translation_short_name}", default: '')
+
+      - if url.present?
+        = link_to url, rel: 'nofollow', target: '_blank' do
+          %i.fa.fa-lock
+          = t('licenses.non_free_text')
+      - else
+        %i.fa.fa-lock
+        = t('licenses.non_free_text')
+
   - if artifact.extra_license_text.present?
     .license-text
       %strong

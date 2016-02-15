@@ -107,6 +107,16 @@ en:
       gray: "Licensing Gray Area"
 
       falv13: Free Art License v1.3
+    non_free_text: 'Non-free'
+
+    non_free:
+      by_nd: 'https://www.gnu.org/licenses/license-list.html#CC-BY-ND'
+      by_nc: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      by_nc_sa: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      by_nc_nd: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      copyright: ''
+      gray: 'https://www.gnu.org/licenses/license-list.html#NoLicense'
+      various: 'https://www.gnu.org/licenses/license-list.html#NoLicense'
 
   artifacts:
     created_by:

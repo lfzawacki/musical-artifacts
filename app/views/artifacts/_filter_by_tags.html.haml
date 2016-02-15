@@ -1,8 +1,6 @@
 - search_fields = Artifact.search_fields + ['q']
 
 .filter-sidebar.light-item.filter-licenses
-  %h3.tag-title= t("artifacts.index.filters.license")
-
   - license_params = params.slice(*search_fields)
   - if params[:license] == 'free'
     - text = t('.all_licenses')
