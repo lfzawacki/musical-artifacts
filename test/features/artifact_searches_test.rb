@@ -37,4 +37,24 @@ class ArtifactSearchesTest < Capybara::Rails::TestCase
     assert_content page, @setting.site_name
   end
 
+  test 'search with only free licenses' do
+    skip
+  end
+
+  test 'empty search has a link back to the home page' do
+    skip
+  end
+
+  test 'search with no tags for a category dont have a sidebar for it (tags)' do
+    skip
+  end
+
+  test 'search with no tags for a category dont have a sidebar for it (app tags)' do
+    skip
+  end
+
+  test 'search with no tags for a category dont have a sidebar for it (file formats)' do
+    skip
+  end
+
 end
