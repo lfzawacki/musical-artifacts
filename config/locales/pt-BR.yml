@@ -53,6 +53,7 @@ pt-BR:
     application:
       settings: Opções
       admin: Administrar
+      queues: Filas
       current_user: "Olá %{user}!"
       default_title: "Recursos livres para produção musical"
       recent_activity: Atividade recente

@@ -45,6 +45,23 @@
             %li.hidden
               %a{:href => "#page-top"}
 
+            - if can? :edit, @setting
+              %li
+                = link_to settings_path, title: t('.settings') do
+                  %i.fa.fa-cogs
+
+            - if can? :read, ActiveAdmin::Page
+              %li
+                = link_to admin_path_for_current_page, title: t('.admin') do
+                  - if @unapproved_artifacts.present?
+                    %span.badge.badge-unapproved= @unapproved_artifacts
+                  %i.fa.fa-wrench
+
+            - if can? :manage, :queues
+              %li
+                = link_to resque_server_path, title: t('.queues') do
+                  %i.fa.fa-bar-chart
+
             - if current_user.present?
               %li
                 = link_to my_artifacts_path do
@@ -55,16 +72,6 @@
             - else
               %li= link_to t('_other.login'), new_user_session_path
               %li= link_to t('_other.signup'), new_user_registration_path
-
-            - if can? :edit, @setting
-              %li= link_to t('.settings'), settings_path
-
-            - if can? :read, ActiveAdmin::Page
-              %li
-                = link_to admin_path_for_current_page do
-                  - if @unapproved_artifacts.present?
-                    %span.badge.badge-unapproved= @unapproved_artifacts
-                  = t('.admin')
 
             %li= link_to t('.recent_activity'), activities_path
 

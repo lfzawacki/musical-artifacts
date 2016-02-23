@@ -39,6 +39,7 @@ en:
     application:
       settings: Settings
       admin: Admin
+      queues: Queues
       current_user: "Hey %{user}!"
       default_title: "Libre resources for music making"
       recent_activity: Recent activity

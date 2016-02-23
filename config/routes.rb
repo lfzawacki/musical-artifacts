@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount Knock::Engine => "/api"
 
   constraints CanAccessResque do
-    mount Resque::Server, at: 'admin/resque'
+    mount Resque::Server, at: 'resque'
   end
 
   put '/settings', to: 'settings#update', as: 'settings'
