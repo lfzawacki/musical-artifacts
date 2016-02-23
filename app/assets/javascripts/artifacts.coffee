@@ -4,6 +4,36 @@
 
 artifact_search_fields = ['apps', 'tags', 'license', 'hash', 'formats']
 
+# Make tag text editable after it's deleted
+# Based on https://github.com/select2/select2/issues/116#issuecomment-56856875
+# But I totally butchered her code to make it fit my use case here
+#   id: Takes the select2 element
+#   token_function: A function to extract the text from the removed tag
+_setup_select2_delete_callback = (id, token_function) ->
+  s2c = $(id).select2("container")
+  inputField = s2c.find(".select2-input")
+
+  _checkEdit = (e) ->
+
+    if e.keyCode == 8 && !$(e.target).val().length
+
+      lastTag = $(e.target).parent().prev().last()
+      lastText = token_function(lastTag)
+
+      currentTags = s2c.select2("data")
+
+      findTags = (item) ->
+        item unless item.text == lastText
+
+      remainingTags = currentTags.filter(findTags)
+
+      lastTag.remove()
+
+      s2c.select2("data", remainingTags)
+      s2c.find("li.select2-search-field input").val(lastText)
+
+  inputField.on("keydown", _checkEdit)
+
 initialize_select = (field_id, url) ->
   return if not $(field_id)[0]
 
@@ -34,6 +64,9 @@ initialize_select = (field_id, url) ->
       results: (data, page) ->
         results: data.map (term) -> {id: term, text: term}
 
+  _setup_select2_delete_callback field_id, (tag) ->
+    tag.children("div").children("div").html()?.trim()
+
   $(field_id).ready ->
     values = []
 
@@ -41,6 +74,35 @@ initialize_select = (field_id, url) ->
       values.push {id: value, text: value} if value != ''
 
     $(field_id).select2 'data', values
+
+select_for_http_links = (id) ->
+
+  # Puts http:// in front of selection and sets obj.id equal to obj.text
+  format = (object, container) ->
+    text = escapeHTML(object.text)
+    # Assume a url has been entered and stick a http:// in front if it's not there
+    if not object.text.match(/^http[s]?\:\/\//)
+       text = 'http://' + text
+    else
+      text
+
+    object.text = object.id = text
+
+  if $(id)[0]
+    $(id)?.select2
+      minimumResultsForSearch: Infinity
+      tags: []
+      width: '80%'
+      tokenSeparators: [',', ';']
+
+      formatNoMatches: ->
+        "Enter a valid URL"
+
+      formatResult: format
+      formatSelection: format
+
+    _setup_select2_delete_callback id, (tag) ->
+      tag.children("div").html()?.trim()
 
 initialize_editor = ->
 
@@ -68,26 +130,6 @@ initialize_editor = ->
 
     window.onresize = ->
       editor.reflow()
-
-
-select_for_http_links = (id) ->
-  if $(id)[0]
-    $(id)?.select2
-      minimumResultsForSearch: Infinity
-      tags: []
-      width: '80%'
-      tokenSeparators: [',', ';']
-
-      formatNoMatches: ->
-        "Enter a valid URL"
-
-      formatSelection: (object, container) ->
-        text = escapeHTML(object.text)
-        # Assume a url has been entered and stick a http:// in front if it's not there
-        if not object.text.match(/^http[s]?\:\/\//)
-          'http://' + text
-        else
-          text
 
 initialize_wayback_links = ->
   wayback_url = 'https://web.archive.org/web/*/'
