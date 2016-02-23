@@ -73,10 +73,17 @@ class ApplicationController < ActionController::Base
   # Extracted from the Knock::Authenticatable module because it interfered with devise
   # https://github.com/nsarno/knock/blob/master/lib/knock/authenticable.rb#L4
   def api_authenticate
-    # TODO: Better handling o values present in this header
+
     if current_user.blank? && request.headers['Authorization'].present?
-      token = request.headers['Authorization'].split(' ').last
-      @current_user = Knock::AuthToken.new(token: token).current_user
+      @current_user ||= begin
+        token = request.headers['Authorization'].split.last
+        Knock::AuthToken.new(token: token).current_user
+      rescue JWT::DecodeError => e
+        # recover from specific exceptions
+        nil
+      end
+
+      head :unauthorized unless current_user
     end
   end
 

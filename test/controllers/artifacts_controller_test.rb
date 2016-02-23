@@ -334,6 +334,22 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
+  test "should not authenticate AND not crash with invalid bearer" do
+    request.env['HTTP_AUTHORIZATION'] = "bearer invalid"
+
+    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    post :create, artifact: params, format: :json
+    assert_response :unauthorized
+  end
+
+  test "should not authenticate AND not crash with empty bearer" do
+    request.env['HTTP_AUTHORIZATION'] = "bearer"
+
+    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    post :create, artifact: params, format: :json
+    assert_response :unauthorized
+  end
+
   test "should create an artifact with valid params" do
     api_authenticate(@user)
     params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
