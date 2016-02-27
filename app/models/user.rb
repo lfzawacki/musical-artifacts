@@ -13,6 +13,11 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true
 
+  after_create :enqueue_get_avatar
+  def enqueue_get_avatar
+    Resque.enqueue(GetPublicAvatarDataWorker, self.id)
+  end
+
   # For knock api auth
   def authenticate pass
     valid_password? pass
