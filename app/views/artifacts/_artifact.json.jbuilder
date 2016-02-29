@@ -1,4 +1,5 @@
-json.extract! artifact, :id, :name, :description, :author, :file_hash
+json.extract! artifact, :id, :name, :author, :file_hash
+json.description strip_tags(artifact.description_html)
 json.related artifact.related.pluck(:id)
 json.license artifact.license.short_name
 json.tags artifact.tag_list
