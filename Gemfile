@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rack', '~> 1.6.2'
-gem 'rails', '~> 4.2.5.1'
+gem 'rails', '~> 4.2.5.2'
 gem 'active_record_union' # because active record doesnt have an OR method ... WAHT THE HECK GAME DESIGNEERRS??!?1?
 
 gem 'pg'
