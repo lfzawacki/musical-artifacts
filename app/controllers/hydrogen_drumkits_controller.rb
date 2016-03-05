@@ -11,7 +11,7 @@ class HydrogenDrumkitsController < InheritedResources::Base
     @drumkits = @drumkits.map do |drumkit|
       {
         name: drumkit.name, url: url_from_artifact(drumkit),
-        info: drumkit.description_html, author: drumkit.author, license: drumkit.license.name
+        info: description_with_tags(drumkit), author: drumkit.author, license: drumkit.license.name
       }
     end
 
@@ -35,13 +35,17 @@ class HydrogenDrumkitsController < InheritedResources::Base
     url = nil
 
     if file.try(:format) == 'h2drumkit'
-      url = artifact_download_path(artifact, file.name)
+      url = artifact_download_url(artifact, file.name)
     else
       mirrors.select! { |mirror| File.extname(mirror) == '.h2drumkit' }
       url = mirrors.first
     end
 
     url
+  end
+
+  def description_with_tags drumkit
+    "<p>Tagged with #{drumkit.tag_list.join(', ')}</p> #{drumkit.description_html}"
   end
 
 end
