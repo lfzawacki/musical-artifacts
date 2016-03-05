@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   after_create :enqueue_get_avatar
   def enqueue_get_avatar
-    Resque.enqueue(GetPublicAvatarDataWorker, self.id)
+    Resque.enqueue(GetPublicAvatarDataWorker, self.id) unless Rails.env.test?
   end
 
   # For knock api auth
