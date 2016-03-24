@@ -11,7 +11,7 @@ class ArtifactsController < InheritedResources::Base
     order_by_params
   end
 
-  before_filter :load_licenses, only: [:new, :edit]
+  before_filter :load_licenses, only: [:new, :edit, :create]
 
   def create
     approved = can?(:approve, @artifact) || user_artifacts_can_be_approved?(current_user)
