@@ -58,8 +58,8 @@ App.create(
 App.create(
   name: 'Timidity++',
   url: 'http://timidity.sourceforge.net/',
-  software_list: ['linuxsampler', 'qsampler', 'fantasia'],
-  file_format_list: ['gig', 'sf2', 'sfz']
+  software_list: ['timidity'],
+  file_format_list: ['sf2']
 )
 
 # App.create(

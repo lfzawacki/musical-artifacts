@@ -26,6 +26,16 @@ class Artifact < ActiveRecord::Base
 
     after_create :enqueue_notification
 
+    # Automatically set some app_tags based on
+    # the format of the uploaded file
+    after_create :set_app_tags_from_format
+    def set_app_tags_from_format
+      apps = App.tagged_with(file_format, on: 'file_formats')
+      app_tags = apps.map(&:software_list).flatten
+
+      self.software_list.push(*app_tags)
+    end
+
     # The creator of the artifact on the site, not the author
     belongs_to :user
     def owned_by?(user)
