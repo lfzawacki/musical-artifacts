@@ -106,6 +106,18 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_equal Artifact.last.user, @user
   end
 
+  test "should not create artifact with errors in the form" do
+    sign_in(@user)
+
+    assert_difference('Artifact.count', 0) do
+      post :create, artifact:
+        { name: 'Windowpane', author: '', description: 'Blank face in the windowpane ', license_id: @by.id }
+    end
+
+    assert_template 'artifacts/new'
+    assert assigns(:artifact).errors.any?
+  end
+
   test "should show artifact" do
     get :show, id: @artifact
     assert_response :success
@@ -270,6 +282,16 @@ class ArtifactsControllerTest < ActionController::TestCase
 
     assert_redirected_to artifact_path(assigns(:artifact))
     assert_equal assigns(:artifact).description, new_desc
+  end
+
+  test "should not update artifact with errors in the form" do
+    sign_in(@user)
+    @artifact.update_attributes user: @user
+
+    patch :update, id: @artifact, artifact: { author: '', description: 'No, no woah no.' }
+
+    assert_template 'artifacts/edit'
+    assert assigns(:artifact).errors.any?
   end
 
   test "should update unapproved artifact as normal user who is the creator" do
