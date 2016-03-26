@@ -5,8 +5,7 @@
 # https://github.com/hydrogen-music/hydrogen/wiki/Soundlibrary-download-feature
 class HydrogenDrumkitsController < InheritedResources::Base
 
-  # rescue_from ActionController::UnknownFormat, with: :remove_trailing_whitespaces
-  before_filter :remove_trailing_whitespaces, only: [:index]
+  rescue_from ActionController::UnknownFormat, with: :remove_trailing_whitespaces
 
   def index
     render_drumkits
@@ -42,7 +41,7 @@ class HydrogenDrumkitsController < InheritedResources::Base
 
     if file.try(:format) == 'h2drumkit'
       url = artifact_download_url(artifact, file.name)
-    else
+    elsif mirrors.present?
       mirrors.select! { |mirror| File.extname(mirror) == '.h2drumkit' }
       url = mirrors.first
     end
@@ -56,10 +55,12 @@ class HydrogenDrumkitsController < InheritedResources::Base
 
   # It's common for users to include trailing whitespaces in the URL and this will cause server errors
   # because xml%20 is an invalid format. This tries to get back from this error
-  def remove_trailing_whitespaces
-    if params[:format].match(/xml\s+/)
+  def remove_trailing_whitespaces exception
+    if params[:format].try(:match, /xml\s+/)
       request.format = :xml
       render_drumkits
+    else
+      raise exception
     end
   end
 end
