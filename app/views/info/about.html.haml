@@ -10,14 +10,14 @@
           %span.name Artifacts
           %hr.star-light
             %p.skills
-              = t('.description')
+              = t('.description').leet
             %h1.skills
-              = t('.call_for_action')
+              = t('.call_for_action').leet
 
         .documentation-link
           = link_to t('.documentation_url') do
             %i.fa.fa-file
-            = t('.documentation')
+            = t('.documentation').leet
 
 %section.padded-top#creation
   .container
@@ -28,12 +28,12 @@
           %h1= t('.creation')
 
           %p
-            = t('.creation_description')
+            = t('.creation_description').leet
 
           - @tags.each do |tag|
             =link_to artifacts_path(tags: tag), class: 'btn btn-lg btn-outline btn-dark' do
               %span.em #
-              = tag
+              = tag.leet
 
 %section.padded-top#access.success
   .container
@@ -44,11 +44,11 @@
           %h1= t('.access')
 
           %p
-            = t('.access_description')
+            = t('.access_description').leet
 
           = link_to t('.how_to_host_url') do
             %i.fa.fa-external-link
-            = t('.how_to_host')
+            = t('.how_to_host').leet
 
 %section.padded-top#licensing
   .container
@@ -56,13 +56,13 @@
       .col-lg-12
         .text-center.star-light
           = about_icon 'document'
-          %h1= t('.licensing')
+          %h1= t('.licensing').leet
 
-          %p= t('.licensing_rights')
-          %p= t('.licensing_rights_questions')
+          %p= t('.licensing_rights').leet
+          %p= t('.licensing_rights_questions').leet
           = link_to t('.open_licenses_url') do
             %i.fa.fa-external-link
-            = t('.open_licenses')
+            = t('.open_licenses').leet
 
 %section.padded-top#format.success
   .container
@@ -70,12 +70,12 @@
       .col-lg-12
         .text-center.star-light
           = about_icon 'unlocked'
-          %h1= t('.open_format')
+          %h1= t('.open_format').leet
 
-          %p= t('.open_format_description')
+          %p= t('.open_format_description').leet
           = link_to ('.open_formats_url') do
             %i.fa.fa-external-link
-            = t('.open_formats')
+            = t('.open_formats').leet
 
 %section.padded-top#documentation
   .container
@@ -83,22 +83,22 @@
       .col-lg-12
         .text-center.star-light
           = about_icon 'chat'
-          %h1= t('.document_it')
+          %h1= t('.document_it').leet
 
-          %p= t('.document_it_description')
+          %p= t('.document_it_description').leet
 
           = link_to t('.new_artifact_url') do
             %i.fa.fa-external-link
-            = t('.new_artifact')
+            = t('.new_artifact').leet
 
 %section.padded-top#about.success
   .container
     .row
       .col-lg-12.text-center
-        %h2= t('.shall_we_start')
+        %h2= t('.shall_we_start').leet
         %hr.star-light
 
       .col-lg-8.col-lg-offset-2.text-center
         = link_to artifacts_path, class: 'btn btn-lg btn-outline' do
           %i.fa.fa-search
-          = t('.find_what')
+          = t('.find_what').leet

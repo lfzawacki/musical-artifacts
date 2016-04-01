@@ -17,11 +17,11 @@
 
         = download_link(artifact, class: 'btn btn-group-justified btn-download') do
           %i{class: "fa #{icon_from_extension(artifact.stored_files.last.format)}"}
-          = t('.download')
+          = t('.download').leet(false)
           = "(#{number_to_human_size(artifact.file.file.size)})"
 
       - elsif artifact.mirrors.present?
         - mirror = artifact.mirrors.first
         = external_link_to mirror, class: 'btn btn-group-justified btn-download' do
           %i{class: "fa #{icon_from_extension(format_from_link(mirror))}"}
-          = t('.download_mirror', domain: domain_from_link(mirror))
+          = t('.download_mirror', domain: domain_from_link(mirror)).leet(false)

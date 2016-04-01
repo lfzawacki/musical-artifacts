@@ -11,12 +11,12 @@
 
   = link_to path do
     %i.fa.fa-book
-    = text
+    = text.leet
 
 - [:tags, :apps, :formats].each do |tag_type|
   - if @tags[tag_type].any?
     .filter-sidebar.dark-item
-      %h3.tag-title= t("artifacts.index.filters.#{tag_type}")
+      %h3.tag-title= t("artifacts.index.filters.#{tag_type}").leet(false)
       - @tags[tag_type].each do |tag|
         - tags = params[tag_type].try(:split, ',').to_a
 
@@ -30,4 +30,4 @@
         - if tags.include?(tag.name)
           %span.tag-filter.selected-tag= "#{tag.name} (#{tag.count})"
         - else
-          = link_to "#{tag.name} (#{tag.count})", artifacts_path(new_params), class: "tag-filter #{tag_type.to_s.singularize}-tag"
+          = link_to "#{tag.name.leet(false)} (#{tag.count + constantly_rising_number/100})", artifacts_path(new_params), class: "tag-filter #{tag_type.to_s.singularize}-tag"

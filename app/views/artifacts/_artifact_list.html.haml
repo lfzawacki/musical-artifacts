@@ -19,7 +19,7 @@
         = render 'artifacts/new_artifact_ribbon', artifact: artifact
 
         %h3.artifact-name
-          = link_to artifact.name, artifact
+          = link_to artifact.name.leet, artifact
 
           = render "artifacts/side_buttons", artifact: artifact
 
@@ -28,12 +28,12 @@
 
         .artifact-description.pad-top
           -if artifact.description.present?
-            = strip_tags(artifact.description_html).truncate(480)
+            = strip_tags(artifact.description_html).truncate(480).leet
           - else
-            .no-description= t('artifacts.show.no_description')
+            .no-description= t('artifacts.show.no_description').leet
 
         %p.more-info
-          = link_to t('.more_info'), artifact_path(artifact)
+          = link_to t('.more_info').leet, artifact_path(artifact)
 
         .artifact-tags
           = render 'artifacts/artifact_tags', artifact: artifact

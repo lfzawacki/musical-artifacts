@@ -107,3 +107,5 @@ gem 'omniauth-soundcloud'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linuxfr'
+
+gem 'leetspeak'

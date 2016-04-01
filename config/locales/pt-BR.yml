@@ -68,7 +68,7 @@ pt-BR:
         terms: Termos e Condições
         theme_credit: "Tema derivado de:"
         site_license: "O banco de dados, texto e metadados é licensiado CC-BY-SA 4.0. Os arquivos têm suas licensas respectivas."
-        author_html: "criado por <a href=\"https://github.com/lfzawacki/\">lfz</a>"
+        author_html: "só uma piadinha do <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: Este site não mostra publicidade.
 
   auth_callbacks:
