@@ -9,5 +9,5 @@
   - if list.present?
     - list.each do |tag|
       .label{class: "label-#{tag_name}"}
-        = link_to tag.leet, artifacts_path(tag_name.pluralize => tag)
+        = link_to tag, artifacts_path(tag_name.pluralize => tag)
     %br

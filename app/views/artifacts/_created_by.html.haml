@@ -1,12 +1,12 @@
 %span
   = t('_other.by')
-  = link_to artifact.author.leet, artifacts_path(q: artifact.author)
+  = link_to artifact.author, artifacts_path(q: artifact.author)
 
 %p.artifact-times
   %span.created-at
-    = t('artifacts.created_by.created_at').leet
+    = t('artifacts.created_by.created_at')
     = l(artifact.created_at)
 
   - if artifact.updated_at > artifact.created_at
     %span.updated-at
-      = "(#{t('.updated_at')} #{l(artifact.updated_at)})".leet
+      = "(#{t('.updated_at')} #{l(artifact.updated_at)})"

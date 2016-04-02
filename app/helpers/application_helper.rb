@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-  def constantly_rising_number
-    DateTime.now.seconds_since_midnight + rand(10)
-  end
-
   def application_title
     if content_for(:title).present?
       "#{content_for :title } | #{@setting.site_name}"
