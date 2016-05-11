@@ -85,7 +85,7 @@ pt-BR:
       public: https://wiki.creativecommons.org/Public_domain
       fal: http://artlibre.org/licence/lal/pt/
     text:
-      cc: Creative Commons 4.0 Unported License
+      cc: Creative Commons %{parts} 4.0 Internacional
       cc_sample: Creative Commons Sampling+ 1.0
       copyleft: Alguns Direitos Reservados a %{author}
       copyright: Todos Direitos Reservados a %{author}
@@ -94,6 +94,16 @@ pt-BR:
       various: "Arquivos disponibilizados em várias licensas diferentes. Leia a descrição, os links de mais informação, conteúdos ou contate o autor para se informar melhor."
       gray: "Os arquivos tem uma licensa desconhecida, foram obtidos de fontes desconhecidas ou compilados a partir de material feito por terceiros."
       falv13: 'Licensa da Arte Livre 1.3'
+    name_parts:
+      by: Atribuição
+      nc: NãoComercial
+      nd: SemDerivações
+      sa: CompartilhaIgual
+    small_name_parts:
+      by: BY
+      nc: NC
+      nd: ND
+      sa: SA
     parts:
       by: Dê crédito ao autor
       nc: Uso não comercial

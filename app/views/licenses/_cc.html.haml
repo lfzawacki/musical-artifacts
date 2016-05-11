@@ -1,7 +1,11 @@
 - name = artifact.license.short_name
 - link = t("licenses.link.cc", type: name)
-- text = t("licenses.text.cc")
 - img = image_tag(artifact.license.image_url(small))
+
+- parts = artifact.license.name_parts.map do |part|
+  - t("licenses.#{small ? 'small_' : ''}name_parts.#{part}")
+
+- text = t("licenses.text.cc", parts: parts.join('-'))
 
 - if small
   = link_to img, artifacts_path(license: artifact.license.short_name)
@@ -14,6 +18,6 @@
     = link_to text, link
     %br
 
-    - name.split('-').map do |part|
+    - artifact.license.name_parts.each do |part|
       %span.label.license-label.label-default= t("licenses.parts.#{part}")
 

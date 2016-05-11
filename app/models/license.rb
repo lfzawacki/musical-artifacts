@@ -50,6 +50,18 @@ class License < ActiveRecord::Base
     ]
   end
 
+  # Split a CC license name in it's parts
+  #   For example:
+  #     by     -> ['by']
+  #     nd     -> ['by', 'nd']
+  def name_parts
+    if license_type == 'cc'
+      short_name.split('-')
+    else
+      []
+    end
+  end
+
   private
   def self.license_image_present? filename
     if Rails.env.production?
