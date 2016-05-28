@@ -36,6 +36,13 @@ pt-BR:
         password_confirmation: Confirme sua senha
         remember_me: Manter logado
 
+    errors:
+      models:
+        user:
+          attributes:
+            reset_password_token:
+              invalid: 'O token de autenticação não é válido.'
+
   _other:
     access_denied: Você não tem permissão para realizar essa ação.
     by: por
@@ -258,6 +265,9 @@ pt-BR:
       new:
         title: "Esqueceu sua senha?"
         reset_password: "Receber instruções para a troca de senha"
+      edit:
+        title: "Mudar sua senha"
+        password_min: "no mínimo %{count} caracteres"
 
     registrations:
       new:

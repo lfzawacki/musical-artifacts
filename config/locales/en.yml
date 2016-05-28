@@ -22,6 +22,13 @@ en:
       user:
         username: Nick name
 
+    errors:
+      models:
+        user:
+          attributes:
+            reset_password_token:
+              invalid: 'Invalid authentication token.'
+
   _other:
     access_denied: You don't have sufficient permissions to do this.
     by: by
@@ -244,6 +251,9 @@ en:
       new:
         title: "Forgot your password?"
         reset_password: "Send me reset password instructions"
+      edit:
+        title: "Change your password"
+        password_min: "%{count} characters minimum"
 
     registrations:
       new:
