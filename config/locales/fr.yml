@@ -1,0 +1,316 @@
+fr:
+  locale_name: Français
+
+  time:
+    formats:
+      default: "%b %d, %Y"
+
+  date:
+    abbr_month_names: [~, Jan, Fév, Mar, Avr, Mai, Jui, Jui, Aoû, Sep, Oct, Nov, Déc]
+    month_names: [~, Janvier, Février, Mars, Avril, Mai, Juin, Juillet, Août, Septembre, Octobre, Novembre, Décembre]
+
+  activerecord:
+    attributes:
+      artifact:
+        name: "C'est appelé"
+        description: "Décrire ce que c'est, comment l'utiliser, comment ça a été fait, etc..."
+        author: "et a été créé par"
+        mirrors: en miroir à
+        more_info_urls: Davantage d'informations ici
+        file: Télécharger un fichier
+        software_list: L'utiliser avec ces applications
+        tag_list: Tags
+        file_format_list: Formats de fichier
+        license: Licencié sous
+
+      user:
+        username: Nom d'utilisateur
+
+    errors:
+      models:
+        user:
+          attributes:
+            reset_password_token:
+              invalid: 'Jeton d'authentication invalide.'
+
+  _other:
+    access_denied: Vous n'avez pas de droit suffisant pour faire ceci.
+    by: par
+    about: À propos
+    contact: Contact
+    edit: Éditer
+    back: Retour
+    confirm: Êtes-vous sûr(e) ?
+    destroy: Détuire
+    signup: S'inscrire
+    login: Se connecter
+    logout: Se déconnecter
+
+  layouts:
+    application:
+      settings: Paramètres
+      admin: Admin
+      queues: Files d'attente
+      current_user: "Salut %{user} !"
+      default_title: "Resources libre pour faire de la musique"
+      recent_activity: Activité récente
+
+      footer:
+        contact: Contact
+        contact_us: Nous contacter
+        language: Langage
+        legal: "Légal et vie privée"
+        more_links: Ailleurs
+        switch_language: Change de langue
+        terms: Conditions générales
+        theme_credit: "Le thème est dérivé de :"
+        site_license: "La base de données artifact, les textes et les méta-données sous licenciées sous CC-BY-SA 4.0. Les fichiers aux-même possèdent leurs licences respectives."
+        author_html: "créé par <a href=\"https://github.com/lfzawacki/\">lfz</a>"
+        adfree: Ce site n'affiche pas de publicité.
+
+  auth_callbacks:
+    email_error: "Le courriel entré est déjà pris ou est invalide. Réessayez avec un autre fournisseur ou utilisez \'Mot de passe oublié ?\'"
+    unknown_error: "Erreur inconnue lors de la tentative d'enregistrement avec %{provider}. Réessayez ou testez avec un autre fournisseur."
+
+  licenses:
+    extra_text: "Considérations additionnelles :"
+    link:
+      cc: http://creativecommons.org/licenses/%{type}/4.0/deed.fr
+      cc_sample: https://creativecommons.org/licenses/sampling+/1.0/
+      copyleft: https://www.gnu.org/copyleft/copyleft.fr.html
+      copyright: ''
+      public: https://wiki.creativecommons.org/Public_domain
+      gpl: https://opensource.org/licenses/GPL-%{version}
+      falv13: http://artlibre.org/licence/lal/fr/
+    text:
+      cc: Creative Commons %{parts} 4.0 International
+      cc_sample: Creative Commons Sampling+ 1.0
+      copyleft: Certains droits réservés à %{author}
+      copyright: Tous droits réservés à %{author}
+      public: Travail dans le domaine public
+      gpl: GNU General Public License %{version}
+      various: "ces fichiers sont rendus disponibles à travers un mélange de différentes licences. Lisez la description, les liens pour davantage d'infos, les contenus de fichier ou contactez l'auteur afin d'obtenir toutes les informations."
+      gray: "Ces fichiers ont un licence inconnue, ont été obtenus de source inconnues ou ont été compilés à partir de matériel tierce."
+      falv13: License Art Libre 1.3
+    name_parts:
+      by: Attribution
+      nc: Non-Commercial
+      nd: Non-Dérivé
+      sa: Partage à l'identique (share alike)
+    small_name_parts:
+      by: BY
+      nc: NC
+      nd: ND
+      sa: SA
+    parts:
+      by: Doit donner l'attribution
+      nc: Utilisation non-commerciale uniquement
+      nd: Pas de travail dérivé
+      sa: Partage sous la même licence
+    name:
+      public: Domaine public
+
+      cc_sample: Creative Commons Sampling Plus 1.0
+      by: Creative Commons Attribution 4.0
+      by_sa: Creative Commons Attribution-ShareAlike 4.0
+      by_nd: Creative Commons Attribution-NoDerivs 4.0
+      by_nc: Creative Commons Attribution-NonCommercial 4.0
+      by_nc_sa: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+      by_nc_nd: Creative Commons Attribution-NonCommercial-NoDerivs 4.0
+
+      copyright: Tous droits réservés
+
+      copyleft: Copyleft
+      gpl: GNU General Public License
+      gpl_v2: GNU General Public License v2
+      gpl_v3: GNU General Public License v3
+
+      various: "Licences variées"
+      gray: "Zone grise de licence"
+
+      falv13: Licence Art Libre v1.3
+    non_free_text: 'Non-libre'
+
+    non_free:
+      by_nd: 'https://www.gnu.org/licenses/license-list.html#CC-BY-ND'
+      by_nc: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      by_nc_sa: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      by_nc_nd: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      copyright: ''
+      gray: 'https://www.gnu.org/licenses/license-list.html#NoLicense'
+      various: 'https://www.gnu.org/licenses/license-list.html#NoLicense'
+
+  artifacts:
+    created_by:
+      created_at: "Téléversé le  "
+      updated_at: "et dernière mise à jour le"
+
+    index:
+      all: Tout
+      clear_search: Nettoyez
+      new: Enregistrer un nouvel artéfact
+      search_for: Rechercher...
+      search: Chercher
+      filters:
+        license: Licencié sous...
+        tags: Tagué avec...
+        apps: Utilisé avec l'application...
+        hash: Fichier avec hash...
+        formats: Avec format...
+
+      search_description: "Résultat de la recherche \"%{query}\""
+
+    filter_by_tags:
+      free_licenses: Afficher uniquement les licences libres
+      all_licenses: Afficher toutes les licences
+
+    form:
+      new_artifact_help_html: "Vous avez besoin d'astuces pour créer un bon artéfact ? <a target=\"_blank\" href=\"%{link}\">Lisez ceci !</a>"
+      free_licenses: Licences libres
+      non_free_licenses: Licences non-libres
+
+    show:
+      no_description: "(Description indisponible)"
+      unapproved: 'Cet artéfact est actuellement invisible pour les autres utilisateurs. Attendez qu'un admin l'approuve.'
+
+    artifact_search_description:
+      filtering: Filtrer par
+      page_description: page %{page}
+      showing: Affichage %{title}
+      free_licenses: Licences libres
+    artifact_list:
+      more_info: Davantage d'informations...
+      none: Rien de trouvé !
+      return_html: "Voudrions-nous essayer une <a href=\"%{path}\">nouvelle recherche</a> ?"
+
+    buttons:
+      download: Télécharger
+      download_mirror: Télécharger depuis (%{domain})
+
+    search_order_dropdown:
+      created_at_asc: Date (la plus vieille en premier)
+      created_at_desc: Date (la plus jeune en premier)
+      name_asc: Nom (ascendant)
+      name_desc: Nom (descendant)
+      most_downloaded_desc: Les plus téléchargés
+      order_by: Ordonné par
+      top_rated_desc: Meilleure note
+
+    side_buttons:
+      favorite: C'est chouette !
+      unfavorite: C'est chouette !
+      download: Télécharger
+
+    wayback_links:
+      broken: Lien externe cassé ? Cliquez ici pour essayer le lien sur la machine à remonter le temps.
+      original: Retour au lien originel.
+    edit:
+      edit: Éditer %{name}
+    new:
+      new: Créer un nouvel artéfact
+
+    new_artifact_ribbon:
+      new: "Nouveau !"
+
+    file_listing:
+      title: Contenu du fichier
+
+    more_info_multimedia:
+      title: Contenu multimédia
+
+    create:
+      success: L'rtéfact a été créé avec succès.
+      not_approved: Votre artéfact a été créé et attend pour modération.
+
+  public_activity:
+    artifact:
+      create:
+        activity: a créé l'artéfact
+      update:
+        activity: a mis à jour l'artéfact
+      favorite:
+        activity: mis en favori
+      destroy:
+        activity: a effacé l'artéfact
+
+    deleted: (effacé)
+    index: Activité récente sur le site
+
+    someone: Un utilisateur
+
+  users:
+    create_without_email:
+      almost: "Nous y sommes presque..."
+      explanation_html: "Dis donc <strong>%{username}</strong> ! <br> <strong>%{provider}</strong> ne fourni pas d'adresse courriel et nous en avons besoin avant que votre compte soit prêt."
+      note: "Ceci doit être fait une seule fois lorsque vous vous enregistrez."
+
+    show:
+      your_artifacts: Vos artéfacts musicaux
+      description: "Dis donc, %{user} ! Voici tous les artéfacts que tu as enregistré sur ce site."
+      your_favorites: Favoris
+      favorite_description: Ce sont les artéfacts que tu as marqués en tant que favoris
+      show_favorites_html: "À votre recherche %{link} ?"
+
+    passwords:
+      new:
+        title: "Mot de passe oublié ?"
+        reset_password: "Envoyez moi les instructions de réinitialisation de mon mot de passe"
+      edit:
+        title: "Modifier votre mot de passe"
+        password_min: "%{count} caractères minimum"
+
+    registrations:
+      new:
+        password_min: "%{count} caractères minimum"
+
+    omniauth_providers:
+      title: "Se connecter avec d'autres sites :"
+
+    sessions:
+      new:
+        forgot_password: "mot de passe oublié ?"
+
+  settings:
+    edit:
+      edit: Éditer les paramètres
+
+  info:
+    about:
+      access_description: "La toute première chose, cette ressource doit être accessible quelque part."
+
+      how_to_host: "Comment héberger des fichiers ?"
+      how_to_host_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting'
+
+      call_for_action: "Mais comment pouvez-vous aider ?"
+      creation_description: "Et donc, vous avez créé quelques chouettes ressources musicales et vous voulez les partager avec d'autres artistes ?"
+      description: "Aidant à cataloguer, préserver et libérer les artéfacts dont vous avez besoin pour produite de la musique."
+      documentation: "Lisez le wiki pour la 'grande histoire'"
+      documentation_url: https://github.com/lfzawacki/musical-artifacts/wiki/Home
+      document_it: Documentez-le !
+      document_it_description: "DITES au monde où trouver votre ressource et comment ils peuvent l'utiliser !"
+
+      licensing: Autorisation
+      licensing_rights: "Réflêchissez aux droits que vous donnez aux utilisateurs de la ressource."
+      licensing_rights_questions: "Peuvent-ils la commercialiser ? La modifier ? La redistribuer ?"
+
+      open_licenses: Lisez à propos des licences ouvertes
+      open_licenses_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses'
+
+      open_format: "Format ouvert"
+      open_format_description: "Rendez la disponible sous un format de document commun et ouvertement documenté."
+
+      open_formats: "Apprendre à propos des formats ouverts"
+      open_formats_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Formats'
+
+      new_artifact: Enregistrer de nouveaux artéfacts
+      new_artifact_url: https://github.com/lfzawacki/musical-artifacts/wiki/Creating-a-new-artifact
+
+      shall_we_start: Devrions-nous commencer ?
+      find_what: Trouver ce que vous êtes venu chercher
+
+    contact:
+      description: N'oubliez pas de laisser un courriel pour que nous puissions vous recontacter.
+
+    optout:
+      title: Empêcher les analyses de traffic
+      description_html: "Pour davantage d'information à propos des pratiques de collection des données de ce site, lisez <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">cette page</a>."
