@@ -1,5 +1,5 @@
 fr:
-  locale_name: Français
+  locale_name: "Français"
 
   time:
     formats:
@@ -8,6 +8,8 @@ fr:
   date:
     abbr_month_names: [~, Jan, Fév, Mar, Avr, Mai, Jui, Jui, Aoû, Sep, Oct, Nov, Déc]
     month_names: [~, Janvier, Février, Mars, Avril, Mai, Juin, Juillet, Août, Septembre, Octobre, Novembre, Décembre]
+    formats:
+      default: "%b %d, %Y"
 
   activerecord:
     attributes:
@@ -31,7 +33,7 @@ fr:
         user:
           attributes:
             reset_password_token:
-              invalid: 'Jeton d'authentication invalide.'
+              invalid: "Jeton d'authentication invalide."
 
   _other:
     access_denied: Vous n'avez pas de droit suffisant pour faire ceci.
@@ -171,7 +173,7 @@ fr:
 
     show:
       no_description: "(Description indisponible)"
-      unapproved: 'Cet artéfact est actuellement invisible pour les autres utilisateurs. Attendez qu'un admin l'approuve.'
+      unapproved: "Cet artéfact est actuellement invisible pour les autres utilisateurs. Attendez qu'un admin l'approuve."
 
     artifact_search_description:
       filtering: Filtrer par
