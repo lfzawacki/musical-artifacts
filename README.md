@@ -96,6 +96,10 @@ There's also [repository](https://github.com/nodiscc/musical-artifacts-data) for
   * [Freesound](https://www.freesound.org/)
   * [LMMS Sharing Platform](https://lmms.io/lsp/)
 
+## Translations
+
+  * FR translation by [Olivier Humbert](https://github.com/trebmuh)
+
 ## Resources
 
 TODO: Thank all the artists/engineers/programmers who gave resources
