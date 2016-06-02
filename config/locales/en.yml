@@ -167,7 +167,7 @@ en:
 
     show:
       no_description: "(No description available)"
-      unapproved: 'This artifact is currently not visibile by other users. Wait for an admin to approve it.'
+      unapproved: 'This artifact is currently not visible by other users. Wait for an admin to approve it.'
 
     artifact_search_description:
       filtering: Filtering by
