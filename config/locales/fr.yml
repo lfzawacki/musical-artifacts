@@ -11,7 +11,14 @@ fr:
     formats:
       default: "%b %d, %Y"
 
+   helpers:
+    submit:
+      create: "Création %{model}"
+      update: "Mise à jour %{model}"
+
   activerecord:
+    models:
+      artifact: "artéfact"
     attributes:
       artifact:
         name: "C'est appelé"
@@ -24,9 +31,13 @@ fr:
         tag_list: Tags
         file_format_list: Formats de fichier
         license: Licencié sous
+        extra_license_text: "texte supplémentaire de licence"
 
       user:
         username: Nom d'utilisateur
+        password: mot de passe
+        password_confirmation: confirmation de mot de passe
+        remember_me: se souvenir de moi
 
     errors:
       models:
@@ -43,7 +54,7 @@ fr:
     edit: Éditer
     back: Retour
     confirm: Êtes-vous sûr(e) ?
-    destroy: Détuire
+    destroy: Détruire
     signup: S'inscrire
     login: Se connecter
     logout: Se déconnecter
@@ -61,12 +72,12 @@ fr:
         contact: Contact
         contact_us: Nous contacter
         language: Langage
-        legal: "Légal et vie privée"
+        legal: "Législation et vie privée"
         more_links: Ailleurs
-        switch_language: Change de langue
+        switch_language: Changer de langue
         terms: Conditions générales
         theme_credit: "Le thème est dérivé de :"
-        site_license: "La base de données artifact, les textes et les méta-données sous licenciées sous CC-BY-SA 4.0. Les fichiers aux-même possèdent leurs licences respectives."
+        site_license: "La base de données artifact, les textes et les méta-données sont licenciés sous CC-BY-SA 4.0. Les fichiers aux-même possèdent leurs licences respectives."
         author_html: "créé par <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: Ce site n'affiche pas de publicité.
 
@@ -89,7 +100,7 @@ fr:
       cc_sample: Creative Commons Sampling+ 1.0
       copyleft: Certains droits réservés à %{author}
       copyright: Tous droits réservés à %{author}
-      public: Travail dans le domaine public
+      public: "Œuvre dans le domaine public"
       gpl: GNU General Public License %{version}
       various: "ces fichiers sont rendus disponibles à travers un mélange de différentes licences. Lisez la description, les liens pour davantage d'infos, les contenus de fichier ou contactez l'auteur afin d'obtenir toutes les informations."
       gray: "Ces fichiers ont un licence inconnue, ont été obtenus de source inconnues ou ont été compilés à partir de matériel tierce."
@@ -149,7 +160,7 @@ fr:
 
     index:
       all: Tout
-      clear_search: Nettoyez
+      clear_search: Vider les tags
       new: Enregistrer un nouvel artéfact
       search_for: Rechercher...
       search: Chercher
@@ -173,13 +184,19 @@ fr:
 
     show:
       no_description: "(Description indisponible)"
+      related: "relié à"
       unapproved: "Cet artéfact est actuellement invisible pour les autres utilisateurs. Attendez qu'un admin l'approuve."
+
+    artifact_links:
+      mirrors: miroirs
+      more_info: davantage d'informations
 
     artifact_search_description:
       filtering: Filtrer par
       page_description: page %{page}
       showing: Affichage %{title}
       free_licenses: Licences libres
+
     artifact_list:
       more_info: Davantage d'informations...
       none: Rien de trouvé !
@@ -231,7 +248,7 @@ fr:
       update:
         activity: a mis à jour l'artéfact
       favorite:
-        activity: mis en favori
+        activity: a mis en favori
       destroy:
         activity: a effacé l'artéfact
 
@@ -274,32 +291,34 @@ fr:
 
   settings:
     edit:
-      edit: Éditer les paramètres
+      edit: "Éditer les paramètres"
 
   info:
     about:
-      access_description: "La toute première chose, cette ressource doit être accessible quelque part."
+      access: "accès"
+      access_description: "En premier lieu, cette ressource doit être accessible quelque part."
 
       how_to_host: "Comment héberger des fichiers ?"
       how_to_host_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting'
 
       call_for_action: "Mais comment pouvez-vous aider ?"
+      creation: "création"
       creation_description: "Et donc, vous avez créé quelques chouettes ressources musicales et vous voulez les partager avec d'autres artistes ?"
-      description: "Aidant à cataloguer, préserver et libérer les artéfacts dont vous avez besoin pour produite de la musique."
-      documentation: "Lisez le wiki pour la 'grande histoire'"
+      description: "Aide à cataloguer, préserver et libérer les artéfacts dont vous avez besoin pour produire de la musique."
+      documentation: "Lire le wiki pour la 'grande histoire'"
       documentation_url: https://github.com/lfzawacki/musical-artifacts/wiki/Home
-      document_it: Documentez-le !
+      document_it: "Documentez-le !"
       document_it_description: "DITES au monde où trouver votre ressource et comment ils peuvent l'utiliser !"
 
       licensing: Autorisation
-      licensing_rights: "Réflêchissez aux droits que vous donnez aux utilisateurs de la ressource."
+      licensing_rights: "Réfléchissez aux droits que vous donnez aux utilisateurs de la ressource."
       licensing_rights_questions: "Peuvent-ils la commercialiser ? La modifier ? La redistribuer ?"
 
       open_licenses: Lisez à propos des licences ouvertes
       open_licenses_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses'
 
       open_format: "Format ouvert"
-      open_format_description: "Rendez la disponible sous un format de document commun et ouvertement documenté."
+      open_format_description: "in a common and openly documented format. Rendez-la disponible sous un format documenté ouvertement et commun."
 
       open_formats: "Apprendre à propos des formats ouverts"
       open_formats_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Formats'
