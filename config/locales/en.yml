@@ -5,7 +5,14 @@ en:
     formats:
       default: "%b %d, %Y"
 
+  helpers:
+    submit:
+      create: "Create %{model}"
+      update: "Update %{model}"
+
   activerecord:
+    models:
+      artifact: ~
     attributes:
       artifact:
         name: "This is called"
@@ -18,9 +25,13 @@ en:
         tag_list: Tags
         file_format_list: File formats
         license: Licensed as
+        extra_license_text: ~
 
       user:
         username: Nick name
+        password: ~
+        password_confirmation: ~
+        remember_me: ~
 
     errors:
       models:
@@ -167,7 +178,12 @@ en:
 
     show:
       no_description: "(No description available)"
+      related: ~
       unapproved: 'This artifact is currently not visible by other users. Wait for an admin to approve it.'
+
+    artifact_links:
+      mirrors: ~
+      more_info: ~
 
     artifact_search_description:
       filtering: Filtering by
@@ -272,12 +288,14 @@ en:
 
   info:
     about:
+      access: ~
       access_description: "First things first, the resource has to be accessible somewhere."
 
       how_to_host: "How to host files?"
       how_to_host_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting'
 
       call_for_action: "But how can you help?"
+      creation: ~
       creation_description: "So you created some cool musical resource and want to share it which other artists?"
       description: "Helping to catalogue, preserve and free the artifacts you need to produce music."
       documentation: "Read the wiki for the 'long story'"

@@ -14,8 +14,15 @@ pt-BR:
       default: "%b %d, %Y"
       long: "%d de %B, %Y %H:%M"
 
+  helpers:
+    submit:
+      create: "Criar %{model}"
+      update: "Atualizar %{model}"
 
   activerecord:
+    models:
+      artifact: Artefato
+
     attributes:
       artifact:
         name: Isto se chama
@@ -211,6 +218,10 @@ pt-BR:
       no_description: "(Nenhuma descrição disponível)"
       related: Relacionados
       unapproved: 'Este artefato não está visível no momento. Espere até um administrador aprová-lo.'
+
+    artifact_links:
+      mirrors: Espelhos
+      more_info: Mais informações
 
     artifact_search_description:
       filtering: Filtrando por
