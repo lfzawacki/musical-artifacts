@@ -11,7 +11,7 @@ fr:
     formats:
       default: "%b %d, %Y"
 
-   helpers:
+  helpers:
     submit:
       create: "Création %{model}"
       update: "Mise à jour %{model}"
@@ -318,7 +318,7 @@ fr:
       open_licenses_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses'
 
       open_format: "Format ouvert"
-      open_format_description: "in a common and openly documented format. Rendez-la disponible sous un format documenté ouvertement et commun."
+      open_format_description: "Rendez-la disponible sous un format documenté ouvertement et commun."
 
       open_formats: "Apprendre à propos des formats ouverts"
       open_formats_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Formats'
