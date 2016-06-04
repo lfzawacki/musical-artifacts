@@ -34,6 +34,7 @@ fr:
         extra_license_text: "texte supplémentaire de licence"
 
       user:
+        email: Courriel
         username: Nom d'utilisateur
         password: mot de passe
         password_confirmation: confirmation de mot de passe
