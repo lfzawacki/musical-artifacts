@@ -38,7 +38,7 @@ pt-BR:
         extra_license_text: Text extra à licensa
 
       user:
-        email: email
+        email: Email
         username: Apelido
         password: Senha
         password_confirmation: Confirme sua senha
