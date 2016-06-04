@@ -28,6 +28,7 @@ en:
         extra_license_text: ~
 
       user:
+        email: email
         username: Nick name
         password: ~
         password_confirmation: ~
