@@ -62,8 +62,25 @@ class ApplicationController < ActionController::Base
     I18n.locale = get_current_locale
   end
 
+  def extract_locale_from_accept_language_header
+    str = request.env['HTTP_ACCEPT_LANGUAGE'] || ''
+    str = str.scan(/^[a-z]{2}/).first.to_s
+
+    mapping = {
+      'pt' => 'pt-BR'
+    }
+
+    locale = mapping[str] || str
+
+    if I18n.available_locales.include?(locale.to_sym)
+      locale
+    else
+      I18n.default_locale
+    end
+  end
+
   def get_current_locale
-    locale = I18n.default_locale
+    locale = extract_locale_from_accept_language_header
 
     locale = session[:locale] if session[:locale].present?
 
