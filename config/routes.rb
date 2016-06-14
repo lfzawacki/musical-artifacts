@@ -56,5 +56,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/notifications/:notification_type/dismiss', to: 'notifications#dismiss', defaults: { format: :json }
+
   ActiveAdmin.routes(self)
 end

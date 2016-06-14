@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :store_location
 
+  before_filter :check_session_for_notifications
+
   # When a controller gets the user via current_user
   def load_user
     @user = current_user
@@ -32,6 +34,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def check_session_for_notifications
+    session[:notification_survey] ||= DateTime.now
+  end
+
   def store_location
     paths = ['/users/login', '/users/sign_up', '/users/password/new', '/users/password/edit', '/users/confirmation', '/users/logout']
     auth_paths = /^\/users\/auth\//

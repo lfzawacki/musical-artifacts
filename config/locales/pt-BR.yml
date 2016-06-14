@@ -241,6 +241,11 @@ pt-BR:
     more_info_multimedia:
       title: Conteúdo Multimídia
 
+  notifications:
+    survey:
+      title: Pesquisa Musical Artifacts
+      text: 'Quer ajudar a fazer este site melhor? Responda <a href="https://docs.google.com/forms/d/1VUGsBj1AUJgqiSZLelqERINbkfFJN4KTqG5KNfbIbrA/viewform" target="_blank">esta pesquisa</a> e nos conte que novas funcionalidades e conteúdo você quer ver no website!'
+
   public_activity:
     artifact:
       create:

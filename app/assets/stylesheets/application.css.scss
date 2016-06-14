@@ -15,6 +15,7 @@
  *= require font-awesome
  *=
  *= require jstree-default
+ *= require pnotify
  *= require_self
  */
 
@@ -34,6 +35,8 @@
 @import 'nprogress-bootstrap';
 
 @import "ribbon";
+
+@import "notification-boxes";
 
 .pad-bottom {
   padding-bottom: 0.5em;

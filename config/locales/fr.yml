@@ -242,6 +242,11 @@ fr:
       success: L'rtéfact a été créé avec succès.
       not_approved: Votre artéfact a été créé et attend pour modération.
 
+  notifications:
+    survey:
+      title: Musical Artifacts Survey
+      text: 'Want to help make the website better? Fill <a href="https://docs.google.com/forms/d/1VUGsBj1AUJgqiSZLelqERINbkfFJN4KTqG5KNfbIbrA/viewform" target="_blank">this survey</a> and tell us what new features and content you want to see on the website!'
+
   public_activity:
     artifact:
       create:

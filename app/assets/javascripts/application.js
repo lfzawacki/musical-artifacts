@@ -29,6 +29,8 @@
 
 //= require jstree
 
+//= require pnotify
+
 //= require_tree .
 
 Turbolinks.enableTransitionCache();

@@ -1,0 +1,24 @@
+.timed-notification-box {
+  width: 420px !important;
+
+  .ui-pnotify-title {
+    padding-bottom: 5px;
+  }
+
+  .alert-warning {
+    background-color: $hoty !important;
+    border-color: $hot;
+    border-style: solid;
+    border-width: 0px 2px 2px 0px;
+    @include border-radius(2px, 2px);
+
+    color: #111;
+
+    font-size: 110%;
+
+    a {
+      font-weight: bold;
+    }
+  }
+
+}
