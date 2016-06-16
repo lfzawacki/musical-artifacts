@@ -82,12 +82,9 @@
 
     - # Don't use a container wrapping the content only on the 'about' section
     %div{class: "#{'container with-navbar-on-top' unless controller.controller_name == 'info' && controller.action_name == 'about'}"}
+
       - flash.each do |name, msg|
-        = content_tag :div, :class => "alert alert-#{ name == 'alert' ? 'danger' : 'success' } alert-dismissable", :role => "alert" do
-          %button.close{"data-dismiss" => "alert", :type => "button"}
-            %span{"aria-hidden" => "true"} ×
-            %span.sr-only Close
-          = msg
+        = render 'notifications/alert', name: name, message: msg
 
       = render 'notifications/current_notifications'
 

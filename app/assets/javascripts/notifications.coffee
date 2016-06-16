@@ -20,8 +20,6 @@ $(document).on 'page:change', ->
         text: text
         addclass: 'timed-notification-box'
         icon: false
-        opacity: .8
-        hide: false
         buttons:
           sticker: false
 
@@ -32,6 +30,22 @@ $(document).on 'page:change', ->
             url: "/notifications/#{id}/dismiss",
 
     , time*1000
+
+  $('.alert-notification').each ->
+
+    convert_type = (alert_type) ->
+      { notice: 'success', alert: 'error'}[alert_type] or alert_type
+
+    type = $(this).data('alert-type')
+    text = $(this).data('text')
+
+    setTimeout ->
+      new PNotify
+        text: text
+        type: convert_type(type)
+        buttons:
+          sticker: false
+      , 2000
 
   # $('.click-notification').on 'click', ->
   #   new PNotify
