@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   private
   def check_session_for_notifications
     session[:notifications] ||= {}
-    session[:notifications][:survey] ||= DateTime.now
+    session[:notifications]['survey'] ||= DateTime.now
   end
 
   def store_location

@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
 
     # Don't show it for the next entire day
     if params[:notification_type].present?
-      session[:notifications][params[:notification_type].to_sym] = DateTime.now + 1.day
+      session[:notifications][params[:notification_type]] = DateTime.now + 1.day
     end
 
     respond_to do |format|
