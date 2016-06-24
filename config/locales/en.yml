@@ -75,6 +75,8 @@ en:
         site_license: "The artifact database, text and metadata is licensed CC-BY-SA 4.0. The files themselves have their respective licenses."
         author_html: "created by <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: This site doesn't show you advertisement.
+    static_notification_space:
+      fisl17: Musical Artifacts will be at the International Free Software Forum (FISL17)!
 
   auth_callbacks:
     email_error: "The email entered was either already taken or invalid. Try again with another provider or use \'Forgot passsword?\'"

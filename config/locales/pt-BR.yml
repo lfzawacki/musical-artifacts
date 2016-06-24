@@ -85,6 +85,8 @@ pt-BR:
         site_license: "O banco de dados, texto e metadados é licensiado CC-BY-SA 4.0. Os arquivos têm suas licensas respectivas."
         author_html: "criado por <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: Este site não mostra publicidade.
+    static_notification_space:
+      fisl17: Musical Artifacts vai estar no FISL17!
 
   auth_callbacks:
     email_error: "O email que você digitou já está registrado ou é inválido. Tente com outro site ou use \'Esqueceu sua senha?\'"
