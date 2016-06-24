@@ -99,8 +99,9 @@ pt-BR:
       cc_sample: https://creativecommons.org/licenses/sampling+/1.0/
       copyleft: https://www.gnu.org/copyleft/copyleft.pt-br.html
       copyright: ''
+      gpl: https://opensource.org/licenses/GPL-%{version}
       public: https://wiki.creativecommons.org/Public_domain
-      fal: http://artlibre.org/licence/lal/pt/
+      falv13: http://artlibre.org/licence/lal/pt/
     text:
       cc: Creative Commons %{parts} 4.0 Internacional
       cc_sample: Creative Commons Sampling+ 1.0
@@ -247,6 +248,10 @@ pt-BR:
     survey:
       title: Pesquisa Musical Artifacts
       text: 'Quer ajudar a fazer este site melhor? Responda <a href="https://docs.google.com/forms/d/1VUGsBj1AUJgqiSZLelqERINbkfFJN4KTqG5KNfbIbrA/viewform" target="_blank">esta pesquisa</a> e nos conte que novas funcionalidades e conteúdo você quer ver no website!'
+    app_integration:
+      integrations_url: "https://github.com/lfzawacki/musical-artifacts/wiki/Integrations#%{app}"
+      title: "Integração com software"
+      text: "Você pode acessar este arquivo diretamente na interface de: %{integrations}"
 
   public_activity:
     artifact:

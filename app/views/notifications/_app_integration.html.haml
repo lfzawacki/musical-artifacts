@@ -1,0 +1,6 @@
+- if @app_integrations.present?
+
+  - integrations = @app_integrations.map do |app|
+    - link_to app.name, t('.integrations_url', app: app.name.downcase), target: '_blank'
+
+  .timed-notification#app_integration{ data: { title: t('.title'), text: t('.text', integrations: integrations.join(',')), time: 2 } }

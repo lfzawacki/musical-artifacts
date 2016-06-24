@@ -12,6 +12,7 @@ class ArtifactsController < InheritedResources::Base
   end
 
   before_filter :load_licenses, only: [:new, :edit, :create, :update]
+  before_filter :load_app_integrations, only: [:index, :show]
 
   def create
     approved = can?(:approve, @artifact) || user_artifacts_can_be_approved?(current_user)
@@ -163,6 +164,15 @@ class ArtifactsController < InheritedResources::Base
     # A user with a certain number of pre-approved won't need approval
     def user_artifacts_can_be_approved?(user)
       user.artifacts.where(approved: true).count >= Artifact.approved_count_for_trust
+    end
+
+    # Load app integrations if some are present
+    # Used for notifications
+    def load_app_integrations
+      app_tags = @artifact.try(:software_list) || []
+      app_tags.push(params[:apps]) if params[:apps].present?
+
+      @app_integrations = App.tagged_with(app_tags, any: true).where(has_integration: true)
     end
 
 end

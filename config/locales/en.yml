@@ -241,6 +241,10 @@ en:
     survey:
       title: Musical Artifacts Survey
       text: 'Want to help make the website better? Fill <a href="https://docs.google.com/forms/d/1VUGsBj1AUJgqiSZLelqERINbkfFJN4KTqG5KNfbIbrA/viewform" target="_blank">this survey</a> and tell us what new features and content you want to see on the website!'
+    app_integration:
+      integrations_url: "https://github.com/lfzawacki/musical-artifacts/wiki/Integrations#%{app}"
+      title: "Software Integration"
+      text: "You can access these files from inside these applications: %{integrations}"
 
   public_activity:
     artifact:

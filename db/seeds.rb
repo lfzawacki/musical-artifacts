@@ -31,7 +31,8 @@ App.create(
   description: "Guitarix is a virtual guitar amplifier for Linux running on Jack Audio Connection Kit. It is free as in speech and free as in beer. The available sourcecode allows to build it on other UNIX-like systems, too, namely for BSD and for MacOSX.",
   url: "http://guitarix.sourceforge.net",
   software_list: ['guitarix'],
-  file_format_list: ['gx']
+  file_format_list: ['gx'],
+  has_integration: true
 )
 
 App.create(
@@ -60,6 +61,15 @@ App.create(
   url: 'http://timidity.sourceforge.net/',
   software_list: ['timidity'],
   file_format_list: ['sf2']
+)
+
+App.create(
+  name: 'Hydrogen',
+  url: 'http://hydrogen-music.org/hcms/',
+  description: "Hydrogen is an advanced drum machine for GNU/Linux. It's main goal is to bring professional yet simple and intuitive pattern-based drum programming.",
+  software_list: ['hydrogen'],
+  file_format_list: ['h2drumkit', 'h2pattern'],
+  has_integration: true
 )
 
 # App.create(
