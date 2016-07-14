@@ -34,8 +34,8 @@ pt-BR:
         software_list: Use com estes programas
         tag_list: Tags
         file_format_list: Formatos de Arquivo
-        license: Licensiado como
-        extra_license_text: Text extra à licensa
+        license: Licenciado como
+        extra_license_text: Text extra à licença
 
       user:
         email: Email
@@ -82,7 +82,7 @@ pt-BR:
         switch_language: Trocar linguagem
         terms: Termos e Condições
         theme_credit: "Tema derivado de:"
-        site_license: "O banco de dados, texto e metadados é licensiado CC-BY-SA 4.0. Os arquivos têm suas licensas respectivas."
+        site_license: "O banco de dados, texto e metadados é licenciado CC-BY-SA 4.0. Os arquivos têm suas licenças respectivas."
         author_html: "criado por <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: Este site não mostra publicidade.
     static_notification_space:
@@ -109,9 +109,9 @@ pt-BR:
       copyright: Todos Direitos Reservados a %{author}
       public: Trabalho em Domínio Público
       gpl: GNU General Public License %{version}
-      various: "Arquivos disponibilizados em várias licensas diferentes. Leia a descrição, os links de mais informação, conteúdos ou contate o autor para se informar melhor."
-      gray: "Os arquivos tem uma licensa desconhecida, foram obtidos de fontes desconhecidas ou compilados a partir de material feito por terceiros."
-      falv13: 'Licensa da Arte Livre 1.3'
+      various: "Arquivos disponibilizados em várias licenças diferentes. Leia a descrição, os links de mais informação, conteúdos ou contate o autor para se informar melhor."
+      gray: "Os arquivos tem uma licença desconhecida, foram obtidos de fontes desconhecidas ou compilados a partir de material feito por terceiros."
+      falv13: 'Licença da Arte Livre 1.3'
     name_parts:
       by: Atribuição
       nc: NãoComercial
@@ -126,7 +126,7 @@ pt-BR:
       by: Dê crédito ao autor
       nc: Uso não comercial
       nd: Sem obras derivadas
-      sa: Compartilhe sob a mesma licensa
+      sa: Compartilhe sob a mesma licença
     name:
       public: Domínio Público
 
@@ -145,10 +145,10 @@ pt-BR:
       gpl_v2: GNU General Public License v2
       gpl_v3: GNU General Public License v3
 
-      falv13: Licensa da Arte Livre v1.3
+      falv13: Licença da Arte Livre v1.3
 
-      various: "Várias licensas"
-      gray: "Licensa em área cinza"
+      various: "Várias licenças"
+      gray: "Licença em área cinza"
 
     non_free_text: 'Não livre'
 
@@ -174,20 +174,20 @@ pt-BR:
       search: Busca
       search_description: "Resultados para \"%{query}\""
       filters:
-        license: Licensa...
+        license: Licença...
         tags: Tagueado com...
         apps: Usado com o app...
         hash: Arquivo com o hash...
         formats: Formato de arquivo...
 
     filter_by_tags:
-      free_licenses: Apenas licensas livres
-      all_licenses: Mostrar com todas licensas
+      free_licenses: Apenas licenças livres
+      all_licenses: Mostrar com todas licenças
 
     form:
       new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
-      free_licenses: Licensas Livres
-      non_free_licenses: Licensas não livres
+      free_licenses: Licenças Livres
+      non_free_licenses: Licenças não livres
 
     buttons:
       download: Baixar
@@ -231,7 +231,7 @@ pt-BR:
       filtering: Filtrando por
       page_description: página %{page}
       showing: Mostrando %{title}
-      free_licenses: Licensas Livres
+      free_licenses: Licenças Livres
 
     side_buttons:
       favorite: Que legal!
@@ -326,7 +326,7 @@ pt-BR:
       licensing_rights: "Pense em quais direitos você estende aos usuários deste recurso."
       licensing_rights_questions: "Podem usá-lo comercialmente? Modificá-lo? Redistribuí-lo?"
 
-      open_licenses: Aprenda sobre licensas livres
+      open_licenses: Aprenda sobre licenças livres
       open_licenses_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses'
 
       open_format: "Formato Aberto"
