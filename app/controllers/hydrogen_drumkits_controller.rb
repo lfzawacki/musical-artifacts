@@ -27,7 +27,7 @@ class HydrogenDrumkitsController < InheritedResources::Base
 
     respond_to do |format|
       format.xml do
-        render xml: @drumkits.to_xml(root: :drumkit_list, dasherize: false, children: :drumkit, skip_types: true)
+        render xml: (@drumkits.to_xml(root: :drumkit_list, dasherize: false, children: :drumkit, skip_types: true, indent: 2) + "\n")
       end
     end
   end
