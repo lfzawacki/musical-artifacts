@@ -6,20 +6,20 @@
   %p
     In July 13th I've opened a survey on
     %a{:href => "https://musical-artifacts.com"} musical-artifacts.com
-    with several questions about the site's features and user base. The ultimate goal was to better understand the site's audience and the ways in which they would like to see the website to grow. The survey was answered by 47 annonymous visitors and the raw results can be
+    with several questions about the site's features and user base. The ultimate goal was to better understand the site's audience and the ways in which they would like to see the website to grow. The survey was answered by 47 anonymous visitors and the raw results can be
     = succeed "." do
       %a{:href => "https://data.musical-artifacts.com/survey2016/Musical%20Artifacts%20Survey%20-%20Responses.csv"} downloaded here
 
-  %p Without further delay I'll present the results, some charts and some inline commentary.
+  %p Without further delay I'll present the results, some charts and some interwoven commentary.
 
   %h2#users-software-choice User's software choice
 
-  %p Musical Artifacts close ties with the free and open technologies is no secret so I wanted to get a better sense of the tools they are using. But first I wanted to know how many people actually use any free software tool professionally in their music production:
+  %p Musical Artifacts close ties with the free and open technologies is no secret so I wanted to get a better sense of the tools people are using. But first I wanted to know how many people actually use free software professionally in their music production:
 
   .figure
     %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/tools.png"}/
 
-  %p It turns out 72.3% use them as a hobby and 25.5% do it professionally. Not a big surprise considering the communities where the website is popular. In the next question though they're were asked to list some of the tools they use, here's a run down ordered by number of times cited:
+  %p It turns out 72.3% of respondents use them as a hobby and 25.5% do it professionally. Not a big surprise considering the communities where the website is popular. In the next question though they're were asked to list some of these tools, here's a rundown ordered by number of times each project was cited:
 
   %ul.software-list
     %li Ardour (28)
@@ -106,7 +106,7 @@
   .figure
     %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/frequency.png"}/
 
-  %p Also some people claimed to "visit" the website via the Guitarix Online preset selector, which is true.
+  %p Also some people claimed to "visit" the website via the Guitarix Online preset selector.
 
   %h3#what-kinds-of-files-most-interest-you-in-the-website What kinds of files most interest you in the website?
 
@@ -127,7 +127,7 @@
   %h4#wav-files WAV files
 
   %p
-    Yeah, I know it's a thin line on what is considered a soundfont, sample pack, hydrogen drumkit, etc ... BUT I'd like to keep the 'artifacts' constrained to the realm of files which have some kind of structure or use in conjunction with software. The site is currently not suited for single wav files, other ones like
+    Yeah, I know it's a thin line on what is considered a soundfont, hydrogen drumkit, and wav samples ... BUT I'd like to keep the 'artifacts' constrained to the realm of files which have some kind of structure or use in conjunction with software. The site is currently not suited for single wav files, other options like
     %a{:href => "https://freesound.org/"} Freesound
     or even the
     %a{:href => "https://archive.org/"} Internet Archive
@@ -141,6 +141,7 @@
     and many
     = succeed "." do
       %a{:href => "https://musical-artifacts.com/artifacts?tags=impulse+response"} Impulse Response Files
+    , but we could always find/create more.
 
   %h3#whats-your-favorite-thing-about-the-website What's your favorite thing about the website?
 
@@ -153,7 +154,7 @@
   %p What would users like to see added to the website? Here's the results:
   .figure
     %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/features.png"}/
-  %p More file previews is the big winner and I already have plans for some kind of Guitarix preview, as well as Hydrogen and soundfonts.
+  %p More file previews is the big winner and I already have plans for some kind of Guitarix preview, as well as for Hydrogen Drumkits and Soundfonts.
   %p Proprietary to open format conversion is a concept I've been thinking about too. I'd like to start with something like SF2 to SFZ. The idea is to let users upload files in proprietary formats, but have it automatically converted server side to freer ones.
   %p One other answer also suggested: The ability to search with "exclude" feature, (e.g.) YES"linuxsampler" + NO" soundfont". Which is interesting, but in most cases can be solved by creating a different kind of query, for example, in the above case "formats: sfz, gig" would do the trick, so I dunno.
 
@@ -175,16 +176,16 @@
   %p
     Judging by the answers there's more the project could use in the documentation department, from technical details to tutorials on FLOSS formats and licenses (
     %a{:href => "https://github.com/lfzawacki/musical-artifacts/wiki"}> we try
-    \!), which I'd love to coordinate together with the community. Most of the 'Other' answers were people promissing future contributions which weren't ready... YET :)
+    \!), which I'd love to coordinate together with the community. Most of the 'Other' answers were people promising future contributions which weren't ready... YET :)
 
   %h3#donations Donations
 
-  %p Finnaly I've been looking for ways to sustain Musical Artifacts financially in the long term. The project has been growing slowly but steadily over the last year and for now the development costs (free time) and hosting costs (dollars) come mostly from me. I COULD use advertisement on the website, but I totally hate the idea and have decided not to do it. So I asked some questions about the website users willingness to donate money instead:
+  %p Finally I've been looking for ways to sustain Musical Artifacts financially in the long term. The project has been growing slowly but steadily over the last year and for now the development costs (free time) and hosting costs (dollars) come mostly from me. I COULD use advertisement on the website, but I totally hate the idea and have decided not to do it. So I asked some questions about the website users willingness to donate money instead:
   .figure
     %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/donate.png"}/
 
   %p So approximately 60% of people answering would consider donating. I'm not sure if this is actually a high figure, but I tend to be optimistic.
-  %p But how would people like to donate or support the website finnancialy?
+  %p But how would people like to donate or support the website financially?
   .figure
     %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/donate_method.png"}/
 
