@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
   get '/info/about', to: 'info#about', as: :info_about
   get '/info/contact', to: 'info#contact', as: :info_contact
+  get '/info/survey', to: 'info#survey', as: :info_survey
   get '/analytics_optout', to: 'info#optout', as: :analytics_optout
 
   post '/locale/:locale', to: 'locales#set_locale', as: :set_locale

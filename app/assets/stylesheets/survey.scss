@@ -1,0 +1,70 @@
+#survey-results {
+  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+
+  h1,h2,h3,h4,h5,h6 {
+    padding-top: 10px;
+    text-transform: initial !important;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  h4 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  img {
+    padding-bottom: 40px;
+    padding-top: 20px;
+
+    margin:0 auto;
+
+    display: block;
+  }
+
+  @media(min-width:400px) {
+    img {
+      max-width: 500px;
+    }
+  }
+
+  @media(min-width:700px) {
+    img {
+      max-width: 650px;
+    }
+  }
+
+  @media(min-width:960px) {
+    img {
+      max-width: 750px;
+    }
+  }
+
+  ul.software-list
+  {
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+    li {
+      display: inline;
+      list-style-type: none;
+      padding-right: 20px;
+      font-size: 18px;
+      color: $coldy;
+    }
+
+  }
+}

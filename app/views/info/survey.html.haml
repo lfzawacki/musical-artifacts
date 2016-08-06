@@ -1,0 +1,215 @@
+#survey-results
+
+  %h1#the-musical-artifacts-survey-2016-results The Musical Artifacts Survey 2016
+  %hr/
+
+  %p
+    In July 13th I've opened a survey on
+    %a{:href => "https://musical-artifacts.com"} musical-artifacts.com
+    with several questions about the site's features and user base. The ultimate goal was to better understand the site's audience and the ways in which they would like to see the website to grow. The survey was answered by 47 annonymous visitors and the raw results can be
+    = succeed "." do
+      %a{:href => "https://data.musical-artifacts.com/survey2016/Musical%20Artifacts%20Survey%20-%20Responses.csv"} downloaded here
+
+  %p Without further delay I'll present the results, some charts and some inline commentary.
+
+  %h2#users-software-choice User's software choice
+
+  %p Musical Artifacts close ties with the free and open technologies is no secret so I wanted to get a better sense of the tools they are using. But first I wanted to know how many people actually use any free software tool professionally in their music production:
+
+  .figure
+    %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/tools.png"}/
+
+  %p It turns out 72.3% use them as a hobby and 25.5% do it professionally. Not a big surprise considering the communities where the website is popular. In the next question though they're were asked to list some of the tools they use, here's a run down ordered by number of times cited:
+
+  %ul.software-list
+    %li Ardour (28)
+    %li Guitarix (15)
+    %li Hydrogen (12)
+    %li Calf Studio  Gear (10)
+    %li Linuxsampler (9)
+    %li Zynaddsubfx (8)
+    %li Jack (8)
+    %li Qtractor (7)
+    %li Audacity (6)
+    %li Carla (5)
+    %li Cadence (4)
+    %li Qjackctl (4)
+    %li Fluidsynth (3)
+    %li Plugins (3)
+    %li Tuxguitar (3)
+    %li Sooperlooper (3)
+    %li Musescore (3)
+    %li Muse (3)
+    %li Seq24 (3)
+    %li Pianoteq (3)
+    %li Rosegarden (3)
+    %li LV2 Plugins (2)
+    %li Supercollider (2)
+    %li Yoshimi (2)
+    %li Puredata (2)
+    %li QSynth (2)
+    %li Tracktion (2)
+    %li KXStudio (2)
+    %li Mup (1)
+    %li Soundbanks (1)
+    %li SFZ (1)
+    %li LMMS (1)
+    %li SetBFree (1)
+    %li Tidal (1)
+    %li Ladspa (1)
+    %li Linux Show Player (1)
+    %li Mixxx (1)
+    %li VST Plugins (1)
+    %li Paul's Extreme Sound Stretch (1)
+    %li MMA Music Midi Accompaniment (1)
+    %li Lilypond (1)
+    %li Python-Pyo (1)
+    %li Emacs (1)
+    %li Csound (1)
+    %li Sporth (1)
+    %li Chuck (1)
+    %li Din (1)
+    %li Renoise (1)
+    %li Amsynth (1)
+    %li Ocenaudio (1)
+    %li FL Studio (1)
+    %li Catia (1)
+    %li Non Session Manager (1)
+    %li Overtone (1)
+    %li Ubuntu Studio (1)
+    %li Drumgizmo (1)
+    %li Baudline (1)
+    %li Harrison Mixbus (1)
+    %li Freewheeling (1)
+    %li Kmidimon (1)
+    %li Rakarrack (1)
+    %li Noisemaker (1)
+    %li Reaper (1)
+    %li Helm (1)
+    %li PG-8X (1)
+    %li OBXD (1)
+    %li Klangfalter (1)
+    %li Mididings (1)
+    %li Dexed (1)
+    %li Non-Mixer (1)
+    %li Different Soft Synths (1)
+    %li Ladish (1)
+
+  %p You see some of the usual suspects like Ardour and ZynAddSubFx, and many KXStudio Tools. The prominence of Guitarix and Hydrogen is probably due to the Musical Artifacts integrations with these projects.
+
+  %h2#about-the-website About the website
+
+  %p Here are the answers for the following questions about the website:
+
+  %h3#how-frequently-do-you-visit-the-website How frequently do you visit the website?
+
+  .figure
+    %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/frequency.png"}/
+
+  %p Also some people claimed to "visit" the website via the Guitarix Online preset selector, which is true.
+
+  %h3#what-kinds-of-files-most-interest-you-in-the-website What kinds of files most interest you in the website?
+
+  %p Here's a breakdown of the answers:
+  .figure
+    %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/files.png"}/
+  %p Some answers cited other types of files, which I'll touch upon quickly:
+
+  %h4#plugin-presets Plugin Presets
+
+  %p Yes I know, great idea. The question is, are there some LV2 presets out there? LADSPA, DSSI, VST? Which DAWs support these features, are they compatible with other DAWs?
+  %p It's an area which I have never explored before in my music making, but I'd be willing to coordinate with developers so that we can make free software plugin preset sharing better.
+
+  %h4#pseudo-code-for-various-algorithmic-or-dsp-functions Pseudo-code for various algorithmic or DSP functions
+
+  %p Well... we have Github, Gitlab, Sourceforge and other countless platforms for hosting code or text which is what pseudo-code is and I'd prefer to not conflate priorities with this website. However a site with example DSP code and lessons would be pretty cool, specially if it generates sound with the new web audio APIs (and doesn't exist somewhere yet). I just don't think Musical Artifacts is the place for it.
+
+  %h4#wav-files WAV files
+
+  %p
+    Yeah, I know it's a thin line on what is considered a soundfont, sample pack, hydrogen drumkit, etc ... BUT I'd like to keep the 'artifacts' constrained to the realm of files which have some kind of structure or use in conjunction with software. The site is currently not suited for single wav files, other ones like
+    %a{:href => "https://freesound.org/"} Freesound
+    or even the
+    %a{:href => "https://archive.org/"} Internet Archive
+    have a better track record and good upload and previewing systems for these kinds of files.
+
+  %h3#ir-and-drumgizmo-kits IR and Drumgizmo Kits
+
+  %p
+    The website already hosts some
+    %a{:href => "https://musical-artifacts.com/artifacts?utf8=%E2%9C%93&apps=drumgizmo"} Drumgizmo Kits
+    and many
+    = succeed "." do
+      %a{:href => "https://musical-artifacts.com/artifacts?tags=impulse+response"} Impulse Response Files
+
+  %h3#whats-your-favorite-thing-about-the-website What's your favorite thing about the website?
+
+  %p Here's the chart:
+  .figure
+    %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/favorites.png"}/
+  %p The big winner is 'freely licensed files', which is probably because so much of the audience comes from the FLOSS community.
+  %p One answer described the site as 'Putting a lot of useful stuff in one place'. True that.
+  %h3#which-of-these-potential-features-would-you-like-most-on-the-website Which of these potential features would you like most on the website?
+  %p What would users like to see added to the website? Here's the results:
+  .figure
+    %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/features.png"}/
+  %p More file previews is the big winner and I already have plans for some kind of Guitarix preview, as well as Hydrogen and soundfonts.
+  %p Proprietary to open format conversion is a concept I've been thinking about too. I'd like to start with something like SF2 to SFZ. The idea is to let users upload files in proprietary formats, but have it automatically converted server side to freer ones.
+  %p One other answer also suggested: The ability to search with "exclude" feature, (e.g.) YES"linuxsampler" + NO" soundfont". Which is interesting, but in most cases can be solved by creating a different kind of query, for example, in the above case "formats: sfz, gig" would do the trick, so I dunno.
+
+  %h2#contributing-to-the-website Contributing to the website
+
+  %p
+    Musical Artifacts is a project which can't survive without community support and
+    = succeed "," do
+      %a{:href => "https://github.com/lfzawacki/musical-artifacts/wiki/How-To-Contribute"} contributions
+  %p
+    There's an informal Internet rule called the
+    %a{:href => "https://en.wikipedia.org/wiki/1%25_rule_(Internet_culture)"} 90-9-1 Principle
+    which states that 90% of users only view content, 9% edit it and 1% actively create new content. This is probably more easily observable in sites like Wikipedia, but here's the report contribution numbers for Musical Artifacts:
+  .figure
+    %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/contribute.png"}/
+  %p As you can see 10% of respondents have contributed to the site in some form. And here a sub-set of potential contributors explains why they didn't contribute:
+  .figure
+    %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/contribute_why.png"}/
+  %p
+    Judging by the answers there's more the project could use in the documentation department, from technical details to tutorials on FLOSS formats and licenses (
+    %a{:href => "https://github.com/lfzawacki/musical-artifacts/wiki"}> we try
+    \!), which I'd love to coordinate together with the community. Most of the 'Other' answers were people promissing future contributions which weren't ready... YET :)
+
+  %h3#donations Donations
+
+  %p Finnaly I've been looking for ways to sustain Musical Artifacts financially in the long term. The project has been growing slowly but steadily over the last year and for now the development costs (free time) and hosting costs (dollars) come mostly from me. I COULD use advertisement on the website, but I totally hate the idea and have decided not to do it. So I asked some questions about the website users willingness to donate money instead:
+  .figure
+    %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/donate.png"}/
+
+  %p So approximately 60% of people answering would consider donating. I'm not sure if this is actually a high figure, but I tend to be optimistic.
+  %p But how would people like to donate or support the website finnancialy?
+  .figure
+    %img{:src => "https://data.musical-artifacts.com/survey2016/pictures/donate_method.png"}/
+
+  %p
+    And the big winner is 'One time donations'. As a result of the answers we're currently accepting
+    %a{:href => "https://github.com/lfzawacki/musical-artifacts/wiki/Donations"} donations
+    via Paypal, Bitcoin and Gratipay.
+  %p
+    I'm also well aware of the
+    %a{:href => "https://snowdrift.coop/"} Snowdrift.coop
+    platform and would love to use it for Musical Artifacts, can't wait for them to launch!
+
+  %h2#what-do-you-think What do you think?
+  %p
+    If you have further comments about the survey you can send me a message
+    = succeed "." do
+      %a{:href => "https://musical-artifacts.com/info/contact"} here
+  %p
+    If you would like to know more about the project or contribute refer to
+    = succeed "." do
+      %a{:href => "https://github.com/lfzawacki/musical-artifacts/wiki/How-To-Contribute"} the wiki
+
+  %p Thanks for reading!
+
+  %hr/
+  %h4 lfz
+  %p.pad-bottom
+    %a{:href => "https://musical-artifacts.com"} musical-artifacts.com

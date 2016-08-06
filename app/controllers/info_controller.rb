@@ -10,4 +10,7 @@ class InfoController < ApplicationController
   def optout
   end
 
+  def survey
+  end
+
 end
