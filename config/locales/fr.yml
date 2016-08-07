@@ -306,14 +306,14 @@ fr:
       access: "accès"
       access_description: "En premier lieu, cette ressource doit être accessible quelque part."
 
-      how_to_host: "Comment héberger des fichiers ?"
+      how_to_host: "Comment héberger des fichiers ? (en anglais)"
       how_to_host_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting'
 
       call_for_action: "Mais comment pouvez-vous aider ?"
       creation: "création"
       creation_description: "Et donc, vous avez créé quelques chouettes ressources musicales et vous voulez les partager avec d'autres artistes ?"
       description: "Aide à cataloguer, préserver et libérer les artéfacts dont vous avez besoin pour produire de la musique."
-      documentation: "Lire le wiki pour la 'grande histoire'"
+      documentation: "Lire le wiki pour la 'grande histoire' (en anglais)"
       documentation_url: https://github.com/lfzawacki/musical-artifacts/wiki/Home
       document_it: "Documentez-le !"
       document_it_description: "DITES au monde où trouver votre ressource et comment ils peuvent l'utiliser !"
@@ -322,16 +322,16 @@ fr:
       licensing_rights: "Réfléchissez aux droits que vous donnez aux utilisateurs de la ressource."
       licensing_rights_questions: "Peuvent-ils la commercialiser ? La modifier ? La redistribuer ?"
 
-      open_licenses: Lisez à propos des licences ouvertes
+      open_licenses: "Lisez à propos des licences ouvertes (en anglais)"
       open_licenses_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses'
 
       open_format: "Format ouvert"
       open_format_description: "Rendez-la disponible sous un format documenté ouvertement et commun."
 
-      open_formats: "Apprendre à propos des formats ouverts"
+      open_formats: "Apprendre à propos des formats ouverts (en anglais)"
       open_formats_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Formats'
 
-      new_artifact: Enregistrer de nouveaux artéfacts
+      new_artifact: "Enregistrer de nouveaux artéfacts (en anglais)"
       new_artifact_url: https://github.com/lfzawacki/musical-artifacts/wiki/Creating-a-new-artifact
 
       shall_we_start: Devrions-nous commencer ?
