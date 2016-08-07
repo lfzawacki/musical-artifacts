@@ -78,7 +78,7 @@ fr:
         switch_language: Changer de langue
         terms: Conditions générales
         theme_credit: "Le thème est dérivé de :"
-        site_license: "La base de données artifact, les textes et les méta-données sont licenciés sous CC-BY-SA 4.0. Les fichiers aux-même possèdent leurs licences respectives."
+        site_license: "La base de données artifact, les textes et les méta-données sont licenciés sous CC-BY-SA 4.0. Les fichiers eux-même possèdent leurs licences respectives."
         author_html: "créé par <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: Ce site n'affiche pas de publicité.
     static_notification_space:
