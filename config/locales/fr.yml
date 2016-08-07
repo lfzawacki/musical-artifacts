@@ -106,7 +106,7 @@ fr:
       public: "Œuvre dans le domaine public"
       gpl: GNU General Public License %{version}
       various: "ces fichiers sont rendus disponibles à travers un mélange de différentes licences. Lisez la description, les liens pour davantage d'infos, les contenus de fichier ou contactez l'auteur afin d'obtenir toutes les informations."
-      gray: "Ces fichiers ont un licence inconnue, ont été obtenus de source inconnues ou ont été compilés à partir de matériel tierce."
+      gray: "Ces fichiers ont une licence inconnue, ont été obtenus de source inconnues ou ont été compilés à partir de matériel tierce."
       falv13: License Art Libre 1.3
     name_parts:
       by: Attribution
