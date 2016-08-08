@@ -78,7 +78,7 @@ fr:
         switch_language: Changer de langue
         terms: Conditions générales
         theme_credit: "Le thème est dérivé de :"
-        site_license: "La base de données artifact, les textes et les méta-données sont licenciés sous CC-BY-SA 4.0. Les fichiers aux-même possèdent leurs licences respectives."
+        site_license: "La base de données artifact, les textes et les méta-données sont licenciés sous CC-BY-SA 4.0. Les fichiers eux-même possèdent leurs licences respectives."
         author_html: "créé par <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: Ce site n'affiche pas de publicité.
     static_notification_space:
@@ -106,7 +106,7 @@ fr:
       public: "Œuvre dans le domaine public"
       gpl: GNU General Public License %{version}
       various: "ces fichiers sont rendus disponibles à travers un mélange de différentes licences. Lisez la description, les liens pour davantage d'infos, les contenus de fichier ou contactez l'auteur afin d'obtenir toutes les informations."
-      gray: "Ces fichiers ont un licence inconnue, ont été obtenus de source inconnues ou ont été compilés à partir de matériel tierce."
+      gray: "Ces fichiers ont une licence inconnue, ont été obtenus de source inconnues ou ont été compilés à partir de matériel tierce."
       falv13: License Art Libre 1.3
     name_parts:
       by: Attribution
@@ -306,14 +306,14 @@ fr:
       access: "accès"
       access_description: "En premier lieu, cette ressource doit être accessible quelque part."
 
-      how_to_host: "Comment héberger des fichiers ?"
+      how_to_host: "Comment héberger des fichiers ? (en anglais)"
       how_to_host_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting'
 
       call_for_action: "Mais comment pouvez-vous aider ?"
       creation: "création"
       creation_description: "Et donc, vous avez créé quelques chouettes ressources musicales et vous voulez les partager avec d'autres artistes ?"
       description: "Aide à cataloguer, préserver et libérer les artéfacts dont vous avez besoin pour produire de la musique."
-      documentation: "Lire le wiki pour la 'grande histoire'"
+      documentation: "Lire le wiki pour la 'grande histoire' (en anglais)"
       documentation_url: https://github.com/lfzawacki/musical-artifacts/wiki/Home
       document_it: "Documentez-le !"
       document_it_description: "DITES au monde où trouver votre ressource et comment ils peuvent l'utiliser !"
@@ -322,16 +322,16 @@ fr:
       licensing_rights: "Réfléchissez aux droits que vous donnez aux utilisateurs de la ressource."
       licensing_rights_questions: "Peuvent-ils la commercialiser ? La modifier ? La redistribuer ?"
 
-      open_licenses: Lisez à propos des licences ouvertes
+      open_licenses: "Lisez à propos des licences ouvertes (en anglais)"
       open_licenses_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Licenses'
 
       open_format: "Format ouvert"
       open_format_description: "Rendez-la disponible sous un format documenté ouvertement et commun."
 
-      open_formats: "Apprendre à propos des formats ouverts"
+      open_formats: "Apprendre à propos des formats ouverts (en anglais)"
       open_formats_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/Open-Formats'
 
-      new_artifact: Enregistrer de nouveaux artéfacts
+      new_artifact: "Enregistrer de nouveaux artéfacts (en anglais)"
       new_artifact_url: https://github.com/lfzawacki/musical-artifacts/wiki/Creating-a-new-artifact
 
       shall_we_start: Devrions-nous commencer ?
