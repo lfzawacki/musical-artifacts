@@ -26,6 +26,8 @@ License.create short_name: 'gray', license_type: 'gray', name: 'Gray Area'
 
 License.create short_name: 'falv13', license_type: 'fal', name: 'Free Art License v1.3', free: true
 
+License.create short_name: 'wtfpl', license_type: 'wtfpl', name: 'Do What The Fuck You Want To Public License v2', free: true
+
 App.create(
   name: "Guitarix",
   description: "Guitarix is a virtual guitar amplifier for Linux running on Jack Audio Connection Kit. It is free as in speech and free as in beer. The available sourcecode allows to build it on other UNIX-like systems, too, namely for BSD and for MacOSX.",
