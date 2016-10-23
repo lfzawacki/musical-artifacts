@@ -17,16 +17,16 @@
           - else
             - new_search.delete(field)
 
-          .label.label-big{class: "label-#{field.singularize}"}= tag
           %span.label-delete= link_to '×', artifacts_path(new_search)
+          .label.label-big{class: "label-#{field.singularize}"}= tag
 
     - if params[:license].present?
 
+      %span.label-delete= link_to '×', artifacts_path(params.slice(*search_fields).except(:license))
       - if params[:license] == 'free'
         .label.label-big.label-default= t('.free_licenses')
       - else
         = image_tag License.type_image(params[:license], true)
-      %span.label-delete= link_to '×', artifacts_path(params.slice(*search_fields).except(:license))
 
 
 - if (params[:q].present? || params[:page].present?)
