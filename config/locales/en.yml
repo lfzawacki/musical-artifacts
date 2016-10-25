@@ -10,22 +10,25 @@ en:
       create: "Create %{model}"
       update: "Update %{model}"
 
+    placeholder:
+      artifact:
+        name: "This is called..."
+        description: "Describe what it is, how to use it, how it was made, etc..."
+        author: "and was created by..."
+        mirrors: Mirrored at...
+        more_info_urls: Find more info here...
+        file: Upload file
+        software_list: Use it with these apps...
+        tag_list: Keywords describing the files
+        file_format_list: File format(s)
+        license: Licensed as
+        extra_license_text: Extra licensing information for the file's users
+
   activerecord:
     models:
       artifact: ~
+
     attributes:
-      artifact:
-        name: "This is called"
-        description: "Describe what it is, how to use it, how it was made, etc..."
-        author: "and was created by"
-        mirrors: Mirrored at
-        more_info_urls: Find more info here
-        file: Upload file
-        software_list: Use it with these apps
-        tag_list: Tags
-        file_format_list: File formats
-        license: Licensed as
-        extra_license_text: ~
 
       user:
         email: Email
@@ -180,8 +183,9 @@ en:
       all_licenses: Show with all licenses
 
     form:
-      new_artifact_help_html: "Need tips on how to create a good artifact? <a target=\"_blank\" href=\"%{link}\">Read this!</a>"
+      error: "%{count} errors prohibited this artifact from being saved:"
       free_licenses: Free Licenses
+      new_artifact_help_html: "Need tips on how to create a good artifact? <a target=\"_blank\" href=\"%{link}\">Read this!</a>"
       non_free_licenses: Non-Free Licenses
 
     show:

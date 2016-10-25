@@ -7,6 +7,7 @@ gem 'active_record_union' # because active record doesnt have an OR method ... W
 gem 'pg'
 
 gem 'sass-rails', '~> 5.0'
+gem 'rails-i18n', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 

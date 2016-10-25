@@ -16,22 +16,31 @@ fr:
       create: "Création %{model}"
       update: "Mise à jour %{model}"
 
-  activerecord:
-    models:
-      artifact: "artéfact"
-    attributes:
+    placeholder:
       artifact:
         name: "C'est appelé"
         description: "Décrire ce que c'est, comment l'utiliser, comment ça a été fait, etc..."
-        author: "et a été créé par"
-        mirrors: en miroir à
+        author: "Et a été créé par"
+        mirrors: En miroir à
         more_info_urls: Davantage d'informations ici
         file: Télécharger un fichier
         software_list: L'utiliser avec ces applications
         tag_list: Tags
         file_format_list: Formats de fichier
         license: Licencié sous
-        extra_license_text: "texte supplémentaire de licence"
+        extra_license_text: "Texte supplémentaire de licence"
+
+  activerecord:
+    models:
+      artifact: "artéfact"
+    attributes:
+      artifact:
+        file: Télécharger un fichier
+        software_list: Applications
+        tag_list: Tags
+        file_format_list: Formats de fichier
+        license: Licencié sous
+        extra_license_text: "Texte supplémentaire de licence"
 
       user:
         email: Courriel

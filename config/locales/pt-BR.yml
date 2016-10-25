@@ -19,23 +19,36 @@ pt-BR:
       create: "Criar %{model}"
       update: "Atualizar %{model}"
 
+    placeholder:
+      artifact:
+        name: "Isto se chama..."
+        description: "Descreva o que é, como usar, como foi feito, etc..."
+        author: "e foi criado por..."
+        mirrors: "Espelhado em..."
+        more_info_urls: "Mais informações em..."
+        file: "Suba um arquivo"
+        software_list: "Use com estes programas..."
+        tag_list: "Palavras chave que descrevem o arquivo"
+        file_format_list: "Formato(s) contido no arquivo"
+        extra_license_text: Informações extra para usuários dos arquivos
+
   activerecord:
     models:
       artifact: Artefato
 
     attributes:
       artifact:
-        name: Isto se chama
-        description: "Descreva o que é, como usar, como foi feito, etc..."
-        author: e foi criado por
-        mirrors: Espelhado em
+        name: Nome
+        description: Descrição
+        author: Autor
+        mirrors: Espelhos
         more_info_urls: Mais informações
-        file: Suba um arquivo
-        software_list: Use com estes programas
+        file: Arquivo
+        software_list: Aplicativos
         tag_list: Tags
         file_format_list: Formatos de Arquivo
         license: Licenciado como
-        extra_license_text: Text extra à licença
+        extra_license_text: Texto extra
 
       user:
         email: Email
@@ -189,8 +202,12 @@ pt-BR:
       all_licenses: Mostrar com todas licenças
 
     form:
-      new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
+      error:
+        one: "Um erro impediu este artefato de ser salvo:"
+        other: "%{count} erros impediram este artefato de ser salvo:"
+
       free_licenses: Licenças Livres
+      new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
       non_free_licenses: Licenças não livres
 
     buttons:

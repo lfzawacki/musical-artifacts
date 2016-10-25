@@ -27,6 +27,8 @@
 
 @import "application-variables.scss";
 
+@import "placeholder-fix";
+
 @import 'select2-customizations';
 
 @import "audiojs";
@@ -722,6 +724,21 @@ p.more-info {
   margin-right: 20px;
 }
 
+/* artifacts/index */
+
+#error_explanation {
+  padding-top: .5em;
+  padding-bottom: 1em;
+
+  p {
+    padding-bottom: .2em;
+  }
+
+  .attribute-error {
+    font-weight: bold;
+  }
+}
+
 /*
  * About page + main application CSS
  */
@@ -1094,6 +1111,10 @@ hr.star-primary:after {
 
   input.form-control, textarea.form-control {
     width: 80%;
+  }
+
+  textarea.form-control {
+    padding-left: 14px;
   }
 }
 

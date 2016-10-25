@@ -121,7 +121,7 @@ initialize_editor = ->
         editor: $('#epiceditor').data('editor-theme')
 
     editor = new EpicEditor(opts).load()
-    editor.importFile('epiceditor', $('#artifact_description').text())
+    editor.importFile('epiceditor', $('#artifact_description').text() || $('#artifact_description').attr('placeholder'))
 
     $("#artifact_description").hide()
 

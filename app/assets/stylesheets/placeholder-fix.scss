@@ -1,0 +1,43 @@
+/*
+  Used to hide the placeholder text in input fields when focusing it...
+  Taken from http://www.toolinfy.com/hide-placeholder-text-on-focus-css
+*/
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color:gray;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color:gray;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  }
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color:gray;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+  color:transparent;
+}
+
+input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
+  color:transparent;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color:transparent;
+}
