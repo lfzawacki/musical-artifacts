@@ -59,11 +59,14 @@ class ArtifactsController < InheritedResources::Base
       )
     end
 
+    def search_params
+      { hash: :with_hash, tags: :tagged_with, apps: :app_tagged_with,
+        license: :licensed_as, formats: :with_file_format, q: :by_metadata }
+    end
+
+
     def search_artifacts
       remove_duplicated_tags_from_searches # HACKY, read the comments above this method
-
-      search_params = { hash: :with_hash, tags: :tagged_with, apps: :app_tagged_with,
-        license: :licensed_as, formats: :with_file_format, q: :by_metadata}
 
       @artifacts = Artifact.approved
       search_params.each do |param, search|
@@ -143,11 +146,17 @@ class ArtifactsController < InheritedResources::Base
 
       # count repetitions
       tag_fields.each do |key|
-        reversed[params[key]] ||= []
-        counts[params[key]] ||= 0
 
-        reversed[params[key]] += [key]
-        counts[params[key]] += 1
+        if params[key].present?
+          fields = params[key].split(/\s*,\s*/)
+          fields.each do |field|
+            reversed[field] ||= []
+            counts[field] ||= 0
+
+            reversed[field] += [key]
+            counts[field] += 1
+          end
+        end
       end
 
       # delete repetitions from parameters
@@ -155,7 +164,9 @@ class ArtifactsController < InheritedResources::Base
         if val != nil
           2.upto(count) do |i|
             Rails.logger.info " *** [PG::DuplicateAlias] deleting duplicated param #{reversed[val][i-1]}"
-            params.delete(reversed[val][i-1])
+            fields = params[reversed[val][i-1]].split(/\s*,\s*/)
+            fields.delete(val)
+            params[reversed[val][i-1]] = fields.join(',')
           end
         end
       end
@@ -175,4 +186,13 @@ class ArtifactsController < InheritedResources::Base
       @app_integrations = App.tagged_with(app_tags, any: true).where(has_integration: true)
     end
 
+    # Translate commas and spaces from url encoded values
+    # back to their ascii counterparts
+    def translate_url_encoded_params string
+      search_params.each do |param_name, _|
+        if params[param_name].present?
+          params[param_name] = params[param_name].gsub('%20',' ').gsub('%2C', ',')
+        end
+      end
+    end
 end

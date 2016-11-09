@@ -98,8 +98,8 @@ class Searches
 
 
   private
-  # Split ignoring spaces and unescape ' ' and ','
+  # Split ignoring spaces
   def self.split_terms terms
-    terms.gsub('%20',' ').gsub('%2C', ',').split(/\s*,\s*/)
+    terms.split(/\s*,\s*/)
   end
 end

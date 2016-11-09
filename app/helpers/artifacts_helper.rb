@@ -4,16 +4,16 @@ module ArtifactsHelper
   def title_from_tags tags
     title = ''
 
-    if tags[:apps]
+    if tags[:apps].present?
       title += tags[:apps].split(',').join(', ')
     end
 
-    if tags[:tags]
+    if tags[:tags].present?
       title += ' ' if title.present?
       title += tags[:tags].split(',').join(' ')
     end
 
-    if tags[:formats]
+    if tags[:formats].present?
       title += ' ' if title.present?
       title += tags[:formats].split(',').map {|f| ".#{f}" }.join(' ')
     end
@@ -23,7 +23,7 @@ module ArtifactsHelper
 
   def value_from_params
     search_str = Artifact.search_fields.map do |p|
-      "#{p}: #{unescape_separators(params[p])}" if params[p]
+      "#{p}: #{unescape_separators(params[p])}" if params[p].present?
     end
     [params[:q]].append(search_str).join(' ').gsub(/\s+/, ' ').strip
   end
