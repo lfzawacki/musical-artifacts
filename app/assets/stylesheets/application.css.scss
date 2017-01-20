@@ -1223,3 +1223,28 @@ footer {
     display: block;
   }
 }
+
+#donations {
+  h1 {
+    text-transform: none;
+    font-size: 1.5em;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0.5em 0 0.2em 0;
+  }
+
+  li {
+    padding: 0.3em 0 0.3em 0;
+  }
+
+  .description {
+    font-size: 1.1em;
+  }
+
+  .more-details {
+    font-size: 0.9em;
+  }
+
+}

@@ -358,6 +358,15 @@ fr:
     contact:
       description: N'oubliez pas de laisser un courriel pour que nous puissions vous recontacter.
 
+    donations:
+      call_to_action: Help us by donating!
+      description: "Musical Artifacts is an open source web application helping musicians find, share and preserve the artifacts that they use for producing their music."
+      more_details_html: "This project is worked on by volunteers in their free time. Donations are used to cover the hosting costs of the website and accelerate the development of new features. There are many ways to contribute besides donating money, see <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/How-To-Contribute\">this page</a>"
+
+      paypal_alt: Donate via Paypal
+
+      gratipay_alt: Donate via Gratipay
+
     optout:
       title: Empêcher les analyses de traffic
       description_html: "Pour davantage d'information à propos des pratiques de collection des données de ce site, lisez <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">cette page</a>."
