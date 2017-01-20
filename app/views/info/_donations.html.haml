@@ -1,0 +1,15 @@
+#donations
+  %h1= t('.call_to_action')
+
+  .description
+    = t('.description')
+
+  %ul.donation-methods
+    - ['paypal', 'gratipay', 'bitcoin'].each do |method|
+      %li{class: method}
+        = link_to Rails.application.secrets.donations[method]['url'] do
+          = image_tag Rails.application.secrets.donations[method]['shield'], alt: t(".#{method}_alt")
+          = method.capitalize
+
+  .more-details
+    = t('.more_details_html')
