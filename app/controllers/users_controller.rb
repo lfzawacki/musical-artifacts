@@ -20,7 +20,7 @@ class UsersController < InheritedResources::Base
   end
 
   def load_artifacts
-    @artifacts = @user.artifacts.order('created_at DESC')
-    @favorite_artifacts = @user.favorite_artifacts.order('created_at DESC')
+    @artifacts = @user.artifacts.includes(:license).page(params[:page]).per(10).order('created_at DESC')
+    @favorite_artifacts = @user.favorite_artifacts.includes(:license, :user).page(params[:page]).per(10).order('created_at DESC')
   end
 end

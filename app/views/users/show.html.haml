@@ -7,13 +7,15 @@
   %p
     = t('.show_favorites_html', link: link_to(t('.your_favorites'), '#your-favorites', id: 'go-to-favorites'))
 
-.row.pad-top
-  = render 'artifacts/artifact_list', artifacts: @artifacts, per_row: 3
+- if @artifacts.any?
+  .row.pad-top
+    = render 'artifacts/artifact_list', artifacts: @artifacts, per_row: 1
 
 .row#your-favorites
   %h2= t('.your_favorites')
 
   %p= t('.favorite_description')
 
-.row.pad-top
-  = render 'artifacts/artifact_list', artifacts: @favorite_artifacts, per_row: 3
+- if @favorite_artifacts.any?
+  .row.pad-top
+    = render 'artifacts/artifact_list', artifacts: @favorite_artifacts, per_row: 1

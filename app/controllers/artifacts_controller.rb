@@ -72,10 +72,11 @@ class ArtifactsController < InheritedResources::Base
       search_params.each do |param, search|
         @artifacts = Searches.send("artifacts_#{search}", @artifacts, params[param])
       end
+      @artifacts = @artifacts.includes(:license)
     end
 
     def paginate
-      @artifacts = @artifacts.page(params[:page]).per(20)
+      @artifacts = @artifacts.page(params[:page]).per(@setting.artifacts_per_page)
     end
 
     def order_by_params
