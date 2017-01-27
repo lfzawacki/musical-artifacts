@@ -207,10 +207,6 @@ en:
       none: Nothing found!
       return_html: "Shall we try a <a href=\"%{path}\">new search</a>?"
 
-    buttons:
-      download: Download
-      download_mirror: Download from (%{domain})
-
     search_order_dropdown:
       created_at_asc: Date (oldest first)
       created_at_desc: Date (newest first)
@@ -224,6 +220,7 @@ en:
       favorite: This is cool!
       unfavorite: This is cool!
       download: Download
+      download_mirror: Download from
 
     wayback_links:
       broken: Broken external links? Click to try links for the Wayback Machine.

@@ -61,7 +61,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
     visit artifact_path(@artifact)
     assert_content page, I18n.t('artifacts.show.unapproved')
-    assert_link I18n.t('artifacts.buttons.download')
+    assert_link I18n.t('artifacts.side_buttons.download')
   end
 
   test "see wayback switch link if there's more info urls" do
@@ -89,7 +89,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     @artifact.update_attributes(file: fixture_file('example.gx'))
 
     visit artifact_path(@artifact)
-    assert_link I18n.t('artifacts.buttons.download')
+    assert_link I18n.t('artifacts.side_buttons.download')
   end
 
   test "see download button for mirror if no file is present" do
@@ -97,7 +97,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
     visit artifact_path(@artifact)
 
-    assert_link I18n.t('artifacts.buttons.download_mirror', domain: 'download.from.here')
+    assert_link I18n.t('artifacts.side_buttons.download_mirror') + ' download.from.here'
   end
 
   test "see download button only for first mirror if no file is present" do
@@ -105,7 +105,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
     visit artifact_path(@artifact)
 
-    assert_link I18n.t('artifacts.buttons.download_mirror', domain: 'hey.here')
+    assert_link I18n.t('artifacts.side_buttons.download_mirror') + ' hey.here'
   end
 
   test "don't break application if first mirror link is an invalid URL" do
@@ -113,15 +113,15 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
     visit artifact_path(@artifact)
 
-    assert_link I18n.t('artifacts.buttons.download_mirror', domain: '')
+    assert_link I18n.t('artifacts.side_buttons.download_mirror')
   end
 
   test "see download button, but not for mirror if file is present" do
     @artifact.update_attributes(file: fixture_file('example.gx'), mirrors: 'https://validmirror.com')
 
     visit artifact_path(@artifact)
-    assert_link I18n.t('artifacts.buttons.download')
-    assert_no_link I18n.t('artifacts.buttons.download_mirror', domain: 'validmirror.com')
+    assert_link I18n.t('artifacts.side_buttons.download')
+    assert_no_link I18n.t('artifacts.side_buttons.download_mirror') + ' validmirror.com'
   end
 
   test "see favorite icon and number in artifact when logged out" do

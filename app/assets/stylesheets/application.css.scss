@@ -585,6 +585,12 @@ a.tag-filter:hover {
 
 }
 
+.download-count:hover {
+  i {
+    color: green;
+  }
+}
+
 .favorite-artifact:hover {
   a.unfavorite i, a.inactive-favorite i {
     color: $hot;
@@ -593,30 +599,6 @@ a.tag-filter:hover {
   a.favorite i {
     color: $hotter;
   }
-}
-
-.download-count {
-}
-
-/*  _buttons */
-.btn-download:hover,
-.btn-download:focus,
-.btn-download:active,
-.btn-download.active {
-    background: $darker;
-    color: $cold;
-}
-
-.btn-download {
-  white-space: normal;
-  background-color: #222;
-  text-decoration: none;
-  font-size: 110%;
-  color: $coldy;
-  @include border-radius(2px, 2px);
-  border-color: $colder;
-  border-style: solid;
-  border-width: 0px 1px 1px 0px;
 }
 
 .btn-new.btn-lg {

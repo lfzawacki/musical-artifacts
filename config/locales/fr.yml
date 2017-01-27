@@ -219,9 +219,6 @@ fr:
       none: Rien de trouvé !
       return_html: "Voudrions-nous essayer une <a href=\"%{path}\">nouvelle recherche</a> ?"
 
-    buttons:
-      download: Télécharger
-      download_mirror: Télécharger depuis (%{domain})
 
     search_order_dropdown:
       created_at_asc: Date (la plus vieille en premier)
@@ -236,6 +233,7 @@ fr:
       favorite: C'est chouette !
       unfavorite: C'est chouette !
       download: Télécharger
+      download_mirror: Télécharger depuis
 
     wayback_links:
       broken: Lien externe cassé ? Cliquez ici pour essayer le lien sur la machine à remonter le temps.

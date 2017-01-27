@@ -210,10 +210,6 @@ pt-BR:
       new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
       non_free_licenses: Licenças não livres
 
-    buttons:
-      download: Baixar
-      download_mirror: Baixar de (%{domain})
-
     wayback_links:
       broken: Links externos estão quebrados? Clique aqui para tentar links do Arquivo da Internet.
       original: Voltar a ver os links originais.
@@ -258,6 +254,7 @@ pt-BR:
       favorite: Que legal!
       unfavorite: Que legal!
       download: Baixar
+      download_mirror: Baixar de
 
     file_listing:
       title: Conteúdo do Arquivo

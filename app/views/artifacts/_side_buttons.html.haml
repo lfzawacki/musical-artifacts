@@ -22,9 +22,23 @@
         %i.fa.fa-star
         .small-label= t('.favorite')
 
-  - if can?(:download, artifact) && artifact.file.try(:url)
-    = download_link(artifact) do
-      %span.side-button.download-count.btn.btn-default
-        = artifact.download_count
-        %i.fa.fa-download
-        .small-label= t('.download')
+  - if can?(:download, artifact)
+    -if artifact.file.try(:url)
+      = download_link(artifact, class: 'btn-download') do
+        %span.side-button.download-count.btn.btn-default
+          = artifact.download_count
+          %i.fa.fa-download
+          .small-label
+            = t('.download')
+            = "(#{number_to_human_size(artifact.file.file.size)})"
+
+    - elsif artifact.mirrors.present?
+      - mirror = artifact.mirrors.first
+      = external_link_to mirror, class: '' do
+        %span.side-button.download-count.btn.btn-default
+          %i.fa.fa-external-link-square
+          %i.fa.fa-download
+          .small-label
+            = t('.download_mirror')
+            %br
+            = domain_from_link(mirror)
