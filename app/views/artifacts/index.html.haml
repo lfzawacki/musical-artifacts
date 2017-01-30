@@ -39,7 +39,7 @@
       = render 'artifact_list', artifacts: @artifacts, per_row: 1
 
       .pad-bottom
-        = paginate @artifacts, :left => 10, :right => 10
+        = paginate @artifacts, left: 5, right: 5
 
     .col-sm-4
       = render 'layouts/static_notification_space'

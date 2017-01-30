@@ -370,3 +370,11 @@ fr:
     optout:
       title: Empêcher les analyses de traffic
       description_html: "Pour davantage d'information à propos des pratiques de collection des données de ce site, lisez <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">cette page</a>."
+
+  views:
+    pagination:
+      truncate: '...'
+      next: Prochain ›
+      last: Dernier »
+      first: « Premier
+      previous: ‹ Antérieur
