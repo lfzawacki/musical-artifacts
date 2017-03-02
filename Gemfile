@@ -91,7 +91,7 @@ gem 'kaminari'
 # JSON API authentication with JWT
 gem 'knock'
 
-gem 'rubyzip'
+gem 'rubyzip', '>= 1.2.1'
 
 gem 'jstree-rails-4'
 
