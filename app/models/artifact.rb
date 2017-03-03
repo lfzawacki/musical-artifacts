@@ -39,7 +39,7 @@ class Artifact < ActiveRecord::Base
     # The creator of the artifact on the site, not the author
     belongs_to :user
     def owned_by?(user)
-      self.user_id.present? && user.id == user_id
+      self.user_id.present? && user.try(:id) == user_id
     end
 
     has_many :favorites
