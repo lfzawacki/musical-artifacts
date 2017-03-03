@@ -70,7 +70,7 @@ App.create(
   url: 'http://hydrogen-music.org/hcms/',
   description: "Hydrogen is an advanced drum machine for GNU/Linux. It's main goal is to bring professional yet simple and intuitive pattern-based drum programming.",
   software_list: ['hydrogen'],
-  file_format_list: ['h2drumkit', 'h2pattern'],
+  file_format_list: ['h2drumkit', 'h2pattern', 'h2song'],
   has_integration: true
 )
 

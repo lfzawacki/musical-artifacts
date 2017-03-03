@@ -1,0 +1,15 @@
+%drumkit_list
+  - @drumkits.each do |drumkit|
+    - if is_valid_node?(drumkit)
+      %drumkit
+        = render 'hydrogen_node', node: drumkit
+
+  - @patterns.each do |pattern|
+    - if is_valid_node?(pattern)
+      %pattern
+        = render 'hydrogen_node', node: pattern
+
+  - @songs.each do |song|
+    - if is_valid_node?(song)
+      %song
+        = render 'hydrogen_node', node: song
