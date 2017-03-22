@@ -10,7 +10,7 @@ module HydrogenDrumkitsHelper
     if ['h2drumkit', 'h2song', 'h2pattern'].include? file.try(:format)
       url = artifact_download_url(artifact, file.name)
     elsif mirrors.present?
-      mirrors.select! { |mirror| File.extname(mirror).match /h2(drumkit|song|pattern)^/ }
+      mirrors.select! { |mirror| File.extname(mirror).match /h2(drumkit|song|pattern)/ }
       url = mirrors.first
     end
 

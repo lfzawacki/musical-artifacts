@@ -17,9 +17,9 @@ class HydrogenDrumkitsController < InheritedResources::Base
     # Hydrogen artifacts with a file of .h2drumkit format
     artifacts = Searches.artifacts_app_tagged_with(Artifact, 'hydrogen')
 
-    @drumkits = Searches.artifacts_with_file_format(artifacts, 'h2drumkit')
-    @songs = Searches.artifacts_with_file_format(artifacts, 'h2song')
-    @patterns = Searches.artifacts_with_file_format(artifacts, 'h2pattern')
+    @drumkits = Searches.artifacts_with_file_format(artifacts, 'h2drumkit').order('name ASC')
+    @songs = Searches.artifacts_with_file_format(artifacts, 'h2song').order('name ASC')
+    @patterns = Searches.artifacts_with_file_format(artifacts, 'h2pattern').order('name ASC')
 
     @hydrogen = {drumkit: @drumkits, pattern: @patterns, song: @songs}
 
