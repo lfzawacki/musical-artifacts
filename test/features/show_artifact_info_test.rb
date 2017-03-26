@@ -100,6 +100,14 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_link I18n.t('artifacts.side_buttons.download_mirror') + ' download.from.here'
   end
 
+  test "see download button for mirror if a file is present, but downloadable=false" do
+    @artifact.update_attributes(mirrors: 'https://download.from.here', downloadable: false)
+
+    visit artifact_path(@artifact)
+
+    assert_link I18n.t('artifacts.side_buttons.download_mirror') + ' download.from.here'
+  end
+
   test "see download button only for first mirror if no file is present" do
     @artifact.update_attributes(mirrors: 'https://hey.here, http://not.from.here')
 

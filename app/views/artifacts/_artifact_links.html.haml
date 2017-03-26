@@ -4,7 +4,7 @@
 
   - mirrors = @artifact.mirrors
   / Add our download file as the first mirror
-  - if @artifact.file.present?
+  - if @artifact.file.present? && @artifact.downloadable?
     - mirrors.unshift(download_url(@artifact))
 
   %ul#mirrors.link-list

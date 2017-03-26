@@ -297,9 +297,9 @@ ul.pagination {
 
 /* artifact_search */
 .artifact-item.empty-search {
-  padding: 40px 0px 480px 20px;
+  padding: 0px 0px 480px 0px;
 
-  p { font-size: 200%; }
+  p { font-size: 150%; }
 }
 
 .search-description {
@@ -351,6 +351,7 @@ label.filter {
 
   .artifact-list-wrapper {
     padding-left: 0px !important;
+    min-height: 640px;
   }
 }
 

@@ -1,5 +1,10 @@
 class ArtifactsController < InheritedResources::Base
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:download]
+  load_resource only: [:download]
+
+  before_action only: [:download] do
+    authorize!(:download, @artifact) if !@artifact.approved?
+  end
 
   # For API calls
   respond_to :json, :atom

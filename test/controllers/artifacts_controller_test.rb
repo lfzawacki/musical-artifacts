@@ -198,31 +198,32 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_response 404
   end
 
-  test "should not download artifact if downloadable=false" do
+  # test "should not download artifact if downloadable=false" do
+  # This has changed, now downloadable flag will hide the button but allow download via links
+  test "should be able to download artifact if downloadable=false" do
     @artifact.update_attributes(file: fixture_file('example.gx'), downloadable: false)
 
-    assert_difference('StoredFile.last.download_count', 0) do
+    assert_difference('StoredFile.last.download_count', 1) do
       get :download, id: @artifact, filename: 'example.gx'
     end
 
-    assert_redirected_to artifact_path(@artifact)
-    assert_equal flash[:notice], I18n.t('_other.access_denied')
+    assert_response :success
+  end
+
+#  test "user should not download artifact if downloadable=false" do
+  test "user should be able to download artifact if downloadable=false" do
+    sign_in(@user)
+    @artifact.update_attributes(file: fixture_file('example.gx'), downloadable: false)
+
+    assert_difference('StoredFile.last.download_count', 1) do
+      get :download, id: @artifact, filename: 'example.gx'
+    end
+
+    assert_response :success
   end
 
   test "should not download artifact if approved=false" do
     @artifact.update_attributes(file: fixture_file('example.gx'), approved: false)
-
-    assert_difference('StoredFile.last.download_count', 0) do
-      get :download, id: @artifact, filename: 'example.gx'
-    end
-
-    assert_redirected_to artifact_path(@artifact)
-    assert_equal flash[:notice], I18n.t('_other.access_denied')
-  end
-
-  test "user should not download artifact if downloadable=false" do
-    sign_in(@user)
-    @artifact.update_attributes(file: fixture_file('example.gx'), downloadable: false)
 
     assert_difference('StoredFile.last.download_count', 0) do
       get :download, id: @artifact, filename: 'example.gx'
