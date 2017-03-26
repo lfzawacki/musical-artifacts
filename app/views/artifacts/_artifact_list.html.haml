@@ -18,15 +18,15 @@
         - # If the artifact is new to the user, put a little ribbon on it
         = render 'artifacts/new_artifact_ribbon', artifact: artifact
 
-        %h3.artifact-name
-          = link_to artifact.name, artifact
-
+        %h2.artifact-name
           = render "artifacts/side_buttons", artifact: artifact
+
+          = link_to artifact.name, artifact
 
         %span
           = render "artifacts/created_by", artifact: artifact
 
-        .artifact-description.pad-top
+        .artifact-description
           -if artifact.description.present?
             = strip_tags(artifact.description_html).truncate(480)
           - else

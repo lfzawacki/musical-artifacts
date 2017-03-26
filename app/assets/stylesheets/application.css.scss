@@ -159,8 +159,7 @@ ul.link-list {
 
 .artifact-description {
 
-  margin-top: 10px;
-  padding-bottom: 5px;
+  padding-top: 10px;
 
   p, ul, ol {
     font-size: 16px;
@@ -171,19 +170,26 @@ ul.link-list {
     margin-bottom: 15px;
   }
 
+  h1:first-child,
+  h2:first-child,
+  h3:first-child,
+  h4:first-child,
+  h5:first-child,
+  h6:first-child {
+    margin-top: 0px;
+  }
+
   img {
     max-width: $sidebar-width*1.5;
   }
+
 }
 
 .no-description {
   font-size: 140%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: #aaa;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 .artifact-sidebar {
@@ -193,7 +199,7 @@ ul.link-list {
 
 .artifact-times {
   padding-top: 0.5em;
-  font-size: 90%;
+  font-size: 95%;
   font-style: italic;
 
   .updated-at {
@@ -442,9 +448,15 @@ label.filter {
         margin-bottom: 0.5em;
         margin-left: 0em;
         margin-right: 0em;
+        font-size: 16px !important;
       }
     }
 
+  }
+
+  .artifact-sidebar {
+    margin-right: 0px;
+    margin-left: 0px;
   }
 
 }
@@ -556,7 +568,6 @@ a.tag-filter:hover {
 .format-tag { color: $darky;}
 
 .side-buttons {
-  transition: 2s;
 
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -565,10 +576,17 @@ a.tag-filter:hover {
     font-size: 24px;
     font-weight: bold;
 
+    border-color: #aaa;
+
     .small-label {
-      font-size: 10px;
+      font-size: 18px;
       text-transform: none;
+      font-weight: normal;
     }
+  }
+
+  i {
+    margin-left: 0.2em;
   }
 
   a.unfavorite i {
@@ -581,7 +599,7 @@ a.tag-filter:hover {
 
 }
 
-.download-count:hover {
+.download-count {
   i {
     color: green;
   }
@@ -626,10 +644,6 @@ a.btn-scroll-top:hover {
 /* artifacts/show */
 .license-select {
   width: 100%;
-}
-
-p.more-info {
-  font-weight: bold;
 }
 
 .container-login {
@@ -990,9 +1004,8 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 hr.star-light,

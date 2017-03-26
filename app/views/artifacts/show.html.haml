@@ -6,12 +6,12 @@
     %p.alert.alert-warning.unapproved= t('.unapproved')
 
   %h1.artifact-name
-    = @artifact.name
     = render "artifacts/side_buttons", artifact: @artifact
+    = @artifact.name
 
   = render "created_by", artifact: @artifact
 
-  .row
+  .row.artifact-item
     .col-lg-8.col-md-8.col-sm-8.light-item.pad-bottom
       .artifact-description
         -if @artifact.description.present?

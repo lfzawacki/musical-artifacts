@@ -1,6 +1,6 @@
 -if @artifact.mirrors.present?
   %p
-    %strong= t('.mirrors')
+    %h3= t('.mirrors')
 
   - mirrors = @artifact.mirrors
   / Add our download file as the first mirror
@@ -15,8 +15,8 @@
         = external_link_to mirror, mirror
 
 -if @artifact.more_info_urls.present?
-  %p.pad-top
-    %strong= t('.more_info')
+  %p
+    %h3= t('.more_info')
 
   %ul.link-list
     -@artifact.more_info_urls.each do |more|

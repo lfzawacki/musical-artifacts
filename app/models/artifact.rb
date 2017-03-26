@@ -153,7 +153,7 @@ class Artifact < ActiveRecord::Base
           youtube(width: 360)
           vimeo
           audio
-          soundcloud(width: 360, height: 315, show_artwork: true, show_comments: true)
+          soundcloud(width: '100%', height: 315, show_artwork: true, show_comments: true)
           image
         }
       end
