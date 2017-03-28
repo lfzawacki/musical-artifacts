@@ -386,40 +386,40 @@ label.filter {
   }
 
   h1 {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   h4 {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .artifact-description {
 
     p {
-      font-size: 12px;
+      font-size: 10px;
     }
 
     p.small {
-      font-size: 12px;
+      font-size: 10px;
     }
   }
 
   .no-description {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    font-size: 110%;
+    font-size: 105%;
   }
 
   .big-tags {
-    font-size: 120%;
+    font-size: 115%;
   }
 
   .artifact-item {
@@ -438,7 +438,7 @@ label.filter {
 
     .side-buttons {
       .btn {
-        font-size: 18px;
+        font-size: 14px;
         padding-top: 0.3em;
         padding-bottom: 0em;
         padding-left: 0.4em;
@@ -449,7 +449,7 @@ label.filter {
         margin-bottom: 0.5em;
         margin-left: 0em;
         margin-right: 0em;
-        font-size: 16px !important;
+        font-size: 14px !important;
       }
     }
 
@@ -574,13 +574,13 @@ a.tag-filter:hover {
   padding-bottom: 0.5em;
 
   .btn {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
 
     border-color: #aaa;
 
     .small-label {
-      font-size: 18px;
+      font-size: 16px;
       text-transform: none;
       font-weight: normal;
     }
