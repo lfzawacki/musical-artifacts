@@ -126,6 +126,14 @@ class Artifact < ActiveRecord::Base
       end
     end
 
+    def mirrors
+      read_attribute(:mirrors) || []
+    end
+
+    def more_info_urls
+      read_attribute(:more_info_urls) || []
+    end
+
     # Get a markdown generated HTML from the artifact description
     def description_html
       auto_html(description) {

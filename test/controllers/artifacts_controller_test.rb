@@ -347,6 +347,19 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "list fields should be arrays in json format" do
+    @artifact.update_attributes(mirrors: nil)
+    @artifact.update_attributes(more_info_urls: nil)
+
+    get :show, id: @artifact.id, format: :json
+
+    assert_response :success
+
+    assert_equal json_body['name'], @artifact.name
+    assert_equal json_body['mirrors'], []
+    assert_equal json_body['more_info'], []
+  end
+
   test "should not create without api_authenticate" do
     params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
 
