@@ -6,11 +6,11 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/reporters'
 require 'minitest/rails/capybara'
-require 'html_reporter'
+# require 'html_reporter'
 require 'forgery'
 
 reporter_options = { color: true }
-Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new, Minitest::Reporters::HtmlReporter.new]
+Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new]
 
 # To get mock emails in test environment
 ActionMailer::Base.default_url_options = { host: 'https://musical-artifacts.com' }
