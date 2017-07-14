@@ -2,7 +2,7 @@ module ApplicationHelper
 
   def application_title
     if content_for(:title).present?
-      "#{content_for :title } | #{@setting.site_name}"
+      "#{content_for :title} | #{@setting.site_name}".html_safe
     else
       "#{@setting.site_name} | #{I18n.t('layouts.application.default_title')}"
     end
