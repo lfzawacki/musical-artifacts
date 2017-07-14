@@ -91,7 +91,7 @@ class ArtifactsController < InheritedResources::Base
       if ['top_rated', 'most_downloaded', 'name', 'created_at'].include?(order_str)
         # Change param names to the actual database names
         # This only make for better URLs in the end
-        order_str = case order_str
+        search_str = case order_str
         when 'top_rated'
           'favorite_count'
         when 'most_downloaded'
@@ -100,8 +100,10 @@ class ArtifactsController < InheritedResources::Base
           order_str
         end
 
-        @artifacts = @artifacts.order("#{order_str} #{direction}")
+        @artifacts = @artifacts.order("#{search_str} #{direction}")
       else
+        # prevents page from showing arbitrary parameter
+        params[:order] = 'created_at'
         @artifacts = @artifacts.order('created_at DESC')
       end
     end
