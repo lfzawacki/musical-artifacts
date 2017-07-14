@@ -22,7 +22,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'jquery-rails', '4.2.1'
+gem 'jquery-rails', '4.3.1'
 
 gem 'turbolinks', '2.5.3'
 gem 'nprogress-rails', '0.1.6.7'
@@ -102,7 +102,7 @@ gem 'knock', '~> 1.4.1'
 
 gem 'rubyzip', '>= 1.2.1'
 
-gem 'jstree-rails-4', '~> 3.2.1'
+gem 'jstree-rails-4', '3.3.4'
 
 gem 'resque', '~> 1.25.2'
 

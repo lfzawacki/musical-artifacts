@@ -23,14 +23,14 @@
 
 //= require bootstrap
 
-//= require select2
-
 //= require 'epiceditor'
-
-//= require jstree
 
 //= require pnotify
 
 //= require_tree .
+
+//= require jstree
+
+//= require select2
 
 Turbolinks.enableTransitionCache();
