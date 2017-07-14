@@ -3,6 +3,8 @@
   height: 42px;
   background: #404040;
 
+  text-align: center;
+
   .play-pause {
     width: 2em;
     height: 45px;
@@ -17,7 +19,7 @@
 
   .scrubber {
     background: #5a5a5a;
-    width: 280px;
+    width: 220px;
     height: 20px;
     margin: 10px 0px 10px 5px;
   }
@@ -36,6 +38,7 @@
   .time {
     float: left;
     height: 45px;
+    width: 30px;
     line-height: 45px;
   }
 
@@ -46,16 +49,18 @@
 
 .track-details {
   clear: both;
-  height: 40px;
   width: $sidebar-width;
-  padding: 1px 6px;
+  padding: 2px 2px 4px 10px;
   background: #eee;
   color: #222;
   font-family: monospace;
-  font-size: 130%;
-  line-height: 40px;
+  font-size: 110%;
   -webkit-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.15);
+
+  text-align: center;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 
   em {
     color: #999;

@@ -1,6 +1,6 @@
 AutoHtml.add_filter(:audio) do |text|
   text.gsub(/https?:\/\/.+\.(mp3|ogg|flac|wav)(\?\S+)?/i) do |match|
-    %|<audio src="#{match}" preload="none"></audio>\n <div class="track-details">#{match.split('/')[-1]}</div>|
+    %|<audio src="#{match}" preload="none"></audio>\n <div class="track-details"><a href="#{match}">#{CGI.unescape(match.split('/')[-1])}</a></div>|
   end
 end
 
