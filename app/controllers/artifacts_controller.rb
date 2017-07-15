@@ -96,8 +96,10 @@ class ArtifactsController < InheritedResources::Base
           'favorite_count'
         when 'most_downloaded'
           'download_count'
-        else
-          order_str
+        when 'name'
+          'name'
+        when 'created_at'
+          'created_at'
         end
 
         @artifacts = @artifacts.order("#{search_str} #{direction}")
