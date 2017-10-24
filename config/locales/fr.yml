@@ -358,8 +358,8 @@ fr:
 
     donations:
       call_to_action: Aidez-nous en donnant !
-      description: "Musical Artifacts est une application web à source ouverte qui aide les musiciensà trouver, partager, et préserver les artéfacts qu'ils utilisent pour produire leur musique."
-      more_details_html: "Ce projet est fait par des volontaires sur leur temps libre. Les dons sont utilisés pour couvrir les coûts d'hébergement du site et accélérer le développement de nouvelles fonctionnalités. Il y a plusieurs manières de contribuer en dehors de l'argent, voir <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/How-To-Contribute\">cette page</a> (en anglais)"
+      description: "Musical Artifacts est une application web à source ouverte qui aide les musiciens à trouver, partager, et préserver les artéfacts qu'ils utilisent pour produire leur musique."
+      more_details_html: "Ce projet est fait par des volontaires sur leur temps libre. Les dons sont utilisés pour couvrir les coûts d'hébergement du site et accélérer le développement de nouvelles fonctionnalités. Il y a plusieurs manières de contribuer en dehors de l'argent, voir <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/How-To-Contribute\">cette page</a> (en anglais)."
 
       bitcoin_alt: Donate Bitcoin
 
