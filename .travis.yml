@@ -6,4 +6,7 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - cp config/settings.yml.example config/settings.yml
 
+before_install:
+  - gem install bundler
+
 script: bundle exec rake db:reset; bundle exec rake
