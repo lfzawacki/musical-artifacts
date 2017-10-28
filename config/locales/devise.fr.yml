@@ -28,13 +28,13 @@ fr:
       failure: "N'a pas pu vous identifier depuis %{kind} car \"%{reason}\"."
       success: "Authentification réussie du compte %{kind}."
     passwords:
-      no_token: "Vous ne pouvez pas accéder à cette page sans provenir d'un courriel de réinitialisation de mot de passe. Si vous arrivez d'un courriel de réinitilisation d'un mot de passe, veuillez vous assurez d'avoir utilisé l'URL fournie complète."
+      no_token: "Vous ne pouvez pas accéder à cette page sans provenir d'un courriel de réinitialisation de mot de passe. Si vous arrivez d'un courriel de réinitilisation d'un mot de passe, veuillez vous assurer d'avoir utilisé l'URL fournie complète."
       send_instructions: "Vous allez recevoir un courriel avec les instructions pour réinitialiser votre mot de passe dans quelques minutes."
-      send_paranoid_instructions: "Si votre adresse courriel existe dans notre base de données, vous allez recevoir un lien de récupération de mot de passe dans à votre adresse courriel dans quelques minutes."
+      send_paranoid_instructions: "Si votre adresse courriel existe dans notre base de données, vous allez recevoir un lien de récupération de mot de passe dans un message à votre adresse courriel dans quelques minutes."
       updated: "Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté."
       updated_not_active: "Votre mot de passe a été modifié avec succès."
     registrations:
-      destroyed: "Au revoir ! Voter compte a été annulé avec succès. Nous espérons vous revoir bientôt."
+      destroyed: "Au revoir ! Votre compte a été annulé avec succès. Nous espérons vous revoir bientôt."
       signed_up: "Bienvenue ! Vous vous êtes enregistré avec succès."
       signed_up_but_inactive: "Vous vous êtes enregistré avec succès. Cependant, nous n'avons pas pu vous connecter car votre compte n'est pas encore activé."
       signed_up_but_locked: "Vous vous êtes enregistré avec succès. Cependant, nous n'avons pas pu vous connecter car votre compte est bloqué."
@@ -57,4 +57,4 @@ fr:
       not_locked: "n'était pas bloqué"
       not_saved:
         one: "1 erreur a empêché ce %{resource} d'être sauvegardé :"
-        other: "%{count} erreurs ont empêché ces %{resource} d'être sauvegardés :"
+        other: "%{count} erreurs ont empêché ces %{resource} d'être sauvegardées :"
