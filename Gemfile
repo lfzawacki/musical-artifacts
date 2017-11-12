@@ -6,7 +6,7 @@ gem 'hashie', '~> 3.4.6'
 gem 'has_scope', '0.6.0'
 gem 'listen', '3.0.8'
 gem 'ruby_dep', '1.3'
-gem 'nokogiri', '~> 1.7.2'
+gem 'nokogiri', '~> 1.8.1'
 
 gem 'rack', '~> 1.6.2'
 gem 'rails', '~> 4.2.8'
