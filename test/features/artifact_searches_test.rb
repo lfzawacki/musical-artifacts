@@ -5,10 +5,10 @@ class ArtifactSearchesTest < Capybara::Rails::TestCase
   setup do
     @setting = Setting.first
 
-    @artifact = FactoryGirl.create(:artifact)
+    @artifact = FactoryBot.create(:artifact)
 
-    @admin = FactoryGirl.create(:user, email: 'bruce@maiden.ir', password: 'emperoroftheclouds', admin: true)
-    @user = FactoryGirl.create(:user, email: 'janick@maiden.ir', password: 'writerofsouls')
+    @admin = FactoryBot.create(:user, email: 'bruce@maiden.ir', password: 'emperoroftheclouds', admin: true)
+    @user = FactoryBot.create(:user, email: 'janick@maiden.ir', password: 'writerofsouls')
   end
 
   # Mostly tests if pages render properly with these kinds of searches

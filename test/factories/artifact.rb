@@ -1,9 +1,9 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :artifact do
-    name { Forgery::Name.full_name }
-    author { Forgery::Name.full_name }
-    description { Forgery::LoremIpsum.paragraph }
+    name { Faker::Name.name }
+    author { Faker::Name.name }
+    description { Faker::Lorem.paragraph }
     downloadable true
     approved true
 

@@ -3,8 +3,8 @@ require "test_helper"
 class ShowInfoTest < Capybara::Rails::TestCase
   setup do
     @setting = Setting.first
-    @admin = FactoryGirl.create(:user, email: 'gnome@dio.io', password: 'sunsetsuperman', admin: true)
-    @user = FactoryGirl.create(:user, email: 'vinnie@dio.io', password: 'holydiver')
+    @admin = FactoryBot.create(:user, email: 'gnome@dio.io', password: 'sunsetsuperman', admin: true)
+    @user = FactoryBot.create(:user, email: 'vinnie@dio.io', password: 'holydiver')
   end
 
   test "show user name and salutation when logged in (admin)" do
@@ -62,8 +62,8 @@ class ShowInfoTest < Capybara::Rails::TestCase
   test "show number of unapproved artifacts for admin" do
     login_with @admin, 'sunsetsuperman'
 
-    FactoryGirl.create(:artifact, approved: false)
-    FactoryGirl.create(:artifact, approved: false)
+    FactoryBot.create(:artifact, approved: false)
+    FactoryBot.create(:artifact, approved: false)
 
     visit '/'
 
@@ -73,7 +73,7 @@ class ShowInfoTest < Capybara::Rails::TestCase
   test "don't show number of unapproved artifacts for normal user" do
     login_with @user, 'holydiver'
 
-    FactoryGirl.create(:artifact, approved: false)
+    FactoryBot.create(:artifact, approved: false)
 
     visit '/'
 
@@ -83,9 +83,9 @@ class ShowInfoTest < Capybara::Rails::TestCase
   test "show number of artifacts for an admin (2, 1 for other user)" do
     login_with @admin, 'sunsetsuperman'
 
-    FactoryGirl.create(:artifact, user: @user)
-    FactoryGirl.create(:artifact, user: @admin)
-    FactoryGirl.create(:artifact, user: @admin)
+    FactoryBot.create(:artifact, user: @user)
+    FactoryBot.create(:artifact, user: @admin)
+    FactoryBot.create(:artifact, user: @admin)
 
     visit '/'
 
@@ -103,10 +103,10 @@ class ShowInfoTest < Capybara::Rails::TestCase
   test "show number of artifacts for a user (3, 1 for other user)" do
     login_with @user, 'holydiver'
 
-    FactoryGirl.create(:artifact, user: @user)
-    FactoryGirl.create(:artifact, user: @user)
-    FactoryGirl.create(:artifact, user: @user)
-    FactoryGirl.create(:artifact, user: @admin)
+    FactoryBot.create(:artifact, user: @user)
+    FactoryBot.create(:artifact, user: @user)
+    FactoryBot.create(:artifact, user: @user)
+    FactoryBot.create(:artifact, user: @admin)
 
     visit '/'
 

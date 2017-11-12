@@ -3,8 +3,8 @@ require "test_helper"
 class AccessAdminDashboard < Capybara::Rails::TestCase
 
   setup do
-    @admin = FactoryGirl.create(:user, email: 'lfz@own.life', password: 'summercomesafter', admin: true)
-    @user = FactoryGirl.create(:user, email: 'lfz@mortticia.xyz', password: 'oneflower')
+    @admin = FactoryBot.create(:user, email: 'lfz@own.life', password: 'summercomesafter', admin: true)
+    @user = FactoryBot.create(:user, email: 'lfz@mortticia.xyz', password: 'oneflower')
   end
 
   test 'access admin dashboard as an admin' do

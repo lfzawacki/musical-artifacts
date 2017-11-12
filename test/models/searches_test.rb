@@ -3,7 +3,7 @@ require 'test_helper'
 class SearchesTest < ActiveSupport::TestCase
   setup do
     @artifacts = [
-      FactoryGirl.create(:artifact,
+      FactoryBot.create(:artifact,
         name: 'Sounfont file',
         description: 'An artifact for a soundfont file',
         author: 'Smarmy',
@@ -13,7 +13,7 @@ class SearchesTest < ActiveSupport::TestCase
         software_list: ['fluidsynth', 'saffronse', 'timidity'],
         extra_license_text: 'Please include my name'
       ),
-      FactoryGirl.create(:artifact,
+      FactoryBot.create(:artifact,
         name: 'Guitar file',
         description: 'An artifact with a guitar related file',
         author: 'Ziggy',
@@ -23,7 +23,7 @@ class SearchesTest < ActiveSupport::TestCase
         software_list: ['guitarix'],
         extra_license_text: 'DWTFYW license'
       ),
-      FactoryGirl.create(:artifact,
+      FactoryBot.create(:artifact,
         name: 'Zip file',
         description: 'An artifact with content compressed in a zip file and a crappy license',
         author: 'Zippy',
@@ -31,7 +31,7 @@ class SearchesTest < ActiveSupport::TestCase
         file_format_list: ['zip'],
         tag_list: ['compressed', 'samples']
       ),
-      FactoryGirl.create(:artifact,
+      FactoryBot.create(:artifact,
         name: 'Drum package',
         description: 'An artifact of a drumkit, with drum samples',
         author: 'Drumbrum',
@@ -40,7 +40,7 @@ class SearchesTest < ActiveSupport::TestCase
         tag_list: ['drums', 'drumkit', 'samples'],
         software_list: ['hydrogen']
       ),
-      FactoryGirl.create(:artifact,
+      FactoryBot.create(:artifact,
         name: 'A synth sound preset',
         description: 'An artifact with synth sound presets',
         author: 'Moogaloog',
@@ -49,7 +49,7 @@ class SearchesTest < ActiveSupport::TestCase
         tag_list: ['synth', 'preset'],
         software_list: ['zynaddsubfx', 'timidity']
       ),
-      FactoryGirl.create(:artifact,
+      FactoryBot.create(:artifact,
         name: 'Acoustic guitar',
         description: 'A soundfont with sampled acoustic guitar sounds',
         author: 'Fire Mann',
@@ -58,7 +58,7 @@ class SearchesTest < ActiveSupport::TestCase
         tag_list: ['acoustic guitar', 'samples'],
         software_list: ['linuxsampler']
       ),
-      FactoryGirl.create(:artifact,
+      FactoryBot.create(:artifact,
         name: 'Banjo',
         description: 'A soundfont with sampled Banjo sounds',
         author: 'Fire Mann',

@@ -4,8 +4,8 @@ class RedirectBackAfterLogin < Capybara::Rails::TestCase
 
   setup do
     @setting = Setting.first
-    @artifact = FactoryGirl.create(:artifact)
-    @user = FactoryGirl.create(:user, email: 'gene@strapping.yl', password: 'farbeyondmetal')
+    @artifact = FactoryBot.create(:artifact)
+    @user = FactoryBot.create(:user, email: 'gene@strapping.yl', password: 'farbeyondmetal')
   end
 
   test "redirect to an artifact page" do

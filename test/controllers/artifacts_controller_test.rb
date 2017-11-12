@@ -5,10 +5,10 @@ class ArtifactsControllerTest < ActionController::TestCase
 
   setup do
     @setting = Setting.first
-    @artifact = FactoryGirl.create(:artifact)
+    @artifact = FactoryBot.create(:artifact)
 
-    @user = FactoryGirl.create(:user, email: 'frederik@opeth.se', password: 'lotuseater')
-    @admin = FactoryGirl.create(:user, email: 'mikael@opeth.se', password: 'demonofthefall', admin: true)
+    @user = FactoryBot.create(:user, email: 'frederik@opeth.se', password: 'lotuseater')
+    @admin = FactoryBot.create(:user, email: 'mikael@opeth.se', password: 'demonofthefall', admin: true)
 
     @by = License.find('by')
   end
@@ -22,8 +22,8 @@ class ArtifactsControllerTest < ActionController::TestCase
   end
 
   test "should get index with 3 artifacts" do
-    FactoryGirl.create(:artifact)
-    FactoryGirl.create(:artifact)
+    FactoryBot.create(:artifact)
+    FactoryBot.create(:artifact)
 
     get :index
 
@@ -33,8 +33,8 @@ class ArtifactsControllerTest < ActionController::TestCase
   end
 
   test "should get index and not include unapproved" do
-    FactoryGirl.create(:artifact)
-    unapproved = FactoryGirl.create(:artifact, approved: false)
+    FactoryBot.create(:artifact)
+    unapproved = FactoryBot.create(:artifact, approved: false)
 
     get :index
 
@@ -93,7 +93,7 @@ class ArtifactsControllerTest < ActionController::TestCase
     sign_in(@user)
 
     0.upto(Artifact.approved_count_for_trust) do
-      FactoryGirl.create(:artifact, user: @user, approved: true)
+      FactoryBot.create(:artifact, user: @user, approved: true)
     end
 
     assert_difference('Artifact.where(approved: true).count', 1) do
@@ -334,8 +334,8 @@ class ArtifactsControllerTest < ActionController::TestCase
   end
 
   test ".json simple search" do
-    FactoryGirl.create(:artifact, name: 'Sunset Superman')
-    FactoryGirl.create(:artifact, name: 'Two Suns in the Sunset')
+    FactoryBot.create(:artifact, name: 'Sunset Superman')
+    FactoryBot.create(:artifact, name: 'Two Suns in the Sunset')
     get :index, q: 'sunset', format: :json
 
     assert_response :success
@@ -361,7 +361,7 @@ class ArtifactsControllerTest < ActionController::TestCase
   end
 
   test "should not create without api_authenticate" do
-    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    params = FactoryBot.attributes_for(:artifact, license_id: @by.id)
 
     assert_difference('Artifact.count', 0) do
       post :create, artifact: params, format: :json
@@ -373,7 +373,7 @@ class ArtifactsControllerTest < ActionController::TestCase
   test "should not authenticate AND not crash with invalid bearer" do
     request.env['HTTP_AUTHORIZATION'] = "bearer invalid"
 
-    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    params = FactoryBot.attributes_for(:artifact, license_id: @by.id)
     post :create, artifact: params, format: :json
     assert_response :unauthorized
   end
@@ -381,14 +381,14 @@ class ArtifactsControllerTest < ActionController::TestCase
   test "should not authenticate AND not crash with empty bearer" do
     request.env['HTTP_AUTHORIZATION'] = "bearer"
 
-    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    params = FactoryBot.attributes_for(:artifact, license_id: @by.id)
     post :create, artifact: params, format: :json
     assert_response :unauthorized
   end
 
   test "should create an artifact with valid params" do
     api_authenticate(@user)
-    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    params = FactoryBot.attributes_for(:artifact, license_id: @by.id)
 
     assert_difference('Artifact.count', 1) do
       post :create, artifact: params, format: :json
@@ -405,7 +405,7 @@ class ArtifactsControllerTest < ActionController::TestCase
   test "should create an artifact with tags and app tags" do
     api_authenticate(@user)
 
-    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    params = FactoryBot.attributes_for(:artifact, license_id: @by.id)
     params.merge!({tag_list: 'guitar, heavy metal', software_list: 'guitarix'})
 
     assert_difference('Artifact.count', 1) do
@@ -421,7 +421,7 @@ class ArtifactsControllerTest < ActionController::TestCase
   test "should create an artifact with tags, app tags and file" do
     api_authenticate(@user)
 
-    params = FactoryGirl.attributes_for(:artifact, license_id: @by.id)
+    params = FactoryBot.attributes_for(:artifact, license_id: @by.id)
     params.merge!({tag_list: 'synth, wubwub, bass', software_list: 'helm'})
 
     assert_difference('Artifact.count', 1) do
@@ -461,7 +461,7 @@ class ArtifactsControllerTest < ActionController::TestCase
 
   test "should update an artifact with valid params" do
     api_authenticate(@user)
-    artifact = FactoryGirl.create(:artifact, name: 'Ship To Wreck', author: 'Florence', user: @user)
+    artifact = FactoryBot.create(:artifact, name: 'Ship To Wreck', author: 'Florence', user: @user)
 
     put :update, id: artifact.id, artifact: {name: 'New Ship To Wreck', author: 'The Machine' }, format: :json
 
@@ -473,7 +473,7 @@ class ArtifactsControllerTest < ActionController::TestCase
 
   test "should not update an artifact with invalid params" do
     api_authenticate(@user)
-    artifact = FactoryGirl.create(:artifact, name: 'How Big', author: 'Florence +', user: @user)
+    artifact = FactoryBot.create(:artifact, name: 'How Big', author: 'Florence +', user: @user)
 
     put :update, id: artifact.id, artifact: {name: 'How Blue', author: '' }, format: :json
 
@@ -483,9 +483,9 @@ class ArtifactsControllerTest < ActionController::TestCase
 
   test "should not update an artifact without the permissions" do
     api_authenticate(@user)
-    other_user = FactoryGirl.create(:user)
+    other_user = FactoryBot.create(:user)
 
-    artifact = FactoryGirl.create(:artifact, name: 'How Beautiful', author: 'Florence + The Machine', user: other_user)
+    artifact = FactoryBot.create(:artifact, name: 'How Beautiful', author: 'Florence + The Machine', user: other_user)
 
     put :update, id: artifact.id, artifact: {tag_list: 'big, blue, beautiful'}, format: :json
 

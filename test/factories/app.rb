@@ -1,9 +1,9 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :app do
-    name Forgery::Name.full_name
-    description Forgery::LoremIpsum.paragraph
-    url "http://#{Forgery::Internet.domain_name}"
+    name Faker::Name.name
+    description Faker::Lorem.paragraph
+    url "http://#{Faker::Internet.domain_name}"
   end
 
 end

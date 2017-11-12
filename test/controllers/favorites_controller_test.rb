@@ -4,8 +4,8 @@ class FavoritesControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @artifact = FactoryGirl.create(:artifact)
-    @user = FactoryGirl.create :user, email: 'freddie@que.en', password: 'dontstophim'
+    @artifact = FactoryBot.create(:artifact)
+    @user = FactoryBot.create :user, email: 'freddie@que.en', password: 'dontstophim'
   end
 
   test "can't favorite if it's not logged in" do
@@ -69,8 +69,8 @@ class FavoritesControllerTest < ActionController::TestCase
   test 'create and destroy favorites for a user' do
     sign_in(@user)
 
-    artifact2 = FactoryGirl.create(:artifact)
-    artifact3 = FactoryGirl.create(:artifact)
+    artifact2 = FactoryBot.create(:artifact)
+    artifact3 = FactoryBot.create(:artifact)
 
     post :create, artifact_id: @artifact.id
     post :create, artifact_id: artifact2.id
@@ -92,8 +92,8 @@ class FavoritesControllerTest < ActionController::TestCase
   test 'create and destroy favorites for an artifact' do
     sign_in(@user)
 
-    user2 = FactoryGirl.create(:user)
-    user3 = FactoryGirl.create(:user)
+    user2 = FactoryBot.create(:user)
+    user3 = FactoryBot.create(:user)
 
     post :create, artifact_id: @artifact.id
 

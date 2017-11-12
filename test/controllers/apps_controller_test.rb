@@ -2,9 +2,9 @@ require 'test_helper'
 
 class AppsControllerTest < ActionController::TestCase
   setup do
-    @app = FactoryGirl.create(:app)
-    @user = FactoryGirl.create :user, email: 'billy@aperfectcircle.com', password: 'missingmoment'
-    @admin = FactoryGirl.create :user, email: 'maynard@toolband.com', password: 'thisbodyholdingme', admin: true
+    @app = FactoryBot.create(:app)
+    @user = FactoryBot.create :user, email: 'billy@aperfectcircle.com', password: 'missingmoment'
+    @admin = FactoryBot.create :user, email: 'maynard@toolband.com', password: 'thisbodyholdingme', admin: true
   end
 
   test "should get index" do

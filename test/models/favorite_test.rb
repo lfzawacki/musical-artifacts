@@ -3,8 +3,8 @@ require "test_helper"
 class FavoriteTest < ActiveSupport::TestCase
 
   setup do
-    @artifact = FactoryGirl.create(:artifact)
-    @user = FactoryGirl.create(:user)
+    @artifact = FactoryBot.create(:artifact)
+    @user = FactoryBot.create(:user)
     @favorite = Favorite.create artifact: @artifact, user: @user
   end
 
@@ -34,8 +34,8 @@ class FavoriteTest < ActiveSupport::TestCase
   end
 
   test "get user favorite artifacts (3 artifacts)" do
-    art1 = FactoryGirl.create(:artifact)
-    art2 = FactoryGirl.create(:artifact)
+    art1 = FactoryBot.create(:artifact)
+    art2 = FactoryBot.create(:artifact)
     Favorite.create user: @user, artifact: art1
     Favorite.create user: @user, artifact: art2
 

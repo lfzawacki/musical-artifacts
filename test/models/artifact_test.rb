@@ -3,12 +3,12 @@ require 'test_helper'
 class ArtifactTest < ActiveSupport::TestCase
 
   setup do
-    @artifact = FactoryGirl.create(:artifact, file: fixture_file('example.gx'))
-    @no_file = FactoryGirl.create(:artifact)
+    @artifact = FactoryBot.create(:artifact, file: fixture_file('example.gx'))
+    @no_file = FactoryBot.create(:artifact)
   end
 
   test 'validate name presence on create' do
-    artifact = FactoryGirl.build(:artifact, name: nil)
+    artifact = FactoryBot.build(:artifact, name: nil)
 
     artifact.save
     assert !artifact.valid?
@@ -17,8 +17,8 @@ class ArtifactTest < ActiveSupport::TestCase
   end
 
   test 'validates name is unique on create' do
-    artifact1 = FactoryGirl.build(:artifact, name: 'Volte-face')
-    artifact2 = FactoryGirl.build(:artifact, name: 'Volte-face')
+    artifact1 = FactoryBot.build(:artifact, name: 'Volte-face')
+    artifact2 = FactoryBot.build(:artifact, name: 'Volte-face')
 
     artifact1.save
     assert artifact1.valid?
@@ -31,7 +31,7 @@ class ArtifactTest < ActiveSupport::TestCase
   end
 
   test 'validate license presence on create' do
-    artifact = FactoryGirl.build(:artifact, license: nil)
+    artifact = FactoryBot.build(:artifact, license: nil)
 
     artifact.save
     assert !artifact.valid?
@@ -40,7 +40,7 @@ class ArtifactTest < ActiveSupport::TestCase
   end
 
   test 'validates author presence on create' do
-    artifact = FactoryGirl.build(:artifact, author: nil)
+    artifact = FactoryBot.build(:artifact, author: nil)
 
     artifact.save
     assert !artifact.valid?
@@ -176,7 +176,7 @@ class ArtifactTest < ActiveSupport::TestCase
   end
 
   test '.owned_by?(user)' do
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
 
     # Better treat the case where user=nil and NOT return true then
     assert_equal @artifact.owned_by?(nil), false

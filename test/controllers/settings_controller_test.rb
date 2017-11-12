@@ -5,8 +5,8 @@ class SettingsControllerTest < ActionController::TestCase
 
   setup do
     @setting = Setting.first
-    @user = FactoryGirl.create :user, email: 'devin@hevydevy.ca', password: 'deadhead'
-    @admin = FactoryGirl.create :user, email: 'ziltoid@ziltoida.ca', password: 'fetidcoffee', admin: true
+    @user = FactoryBot.create :user, email: 'devin@hevydevy.ca', password: 'deadhead'
+    @admin = FactoryBot.create :user, email: 'ziltoid@ziltoida.ca', password: 'fetidcoffee', admin: true
   end
 
   test "admin can edit setting" do

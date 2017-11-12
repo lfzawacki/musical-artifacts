@@ -4,7 +4,7 @@ class UsersControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @user = FactoryGirl.create(:user, email: 'mrwilson@porcupi.ne', password: 'signify trees')
+    @user = FactoryBot.create(:user, email: 'mrwilson@porcupi.ne', password: 'signify trees')
   end
 
   test "redirect to login if there's no current user" do
@@ -26,10 +26,10 @@ class UsersControllerTest < ActionController::TestCase
     sign_in(@user)
 
     artifacts = [
-        FactoryGirl.create(:artifact, user: @user),
-        FactoryGirl.create(:artifact, user: @user),
-        FactoryGirl.create(:artifact, user: @user),
-        FactoryGirl.create(:artifact, user: FactoryGirl.create(:user)) # another user
+        FactoryBot.create(:artifact, user: @user),
+        FactoryBot.create(:artifact, user: @user),
+        FactoryBot.create(:artifact, user: @user),
+        FactoryBot.create(:artifact, user: FactoryBot.create(:user)) # another user
     ]
 
     get :show
@@ -45,9 +45,9 @@ class UsersControllerTest < ActionController::TestCase
     sign_in(@user)
 
     artifacts = [
-        FactoryGirl.create(:artifact, user: @user),
-        FactoryGirl.create(:artifact, user: @user),
-        FactoryGirl.create(:artifact, user: @user, approved: false)
+        FactoryBot.create(:artifact, user: @user),
+        FactoryBot.create(:artifact, user: @user),
+        FactoryBot.create(:artifact, user: @user, approved: false)
     ]
 
     get :show
@@ -80,7 +80,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should render show in json format and with 2 artifacts" do
     api_authenticate(@user)
 
-    artifacts = [ FactoryGirl.create(:artifact, user: @user), FactoryGirl.create(:artifact, user: @user) ]
+    artifacts = [ FactoryBot.create(:artifact, user: @user), FactoryBot.create(:artifact, user: @user) ]
 
     get :show, format: :json
 

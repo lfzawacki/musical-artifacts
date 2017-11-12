@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :setting do
     data(:hostname => 'tests.musical-artifacts.com',

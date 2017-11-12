@@ -3,9 +3,9 @@ require "test_helper"
 class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
   setup do
-    @artifact = FactoryGirl.create(:artifact)
-    @admin = FactoryGirl.create(:user, email: 'peter@genes.is', password: 'watcheroftheskies', admin: true)
-    @user = FactoryGirl.create(:user, email: 'phil@genes.is', password: 'musicalbox')
+    @artifact = FactoryBot.create(:artifact)
+    @admin = FactoryBot.create(:user, email: 'peter@genes.is', password: 'watcheroftheskies', admin: true)
+    @user = FactoryBot.create(:user, email: 'phil@genes.is', password: 'musicalbox')
   end
 
   test "show artifact simple data" do
@@ -147,7 +147,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
   test "see favorite number for lots of favorites" do
     visit artifact_path(@artifact)
     1.upto(5) do
-      Favorite.create artifact: @artifact, user: FactoryGirl.create(:user)
+      Favorite.create artifact: @artifact, user: FactoryBot.create(:user)
     end
 
     visit artifact_path(@artifact)

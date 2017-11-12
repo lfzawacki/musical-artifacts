@@ -9,7 +9,7 @@ gem 'ruby_dep', '1.3'
 gem 'nokogiri', '~> 1.7.2'
 
 gem 'rack', '~> 1.6.2'
-gem 'rails', '~> 4.2.7.1'
+gem 'rails', '~> 4.2.8'
 gem 'active_record_union', '~> 1.2.0' # because active record doesnt have an OR method ... WAHT THE HECK GAME DESIGNEERRS??!?1?
 
 gem 'pg', '0.18.4'
@@ -62,8 +62,8 @@ group :development, :test do
 
   gem 'quiet_assets', '~> 1.1.0'
 
-  gem 'forgery', '~> 0.6.0'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker', '~> 1.8.4'
+  gem 'factory_bot_rails'
   gem 'codeclimate-test-reporter', '0.4.8', require: nil
 
   gem 'bullet', '~> 5.4.3'
@@ -81,7 +81,7 @@ gem 'select2-rails', '3.5.9.1'
 
 gem 'devise', '~> 3.5.4'
 
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '~> 1.1.0'
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
@@ -95,7 +95,7 @@ gem 'exception_notification', '~> 4.0.0'
 
 gem 'auto_html', git: 'https://github.com/lfzawacki/auto_html.git'
 
-gem 'kaminari', '~> 0.15'
+gem 'kaminari', '~> 1.1.1'
 
 # JSON API authentication with JWT
 gem 'knock', '~> 1.4.1'

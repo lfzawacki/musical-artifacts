@@ -6,24 +6,24 @@ class HydrogenDrumkitsControllerTest < ActionController::TestCase
   setup do
     @setting = Setting.first
     @drumkits = [
-      FactoryGirl.create(:artifact, software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/mykit.h2drumkit', file_format_list: ['h2drumkit']),
-      FactoryGirl.create(:artifact, software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/your.h2drumkit', file_format_list: ['h2drumkit']),
-      FactoryGirl.create(:artifact, software_list: 'hydrogen', file: fixture_file('drumkit.h2drumkit')),
+      FactoryBot.create(:artifact, software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/mykit.h2drumkit', file_format_list: ['h2drumkit']),
+      FactoryBot.create(:artifact, software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/your.h2drumkit', file_format_list: ['h2drumkit']),
+      FactoryBot.create(:artifact, software_list: 'hydrogen', file: fixture_file('drumkit.h2drumkit')),
     ].sort_by(&:name)
 
     @songs = [
-      FactoryGirl.create(:artifact, software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/mypattern.h2song', file_format_list: ['h2song']),
-      FactoryGirl.create(:artifact, software_list: 'hydrogen', file: fixture_file('song.h2song'))
+      FactoryBot.create(:artifact, software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/mypattern.h2song', file_format_list: ['h2song']),
+      FactoryBot.create(:artifact, software_list: 'hydrogen', file: fixture_file('song.h2song'))
     ].sort_by(&:name)
 
     @patterns = [
-      FactoryGirl.create(:artifact, software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/mykit.h2pattern', file_format_list: ['h2pattern']),
-      FactoryGirl.create(:artifact, software_list: 'hydrogen', file: fixture_file('pattern.h2pattern')),
+      FactoryBot.create(:artifact, software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/mykit.h2pattern', file_format_list: ['h2pattern']),
+      FactoryBot.create(:artifact, software_list: 'hydrogen', file: fixture_file('pattern.h2pattern')),
     ].sort_by(&:name)
 
     @not_hydrogen = [
-      FactoryGirl.create(:artifact, name: 'No h2file', software_list: 'hydrogen', file: fixture_file('under.zip')),
-      FactoryGirl.create(:artifact, name: 'No h2drumkit format', software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/your.h2drumkit'),
+      FactoryBot.create(:artifact, name: 'No h2file', software_list: 'hydrogen', file: fixture_file('under.zip')),
+      FactoryBot.create(:artifact, name: 'No h2drumkit format', software_list: 'hydrogen', mirrors: 'https://hydrogen-mirrors.com/your.h2drumkit'),
     ].sort_by(&:name)
 
     @by = License.find('by')
