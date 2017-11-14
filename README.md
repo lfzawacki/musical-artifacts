@@ -2,7 +2,9 @@ Musical Artifacts
 ---------------------------
 Helping to catalog, preserve and free the artifacts you need to produce music.
 
-[![](https://img.shields.io/gratipay/lfzawacki.svg)](https://gratipay.com/musical-artifacts/)
+[![Donate via Paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=A5956UYMW6QKJ&amp;lc=US&amp;item_name=Musical%20Artifacts&amp;item_number=musart¤cy_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted)
+
+[![Donate via Bitcoin](https://musical-artifacts.com/uploads/static/bitcoin_donate.png)](bitcoin:1Q6cYSxkKybi4we5joaMFbcKAMxxvCcJkr)
 
 [![](https://travis-ci.org/lfzawacki/musical-artifacts.svg?branch=master)](https://travis-ci.org/lfzawacki/musical-artifacts) [![](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/gpa.svg)](https://codeclimate.com/github/lfzawacki/musical-artifacts) [![Test Coverage](https://codeclimate.com/github/lfzawacki/musical-artifacts/badges/coverage.svg)](https://codeclimate.com/github/lfzawacki/musical-artifacts/coverage) [![](https://hakiri.io/github/lfzawacki/musical-artifacts/master.svg)](https://hakiri.io/github/lfzawacki/musical-artifacts/master) [![](http://inch-ci.org/github/lfzawacki/musical-artifacts.svg?branch=master)](https://inch-ci.org/github/lfzawacki/musical-artifacts)
 
