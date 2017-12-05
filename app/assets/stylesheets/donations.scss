@@ -1,0 +1,77 @@
+#donations {
+  h1 {
+    text-transform: none;
+    font-size: 1.5em;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+    padding: 1em 0 0.5em 0;
+    display: inline;
+    list-style-type: none;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  li {
+    display: inline-block;
+    padding: 0.8em 0.5em 0.8em 0;
+  }
+
+  .description {
+    font-size: 1.1em;
+  }
+
+  .more-details {
+    font-size: 0.9em;
+  }
+
+  /* Coinhive stuff */
+  .coinhive-logo {
+    margin-right: 2em;
+  }
+
+  .coinhive-name {
+    color: #1E9EE0;
+  }
+
+  .coinhive-activate.not-active {
+    pointer-events: none;
+    cursor: default;
+    color: #999;
+  }
+
+  .coinhive-stopped {
+    margin-right: 1.15em;
+  }
+
+  .coinhive-started {
+    display: none;
+  }
+
+  .coinhive-cpu {
+
+    .percentage {
+      font-weight: bold;
+      width: 5em;
+      text-align: center;
+      float: left;
+    }
+
+    .donate-more {
+      padding-left: 0.5em;
+      font-size: 115%;
+    }
+
+    .donate-less {
+      padding-left: 0.5em;
+      font-size: 115%;
+    }
+
+  }
+
+}

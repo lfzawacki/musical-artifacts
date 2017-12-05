@@ -1,0 +1,23 @@
+= link_to '#' , class: 'coinhive-activate', 'data-key': Rails.application.secrets.donations['coinhive']['key'] do
+
+  .coinhive-logo
+    = image_tag Rails.application.secrets.donations['coinhive']['shield'], alt: 'Donate via coinhive', width: '25px'
+    %span.coinhive-name= 'coinhive'
+
+  .coinhive-stopped
+    = t('.donate')
+    = "(#{t('.start')})"
+    %i.fa.fa-play
+
+  .coinhive-started
+    = t('.donate')
+    = "(#{t('.start')})"
+    %i.fa.fa-stop
+    %i.fa.fa-cog.fa-spin
+
+.coinhive-cpu
+  %span.percentage
+    %span.value 100
+    \%
+  = link_to '+', '#', class: 'donate-more'
+  = link_to '-', '#', class: 'donate-less'
