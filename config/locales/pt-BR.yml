@@ -369,14 +369,17 @@ pt-BR:
 
     donations:
       call_to_action: Ajude-nos com uma doação!
-      description: "Musical Artifacts é uma aplicação de código livre que ajuda músicos a encotrarem, compartilharem e preservarem os artefatos que eles usam para produzir sua música."
+      description: "Musical Artifacts é um app de código livre que ajuda músicos a encontrar, compartilhar e preservar os artefatos usados para produzir sua música."
       more_details_html: "Este projeto é desenvolvido por voluntários em seu tempo livre. Doações são usadas para pagar os custos de hospedagem e acelerar o desenvolvimento de novas funcionalidades. Existem muitas outras maneiras de ajudar além de doações de dinheiro. Veja <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/How-To-Contribute\">esta página</a>"
 
       bitcoin_alt: Doar Bitcoin
 
       paypal_alt: Doar via Paypal
 
-      gratipay_alt: Doar via Gratipay
+    coinhive_donation:
+      donate: Doar CPU
+      start: Iniciar
+      stop: Parar
 
     optout:
       title: Opt-out da análise de tráfego

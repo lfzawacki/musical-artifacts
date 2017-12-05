@@ -9,7 +9,11 @@
       %li{class: method}
         = link_to Rails.application.secrets.donations[method]['url'] do
           = image_tag Rails.application.secrets.donations[method]['shield'], alt: t(".#{method}_alt")
+          %br
           = method.capitalize
+
+    %li.coinhive
+      = render 'info/coinhive_donation'
 
   .more-details
     = t('.more_details_html')

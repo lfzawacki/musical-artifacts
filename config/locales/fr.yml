@@ -365,7 +365,10 @@ fr:
 
       paypal_alt: Donate via Paypal
 
-      gratipay_alt: Donate via Gratipay
+    coinhive_donations:
+      donate: Donate CPU
+      start: Start
+      stop: Stop
 
     optout:
       title: Empêcher les analyses de traffic

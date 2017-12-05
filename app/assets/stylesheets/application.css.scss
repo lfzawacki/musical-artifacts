@@ -29,18 +29,20 @@
 
 @import "placeholder-fix";
 
-@import 'select2-customizations';
+@import "select2-customizations";
 
 @import "audiojs";
 
-@import 'nprogress';
-@import 'nprogress-bootstrap';
+@import "nprogress";
+@import "nprogress-bootstrap";
 
 @import "ribbon";
 
 @import "notification-boxes";
 
 @import "survey";
+
+@import "donations";
 
 .pad-bottom {
   padding-bottom: 0.5em;
@@ -1214,29 +1216,4 @@ footer {
     margin: 0 auto;
     display: block;
   }
-}
-
-#donations {
-  h1 {
-    text-transform: none;
-    font-size: 1.5em;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0.5em 0 0.2em 0;
-  }
-
-  li {
-    padding: 0.3em 0 0.3em 0;
-  }
-
-  .description {
-    font-size: 1.1em;
-  }
-
-  .more-details {
-    font-size: 0.9em;
-  }
-
 }
