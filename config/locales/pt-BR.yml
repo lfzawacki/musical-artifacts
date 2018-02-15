@@ -380,6 +380,7 @@ pt-BR:
       donate: Doar CPU
       start: Iniciar
       stop: Parar
+      fallback: "Doação de CPU não pode ser carregada, considere desbloqueá-la."
 
     optout:
       title: Opt-out da análise de tráfego

@@ -30,6 +30,10 @@
     font-size: 0.9em;
   }
 
+  .coinhive {
+    width: 50%;
+  }
+
   /* Coinhive stuff */
   .coinhive-logo {
     margin-right: 2em;
@@ -49,8 +53,13 @@
     margin-right: 1.15em;
   }
 
-  .coinhive-started {
+  .coinhive-started, .coinhive-stopped, .coinhive-cpu {
     display: none;
+  }
+
+  .coinhive-disabled {
+    font-size: 80%;
+    font-weight: bold;
   }
 
   .coinhive-cpu {

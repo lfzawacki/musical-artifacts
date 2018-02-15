@@ -356,6 +356,7 @@ en:
       donate: Donate CPU
       start: Start
       stop: Stop
+      fallback: "CPU donation couldn't be loaded, consider unblocking it."
 
     optout:
       title: Opt-out from Traffic Analytics

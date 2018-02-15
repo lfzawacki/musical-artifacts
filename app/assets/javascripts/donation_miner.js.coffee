@@ -1,14 +1,27 @@
 class @DonationMiner
 
   constructor: ->
-    console.log " [coinhive] Initializing coinhive donation miner ... "
-    @ch = new CoinHive.Anonymous($('a.coinhive-activate').data('key'))
+
+    if typeof CoinHive != 'undefined'
+      console.log " [coinhive] Initializing coinhive donation miner ... "
+      @ch = new CoinHive.Anonymous($('a.coinhive-activate').data('key'))
+
+      # show the miner
+      $('.coinhive-disabled').hide()
+      $('.coinhive-cpu, .coinhive-stopped').show()
+
+    else
+      console.log " [coinhive] Miner has not loaded, consider unblocking it"
 
   # Check if the user opted out in the last 4 hours
   didOptOut: ->
+    return if !@ch
+
     @ch.didOptOut(4 * 60 * 60)
 
   handleClick: (e) ->
+    return if !@ch
+
     e.preventDefault()
 
     $('.coinhive-activate').toggleClass('not-active')
@@ -21,6 +34,8 @@ class @DonationMiner
       @ch.start()
 
   donateMore: (e) ->
+    return if !@ch
+
     e.preventDefault()
 
     val = parseInt($('.coinhive-cpu .value').text())
@@ -32,6 +47,8 @@ class @DonationMiner
     localStorage.minerPercentage = val
 
   donateLess: (e) ->
+    return if !@ch
+
     e.preventDefault()
 
     val = parseInt($('.coinhive-cpu .value').text())
@@ -43,6 +60,8 @@ class @DonationMiner
     localStorage.minerPercentage = val
 
   setStarted: (e) ->
+    return if !@ch
+
     return if this.didOptOut()
 
     $('.coinhive-activate').toggleClass('not-active')
@@ -59,16 +78,21 @@ class @DonationMiner
     localStorage.minerStarted = 'false'
 
   printStatus: ->
+    return if !@ch
+
     ah = @ch.getAcceptedHashes()
     th = @ch.getTotalHashes()
     hps = @ch.getHashesPerSecond()
     console.info ' [coinhive] Hash accepted (' + ah + '/' + th + ') at ' + hps
 
   startIfWasRunning: ->
+    return if !@ch
+
     if !this.didOptOut() && !@ch.isRunning() && localStorage.minerStarted == 'true'
       @ch.start()
 
   bind: ->
+    return if !@ch
 
     @ch.on 'open', this.setStarted.bind(this)
 
