@@ -44,6 +44,12 @@
 
 @import "donations";
 
+.noscript.alert {
+  color: #aa0000;
+  font-size: 120%;
+  padding: 10px;
+}
+
 .pad-bottom {
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;

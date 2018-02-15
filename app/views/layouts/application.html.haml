@@ -84,6 +84,10 @@
     - # Don't use a container wrapping the content only on the 'about' section
     %div{class: "#{'container with-navbar-on-top' unless controller.controller_name == 'info' && controller.action_name == 'about'}"}
 
+      %noscript
+        %p.noscript.alert.alert-warning
+          =t('.no_script_warning')
+
       - flash.each do |name, msg|
         = render 'notifications/alert', name: name, message: msg
 
