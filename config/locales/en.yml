@@ -350,6 +350,7 @@ en:
       call_to_action: Help us by donating!
       description: "Musical Artifacts is an open source web app helping musicians to find, share and preserve the artifacts they use for producing their music."
       more_details_html: "This project is worked on by volunteers in their free time. Donations cover the hosting costs and accelerate the development of new features. To contribute without donating money, see <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/How-To-Contribute\">this page</a>"
+      extra_my_music_html: "Hey! I've made some <strong>heavy metal</strong> music, you should check it out <a target=\"_blank\" href=\"https://mortticia.rocks/music/\">HERE</a> !"
 
       bitcoin_alt: Donate Bitcoin
 
