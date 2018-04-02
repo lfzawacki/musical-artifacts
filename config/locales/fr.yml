@@ -373,6 +373,7 @@ fr:
       donate: Donate CPU
       start: Start
       stop: Stop
+      fallback: "Le don de CPU n'a pa pu être chargé, considérez la possibilité de le débloquer."
 
     optout:
       title: Empêcher les analyses de traffic
