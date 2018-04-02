@@ -90,6 +90,9 @@ fr:
         site_license: "La base de données artifact, les textes et les méta-données sont licenciés sous CC-BY-SA 4.0. Les fichiers eux-même possèdent leurs licences respectives."
         author_html: "créé par <a href=\"https://github.com/lfzawacki/\">lfz</a>"
         adfree: Ce site n'affiche pas de publicité.
+
+      no_script_warning: "Javascript est désactivé. C'est tout bon, mais certaines fonctionnalités seront limitées."
+
     static_notification_space:
       fisl17: Musical Artifacts will be at the International Free Software Forum (FISL17)!
 
