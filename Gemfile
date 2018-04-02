@@ -113,7 +113,7 @@ gem 'public_activity', '~> 1.4.2'
 gem 'rails-timeago', '~> 2.0'
 
 # Omniauth
-gem 'omniauth', '1.2.2'
+gem 'omniauth', '= 1.3.2'
 gem 'omniauth-oauth2', '1.1.2'
 gem 'omniauth-twitter', '1.2.1'
 gem 'omniauth-soundcloud', '1.0.1'
