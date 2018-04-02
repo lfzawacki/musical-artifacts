@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'rails-html-sanitizer', '>= 1.0.4'
 gem 'sprockets-rails', '3.1.1'
 
 gem 'hashie', '~> 3.4.6'
 gem 'has_scope', '0.6.0'
 gem 'listen', '3.0.8'
 gem 'ruby_dep', '1.3'
-gem 'nokogiri', '~> 1.8.1'
+gem 'nokogiri', '~> 1.8.2'
 
 gem 'rack', '~> 1.6.2'
 gem 'rails', '~> 4.2.8'
