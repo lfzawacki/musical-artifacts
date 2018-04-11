@@ -7,19 +7,32 @@ class HydrogenDrumkitsController < InheritedResources::Base
 
   rescue_from ActionController::UnknownFormat, with: :remove_trailing_whitespaces
 
+  before_filter only: [:index] do
+    load_artifacts
+    filter_licenses
+  end
+
   def index
     render_drumkits
   end
 
   private
 
-  def render_drumkits
+  def load_artifacts
     # Hydrogen artifacts with a file of .h2drumkit format
-    artifacts = Searches.artifacts_app_tagged_with(Artifact, 'hydrogen')
+    @artifacts = Searches.artifacts_app_tagged_with(Artifact, 'hydrogen')
+  end
 
-    @drumkits = Searches.artifacts_with_file_format(artifacts, 'h2drumkit').order('name ASC')
-    @songs = Searches.artifacts_with_file_format(artifacts, 'h2song').order('name ASC')
-    @patterns = Searches.artifacts_with_file_format(artifacts, 'h2pattern').order('name ASC')
+  def filter_licenses
+    if params[:free].present? || params[:license] == 'free'
+      @artifacts = Searches.artifacts_licensed_as(@artifacts, 'free')
+    end
+  end
+
+  def render_drumkits
+    @drumkits, @songs, @patterns = ['h2drumkit', 'h2song', 'h2pattern'].map do |format|
+      Searches.artifacts_with_file_format(@artifacts, format).order('name ASC').includes(:license)
+    end
 
     @hydrogen = {drumkit: @drumkits, pattern: @patterns, song: @songs}
 
