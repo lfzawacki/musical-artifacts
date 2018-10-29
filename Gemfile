@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails-html-sanitizer', '>= 1.0.4'
+gem 'sprockets', '>= 3.7.2'
 gem 'sprockets-rails', '3.1.1'
 
 gem 'hashie', '~> 3.4.6'
@@ -11,7 +12,7 @@ gem 'nokogiri', '~> 1.8.2'
 
 gem 'rack', '~> 1.6.2'
 gem 'rails', '~> 4.2.8'
-gem 'active_record_union', '~> 1.2.0' # because active record doesnt have an OR method ... WAHT THE HECK GAME DESIGNEERRS??!?1?
+gem 'active_record_union', '~> 1.2.0' # because active record doesnt have an OR method ...
 
 gem 'pg', '0.18.4'
 
@@ -100,7 +101,7 @@ gem 'kaminari', '~> 1.1.1'
 # JSON API authentication with JWT
 gem 'knock', '~> 1.4.1'
 
-gem 'rubyzip', '>= 1.2.1'
+gem 'rubyzip', '>= 1.2.2'
 
 gem 'jstree-rails-4', '3.3.4'
 
