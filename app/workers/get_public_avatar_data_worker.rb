@@ -20,7 +20,7 @@ class GetPublicAvatarDataWorker
       end
 
       user.username ||= json["displayName"]
-      user.avatar ||= "https://seccdn.libravatar.org/avatar/#{md5}.png"
+      user.avatar ||= "https://gravatar.com/avatar/#{md5}.png"
 
       user.save(validate: false)
     end
