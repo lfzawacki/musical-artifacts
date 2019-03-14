@@ -317,7 +317,7 @@ en:
 
       call_for_action: "But how can you help?"
       creation: ~
-      creation_description: "So you created some cool musical resource and want to share it which other artists?"
+      creation_description: "So you created some cool musical resource and want to share it with other artists?"
       description: "Helping to catalogue, preserve and free the artifacts you need to produce music."
       documentation: "Read the wiki for the 'long story'"
       documentation_url: https://github.com/lfzawacki/musical-artifacts/wiki/Home
