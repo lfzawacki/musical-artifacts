@@ -11,7 +11,7 @@ gem 'ruby_dep', '1.3'
 gem 'nokogiri', '~> 1.8.2'
 
 gem 'rack', '~> 1.6.2'
-gem 'rails', '~> 4.2.8'
+gem 'rails', '~> 4.2.11.1'
 gem 'active_record_union', '~> 1.2.0' # because active record doesnt have an OR method ...
 
 gem 'pg', '0.18.4'
