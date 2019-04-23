@@ -8,7 +8,7 @@ gem 'hashie', '~> 3.4.6'
 gem 'has_scope', '0.6.0'
 gem 'listen', '3.0.8'
 gem 'ruby_dep', '1.3'
-gem 'nokogiri', '~> 1.8.5'
+gem 'nokogiri', '~> 1.10.3'
 
 gem 'rack', '~> 1.6.11'
 gem 'rails', '~> 4.2.11.1'
