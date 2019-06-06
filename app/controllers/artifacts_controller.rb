@@ -112,7 +112,7 @@ class ArtifactsController < InheritedResources::Base
 
     def load_licenses
       @free_licenses = License.where(free: true).map(&:license_for_group_select).sort_by(&:first)
-      @non_free_licenses = License.where(free: false).map(&:license_for_group_select).sort_by(&:first)
+      @non_free_licenses = License.where(free: [false, nil]).map(&:license_for_group_select).sort_by(&:first)
     end
 
     def load_tag_filters

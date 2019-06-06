@@ -31,7 +31,11 @@ class License < ActiveRecord::Base
   end
 
   def image_url small=false
-    License.type_image(short_name, small)
+    if license_type == 'cc'
+      License.type_image(name_parts.join('-'), small)
+    else
+      License.type_image(short_name, small)
+    end
   end
 
   # Override find to use the shortname and then try the ID
@@ -53,12 +57,26 @@ class License < ActiveRecord::Base
   # Split a CC license name in it's parts
   #   For example:
   #     by     -> ['by']
-  #     nd     -> ['by', 'nd']
+  #     by_nd  -> ['by', 'nd']
+  #     by_3   -> ['by', '3']
   def name_parts
     if license_type == 'cc'
-      short_name.split('-')
+      short_name.split('-').select { |p| License.is_text_part?(p) }
     else
       []
+    end
+  end
+
+  # Return the CC license number based on it's parts
+  #  For example:
+  #    by       -> 4
+  #    by_3     -> 3
+  #    by_sa_3  -> 3
+  #    by_nd    -> 4
+  def cc_license_number
+    if license_type == 'cc'
+      last = short_name.split('-')[-1]
+      License.is_text_part?(last) ? 4 : 3
     end
   end
 
@@ -69,6 +87,11 @@ class License < ActiveRecord::Base
     else
       File.exists?(File.join(Rails.root, 'app/assets/images/', filename))
     end
+  end
+
+  # Test if a part of the CC license is the version number
+  def License.is_text_part? part
+    part.to_i.to_s != part
   end
 
 end

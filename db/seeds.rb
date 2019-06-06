@@ -13,6 +13,13 @@ License.create short_name: 'by-nc-sa', license_type: 'cc', name: 'Creative Commo
 License.create short_name: 'by-nc-nd', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 4.0'
 License.create short_name: 'cc-sample', license_type: 'cc', name: 'Creative Commons Sampling Plus 1.0', free: true
 
+License.create short_name: 'by-3', license_type: 'cc', name: 'Creative Commons Attribution 3.0', free: true
+License.create short_name: 'by-sa-3', license_type: 'cc', name: 'Creative Commons Attribution-ShareAlike 3.0', free: true
+License.create short_name: 'by-nd-3', license_type: 'cc', name: 'Creative Commons Attribution-NoDerivs 3.0'
+License.create short_name: 'by-nc-3', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial 3.0'
+License.create short_name: 'by-nc-sa-3', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial-ShareAlike 3.0'
+License.create short_name: 'by-nc-nd-3', license_type: 'cc', name: 'Creative Commons Attribution-NonCommercial-NoDerivs 3.0'
+
 License.create short_name: 'copyright', license_type: 'copyright', name: 'Copyright'
 
 License.create short_name: 'copyleft', license_type: 'gpl', name: 'Copyleft', free: true

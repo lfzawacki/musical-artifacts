@@ -113,6 +113,7 @@ fr:
       wtfpl: http://sam.zoy.org/lprab/
     text:
       cc: Creative Commons %{parts} 4.0 International
+      cc_3: Creative Commons %{parts} 3.0 Unported
       cc_sample: Creative Commons Sampling+ 1.0
       copyleft: Certains droits réservés à %{author}
       copyright: Tous droits réservés à %{author}
@@ -148,6 +149,13 @@ fr:
       by_nc_sa: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
       by_nc_nd: Creative Commons Attribution-NonCommercial-NoDerivs 4.0
 
+      by_3: Creative Commons Attribution 4.0
+      by_sa_3: Creative Commons Attribution-ShareAlike 4.0
+      by_nd_3: Creative Commons Attribution-NoDerivs 4.0
+      by_nc_3: Creative Commons Attribution-NonCommercial 4.0
+      by_nc_sa_3: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+      by_nc_nd_3: Creative Commons Attribution-NonCommercial-NoDerivs 4.0
+
       copyright: Tous droits réservés
 
       copyleft: Copyleft
@@ -169,6 +177,12 @@ fr:
       by_nc: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
       by_nc_sa: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
       by_nc_nd: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+
+      by_nd_3: 'https://www.gnu.org/licenses/license-list.html#CC-BY-ND'
+      by_nc_3: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      by_nc_sa_3: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      by_nc_nd_3: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+
       copyright: ''
       gray: 'https://www.gnu.org/licenses/license-list.html#NoLicense'
       various: 'https://www.gnu.org/licenses/license-list.html#NoLicense'

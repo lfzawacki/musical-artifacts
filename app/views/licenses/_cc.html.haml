@@ -5,7 +5,14 @@
 - parts = artifact.license.name_parts.map do |part|
   - t("licenses.#{small ? 'small_' : ''}name_parts.#{part}")
 
-- text = t("licenses.text.cc", parts: parts.join('-'))
+- number = artifact.license.cc_license_number
+
+- license_translation = if number == 3
+  - "licenses.text.cc_3"
+- else
+  - "licenses.text.cc"
+
+- text = t(license_translation, parts: parts.join('-'))
 
 - if small
   = link_to img, artifacts_path(license: artifact.license.short_name)
@@ -20,4 +27,3 @@
 
     - artifact.license.name_parts.each do |part|
       %span.label.license-label.label-default= t("licenses.parts.#{part}")
-

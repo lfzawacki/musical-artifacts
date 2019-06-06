@@ -101,6 +101,7 @@ en:
       wtfpl: http://www.wtfpl.net/about/
     text:
       cc: Creative Commons %{parts} 4.0 International
+      cc_3: Creative Commons %{parts} 3.0 Unported
       cc_sample: Creative Commons Sampling+ 1.0
       copyleft: Some rights reserved to %{author}
       copyright: All Rights Reserved to %{author}
@@ -136,6 +137,13 @@ en:
       by_nc_sa: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
       by_nc_nd: Creative Commons Attribution-NonCommercial-NoDerivs 4.0
 
+      by_3: Creative Commons Attribution 3.0 Unported
+      by_sa_3: Creative Commons Attribution-ShareAlike 3.0 Unported
+      by_nd_3: Creative Commons Attribution-NoDerivs 3.0 Unported
+      by_nc_3: Creative Commons Attribution-NonCommercial 3.0 Unported
+      by_nc_sa_3: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported
+      by_nc_nd_3: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported
+
       copyright: All Rights Reserved
 
       copyleft: Copyleft
@@ -157,6 +165,12 @@ en:
       by_nc: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
       by_nc_sa: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
       by_nc_nd: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+
+      by_nd_3: 'https://www.gnu.org/licenses/license-list.html#CC-BY-ND'
+      by_nc_3: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      by_nc_sa_3: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+      by_nc_nd_3: 'https://www.gnu.org/licenses/license-list.html#CC-BY-NC'
+
       copyright: ''
       gray: 'https://www.gnu.org/licenses/license-list.html#NoLicense'
       various: 'https://www.gnu.org/licenses/license-list.html#NoLicense'
