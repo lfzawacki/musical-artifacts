@@ -370,12 +370,6 @@ en:
 
       paypal_alt: Donate via Paypal
 
-    coinhive_donation:
-      donate: Donate CPU
-      start: Start
-      stop: Stop
-      fallback: "CPU donation couldn't be loaded, consider unblocking it."
-
     optout:
       title: Opt-out from Traffic Analytics
       description_html: "For more information about the website's data collection policies read <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">this page</a>."

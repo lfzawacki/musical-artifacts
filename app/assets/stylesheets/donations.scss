@@ -9,22 +9,15 @@
   }
 
   ul {
-    list-style: none;
     padding: 1em 0 0.5em 0;
     display: inline;
-    list-style-type: none;
-    overflow: hidden;
-    text-align: center;
   }
 
   li {
-    display: inline-block;
-    padding: 0.8em 0.5em 0.8em 0;
+    display: ruby-text;
   }
 
   .my-music {
-    padding-top: 1em;
-
     a {
       font-weight: bold;
     }
@@ -32,63 +25,11 @@
 
   .description {
     font-size: 1.1em;
+    margin-bottom: 1em;
   }
 
   .more-details {
     font-size: 0.9em;
-  }
-
-  .coinhive {
-    width: 50%;
-  }
-
-  /* Coinhive stuff */
-  .coinhive-logo {
-    margin-right: 2em;
-  }
-
-  .coinhive-name {
-    color: #1E9EE0;
-  }
-
-  .coinhive-activate.not-active {
-    pointer-events: none;
-    cursor: default;
-    color: #999;
-  }
-
-  .coinhive-stopped {
-    margin-right: 1.15em;
-  }
-
-  .coinhive-started, .coinhive-stopped, .coinhive-cpu {
-    display: none;
-  }
-
-  .coinhive-disabled {
-    font-size: 80%;
-    font-weight: bold;
-  }
-
-  .coinhive-cpu {
-
-    .percentage {
-      font-weight: bold;
-      width: 5em;
-      text-align: center;
-      float: left;
-    }
-
-    .donate-more {
-      padding-left: 0.5em;
-      font-size: 115%;
-    }
-
-    .donate-less {
-      padding-left: 0.5em;
-      font-size: 115%;
-    }
-
   }
 
 }

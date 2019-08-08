@@ -391,12 +391,6 @@ pt-BR:
 
       paypal_alt: Doar via Paypal
 
-    coinhive_donation:
-      donate: Doar CPU
-      start: Iniciar
-      stop: Parar
-      fallback: "Doação de CPU não pode ser carregada, considere desbloqueá-la."
-
     optout:
       title: Opt-out da análise de tráfego
       description_html: "Para mais informações sobre a política de coleta de dados do website leia <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">esta página</a>."
