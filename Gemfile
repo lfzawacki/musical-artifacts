@@ -123,6 +123,7 @@ gem 'omniauth-soundcloud', '1.0.1'
 gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.2.8'
 gem 'omniauth-linuxfr', '2.0.0'
+gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 
 # Notifications
 gem 'pnotify-rails', '~> 3.0.0'
