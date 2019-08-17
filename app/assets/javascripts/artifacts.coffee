@@ -331,9 +331,6 @@ $(document).on 'page:change', ->
     $('form#artifact_search_form').submit ->
       updateFormParameters()
 
-  dm = new DonationMiner()
-  dm.bind()
-
   # ------ search filters
   for filter in artifact_search_fields
     $("input.filter[name='checkbox_#{filter}']").attr('checked', String(window.location).match(filter + '='))
