@@ -14,10 +14,13 @@
   }
 
   li {
-    display: ruby-text;
+    display: -webkit-inline-flex;
+    margin-right: 1em;
   }
 
   .my-music {
+    margin-top: 1em;
+
     a {
       font-weight: bold;
     }
