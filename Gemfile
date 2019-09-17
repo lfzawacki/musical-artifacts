@@ -127,3 +127,6 @@ gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 
 # Notifications
 gem 'pnotify-rails', '~> 3.0.0'
+
+# Cookies
+gem 'cookies_eu'

@@ -402,3 +402,8 @@ pt-BR:
       last: Última »
       first: « Primeira
       previous: ‹ Anterior
+
+  cookies_eu:
+    cookies_text: "Cookies nos ajudam a oferecer os nossos serviços. Ao utilizar este serviço, você aceita o uso destes cookies."
+    learn_more: "Mais informações"
+    ok: "OK"

@@ -44,6 +44,8 @@
 
 @import "donations";
 
+@import "cookies_eu";
+
 .noscript.alert {
   color: #aa0000;
   font-size: 120%;
@@ -1222,4 +1224,9 @@ footer {
     margin: 0 auto;
     display: block;
   }
+}
+
+.cookies-eu-ok {
+  background-color: $hot !important;
+  color: $dark !important;
 }

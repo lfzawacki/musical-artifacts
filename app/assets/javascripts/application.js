@@ -13,6 +13,7 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require cookies_eu
 //= require turbolinks
 
 //= require rails-timeago
