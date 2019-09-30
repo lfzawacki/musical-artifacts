@@ -46,14 +46,16 @@ class Searches
 
   def self.artifacts_tagged_with artifacts, terms
     if terms.present?
-      artifacts = artifacts.tagged_with(split_terms(terms), on: 'tags')
+      terms = split_terms(terms).first(max_taggings_on_search)
+      artifacts = artifacts.tagged_with(terms, on: 'tags')
     end
     artifacts
   end
 
   def self.artifacts_app_tagged_with artifacts, terms
     if terms.present?
-      artifacts = artifacts.tagged_with(split_terms(terms), on: 'software')
+      terms = split_terms(terms).first(max_taggings_on_search)
+      artifacts = artifacts.tagged_with(terms, on: 'software')
     end
     artifacts
   end
@@ -83,15 +85,9 @@ class Searches
     artifacts
   end
 
-  def self.artifacts_with_file_format artifacts, formats
-    if formats.present?
-      with_format = Artifact.none
-
-      split_terms(formats).each do |term|
-        with_format = with_format.union(artifacts.tagged_with(term, on: 'file_formats'))
-      end
-
-      artifacts = with_format
+  def self.artifacts_with_file_format artifacts, format
+    if format.present?
+      artifacts = artifacts.tagged_with(format, on: 'file_formats')
     end
     artifacts
   end
@@ -101,5 +97,9 @@ class Searches
   # Split ignoring spaces
   def self.split_terms terms
     terms.split(/\s*,\s*/)
+  end
+
+  def self.max_taggings_on_search
+    10
   end
 end

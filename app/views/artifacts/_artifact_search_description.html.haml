@@ -3,7 +3,7 @@
 - if (params.keys & ['apps', 'tags', 'formats', 'license']).present?
   .tags-description.pad-bottom
     = t('.filtering')
-    - ['apps', 'tags', 'formats'].each do |field|
+    - ['apps', 'tags'].each do |field|
       - if params[field].present?
         - split_params = split_param_terms(params[field])
         - split_params.each do |tag|
@@ -19,6 +19,13 @@
 
           %span.label-delete= link_to '×', artifacts_path(new_search)
           .label.label-big{class: "label-#{field.singularize}"}= tag
+
+    - if params[:formats].present?
+      - new_search = params.slice(*search_fields)
+      - new_search.delete('formats')
+
+      %span.label-delete= link_to '×', artifacts_path(new_search)
+      .label.label-big{class: "label-format"}= params[:formats]
 
     - if params[:license].present?
 
