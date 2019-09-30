@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'thin'
+
 gem 'rails-html-sanitizer', '>= 1.0.4'
 gem 'sprockets', '>= 3.7.2'
 gem 'sprockets-rails', '3.1.1'
