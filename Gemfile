@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'thin'
-
 gem 'rails-html-sanitizer', '>= 1.0.4'
 gem 'sprockets', '>= 3.7.2'
 gem 'sprockets-rails', '3.1.1'
@@ -70,6 +68,8 @@ group :development, :test do
   gem 'codeclimate-test-reporter', '0.4.8', require: nil
 
   gem 'bullet', '~> 5.4.3'
+
+  gem 'thin'
 end
 
 # My gems
@@ -103,7 +103,7 @@ gem 'kaminari', '~> 1.1.1'
 # JSON API authentication with JWT
 gem 'knock', '~> 1.4.1'
 
-gem 'rubyzip', '>= 1.2.2'
+gem 'rubyzip', '>= 1.3.0'
 
 gem 'jstree-rails-4', '3.3.4'
 
