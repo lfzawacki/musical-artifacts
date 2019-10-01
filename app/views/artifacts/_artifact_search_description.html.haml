@@ -5,7 +5,7 @@
     = t('.filtering')
     - ['apps', 'tags'].each do |field|
       - if params[field].present?
-        - split_params = split_param_terms(params[field])
+        - split_params = split_param_terms(params[field]).first(Searches.max_taggings_on_search)
         - split_params.each do |tag|
 
           - # TODO: this is getting ugly fast, refactor into helpers
