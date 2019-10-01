@@ -25,7 +25,7 @@
       - new_search.delete('formats')
 
       %span.label-delete= link_to '×', artifacts_path(new_search)
-      .label.label-big{class: "label-format"}= params[:formats]
+      .label.label-big.label-format= params[:formats]
 
     - if params[:license].present?
 
@@ -33,7 +33,11 @@
       - if params[:license] == 'free'
         .label.label-big.label-default= t('.free_licenses')
       - else
-        = image_tag License.type_image(params[:license], true)
+        - img = License.type_image(params[:license], true)
+        - if img
+          = image_tag img
+        - else
+          .label.label-big.label-default= params[:license]
 
 
 - if (params[:q].present? || params[:page].present?)

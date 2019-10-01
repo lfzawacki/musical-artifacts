@@ -6,16 +6,19 @@ class License < ActiveRecord::Base
   end
 
   # TODO: Maybe move this whole code to attributes in the database?
-  def self.type_image type, small=false
-    name = type
-
+  def self.type_image name, small=false
     # All gpls use the same image
     if name.match(/gpl/)
       name = 'gpl'
     end
 
+    # Fix different versions of CC licenses
+    if name.match(/^by/) && cc_license_number(name) == 3
+      name = name.split('-')[0...-1].join('-')
+    end
+
     img = "licenses/#{name}#{small ? '-small' : ''}"
-    extension = 'svg'
+    extension = nil
 
     # find the correct image extension
     ['svg', 'png', 'jpg'].each do |ext|
@@ -23,7 +26,7 @@ class License < ActiveRecord::Base
     end
 
     # Return full image path
-    "#{img}.#{extension}"
+    "#{img}.#{extension}" if extension
   end
 
   def self.type_name type
@@ -67,16 +70,10 @@ class License < ActiveRecord::Base
     end
   end
 
-  # Return the CC license number based on it's parts
-  #  For example:
-  #    by       -> 4
-  #    by_3     -> 3
-  #    by_sa_3  -> 3
-  #    by_nd    -> 4
+  # See docs below
   def cc_license_number
     if license_type == 'cc'
-      last = short_name.split('-')[-1]
-      License.is_text_part?(last) ? 4 : 3
+      License.cc_license_number(short_name)
     end
   end
 
@@ -92,6 +89,17 @@ class License < ActiveRecord::Base
   # Test if a part of the CC license is the version number
   def License.is_text_part? part
     part.to_i.to_s != part
+  end
+
+  # Return the CC license number based on it's parts
+  #  For example:
+  #    by       -> 4
+  #    by_3     -> 3
+  #    by_sa_3  -> 3
+  #    by_nd    -> 4
+  def self.cc_license_number short_name
+    last = short_name.split('-')[-1]
+    is_text_part?(last) ? 4 : 3
   end
 
 end

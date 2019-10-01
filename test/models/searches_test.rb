@@ -238,12 +238,20 @@ class SearchesTest < ActiveSupport::TestCase
     assert_kind_of ActiveRecord::Relation, search
   end
 
-  test "#artifacts_licensed_as (public, by) inclusive" do
-    search = Searches::artifacts_licensed_as(@scope, 'public, by')
+  # No more tests for searches of 2 licenses because we can only search for one at a time now
+  test "#artifacts_licensed_as (public)" do
+    search = Searches::artifacts_licensed_as(@scope, 'public')
 
-    assert search.count, 2
-    assert_includes search, @artifacts[0]
+    assert search.count, 1
     assert_includes search, @artifacts[1]
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_licensed_as (by)" do
+    search = Searches::artifacts_licensed_as(@scope, 'by')
+
+    assert search.count, 1
+    assert_includes search, @artifacts[0]
     assert_kind_of ActiveRecord::Relation, search
   end
 
@@ -280,11 +288,11 @@ class SearchesTest < ActiveSupport::TestCase
     assert_kind_of ActiveRecord::Relation, search
   end
 
-  test "#artifacts_with_file_format (zip, rar) inclusive" do
-    search = Searches::artifacts_with_file_format(@scope, 'zip, rar')
+  # Changing this test because we don't have inclusive searches for formats anymore
+  test "#artifacts_with_file_format (rar)" do
+    search = Searches::artifacts_with_file_format(@scope, 'rar')
 
-    assert_equal search.count, 2
-    assert_includes search, @artifacts[2]
+    assert_equal search.count, 1
     assert_includes search, @artifacts[3]
     assert_kind_of ActiveRecord::Relation, search
   end
