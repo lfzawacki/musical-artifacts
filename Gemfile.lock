@@ -325,7 +325,7 @@ GEM
     public_suffix (3.0.3)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.6.11)
+    rack (1.6.12)
     rack-protection (1.5.5)
       rack
     rack-test (0.6.3)
@@ -500,7 +500,7 @@ DEPENDENCIES
   pnotify-rails (~> 3.0.0)
   public_activity (~> 1.4.2)
   quiet_assets (~> 1.1.0)
-  rack (~> 1.6.11)
+  rack (~> 1.6.12)
   rack-throttle (~> 0.4.0)
   rails (~> 4.2.11.1)
   rails-html-sanitizer (>= 1.0.4)

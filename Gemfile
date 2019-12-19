@@ -10,7 +10,7 @@ gem 'listen', '3.0.8'
 gem 'ruby_dep', '1.3'
 gem 'nokogiri', '>= 1.10.4'
 
-gem 'rack', '~> 1.6.11'
+gem 'rack', '~> 1.6.12'
 gem 'rails', '~> 4.2.11.1'
 gem 'active_record_union', '~> 1.2.0' # because active record doesnt have an OR method ...
 
