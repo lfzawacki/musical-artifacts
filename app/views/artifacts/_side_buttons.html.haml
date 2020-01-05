@@ -25,7 +25,7 @@
   - if can?(:download, artifact) && artifact.file.try(:url)
     = download_link(artifact, class: 'btn-download') do
       %span.side-button.download-count.btn.btn-default
-        = artifact.download_count
+        = number_with_delimiter(artifact.download_count)
         %i.fa.fa-download
         .small-label
           = t('.download')
