@@ -11,5 +11,8 @@
           = image_tag Rails.application.secrets.donations[method]['shield'], alt: t(".#{method}_alt")
           = method.capitalize
 
-  .my-music
-    = t('.extra_my_music_html')
+  %figure.my-music
+    = link_to 'https://open.spotify.com/album/6Nxs7Ocf7YnP7CUiIfSu7O' do
+      = image_tag 'music/cover.jpg', width: 150, id: 'cover-image'
+    %figcaption
+      = t('.extra_my_music_html')

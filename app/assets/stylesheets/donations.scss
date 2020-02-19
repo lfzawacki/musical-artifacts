@@ -24,6 +24,14 @@
     a {
       font-weight: bold;
     }
+
+    img {
+      display: block;
+      margin: 0 auto 0.5em auto;
+    }
+    figcaption {
+      text-align: center;
+    }
   }
 
   .description {
