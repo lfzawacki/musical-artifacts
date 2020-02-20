@@ -7,12 +7,12 @@
   %ul.donation-methods
     - ['paypal', 'bitcoin'].each do |method|
       %li{class: method}
-        = link_to Rails.application.secrets.donations[method]['url'] do
+        = link_to Rails.application.secrets.donations[method]['url'], target: '_blank' do
           = image_tag Rails.application.secrets.donations[method]['shield'], alt: t(".#{method}_alt")
           = method.capitalize
 
   %figure.my-music
-    = link_to 'https://open.spotify.com/album/6Nxs7Ocf7YnP7CUiIfSu7O' do
+    = link_to 'https://open.spotify.com/album/6Nxs7Ocf7YnP7CUiIfSu7O', target: '_blank' do
       = image_tag 'music/cover.jpg', width: 150, id: 'cover-image'
     %figcaption
       = t('.extra_my_music_html')
