@@ -103,8 +103,7 @@
             .footer-col.col-md-3
               %h3= t('.footer.legal')
               %h4
-                %a{href: 'https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions'}
-                  = t('.footer.terms')
+                = link_to t('.footer.terms'), terms_and_conditions_path
 
               #opt-out= link_to t('info.optout.title'), analytics_optout_path
 

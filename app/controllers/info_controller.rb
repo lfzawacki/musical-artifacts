@@ -13,4 +13,7 @@ class InfoController < ApplicationController
   def survey
   end
 
+  def terms_and_conditions
+  end
+
 end
