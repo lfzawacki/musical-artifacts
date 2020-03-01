@@ -2,6 +2,6 @@
 
 #auth-providers
   - Rails.application.config.omniauth_providers.each do |provider|
-    = link_to user_omniauth_authorize_path(provider: provider, method: :post) do
+    = link_to user_omniauth_authorize_path(provider: provider), method: :post do
       %i.fa{class: "fa-#{auth_provider_icon(provider)}"}
       = auth_provider_name(provider)
