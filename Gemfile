@@ -82,7 +82,7 @@ gem 'haml-rails', '~> 1.0.0'
 
 gem 'select2-rails', '3.5.9.1'
 
-gem 'devise', '~> 3.5.4'
+gem 'devise', '~> 4.7.1'
 
 gem 'activeadmin', '~> 1.1.0'
 
