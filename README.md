@@ -12,8 +12,6 @@ Helping to catalog, preserve and free the artifacts you need to produce music.
 
 [Issue Board](https://trello.com/b/ExTElvLv/musical-artifacts)
 
-Join our [Slack channel](https://musical-artifacts.slack.com/): Used for chit-chat and development coordination
-
 # What?
 
 Musical Artifacts is a web application with the objective of helping musicians find, share and preserve the 'artifacts' that they use for producing their music. It also aims to be a `de facto` guideline of how to best preserve these artifacts so that they're are useful to the biggest number of people possible.
