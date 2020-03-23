@@ -1,4 +1,11 @@
 language: ruby
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.4"
+
 bundler_args: "--without production development"
 
 before_script:
