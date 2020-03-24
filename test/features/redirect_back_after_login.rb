@@ -5,7 +5,7 @@ class RedirectBackAfterLogin < Capybara::Rails::TestCase
   setup do
     @setting = Setting.first
     @artifact = FactoryBot.create(:artifact)
-    @user = FactoryBot.create(:user, email: 'gene@strapping.yl', password: 'farbeyondmetal')
+    @user = FactoryBot.create(:user, username: 'gene', email: 'gene@strapping.yl', password: 'farbeyondmetal')
   end
 
   test "redirect to an artifact page" do
@@ -69,6 +69,7 @@ class RedirectBackAfterLogin < Capybara::Rails::TestCase
 
     click_link I18n.t('_other.signup')
 
+    fill_in 'user_username', with: 'jed'
     fill_in 'user_email', with: 'jed@strapping.yl'
     fill_in 'user_password', with: 'wrongside'
     fill_in 'user_password_confirmation', with: 'wrongside'
@@ -76,15 +77,21 @@ class RedirectBackAfterLogin < Capybara::Rails::TestCase
     click_button I18n.t('_other.signup')
 
     assert_equal current_path, new_artifact_path
+    assert_equal 200, page.status_code
+
+    assert_content page, I18n.t('layouts.application.current_user', user: 'jed')
   end
 
   test "redirect to artifacts path after logout" do
     login_with(@user, 'farbeyondmetal')
 
     visit my_artifacts_path
+    assert_equal current_path, my_artifacts_path
+    assert_equal 200, page.status_code
 
-    click_button I18n.t('_other.logout')
+    click_link I18n.t('_other.logout')
 
     assert_equal current_path, artifacts_path
+    assert_equal 200, page.status_code
   end
 end
