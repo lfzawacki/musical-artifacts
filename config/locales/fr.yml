@@ -94,7 +94,7 @@ fr:
       no_script_warning: "Javascript est désactivé. C'est tout bon, mais certaines fonctionnalités seront limitées."
 
     static_notification_space:
-      fisl17: Musical Artifacts will be at the International Free Software Forum (FISL17)!
+      fisl17: Musical Artifacts sera présent au Forum international du logiciel libre (FISL17) !!
 
   auth_callbacks:
     email_error: "Le courriel entré est déjà pris ou est invalide. Réessayez avec un autre fournisseur ou utilisez \'Mot de passe oublié ?\'"
@@ -276,7 +276,7 @@ fr:
   notifications:
     survey:
       title: Musical Artifacts Survey
-      text: 'Want to help make the website better? Fill <a href="https://docs.google.com/forms/d/1VUGsBj1AUJgqiSZLelqERINbkfFJN4KTqG5KNfbIbrA/viewform" target="_blank">this survey</a> and tell us what new features and content you want to see on the website!'
+      text: 'Vous voulez aider à améliorer le site ouèbe ? Remplissez <a href="https://docs.google.com/forms/d/1VUGsBj1AUJgqiSZLelqERINbkfFJN4KTqG5KNfbIbrA/viewform" target="_blank">cette enquête</a> et dites-nous quelles sont les nouvelles fonctionnalités et le contenu que vous souhaitez voir sur le site!'
     app_integration:
       integrations_url: "https://github.com/lfzawacki/musical-artifacts/wiki/Integrations#%{app}"
       title: "Intégration logiciel"
@@ -388,22 +388,22 @@ fr:
       description_html: "Pour davantage d'information à propos des pratiques de collection des données de ce site, lisez <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">cette page</a>."
 
     terms_and_conditions:
-      acceptance_title: Acceptance Clause
-      acceptance_text_html: "By accessing and using Musical Artifacts, you accept and agree to be bound by the terms and provision of this Agreement. <strong>Any participation in this service will constitute acceptance of this Agreement. If you do not agree to abide by the above, please do not use this service</strong>"
-      privacy_title: Privacy Policy and Data Collection Clause
-      privacy_text_1: "User accounts created on the site are identified only by an email address. This data will only be used to the extent that it's needed to operate the service and will not be shared with third parties under any circumstance."
-      privacy_text_2: "When you visit Musical Artifacts, the pages that you look at and a short text file called a cookie, are downloaded to your computer. Cookies are used to store small amounts of information and is used as part of the login process, translation and traffic analysis for the Site. The cookies do not contain personal details. Depending on the browser that you use, you can set your preferences to block/ refuse cookies, and/ or notify you before they are placed."
-      privacy_text_3_html: "Musical Artifact reserves the right collect access information, e.g IP addresses, sent by the users when accessing the Site. This data is anonymized and collected for traffic analysis purposes only. We respect the visitors' browsers \"DoNotTrack\" setting and if it's configured we'll not collect any access data."
-      privacy_optout_html: "If you want to opt-out from this information collection you can do it by accessing <a href=\"https://musical-artifacts.com/analytics_optout\">this page</a>."
-      content_title: Content Clause
-      content_text_html: "Content submitted by users of the website, referred to as \"artifacts\", is licensed under the <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">Creative Commons — Attribution-ShareAlike 4.0 International — CC BY-SA 4.0 License</a>. This license extends to the meta-data associated with a specific file on the Site (e.g: title, description, hyper-links, ...), but not to the files themselves which have their authorship and licensing explicitly declared their respective pages on the Site."
-      warranty_title: Accuracy and Warranty Clause
-      warranty_text_1: "All content available on this Site is distributed without warranty and is presented for informational purposes only. This Site shall not be responsible or liable for the accuracy, usefulness or availability of any information transmitted or made available via the Site, and shall not be responsible or liable for any error or omissions in that information."
-      warranty_text_2: "Content on the website is submitted by users. The website may contain links to other websites, resources or computer programs of interest. However, once you have used these links to leave the website, you should note that Musical Artifacts does not have any control over those other websites. Therefore, Musical Artifacts owners cannot be responsible for the protection and privacy of any information which you provide whilst visiting such sites, or potential malicious software distributed through them. You should exercise caution and look at the privacy statement applicable to the website in question, take appropriate measures to keep your computer secure, and check the legitimacy of downloaded files."
+      acceptance_title: Clause d'acceptation
+      acceptance_text_html: "En accédant et en utilisant les Artefacts musicaux, vous acceptez et consentez à être lié par les termes et les dispositions du présent accord. <strong>Toute participation à ce service constitue une acceptation du présent accord. Si vous n'acceptez pas de vous conformer à ce qui précède, veuillez ne pas utiliser ce service</strong>"
+      privacy_title: Politique de confidentialité et clause de collecte des données
+      privacy_text_1: "Les comptes d'utilisateurs créés sur le site sont identifiés uniquement par une adresse électronique. Ces données ne seront utilisées que dans la mesure où elles sont nécessaires au fonctionnement du service et ne seront en aucun cas partagées avec des tiers."
+      privacy_text_2: "Lorsque vous visitez le site Musical Artifacts, les pages que vous voyiez et un petit fichier texte appelé "cookie" sont téléchargés sur votre ordinateur. Les cookies servent à stocker de petites quantités d'informations et sont utilisés dans le cadre du processus de connexion, de la traduction et de l'analyse du trafic du site. Les cookies ne contiennent pas de données personnelles. En fonction du navigateur que vous utilisez, vous pouvez définir vos préférences pour bloquer/refuser les cookies et/ou vous avertir avant qu'ils ne soient placés."
+      privacy_text_3_html: "Musical Artifact se réserve le droit de collecter les informations d'accès, par exemple les adresses IP, envoyées par les utilisateurs lors de l'accès au site. Ces données sont rendues anonymes et collectées uniquement à des fins d'analyse du trafic. Nous respectons le réglage \"DoNotTrack\" du navigateur des visiteurs et, s'il est configuré, nous ne collectons aucune donnée d'accès."
+      privacy_optout_html: "Si vous souhaitez ne pas participer à cette collecte d'informations, vous pouvez le faire en accédant à <a href=\"https://musical-artifacts.com/analytics_optout\">cette page</a>."
+      content_title: Clause de contenu
+      content_text_html: "Le contenu soumis par les utilisateurs du site ouèbe, appelé \"artefacts\", est sous licence <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">Creative Commons - Attribution-ShareAlike 4.0 International - Licence CC BY-SA 4.</a>. Cette licence s'étend aux méta-données associées à un fichier spécifique sur le site (par exemple : titre, description, liens hypertextes, ...), mais pas aux fichiers eux-mêmes qui ont leur auteur et leur licence explicitement déclarés sur leurs pages respectives du site."
+      warranty_title: Précision et clause de garantie
+      warranty_text_1: "Tout le contenu disponible sur ce site est distribué sans garantie et est présenté uniquement à titre d'information. Le présent site ne peut être tenu responsable de l'exactitude, de l'utilité ou de la disponibilité de toute information transmise ou mise à disposition via le site, et ne peut être tenu responsable de toute erreur ou omission dans cette information."
+      warranty_text_2: "Le contenu du site ouèbe est soumis par les utilisateurs. Le site ouèbe peut contenir des liens vers d'autres sites ouèbe, ressources ou programmes informatiques d'intérêt. Toutefois, une fois que vous avez utilisé ces liens pour quitter le site ouèbe, vous devez noter que Musical Artifacts n'a aucun contrôle sur ces autres sites ouèbe. Par conséquent, les propriétaires de Musical Artifacts ne peuvent être tenus responsables de la protection et de la confidentialité des informations que vous fournissez en visitant ces sites, ni des logiciels malveillants potentiels distribués par leur intermédiaire. Vous devez faire preuve de prudence et consulter la déclaration de confidentialité applicable au site ouèbe en question, prendre les mesures appropriées pour assurer la sécurité de votre ordinateur et vérifier la légitimité des fichiers téléchargés."
       termination_title: Account Termination Clause
-      termination_text: "We reserve the right to terminate user accounts without cause or notice, which may result in the forfeiture and destruction of all information associated with the account. All provisions of this Agreement that, by their nature, should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability."
-      change_title: Change of Provisions Clause
-      change_text: "Musical Artifacts reserves the right to change these conditions from time to time as it sees fit and your continued use of the site will signify your acceptance of any adjustment to these terms. You are therefore advised to re-read this statement on a regular basis. If there are any changes in how we use our site users' data, notification by email will be made to those affected by the change."
+      termination_text: "Nous nous réservons le droit de résilier les comptes d'utilisateur sans motif ni préavis, ce qui peut entraîner la confiscation et la destruction de toutes les informations associées au compte. Toutes les dispositions du présent accord qui, de par leur nature, devraient survivre à la résiliation survivront à la résiliation, y compris, sans limitation, les dispositions relatives à la propriété, les exclusions de garantie, l'indemnisation et les limitations de responsabilité."
+      change_title: Clause de changement de dispositions
+      change_text: "Musical Artifacts se réserve le droit de modifier ces conditions de temps à autre, comme il le juge approprié, et votre utilisation continue du site signifiera votre acceptation de toute modification de ces conditions. Il vous est donc conseillé de relire régulièrement cette déclaration. En cas de changement dans la manière dont nous utilisons les données des utilisateurs de notre site, une notification par courriel sera envoyée aux personnes concernées par ce changement."
 
   views:
     pagination:
