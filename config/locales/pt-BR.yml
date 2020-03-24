@@ -395,6 +395,24 @@ pt-BR:
       title: Opt-out da análise de tráfego
       description_html: "Para mais informações sobre a política de coleta de dados do website leia <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">esta página</a>."
 
+    terms_and_conditions:
+      acceptance_title: Cláusula de Aceite
+      acceptance_text_html: "Ao acessar e usar o Musical Artifacts, você aceita e concorda em ficar vinculado aos termos e disposições deste Contrato. <strong> Qualquer participação neste serviço constituirá aceitação deste Contrato. Se você não concorda em cumprir o disposto acima, não use este serviço</strong>."
+      privacy_title: Política de Privacidade e Cláusula de Coleta de Dados
+      privacy_text_1: "As contas de usuário criadas no website são identificadas apenas por um endereço de email. Esses dados serão usados apenas na medida em que forem necessários para operar o serviço e não serão compartilhados com terceiros sob nenhuma circunstância."
+      privacy_text_2: "Quando você visita o Musical Artifacts, as páginas que você vê e um pequeno arquivo de texto chamado \"cookie\" são descarregados no seu computador. Os cookies são usados para armazenar pequenas quantidades de informações e fazem parte do processo de registro, tradução e análise de tráfego do website. Os cookies não contêm detalhes pessoais. Dependendo do navegador usado, você pode definir suas preferências para bloquear / recusar cookies e / ou notificá-lo antes que eles sejam armazenados."
+      privacy_text_3_html: "O Musical Artifacts armazena as informações de acesso coletadas, como por exemplo, endereços IP, enviados pelos usuários ao acessar o website. Esses dados são anonimizados e coletados apenas para fins de análise de tráfego. Respeitamos a configuração \"DoNotTrack\" dos navegadores dos visitantes e, se estiver configurada, não coletaremos nenhum dado de acesso."
+      privacy_optout_html: "Se você deseja optar por não participar desta coleção de dados, pode fazê-lo acessando <a href=\"https://musical-artifacts.com/analytics_optout\"> esta página </a>."
+      content_title: Cláusula de Conteúdo
+      content_text_html: "O conteúdo enviado pelos usuários do website, chamado de \"artefatos\", é licenciado sob <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\"> Creative Commons - Atribuição -ShareAlike 4.0 International - Licença CC BY-SA 4.0 </a>. Esta licença se estende aos metadados associados a um arquivo específico no website (por exemplo: título, descrição, hiperlinks, ...), mas não aos arquivos em si, cuja autoria e licenciamento são declarados explicitamente em suas respectivas páginas no website."
+      warranty_title: Cláusula de Precisão e Garantia
+      warranty_text_1: "Todo o conteúdo disponível neste website é distribuído sem garantia e é apresentado apenas para fins informativos. Este website não será responsável pela precisão, utilidade ou disponibilidade de qualquer informação transmitida ou disponibilizada através do website, e não será responsável por nenhum erro ou omissão nessas informações."
+      warranty_text_2: "O conteúdo do website é enviado pelos usuários. O site pode conter links para outros sites, recursos ou programas de computador de interesse. No entanto, depois de usar esses links para sair do website, observe que o Musical Artifacts não têm controle sobre esses outros sites. Portanto, os proprietários do Musical Artifacts não podem ser responsáveis pela proteção e privacidade de qualquer informação que você forneça ao visitar esses sites ou por um potencial software malicioso distribuído por eles. Você deve ter cuidado e examinar a declaração de privacidade aplicável ao site em questão, tomar as medidas apropriadas para manter seu computador seguro e verificar a legitimidade dos arquivos descarregados."
+      termination_title: Cláusula de Rescisão de Conta
+      termination_text: "Reservamo-nos o direito de encerrar contas de usuário sem causa ou aviso prévio, o que pode resultar na perda e destruição de todas as informações associadas à conta. Todas as disposições deste Contrato que, por sua natureza, devam sobreviver à rescisão deverão sobreviver à rescisão, incluindo, sem limitação, disposições de propriedade, isenções de garantia, indenização e limitações de responsabilidade."
+      change_title: Cláusula de Alteração de Disposições
+      change_text: "O Musical Artifacts se reserva o direito de alterar essas condições de tempos em tempos, conforme achar conveniente, e o uso continuado do website significará sua aceitação de qualquer ajuste nesses termos. Portanto, é aconselhável reler esta declaração regularmente. Se houver alguma alteração na forma como usamos os dados dos usuários do nosso site, uma notificação por email será feita às pessoas afetadas pela alteração."
+
   views:
     pagination:
       truncate: '...'
