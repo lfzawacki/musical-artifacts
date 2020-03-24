@@ -4,9 +4,7 @@ class Users::RegistrationsController < ActiveAdmin::Devise::RegistrationsControl
   before_action :permit_params
 
   def permit_params
-    devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:username, :email, :password, :password_confirmation)
-    end
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])
   end
 
 end
