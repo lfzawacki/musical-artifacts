@@ -15,6 +15,7 @@ if artifact.file.present?
   json.download_count artifact.download_count
   json.file artifact_download_url(artifact, artifact.file_name)
   json.file_list artifact.stored_files.last.file_list
+  json.file_id artifact.stored_files.last.id
 end
 
 if artifact.owned_by?(current_user)
