@@ -17,6 +17,10 @@ class Ability
         cannot [:favorite, :unfavorite], Artifact
       end
 
+      if user.donated?
+	can :preview, Artifact
+      end
+
       can [:edit, :update, :show, :download], Artifact do |artifact|
         artifact.owned_by?(user)
       end
