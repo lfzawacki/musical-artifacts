@@ -15,11 +15,14 @@ module FileExtractor
 
         # Search for the pattern for a sounfont preset, like this:
         # (0 "Acoustic Bass" (preset 0) (bank 0)
-        matches = content.scan(/\([0-9]+ "?([^"]*)"? \(preset ([0-9]+)\) \(bank [0-9]+\)/)
+        matches = content.scan(/\([0-9]+ "?([^"]*)"? \(preset ([0-9]+)\) \(bank ([0-9]+)\)/)
 
         matches.each do |preset|
-          preset_name = "#{sprintf "%03d", preset[1]} - #{preset[0].gsub(escape_characters, "\\\1")}"
-          list.unshift(preset_name)
+          preset_name = "#{sprintf "%03d", preset[2]}-#{sprintf "%03d", preset[1]} #{preset[0].gsub(escape_characters, "\\\1")}"
+
+          if preset[0] != 'EOP'
+            list.unshift(preset_name)
+          end
         end
 
         if content.blank? # probably sf2text is not present
