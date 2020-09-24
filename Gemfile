@@ -99,7 +99,7 @@ gem 'exception_notification', '~> 4.0.0'
 
 gem 'auto_html', git: 'https://github.com/lfzawacki/auto_html.git'
 
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 
 # JSON API authentication with JWT
 gem 'knock', '~> 1.4.1'
