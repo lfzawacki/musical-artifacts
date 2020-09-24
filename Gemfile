@@ -49,8 +49,9 @@ group :development, :test do
   # Testing gems
   gem 'm', '~> 1.3.1'
   gem 'minitest-reporters', '1.1.7'
-  gem 'minitest-rails-capybara', '2.1.1'
-  gem 'capybara', '2.6.0'
+  gem 'minitest-rails', '~> 2.2.1'
+  gem 'minitest-rails-capybara', '~> 2.1.2'
+  gem 'capybara', '~> 2.7'
   gem 'launchy', '2.4.3'
 
   gem 'ffi'
