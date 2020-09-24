@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+      - ./docker:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_PASSWORD: musical_artifacts
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis
+  web:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    build: .
+    #command: "psql -h db -c 'create database musical_artifacts_development' -U postgres; psql -h db -c 'create database musical_artifacts_test' -U postgres ; rm -f tmp/pids/server.pid && bundle exec rake db:reset"
+    #command: ["bundle", "exec", "rake", "db:create"]
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+
