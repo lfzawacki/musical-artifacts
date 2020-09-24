@@ -88,7 +88,8 @@ class ArtifactsController < InheritedResources::Base
       order_str = params[:order]
       direction = params[:asc] ? 'ASC' : 'DESC'
 
-      if ['top_rated', 'most_downloaded', 'name', 'created_at'].include?(order_str)
+      if ['top_rated', 'most_downloaded', 'name',
+          'created_at', 'updated_at'].include?(order_str)
         # Change param names to the actual database names
         # This only make for better URLs in the end
         search_str = case order_str
@@ -96,10 +97,8 @@ class ArtifactsController < InheritedResources::Base
           'favorite_count'
         when 'most_downloaded'
           'download_count'
-        when 'name'
-          'name'
-        when 'created_at'
-          'created_at'
+        else
+          order_str
         end
 
         @artifacts = @artifacts.order("#{search_str} #{direction}")

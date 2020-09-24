@@ -17,3 +17,7 @@
       = link_to t('.created_at_asc'), artifacts_path(current_params.merge(order: 'created_at', asc: 'true'))
     %li
       = link_to t('.created_at_desc'), artifacts_path(current_params.merge(order: 'created_at'))
+    %li
+      = link_to t('.updated_at_asc'), artifacts_path(current_params.merge(order: 'updated_at', asc: 'true'))
+    %li
+      = link_to t('.updated_at_desc'), artifacts_path(current_params.merge(order: 'updated_at'))
