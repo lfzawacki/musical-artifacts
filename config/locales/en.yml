@@ -85,7 +85,7 @@ en:
       fisl17: Musical Artifacts will be at the International Free Software Forum (FISL17)!
 
   auth_callbacks:
-    email_error: "The email entered was either already taken or invalid. Try again with another provider or use \'Forgot passsword?\'"
+    email_error: "The email entered was either already taken or invalid. Try again with another provider or use ''Forgot passsword?''"
     unknown_error: "Unknown error while trying to signup with %{provider}. Try again or test it with another provider."
 
   licenses:

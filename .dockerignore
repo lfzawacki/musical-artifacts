@@ -1,5 +1,15 @@
-./tmp
-./docker
+.DS_Store
+.bin
+.git
+.gitignore
+.bundleignore
+.bundle
+log
+test
+config/deploy
+tmp
+vendor/external_projects
+docker
 Dockerfile
 docker-compose.yml
 

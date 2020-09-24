@@ -97,7 +97,7 @@ fr:
       fisl17: Musical Artifacts sera présent au Forum international du logiciel libre (FISL17) !!
 
   auth_callbacks:
-    email_error: "Le courriel entré est déjà pris ou est invalide. Réessayez avec un autre fournisseur ou utilisez \'Mot de passe oublié ?\'"
+    email_error: "Le courriel entré est déjà pris ou est invalide. Réessayez avec un autre fournisseur ou utilisez ''Mot de passe oublié ?''"
     unknown_error: "Erreur inconnue lors de la tentative d'enregistrement avec %{provider}. Réessayez ou testez avec un autre fournisseur."
 
   licenses:

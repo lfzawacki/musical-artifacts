@@ -102,7 +102,7 @@ pt-BR:
       fisl17: Musical Artifacts vai estar no FISL17!
 
   auth_callbacks:
-    email_error: "O email que você digitou já está registrado ou é inválido. Tente com outro site ou use \'Esqueceu sua senha?\'"
+    email_error: "O email que você digitou já está registrado ou é inválido. Tente com outro site ou use ''Esqueceu sua senha?''"
     unknown_error: "Erro desconhecido ao tentar se registrar com %{provider}. Tente novamente ou teste com outro site."
 
   licenses:
