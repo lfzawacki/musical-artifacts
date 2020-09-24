@@ -9,15 +9,8 @@
       = link_to t('.top_rated_desc'), artifacts_path(current_params.merge(order: 'top_rated'))
     %li
       = link_to t('.most_downloaded_desc'), artifacts_path(current_params.merge(order: 'most_downloaded'))
-    %li
-      = link_to t('.name_asc'), artifacts_path(current_params.merge(order: 'name', asc: 'true'))
-    %li
-      = link_to t('.name_desc'), artifacts_path(current_params.merge(order: 'name'))
-    %li
-      = link_to t('.created_at_asc'), artifacts_path(current_params.merge(order: 'created_at', asc: 'true'))
-    %li
-      = link_to t('.created_at_desc'), artifacts_path(current_params.merge(order: 'created_at'))
-    %li
-      = link_to t('.updated_at_asc'), artifacts_path(current_params.merge(order: 'updated_at', asc: 'true'))
-    %li
-      = link_to t('.updated_at_desc'), artifacts_path(current_params.merge(order: 'updated_at'))
+
+    - ['name', 'created_at', 'updated_at'].each do |attribute|
+      %li
+        = link_to t(".#{attribute}_asc"), artifacts_path(current_params.merge(order: attribute, asc: true))
+        = link_to t(".#{attribute}_desc"), artifacts_path(current_params.merge(order: attribute))
