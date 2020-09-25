@@ -227,6 +227,8 @@ en:
     search_order_dropdown:
       created_at_asc: Date (oldest first)
       created_at_desc: Date (newest first)
+      updated_at_asc: Last updated (oldest first)
+      updated_at_desc: Last updated (newest first)
       name_asc: Name (ascending)
       name_desc: Name (descending)
       most_downloaded_desc: Most downloaded
