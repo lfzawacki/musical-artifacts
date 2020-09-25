@@ -1,0 +1,18 @@
+default: &default
+  host: db
+  adapter: postgresql
+  encoding: unicode
+  username: musical_artifacts
+  password: musical_artifacts
+
+development:
+  <<: *default
+  database: musical_artifacts_development
+
+test:
+  <<: *default
+  database: musical_artifacts_test
+
+production:
+  <<: *default
+  database: musical_artifacts_development

@@ -23,6 +23,8 @@ services:
       - "3000:3000"
     environment:
       RAILS_ENV: development
+      DEVISE_SECRET_KEY: 123456789
+      REDIS_HOST: redis:6379
     depends_on:
       - db
       - redis
