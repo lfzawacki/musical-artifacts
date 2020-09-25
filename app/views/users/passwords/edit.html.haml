@@ -11,7 +11,7 @@
       .panel-body
 
         = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put },  class: 'form-horizontal') do |f|
-          = devise_error_messages!
+          = render "devise/shared/error_messages", resource: resource
           = f.hidden_field :reset_password_token
           .form-group
             = f.label :password
@@ -25,4 +25,3 @@
 
           .actions
             = f.submit t('.title'), class: 'btn btn-default'
-

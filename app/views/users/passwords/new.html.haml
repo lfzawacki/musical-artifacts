@@ -10,10 +10,9 @@
       .panel-body
 
         = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'form-horizontal') do |f|
-          = devise_error_messages!
+          = render "devise/shared/error_messages", resource: resource
           .form-group
             = f.label :email
             = f.email_field :email, autofocus: true, class: 'form-control'
           .actions
             = f.submit t('.reset_password'), class: 'btn btn-default'
-
