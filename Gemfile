@@ -11,7 +11,9 @@ gem 'ruby_dep', '1.3'
 gem 'nokogiri', '>= 1.10.4'
 
 gem 'rack', '~> 1.6.12'
-gem 'rails', '~> 4.2.11.1'
+
+gem 'rails', '~> 4.2.11.2'
+
 gem 'active_record_union', '~> 1.2.0' # because active record doesnt have an OR method ...
 
 gem 'pg', '0.18.4'
@@ -99,7 +101,7 @@ gem 'exception_notification', '~> 4.0.0'
 
 gem 'auto_html', git: 'https://github.com/lfzawacki/auto_html.git'
 
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 
 # JSON API authentication with JWT
 gem 'knock', '~> 1.4.1'
@@ -121,7 +123,7 @@ gem 'loofah', '>= 2.2.3'
 # Omniauth
 gem 'omniauth', '= 1.3.2'
 gem 'omniauth-oauth2', '1.1.2'
-gem 'omniauth-twitter', '1.2.1'
+gem 'omniauth-twitter', '~> 1.4.0'
 gem 'omniauth-soundcloud', '1.0.1'
 gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.2.8'
