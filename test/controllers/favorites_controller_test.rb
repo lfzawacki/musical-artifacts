@@ -1,7 +1,7 @@
 require "test_helper"
 
 class FavoritesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   setup do
     @artifact = FactoryBot.create(:artifact)

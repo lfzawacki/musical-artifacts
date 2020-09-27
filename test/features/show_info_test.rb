@@ -11,14 +11,14 @@ class ShowInfoTest < Capybara::Rails::TestCase
     login_with(@admin, 'sunsetsuperman')
     visit '/'
 
-    assert_link page, I18n.t('layouts.application.current_user', user: @admin.username), my_artifacts_path
+    assert_link page, I18n.t('layouts.application.current_user', user: @admin.username), href: my_artifacts_path
   end
 
   test "show user name and salutation when logged in (user)" do
     login_with(@user, 'holydiver')
     visit '/'
 
-    assert_link page, I18n.t('layouts.application.current_user', user: @user.username), my_artifacts_path
+    assert_link page, I18n.t('layouts.application.current_user', user: @user.username), href: my_artifacts_path
   end
 
   test "show user email and salutation when logged in (user) and has no name set" do
@@ -30,33 +30,33 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_link page, I18n.t('layouts.application.current_user', user: @admin.email), my_artifacts_path
+    assert_link page, I18n.t('layouts.application.current_user', user: @admin.email), href: my_artifacts_path
   end
 
   test "show about link on main page" do
     visit '/'
 
-    assert_link page, I18n.t('_other.about'), info_about_path
+    assert_link page, I18n.t('_other.about'), href: info_about_path
   end
 
   test "show contact link on main page" do
     visit '/'
 
-    assert_link page, I18n.t('_other.contact'), info_contact_path
+    assert_link page, I18n.t('_other.contact'), href: info_contact_path
   end
 
   test "show settings link on main page for logged in admin" do
     login_with @admin, 'sunsetsuperman'
     visit '/'
 
-    assert_link page, I18n.t('layouts.application.settings'), settings_path
+    assert_link page, I18n.t('layouts.application.settings'), href: settings_path
   end
 
   test "show admin link on main page for logged in admin" do
     login_with @admin, 'sunsetsuperman'
     visit '/'
 
-    assert_link page, I18n.t('layouts.application.admin'), admin_root_path
+    assert_link page, I18n.t('layouts.application.admin'), href: admin_root_path
   end
 
   test "show number of unapproved artifacts for admin" do
@@ -67,7 +67,7 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_link page, '2', admin_root_path
+    assert_link page, '2', href: admin_root_path
   end
 
   test "don't show number of unapproved artifacts for normal user" do
@@ -89,7 +89,7 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_link page, '2', my_artifacts_path
+    assert_link page, '2', href: my_artifacts_path
   end
 
   test "show number of artifacts for a user (none)" do
@@ -97,7 +97,7 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_link page, '0', my_artifacts_path
+    assert_link page, '0', href: my_artifacts_path
   end
 
   test "show number of artifacts for a user (3, 1 for other user)" do
@@ -110,14 +110,14 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_link page, '3', my_artifacts_path
+    assert_link page, '3', href: my_artifacts_path
   end
 
   test "show logout link for normal user" do
     login_with @user, 'holydiver'
     visit '/'
 
-    assert_link page, I18n.t('_other.logout'), destroy_user_session_path()
+    assert_link page, I18n.t('_other.logout'), href: destroy_user_session_path()
   end
 
   test "links a normal user shouldn't see" do

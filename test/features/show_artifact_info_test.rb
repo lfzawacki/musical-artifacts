@@ -32,8 +32,8 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     login_with(@admin, 'watcheroftheskies')
     visit artifact_path(@artifact)
 
-    assert_link I18n.t('_other.edit'), edit_artifact_path(@artifact)
-    assert_link I18n.t('_other.destroy'), artifact_path(@artifact)
+    assert_link I18n.t('_other.edit'), href: edit_artifact_path(@artifact)
+    assert_link I18n.t('_other.destroy'), href: artifact_path(@artifact)
   end
 
   test "see edit button if a normal user the creator of the artifact" do
@@ -42,8 +42,8 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
     visit artifact_path(@artifact)
 
-    assert_link I18n.t('_other.edit')
-    assert_no_link I18n.t('_other.destroy')
+    assert_link I18n.t('_other.edit'), href: edit_artifact_path(@artifact)
+    assert_no_link I18n.t('_other.destroy'), href: artifact_path(@artifact)
   end
 
   test "see no buttons if a normal user is logged in" do
@@ -116,7 +116,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_link I18n.t('artifacts.side_buttons.download_mirror') + ' hey.here'
   end
 
-  test "don't break application if first mirror link is an invalid URL" do
+  test "dont break application if first mirror link is an invalid URL" do
     @artifact.update_attributes(mirrors: 'I am an invalid URL, http://not.from.here')
 
     visit artifact_path(@artifact)
@@ -303,7 +303,7 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
       visit artifacts_path
 
       assert_css '.license'
-      assert_link '', artifacts_path(license: license.short_name)
+      assert_link '', href: artifacts_path(license: license.short_name)
     end
 
   end
