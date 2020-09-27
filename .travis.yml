@@ -17,4 +17,4 @@ before_script:
 before_install:
   - gem install bundler
 
-script: bundle exec rake db:reset; bundle exec rake
+script: bundle exec rake db:reset; bundle exec rake test
