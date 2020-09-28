@@ -27,3 +27,5 @@ config/secrets.yml
 config/database.yml
 
 vendor/external_projects/*
+
+config/deploy*.rb
