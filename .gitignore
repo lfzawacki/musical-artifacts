@@ -25,3 +25,5 @@ config/settings.yml
 config/piwik.yml
 
 vendor/external_projects/*
+
+config/deploy*.rb
