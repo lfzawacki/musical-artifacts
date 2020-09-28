@@ -26,7 +26,7 @@ class ActiveSupport::TestCase
   # For features
   def show_page
     save_page Rails.root.join( 'public', 'capybara.html' )
-    %x(launchy http://localhost:6666/capybara.html)
+    %x(launchy http://localhost:3000/capybara.html)
   end
 
   def login_with user, password
