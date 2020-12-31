@@ -45,8 +45,8 @@ fr:
       user:
         email: Courriel
         username: Nom d'utilisateur
-        password: mot de passe
-        password_confirmation: confirmation de mot de passe
+        password: Mot de passe
+        password_confirmation: Confirmation de mot de passe
         remember_me: se souvenir de moi
 
     errors:
@@ -336,14 +336,14 @@ fr:
 
   info:
     about:
-      access: "accès"
+      access: "Accès"
       access_description: "En premier lieu, cette ressource doit être accessible quelque part."
 
       how_to_host: "Comment héberger des fichiers ? (en anglais)"
       how_to_host_url: 'https://github.com/lfzawacki/musical-artifacts/wiki/File-Hosting'
 
       call_for_action: "Mais comment pouvez-vous aider ?"
-      creation: "création"
+      creation: "Création"
       creation_description: "Et donc, vous avez créé quelques chouettes ressources musicales et vous voulez les partager avec d'autres artistes ?"
       description: "Aide à cataloguer, préserver et libérer les artéfacts dont vous avez besoin pour produire de la musique."
       documentation: "Lire le wiki pour la 'grande histoire' (en anglais)"
@@ -385,7 +385,7 @@ fr:
 
     optout:
       title: Empêcher les analyses de traffic
-      description_html: "Pour davantage d'information à propos des pratiques de collection des données de ce site, lisez <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">cette page</a>."
+      description_html: "Pour davantage d'information à propos des pratiques de collection des données de ce site, lisez <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/Terms-and-Conditions#privacy-policy-and-data-collection-clause\">cette page</a> (en anglais)."
 
     terms_and_conditions:
       acceptance_title: "Clause d'acceptation"
@@ -400,7 +400,7 @@ fr:
       warranty_title: Précision et clause de garantie
       warranty_text_1: "Tout le contenu disponible sur ce site est distribué sans garantie et est présenté uniquement à titre d'information. Le présent site ne peut être tenu responsable de l'exactitude, de l'utilité ou de la disponibilité de toute information transmise ou mise à disposition via le site, et ne peut être tenu responsable de toute erreur ou omission dans cette information."
       warranty_text_2: "Le contenu du site ouèbe est soumis par les utilisateurs. Le site ouèbe peut contenir des liens vers d'autres sites ouèbe, ressources ou programmes informatiques d'intérêt. Toutefois, une fois que vous avez utilisé ces liens pour quitter le site ouèbe, vous devez noter que Musical Artifacts n'a aucun contrôle sur ces autres sites ouèbe. Par conséquent, les propriétaires de Musical Artifacts ne peuvent être tenus responsables de la protection et de la confidentialité des informations que vous fournissez en visitant ces sites, ni des logiciels malveillants potentiels distribués par leur intermédiaire. Vous devez faire preuve de prudence et consulter la déclaration de confidentialité applicable au site ouèbe en question, prendre les mesures appropriées pour assurer la sécurité de votre ordinateur et vérifier la légitimité des fichiers téléchargés."
-      termination_title: Account Termination Clause
+      termination_title: Clause de résiliation du compte
       termination_text: "Nous nous réservons le droit de résilier les comptes d'utilisateur sans motif ni préavis, ce qui peut entraîner la confiscation et la destruction de toutes les informations associées au compte. Toutes les dispositions du présent accord qui, de par leur nature, devraient survivre à la résiliation survivront à la résiliation, y compris, sans limitation, les dispositions relatives à la propriété, les exclusions de garantie, l'indemnisation et les limitations de responsabilité."
       change_title: Clause de changement de dispositions
       change_text: "Musical Artifacts se réserve le droit de modifier ces conditions de temps à autre, comme il le juge approprié, et votre utilisation continue du site signifiera votre acceptation de toute modification de ces conditions. Il vous est donc conseillé de relire régulièrement cette déclaration. En cas de changement dans la manière dont nous utilisons les données des utilisateurs de notre site, une notification par courriel sera envoyée aux personnes concernées par ce changement."
@@ -408,7 +408,7 @@ fr:
   views:
     pagination:
       truncate: '...'
-      next: Prochain ›
+      next: Suivant ›
       last: Dernier »
       first: « Premier
-      previous: ‹ Antérieur
+      previous: ‹ Précédent
