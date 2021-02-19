@@ -204,6 +204,7 @@ en:
       free_licenses: Free Licenses
       new_artifact_help_html: "Need tips on how to create a good artifact? <a target=\"_blank\" href=\"%{link}\">Read this!</a>"
       non_free_licenses: Non-Free Licenses
+      filesize_error: File sizes bigger than 500mb are not supported, use a mirror for your file.
 
     show:
       no_description: "(No description available)"

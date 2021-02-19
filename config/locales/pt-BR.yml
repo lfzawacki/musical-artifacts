@@ -223,6 +223,7 @@ pt-BR:
       free_licenses: Licenças Livres
       new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
       non_free_licenses: Licenças não livres
+      filesize_error: Arquivos maiores que 500mb não são suportados, use um espelho para seu arquivo.
 
     wayback_links:
       broken: Links externos estão quebrados? Clique aqui para tentar links do Arquivo da Internet.
