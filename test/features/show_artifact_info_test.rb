@@ -124,12 +124,14 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     assert_link I18n.t('artifacts.side_buttons.download_mirror')
   end
 
-  test "see download button, but not for mirror if file is present" do
+  test "see mirror link but not if file is present" do
     @artifact.update_attributes(file: fixture_file('example.gx'), mirrors: 'https://validmirror.com')
 
     visit artifact_path(@artifact)
-    assert_link I18n.t('artifacts.side_buttons.download')
-    assert_no_link I18n.t('artifacts.side_buttons.download_mirror') + ' validmirror.com'
+
+    assert_no_css ".btn-download"
+    assert_css ".btn-mirror"
+    assert_link I18n.t('artifacts.side_buttons.download_mirror') + ' validmirror.com'
   end
 
   test "see favorite icon and number in artifact when logged out" do
