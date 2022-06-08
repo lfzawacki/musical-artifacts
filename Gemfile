@@ -44,7 +44,7 @@ group :development, :test do
 
   # Debugging views gems
   gem 'binding_of_caller', '~> 0.7.2'
-  gem 'better_errors', '~> 2.1.1'
+  gem 'better_errors', '~> 2.8.0'
 
   # Testing gems
   gem 'm', '~> 1.3.1'
