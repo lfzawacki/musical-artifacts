@@ -119,7 +119,7 @@ gem 'rails-timeago', '~> 2.0'
 gem 'loofah', '>= 2.2.3'
 
 # Omniauth
-gem 'omniauth', '= 1.3.2'
+gem 'omniauth', '1.9.2'
 gem 'omniauth-oauth2', '1.1.2'
 gem 'omniauth-twitter', '1.2.1'
 gem 'omniauth-soundcloud', '1.0.1'
