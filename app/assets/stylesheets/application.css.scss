@@ -1219,6 +1219,10 @@ footer {
     outline: 0;
 }
 
+#filesize_error {
+  display: none;
+}
+
 #static_notification_space {
   .banner {
     margin: 0 auto;

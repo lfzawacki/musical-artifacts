@@ -4,15 +4,21 @@
   .description
     = t('.description')
 
+  %ul.donation-progress
+    - donations = Rails.application.secrets.donations['streamelements']
+
+    - if donations
+      %iframe{src: donations['iframe'], width: '360px', height: '90px', style: 'border: 0; overflow: hidden;', scrolling: 'no'}
+
   %ul.donation-methods
-    - ['paypal', 'bitcoin'].each do |method|
+    - Rails.application.secrets.donations['active'].each do |method|
       %li{class: method}
         = link_to Rails.application.secrets.donations[method]['url'], target: '_blank' do
           = image_tag Rails.application.secrets.donations[method]['shield'], alt: t(".#{method}_alt")
-          = method.capitalize
+          = t(".#{method}_name")
 
-  %figure.my-music
-    = link_to 'https://open.spotify.com/track/3qnFY1AiKIVF07c5wuPbHI', target: '_blank' do
-      = image_tag 'music/cover.jpg', width: 150, id: 'cover-image'
-    %figcaption
-      = t('.extra_my_music_html')
+  .description
+    = t('.more_details')
+
+  .description
+    = t('.more_details_html')

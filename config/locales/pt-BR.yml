@@ -223,6 +223,7 @@ pt-BR:
       free_licenses: Licenças Livres
       new_artifact_help_html: "Precisa de dicas para criar um bom artefato? <a target=\"_blank\" href=\"%{link}\">Leia isto!</a>"
       non_free_licenses: Licenças não livres
+      filesize_error: Arquivos maiores que 500mb não são suportados, use um espelho para seu arquivo.
 
     wayback_links:
       broken: Links externos estão quebrados? Clique aqui para tentar links do Arquivo da Internet.
@@ -385,13 +386,18 @@ pt-BR:
 
     donations:
       call_to_action: Ajude-nos com uma doação!
-      description: "Musical Artifacts é um app de código livre que ajuda músicos a encontrar, compartilhar e preservar os artefatos usados para produzir sua música."
-      more_details_html: "Este projeto é desenvolvido por voluntários em seu tempo livre. Doações são usadas para pagar os custos de hospedagem e acelerar o desenvolvimento de novas funcionalidades. Existem muitas outras maneiras de ajudar além de doações de dinheiro. Veja <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/How-To-Contribute\">esta página</a>"
-      extra_my_music_html: "Se você quiser apoiar a minha música, a minha nova canção <strong>Hear My Words</strong> está no <a target=\"_blank\" href=\"https://open.spotify.com/track/3qnFY1AiKIVF07c5wuPbHI\">Spotify</a> e <a target=\"_blank\" href=\"https://mortticia.rocks/music/\">várias outras plataformas</a> !"
+      description: "Musical Artifacts é um app de código livre que ajuda músicos a encontrar, compartilhar e preservar os artefatos que usam para produzir. Ele é desenvolvido por voluntários em seu tempo livre."
+      more_details: "Com seu crescimento também crescem os custos de banda e hospedagem. Não mostramos propagandas ou te rastreamos, então necessitamos de doações para mantê-lo em pé e com boas velocidades."
+      more_details_html: "Existem outras maneiras de ajudar além de doações de dinheiro. Veja <a href=\"https://github.com/lfzawacki/musical-artifacts/wiki/How-To-Contribute\">esta página</a>"
 
+      bitcoin_name: Bitcoin
       bitcoin_alt: Doar Bitcoin
 
+      paypal_name: Paypal
       paypal_alt: Doar via Paypal
+
+      streamelements_alt: Doar via Paypal
+      streamelements_name: Paypal
 
     optout:
       title: Opt-out da análise de tráfego

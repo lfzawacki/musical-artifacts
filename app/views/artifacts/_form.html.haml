@@ -46,7 +46,7 @@
           .form-group.col-xs-12.floating-label-form-group.controls
             = f.label :file
 
-            -if @artifact.file.present?
+            - if @artifact.file.present?
               = @artifact.file.file.identifier
 
             = f.file_field :file, class: 'btn btn-default btn-file form-control', placeholder: true
@@ -81,4 +81,8 @@
 
     .row.pad-top
       .form-group.col-xs-12
+
+        #filesize_error.alert.alert-danger
+          = t('.filesize_error')
+
         = f.submit class: 'btn btn-new btn-lg btn-group-justified'

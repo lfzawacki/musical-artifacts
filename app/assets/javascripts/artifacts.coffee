@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+MAX_FILE_UPLOAD = 500
+
 artifact_search_fields = ['apps', 'tags', 'license', 'hash', 'formats']
 
 # Make tag text editable after it's deleted
@@ -155,6 +157,25 @@ initialize_wayback_links = ->
     $('#show-wayback-links .on-hidden').toggle()
 
     e.preventDefault()
+
+bytesToMB = (bytes) ->
+  bytes / (1000*1000)
+
+initialize_validations = ->
+  $('input[type="submit"]').on 'click', (e) ->
+    file_form = $("#artifact_file")[0]
+
+    if typeof(file_form.files) != 'undefined'
+      size = bytesToMB(file_form.files[0].size)
+
+      if size > MAX_FILE_UPLOAD
+        $("#filesize_error").show()
+        return false
+      else
+        $("#filesize_error").hide()
+        return true
+
+    return true
 
 # Load juvia comments
 # TODO: Document this hacky mess PLZ
@@ -348,6 +369,7 @@ $(document).on 'page:change', ->
   initialize_select '#artifact_tag_list', '/searches/tags'
   initialize_select '#artifact_software_list', '/searches/apps'
   initialize_select '#artifact_file_format_list', '/searches/file_formats'
+  initialize_validations()
 
   if $('#artifact_license_id')[0]
     $('#artifact_license_id').select2
