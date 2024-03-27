@@ -116,9 +116,18 @@ class ArtifactsController < InheritedResources::Base
 
     def load_tag_filters
       @tags = {
-        tags: @artifacts.tag_counts_on(:tags).order('taggings_count DESC').select{|tc| tc.count > 1},
-        apps: @artifacts.tag_counts_on(:software).order('name ASC'),
-        formats: @artifacts.tag_counts_on(:file_formats).order('name ASC')
+        tags: @artifacts.tag_counts_on(:tags)
+          .where('tags_count > ?', @setting.min_tag_search.to_i)
+          .order('taggings_count DESC')
+          .limit(@setting.max_tag_results.to_i),
+        apps: @artifacts.tag_counts_on(:software)
+          .where('tags_count > ?', @setting.min_app_search.to_i)
+          .order('name ASC')
+          .limit(@setting.max_app_results.to_i),
+        formats: @artifacts.tag_counts_on(:file_formats)
+          .where('tags_count > ?', @setting.min_format_search.to_i)
+          .order('name ASC')
+          .limit(@setting.max_format_results.to_i)
       }
       @licenses = License.license_types - ['copyright', 'various', 'gray']
       @copyright = License.find('copyright') # always the black sheep
