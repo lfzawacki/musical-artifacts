@@ -59,6 +59,9 @@
                 = f.text_field list, value: @artifact.send(list).try(:join, ','), class: 'dynamic-form-field', placeholder: true
 
           - # Tags lists list
+          - ['tag', 'app', 'format'].each do |t|
+            %div{"id"=>"max_artifact_"+ t, "data" => @max_tags[t]}
+
           - [:software_list, :tag_list, :file_format_list].each do |list|
             .control-group.dynamic-inputs
               .form-group.col-xs-12.floating-label-form-group.controls

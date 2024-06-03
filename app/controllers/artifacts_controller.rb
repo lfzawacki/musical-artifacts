@@ -18,6 +18,7 @@ class ArtifactsController < InheritedResources::Base
 
   before_filter :load_licenses, only: [:new, :edit, :create, :update]
   before_filter :load_app_integrations, only: [:index, :show]
+  before_filter :load_max_tags, only: [:new, :edit, :index, :show]
 
   def create
     approved = can?(:approve, @artifact) || user_artifacts_can_be_approved?(current_user)
@@ -193,6 +194,15 @@ class ArtifactsController < InheritedResources::Base
     # A user with a certain number of pre-approved won't need approval
     def user_artifacts_can_be_approved?(user)
       user.artifacts.where(approved: true).count >= Artifact.approved_count_for_trust
+    end
+
+    # Load an object with the max tags number for each type
+    def load_max_tags
+      @max_tags = {
+        "tag" => @setting.max_artifact_tags.to_i,
+        "app" => @setting.max_artifact_apps.to_i,
+        "format" => @setting.max_artifact_formats.to_i,
+      }
     end
 
     # Load app integrations if some are present

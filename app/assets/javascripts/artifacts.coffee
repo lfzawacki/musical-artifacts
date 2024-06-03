@@ -46,6 +46,8 @@ initialize_select = (field_id, url) ->
 
   $(field_id).select2
     minimumInputLength: 1
+    maximumSelectionSize: $("#max_artifact_" + field_to_class[field_id]).attr('data')
+    maximumInputLength: 30
     width: '80%'
     multiple: true
     tags: true
