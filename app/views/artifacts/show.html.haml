@@ -35,15 +35,16 @@
 
     = render 'buttons', artifact: @artifact
 
-    %p#related-links.pad-top.pad-bottom
-      %strong
-        = t('.related')
-        \:
+    - if @setting.enable_related_artifacts.to_boolean
+      %p#related-links.pad-top.pad-bottom
+        %strong
+          = t('.related')
+          \:
 
-      - @artifact.related.each do |art|
-        = link_to artifact_path(art, class: 'related-link') do
-          %i.fa.fa-archive
-          = art.name
+        - @artifact.related.each do |art|
+          = link_to artifact_path(art, class: 'related-link') do
+            %i.fa.fa-archive
+            = art.name
 
     .comments
       = render partial: 'comments'
