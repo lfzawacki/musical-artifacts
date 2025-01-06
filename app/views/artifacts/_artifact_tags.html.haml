@@ -6,7 +6,7 @@
 
   - list = artifact.send("#{list_name}_list")
 
-  - if list.present?
+  - if list.present? && defined?(@max_tags)
     - list.first(@max_tags[tag_name]).each do |tag|
       .label{class: "label-#{tag_name}"}
         = link_to tag, artifacts_path(tag_name.pluralize => tag)
