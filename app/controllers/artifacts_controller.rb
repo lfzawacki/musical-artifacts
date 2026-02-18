@@ -12,7 +12,7 @@ class ArtifactsController < InheritedResources::Base
   before_filter only: [:index] do
     search_artifacts
     load_tag_filters
-    paginate unless request.format == 'json'
+    paginate
     order_by_params
   end
 
