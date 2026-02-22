@@ -49,15 +49,24 @@ class ArtifactTest < ActiveSupport::TestCase
   end
 
   test '.generate_file_hash' do
-    skip
+    # Hash is generated on creation
+    assert @artifact.file_hash.present?
+
+    # Shouldn't change on subsequent calls
+    old_hash = @artifact.file_hash
+    @artifact.generate_file_hash
+    assert_equal old_hash, @artifact.file_hash
   end
 
   test '.save_new_file' do
     skip
   end
 
-  test '.file= ' do
-    skip
+  test '.file=' do
+    assert_difference('@artifact.stored_files.size') do
+      @artifact.update_attributes(file: fixture_file('file.zip'))
+    end
+    assert_equal 'file.zip', @artifact.file_name
   end
 
   test '.set_app_tags_from_format (guitarix)' do
@@ -160,15 +169,67 @@ class ArtifactTest < ActiveSupport::TestCase
     assert_includes @no_file.file_format_list, 'zip'
   end
 
-  test '.mirrors=m' do
+  test '.mirrors=' do
+    # Space separator
+    @artifact.update_attributes mirrors: 'https://mysite.org/file http://hissite.com/thefile'
+    assert_equal ['https://mysite.org/file', 'http://hissite.com/thefile'], @artifact.mirrors
+
+    # Comma separator
+    @artifact.update_attributes mirrors: 'https://mysite.org/file,http://hissite.com/thefile'
+    assert_equal ['https://mysite.org/file', 'http://hissite.com/thefile'], @artifact.mirrors
+
+    # Semicolon separator
+    @artifact.update_attributes mirrors: 'https://mysite.org/file;http://hissite.com/thefile'
+    assert_equal ['https://mysite.org/file', 'http://hissite.com/thefile'], @artifact.mirrors
+
+    # Array input
     @artifact.update_attributes mirrors: ['https://mysite.org/file', 'http://hissite.com/thefile']
+    assert_equal ['https://mysite.org/file', 'http://hissite.com/thefile'], @artifact.mirrors
+
+    # Nil input
+    @artifact.update_attributes mirrors: nil
+    assert_equal [], @artifact.mirrors
   end
 
-  test '.more_info_urls=m' do
+  test '.more_info_urls=' do
+    # Space separator
+    urls_string = 'http://a.com http://b.com'
+    @artifact.update_attributes(more_info_urls: urls_string)
+    assert_equal ['http://a.com', 'http://b.com'], @artifact.more_info_urls
+
+    # Comma separator
+    urls_string = 'http://a.com,http://b.com'
+    @artifact.update_attributes(more_info_urls: urls_string)
+    assert_equal ['http://a.com', 'http://b.com'], @artifact.more_info_urls
+
+    # Semicolon separator
+    urls_string = 'http://a.com;http://b.com'
+    @artifact.update_attributes(more_info_urls: urls_string)
+    assert_equal ['http://a.com', 'http://b.com'], @artifact.more_info_urls
+
+    # Array input
+    @artifact.update_attributes(more_info_urls: ['http://a.com', 'http://b.com'])
+    assert_equal ['http://a.com', 'http://b.com'], @artifact.more_info_urls
+
+    # Nil input
+    @artifact.update_attributes(more_info_urls: nil)
+    assert_equal [], @artifact.more_info_urls
   end
 
-  test '.related max=5' do
-    skip
+  test '.related' do
+    @artifact.update_attributes(tag_list: 'guitarix, preset')
+    related1 = FactoryBot.create(:artifact, tag_list: 'guitarix, rock')
+    related2 = FactoryBot.create(:artifact, tag_list: 'preset, metal')
+    unrelated = FactoryBot.create(:artifact, tag_list: 'soundfont, jazz')
+
+    results = @artifact.related
+    assert_includes results, related1
+    assert_includes results, related2
+    assert_not_includes results, unrelated
+
+    # test limit
+    FactoryBot.create_list(:artifact, 5, tag_list: 'guitarix')
+    assert_equal 3, @artifact.related(3).size
   end
 
   test '.download_path' do
@@ -183,7 +244,11 @@ class ArtifactTest < ActiveSupport::TestCase
     assert_equal @artifact.owned_by?(user), false
 
     @artifact.update_attributes(user: user)
+    assert @artifact.owned_by?(@artifact.user)
 
-    assert_equal @artifact.owned_by?(user), true
+    other_user = FactoryBot.create(:user)
+    assert_not @artifact.owned_by?(other_user)
+
+    assert_not @artifact.owned_by?(nil)
   end
 end

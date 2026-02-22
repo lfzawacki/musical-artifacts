@@ -112,7 +112,7 @@ class Artifact < ActiveRecord::Base
 
     def mirrors=m
       if m.kind_of?(String)
-        write_attribute(:mirrors, m.split(/[,;]/))
+        write_attribute(:mirrors, m.split(/[,; ]/))
       else
         write_attribute(:mirrors, m)
       end
@@ -120,7 +120,7 @@ class Artifact < ActiveRecord::Base
 
     def more_info_urls=m
       if m.kind_of?(String)
-        write_attribute(:more_info_urls, m.split(/[,;]/))
+        write_attribute(:more_info_urls, m.split(/[,; ]/))
       else
         write_attribute(:more_info_urls, m)
       end
@@ -172,8 +172,8 @@ class Artifact < ActiveRecord::Base
 
     def related max=5
       self.class
-      .tagged_with(software_list | tag_list , any: true)
-      .where('id NOT in(?)', self.id)
+      .tagged_with(software_list | tag_list, any: true)
+      .where.not(id: id)
       .limit(max)
     end
 

@@ -2,6 +2,7 @@ require 'test_helper'
 
 class SearchesTest < ActiveSupport::TestCase
   setup do
+    # Feb 22nd 2026: Added a few more software tags because the DB is seeded with some default apps
     @artifacts = [
       FactoryBot.create(:artifact,
         name: 'Sounfont file',
@@ -47,7 +48,7 @@ class SearchesTest < ActiveSupport::TestCase
         license: License.find('copyright'),
         file_format_list: ['xmz'],
         tag_list: ['synth', 'preset'],
-        software_list: ['zynaddsubfx', 'timidity']
+        software_list: ['zynaddsubfx', 'yoshimi', 'timidity']
       ),
       FactoryBot.create(:artifact,
         name: 'Acoustic guitar',
@@ -65,7 +66,7 @@ class SearchesTest < ActiveSupport::TestCase
         license: License.find('gpl'),
         file_format_list: ['gig'],
         tag_list: ['banjo', 'samples'],
-        software_list: ['linuxsampler']
+        software_list: ['linuxsampler', 'qsampler', 'fantasia']
       )]
 
     @scope = Artifact.all
@@ -327,27 +328,38 @@ class SearchesTest < ActiveSupport::TestCase
   end
 
   test "#tags (list all)" do
-    skip
+    tags = Searches.tags('')
+    assert_equal 12, tags.count
   end
 
   test "#tags (find some)" do
-    skip
+    tags = Searches.tags('guitar')
+    assert_equal 2, tags.count
+    assert_includes tags.map(&:name), 'guitar'
+    assert_includes tags.map(&:name), 'acoustic guitar'
   end
 
   test "#tags (find none)" do
-    skip
+    tags = Searches.tags('nonexistent')
+    assert_equal 0, tags.count
   end
 
   test "#app_tags (list all)" do
-    skip
+    tags = Searches.app_tags('')
+    assert_equal 11, tags.count
   end
 
   test "#app_tags (find some)" do
-    skip
+    tags = Searches.app_tags('s')
+    assert_equal 8, tags.count
+    assert_includes tags.map(&:name), 'saffronse'
+    assert_includes tags.map(&:name), 'fluidsynth'
+    assert_includes tags.map(&:name), 'linuxsampler'
   end
 
   test "#app_tags (find none)" do
-    skip
+    tags = Searches.app_tags('nonexistent')
+    assert_equal 0, tags.count
   end
 
   test "#recent_tags" do
