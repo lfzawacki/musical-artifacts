@@ -1,7 +1,7 @@
 require "test_helper"
 
 class LocalesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   setup do
     # setup some test values

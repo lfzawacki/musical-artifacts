@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ArtifactsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   setup do
     @setting = Setting.first

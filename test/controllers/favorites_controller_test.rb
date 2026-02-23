@@ -1,7 +1,7 @@
 require "test_helper"
 
 class FavoritesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   setup do
     @artifact = FactoryBot.create(:artifact)
@@ -118,8 +118,23 @@ class FavoritesControllerTest < ActionController::TestCase
   # -- JSON API tests
   #
   test 'create a favorite' do
+    sign_in(@user)
+
+    assert_difference('Favorite.count', 1) do
+      post :create, artifact_id: @artifact.id, format: :json
+    end
+
+    assert_response :success
   end
 
   test 'destroy a favorite' do
+    sign_in(@user)
+    Favorite.create user: @user, artifact: @artifact
+
+    assert_difference('Favorite.count', -1) do
+      delete :destroy, artifact_id: @artifact.id, format: :json
+    end
+
+    assert_response :success
   end
 end

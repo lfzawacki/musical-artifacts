@@ -1,7 +1,7 @@
 require "test_helper"
 
 class UsersControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   setup do
     @user = FactoryBot.create(:user, email: 'mrwilson@porcupi.ne', password: 'signify trees')
