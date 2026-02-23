@@ -80,7 +80,36 @@ class LicenseTest < ActiveSupport::TestCase
   end
 
   test "licenses without images" do
-    skip
+    # Assuming there are licenses in the fixtures/DB that don't map to an image
+    l = License.new(short_name: 'unknown_license')
+    assert_nil l.image_url
+  end
+
+  test "cc_license_number (instance method)" do
+    # 'by' license
+    assert_equal 4, @by.cc_license_number
+
+    # 'by-nc-3' license
+    assert_equal 3, @bync3.cc_license_number
+  end
+
+  test "self.cc_license_number (class method)" do
+    assert_equal 4, License.cc_license_number('by')
+    assert_equal 3, License.cc_license_number('by-nc-3')
+    assert_equal 3, License.cc_license_number('by-sa-3')
+    assert_equal 4, License.cc_license_number('by-nd')
+  end
+
+  test "self.is_text_part?" do
+    assert License.is_text_part?('by')
+    assert License.is_text_part?('nc')
+    assert License.is_text_part?('nd')
+    assert License.is_text_part?('sa')
+
+    refute License.is_text_part?('1')
+    refute License.is_text_part?('2')
+    refute License.is_text_part?('3')
+    refute License.is_text_part?('4')
   end
 
 end

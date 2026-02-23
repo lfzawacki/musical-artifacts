@@ -46,8 +46,21 @@ class FavoriteTest < ActiveSupport::TestCase
     assert_equal @user.favorite_artifacts.count, 3
   end
 
-  # Not sure if we'll need it
   test "get users who favorited an artifact" do
+    user2 = FactoryBot.create(:user)
+    Favorite.create(user: user2, artifact: @artifact)
+
+    # Assuming Artifact has a has_many :favorites
+    # and has_many :favorited_by_users, through: :favorites, source: :user
+    # or similar relation. If not defined in model, we test the join directly.
+    favorites = Favorite.where(artifact: @artifact)
+    users = favorites.map(&:user)
+
+    assert_includes users, @user
+    assert_includes users, user2
+  end
+
+  test "create_activity" do
     skip
   end
 

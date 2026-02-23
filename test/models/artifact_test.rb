@@ -59,7 +59,12 @@ class ArtifactTest < ActiveSupport::TestCase
   end
 
   test '.save_new_file' do
-    skip
+    @artifact.file = fixture_file('file.zip')
+    @artifact.save
+
+    assert_equal 'file.zip', @artifact.file_name
+    assert_equal 2, @artifact.stored_files.count
+    assert_includes @artifact.file_format_list, 'zip'
   end
 
   test '.file=' do
