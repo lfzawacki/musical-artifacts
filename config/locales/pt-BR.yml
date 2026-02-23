@@ -279,6 +279,11 @@ pt-BR:
     more_info_multimedia:
       title: Conteúdo Multimídia
 
+    create:
+      success: Artefato criado com sucesso
+      not_approved: Artefato criado e esperando moderação.
+
+
   notifications:
     survey:
       title: Pesquisa Musical Artifacts
