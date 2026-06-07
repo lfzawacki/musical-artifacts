@@ -3,6 +3,10 @@
 #
 
 class Searches
+  def self.max_taggings_on_search
+    10
+  end
+
   def self.tags terms
     query = ActsAsTaggableOn::Tag.includes(:taggings).where(taggings: {context: 'tags'})
 
@@ -28,22 +32,6 @@ class Searches
     query
   end
 
-  # The main search in the website. Looks into name, description, author and license text
-  # It will also match artifacts tagged, app_tagged of with a file format if it exactly
-  # matches the searched terms, e.g., 'guitar', 'zip', 'guitarix'
-  def self.artifacts_by_metadata artifacts, terms
-    if terms.present?
-      search_by_data =
-        artifacts.where('name ILIKE ? OR description ILIKE ? OR author ILIKE ? OR extra_license_text ILIKE ?',
-        "%#{terms}%", "%#{terms}%", "%#{terms}%", "%#{terms}%")
-
-      search_by_data = search_by_data.union(artifacts_tagged_with(artifacts, terms))
-      search_by_data = search_by_data.union(artifacts_app_tagged_with(artifacts, terms))
-      artifacts = search_by_data.union(artifacts_with_file_format(artifacts, terms))
-    end
-    artifacts
-  end
-
   def self.artifacts_tagged_with artifacts, terms
     if terms.present?
       terms = split_terms(terms).first(max_taggings_on_search)
@@ -60,20 +48,11 @@ class Searches
     artifacts
   end
 
-  def self.artifacts_licensed_as artifacts, term
+  def self.artifacts_licensed_as scope, term
     if term.present?
-      if term == 'free'
-        licenses = License.where(free: true)
-      else
-        # search by short_name and license_type, e.g.
-        # 'by' for CC Attribution and 'cc' for all CC licenses
-        licenses = License.where(short_name: term)
-        licenses = licenses.union(License.where(license_type: term))
-      end
-
-      artifacts = artifacts.where(license: licenses)
+      scope = Searches.new(scope, :license => term).call
     end
-    artifacts
+    scope
   end
 
   def self.artifacts_with_hash artifacts, hash
@@ -90,14 +69,101 @@ class Searches
     artifacts
   end
 
+  def self.artifacts_by_metadata scope, terms
+    if terms.present?
+      scope = Searches.new(scope, :q => terms).call
+    end
+    scope
+  end
+
+  def initialize(scope = Artifact.all, params = {})
+    @scope = scope
+    @params = params
+  end
+
+  def call
+    by_hash
+    by_tags
+    by_apps
+    by_formats
+    by_license
+    by_metadata
+
+    @scope
+  end
 
   private
+  def by_hash
+    return unless @params[:hash].present?
+    @scope = @scope.where(file_hash: @params[:hash])
+  end
+
+  def by_tags
+    return unless @params[:tags].present?
+    @scope = @scope.where(tag_exists_sql('tags', Searches.split_terms(@params[:tags]).first(self.class.max_taggings_on_search)))
+  end
+
+  def by_apps
+    return unless @params[:apps].present?
+    @scope = @scope.where(tag_exists_sql('software', Searches.split_terms(@params[:apps]).first(self.class.max_taggings_on_search)))
+  end
+
+  def by_formats
+    return unless @params[:formats].present?
+    @scope = @scope.where(tag_exists_sql('file_formats', Searches.split_terms(@params[:formats]).first(self.class.max_taggings_on_search)))
+  end
+
+  def by_license
+    return unless @params[:license].present?
+    term = @params[:license]
+
+    if term == 'free'
+      licenses = License.where(free: true)
+    else
+      # search by short_name and license_type, e.g.
+      # 'by' for CC Attribution and 'cc' for all CC licenses
+      licenses = License.where(short_name: term).union(License.where(license_type: term))
+    end
+
+    @scope = @scope.where(license: licenses)
+  end
+
+  def by_metadata
+    return unless @params[:q].present?
+    terms = @params[:q]
+
+    search_by_data = @scope.where(
+      'name ILIKE ? OR description ILIKE ? OR author ILIKE ? OR extra_license_text ILIKE ?',
+      "%#{terms}%", "%#{terms}%", "%#{terms}%", "%#{terms}%"
+    )
+
+    tag_terms = Searches.split_terms(terms).first(self.class.max_taggings_on_search)
+
+    tagged        = @scope.where(tag_exists_sql('tags', tag_terms))
+    app_tagged    = @scope.where(tag_exists_sql('software', tag_terms))
+    format_tagged = @scope.where(tag_exists_sql('file_formats', tag_terms))
+
+    @scope = search_by_data.union(tagged).union(app_tagged).union(format_tagged)
+  end
+
   # Split ignoring spaces
   def self.split_terms terms
     terms.split(/\s*,\s*/)
   end
 
-  def self.max_taggings_on_search
-    10
+  def tag_exists_sql(context, terms)
+    sql = <<~SQL
+      EXISTS (
+        SELECT 1
+        FROM taggings t
+        JOIN tags ON tags.id = t.tag_id
+        WHERE t.taggable_type = 'Artifact'
+          AND t.taggable_id = artifacts.id
+          AND t.context = '#{context}'
+          AND LOWER(tags.name) IN (:terms)
+      )
+    SQL
+
+    [sql, { terms: terms.map(&:downcase) }]
   end
 end

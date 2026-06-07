@@ -65,20 +65,11 @@ class ArtifactsController < InheritedResources::Base
       )
     end
 
-    def search_params
-      { hash: :with_hash, tags: :tagged_with, apps: :app_tagged_with,
-        license: :licensed_as, formats: :with_file_format, q: :by_metadata }
-    end
-
-
     def search_artifacts
-      remove_duplicated_tags_from_searches # HACKY, read the comments above this method
-
-      @artifacts = Artifact.approved
-      search_params.each do |param, search|
-        @artifacts = Searches.send("artifacts_#{search}", @artifacts, params[param])
-      end
-      @artifacts = @artifacts.includes(:license)
+      @artifacts = Searches.new(
+        Artifact.approved,
+        params.slice(:hash, :tags, :apps, :formats, :license, :q)
+      ).call.includes(:license)
     end
 
     def paginate
@@ -152,45 +143,6 @@ class ArtifactsController < InheritedResources::Base
       end
     end
 
-    # Chaining acts_as_taggable_on searches like we're doing ends up with a
-    # "PG::DuplicateAlias: ERROR: table name" if two tag categories are queried for the same value.
-    # For example {'tags': 'sfz', 'formats': 'sfz'}
-    # Generally this kind of search is not the most sensical, so we'll just remove one and try to make the right
-    # choice, because the application breaks with a 500 error otherwise
-    # TODO: there's probably some ruby magic that can be done to DRY this up
-    def remove_duplicated_tags_from_searches
-      tag_fields = [:q, :tags, :apps, :formats]
-      counts = {}
-      reversed = {}
-
-      # count repetitions
-      tag_fields.each do |key|
-
-        if params[key].present?
-          fields = params[key].split(/\s*,\s*/)
-          fields.each do |field|
-            reversed[field] ||= []
-            counts[field] ||= 0
-
-            reversed[field] += [key]
-            counts[field] += 1
-          end
-        end
-      end
-
-      # delete repetitions from parameters
-      counts.each do |val, count|
-        if val != nil
-          2.upto(count) do |i|
-            Rails.logger.info " *** [PG::DuplicateAlias] deleting duplicated param #{reversed[val][i-1]}"
-            fields = params[reversed[val][i-1]].split(/\s*,\s*/)
-            fields.delete(val)
-            params[reversed[val][i-1]] = fields.join(',')
-          end
-        end
-      end
-    end
-
     # A user with a certain number of pre-approved won't need approval
     def user_artifacts_can_be_approved?(user)
       user.artifacts.where(approved: true).count >= Artifact.approved_count_for_trust
@@ -217,7 +169,7 @@ class ArtifactsController < InheritedResources::Base
     # Translate commas and spaces from url encoded values
     # back to their ascii counterparts
     def translate_url_encoded_params string
-      search_params.each do |param_name, _|
+      [:hash, :tags, :apps, :formats, :license, :q].each do |param_name|
         if params[param_name].present?
           params[param_name] = params[param_name].gsub('%20',' ').gsub('%2C', ',')
         end

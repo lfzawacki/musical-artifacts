@@ -37,6 +37,34 @@ class ArtifactSearchesTest < Capybara::Rails::TestCase
     assert_content page, @setting.site_name
   end
 
+  test 'normal searches are case insensitive' do
+    FactoryBot.create(:artifact, name: 'MiXedCaSeNaMe')
+    visit artifacts_path(q: 'mixedcasename')
+
+    assert_content page, 'MiXedCaSeNaMe'
+  end
+
+  test 'searches by tags are case insensitive' do
+    FactoryBot.create(:artifact, name: 'Taggy artifact', tag_list: ['UPPERcaseTAG'])
+    visit artifacts_path(tags: 'uppercasetag')
+
+    assert_content page, 'Taggy artifact'
+  end
+
+  test 'searches by apps are case insensitive' do
+    FactoryBot.create(:artifact, name: 'Appy artifact', software_list: ['SOMEApp'])
+    visit artifacts_path(apps: 'someapp')
+
+    assert_content page, 'Appy artifact'
+  end
+
+  test 'searches by formats are case insensitive' do
+    FactoryBot.create(:artifact, name: 'Formatty artifact', file_format_list: ['WavEForm'])
+    visit artifacts_path(formats: 'waveform')
+
+    assert_content page, 'Formatty artifact'
+  end
+
   test 'search with only free licenses' do
     skip
   end
