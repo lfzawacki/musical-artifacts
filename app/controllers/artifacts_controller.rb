@@ -11,9 +11,9 @@ class ArtifactsController < InheritedResources::Base
 
   before_filter only: [:index] do
     search_artifacts
-    load_tag_filters
-    paginate
     order_by_params
+    paginate
+    load_tag_filters
   end
 
   before_filter :load_licenses, only: [:new, :edit, :create, :update]
