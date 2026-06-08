@@ -1,7 +1,6 @@
 class ArtifactsController < InheritedResources::Base
   load_and_authorize_resource except: [:download]
   load_resource only: [:download]
-
   before_action only: [:download] do
     authorize!(:download, @artifact) if !@artifact.approved?
   end
@@ -9,11 +8,26 @@ class ArtifactsController < InheritedResources::Base
   # For API calls
   respond_to :json, :atom
 
+  # For CDN caching purposes
+  # Disable Set-Cookie and add cache headers for logged out users
+  before_action :disable_session_for_guests
+  def disable_session_for_guests
+    response.headers["Cache-Control"] =
+      "public, max-age=2592000, s-maxage=2592000"
+
+    request.session_options[:skip] = true unless current_user
+  end
+
   before_filter only: [:index] do
     search_artifacts
     order_by_params
     paginate
     load_tag_filters
+    set_index_caching
+  end
+
+  before_action only: [:show] do
+    set_show_caching
   end
 
   before_filter :load_licenses, only: [:new, :edit, :create, :update]
@@ -41,6 +55,17 @@ class ArtifactsController < InheritedResources::Base
     file = @artifact.get_file_by_name(sanitize_filename_from_params)
 
     if file.present?
+      # Set cache options
+      response.headers["Cache-Control"] =
+        "public, max-age=2592000, s-maxage=2592000"
+
+      fresh_when etag: @artifact.file_hash, public: true
+
+      # Don`t include cookie if file is public, important for cloudflare
+      if @artifact.downloadable? && @artifact.approved?
+        request.session_options[:skip] = true
+      end
+
       file_params = { filename: file.name }
 
       # If mime type is registered for the file send it
@@ -57,6 +82,32 @@ class ArtifactsController < InheritedResources::Base
   end
 
   private
+
+    def set_index_caching
+      # Search query + the artifact update time + locale
+      etag = Digest::MD5.hexdigest(
+        [
+          I18n.locale,
+          params[:q],
+          params[:page],
+          params[:hash],
+          params[:tags],
+          params[:apps],
+          params[:formats],
+          params[:license],
+          params[:order],
+          params[:asc],
+          @artifacts.map { |a| "#{a.id}-#{a.updated_at.to_i}" }.join("/")
+        ].join("|")
+      )
+
+      fresh_when etag: etag, public: true
+    end
+
+    def set_show_caching
+      # Artifact update time + locale
+      fresh_when etag: [I18n.locale, @artifact.id, @artifact.updated_at.to_i], public: true
+    end
 
     def artifact_params
       params.require(:artifact).permit(
