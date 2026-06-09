@@ -148,7 +148,7 @@ class Searches
 
   # Split ignoring spaces
   def self.split_terms terms
-    terms.split(/\s*,\s*/)
+    terms.to_s.split(/\s*,\s*/)
   end
 
   def tag_exists_sql(context, terms)

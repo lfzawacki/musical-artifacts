@@ -123,7 +123,7 @@ class ArtifactsController < InheritedResources::Base
     def search_artifacts
       @artifacts = Searches.new(
         Artifact.approved,
-        params.slice(:hash, :tags, :apps, :formats, :license, :q)
+        params.permit(:hash, :tags, :apps, :formats, :license, :q)
       ).call.includes(:license)
     end
 
