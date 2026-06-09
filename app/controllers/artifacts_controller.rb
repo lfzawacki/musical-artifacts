@@ -26,8 +26,8 @@ class ArtifactsController < InheritedResources::Base
   before_filter only: [:index] do
     search_artifacts
     order_by_params
-    paginate
     load_tag_filters
+    paginate
     set_index_caching unless current_user
   end
 
