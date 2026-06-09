@@ -144,11 +144,11 @@ class ArtifactsController < InheritedResources::Base
           order_str
         end
 
-        @artifacts = @artifacts.order("#{search_str} #{direction}")
+        @artifacts = @artifacts.order("artifacts.#{search_str} #{direction}")
       else
         # prevents page from showing arbitrary parameter
         params[:order] = 'created_at'
-        @artifacts = @artifacts.order('created_at DESC')
+        @artifacts = @artifacts.order('artifacts.created_at DESC')
       end
     end
 
@@ -161,15 +161,15 @@ class ArtifactsController < InheritedResources::Base
       @tags = {
         tags: @artifacts.tag_counts_on(:tags)
           .where('tags_count > ?', @setting.min_tag_search.to_i)
-          .order('taggings_count DESC')
+          .order('tags.taggings_count DESC')
           .limit(@setting.max_tag_results.to_i),
         apps: @artifacts.tag_counts_on(:software)
           .where('tags_count > ?', @setting.min_app_search.to_i)
-          .order('name ASC')
+          .order('tags.name ASC')
           .limit(@setting.max_app_results.to_i),
         formats: @artifacts.tag_counts_on(:file_formats)
           .where('tags_count > ?', @setting.min_format_search.to_i)
-          .order('name ASC')
+          .order('tags.name ASC')
           .limit(@setting.max_format_results.to_i)
       }
       @licenses = License.license_types - ['copyright', 'various', 'gray']
