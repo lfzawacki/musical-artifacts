@@ -32,8 +32,8 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     login_with(@admin, 'watcheroftheskies')
     visit artifact_path(@artifact)
 
-    assert_link I18n.t('_other.edit'), edit_artifact_path(@artifact)
-    assert_link I18n.t('_other.destroy'), artifact_path(@artifact)
+    assert_link I18n.t('_other.edit'), href: edit_artifact_path(@artifact)
+    assert_link I18n.t('_other.destroy'), href: artifact_path(@artifact)
   end
 
   test "see edit button if a normal user the creator of the artifact" do

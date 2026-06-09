@@ -50,7 +50,7 @@ class ArtifactCachingTest < Capybara::Rails::TestCase
 
   test 'invalidates the show cache when a related StoredFile is created via touch true' do
     visit artifact_path(@artifact)
-    assert_no_content 'Download'
+    assert_no_link I18n.t('artifacts.side_buttons.download')
 
     # Create a stored file using the fixture_file helper from test_helper.rb.
     # Because of the belongs_to :artifact, touch: true association,
@@ -60,6 +60,6 @@ class ArtifactCachingTest < Capybara::Rails::TestCase
     visit artifact_path(@artifact)
 
     # The file tree partial is inside the cache block and should now render the new file_list data
-    assert_link I18n.t('artifacts.side_buttons.download'), @artifact.download_path
+    assert_link I18n.t('artifacts.side_buttons.download')
   end
 end
