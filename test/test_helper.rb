@@ -18,6 +18,10 @@ class ActiveSupport::TestCase
 
   self.use_transactional_fixtures = true
 
+  setup do
+    I18n.locale = :en
+  end
+
   # To open files
   def fixture_file file
     File.open(File.join(Rails.root, '/test/fixtures/files', file))
