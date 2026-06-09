@@ -9,4 +9,8 @@ class Setting < ActiveRecord::Base
      :enable_related_artifacts]
   end
   store_accessor :data, Setting.data_attributes
+
+  def enable_related_artifacts?
+    ActiveRecord::Type::Boolean.new.type_cast_from_user(enable_related_artifacts)
+  end
 end

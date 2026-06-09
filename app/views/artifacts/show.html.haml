@@ -35,7 +35,7 @@
 
     = render 'buttons', artifact: @artifact
 
-    - if @setting.enable_related_artifacts
+    - if @setting.enable_related_artifacts?
       %p#related-links.pad-top.pad-bottom
         %strong
           = t('.related')

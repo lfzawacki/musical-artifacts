@@ -321,4 +321,22 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
     skip
   end
 
+  test "see related artifacts area when enabled" do
+    setting = Setting.first || Setting.create
+    setting.update_attributes(enable_related_artifacts: true)
+
+    visit artifact_path(@artifact)
+
+    assert_content page, I18n.t('artifacts.show.related', default: 'Related')
+  end
+
+  test "don't see related artifacts area when disabled" do
+    setting = Setting.first || Setting.create
+    setting.update_attributes(enable_related_artifacts: false)
+
+    visit artifact_path(@artifact)
+
+    assert_no_content page, I18n.t('artifacts.show.related', default: 'Related')
+  end
+
 end

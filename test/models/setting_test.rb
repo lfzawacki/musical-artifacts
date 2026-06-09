@@ -23,4 +23,12 @@ class SettingTest < ActiveSupport::TestCase
     assert_equal expected_attributes.sort, Setting.data_attributes.sort
   end
 
+  def test_enable_related_artifacts
+    setting.enable_related_artifacts = true
+    assert setting.enable_related_artifacts?
+
+    setting.enable_related_artifacts = false
+    assert_not setting.enable_related_artifacts?
+  end
+
 end
