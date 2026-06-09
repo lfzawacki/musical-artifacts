@@ -88,9 +88,10 @@ class ArtifactsController < InheritedResources::Base
   private
 
     def set_index_caching
-      # Search query + the artifact update time + locale
+      # User Id (or anon) + locale + query + the artifact id + artifact update time
       etag = Digest::MD5.hexdigest(
         [
+          current_user.try(:id) || 'anon',
           I18n.locale,
           params[:q],
           params[:page],
@@ -109,8 +110,14 @@ class ArtifactsController < InheritedResources::Base
     end
 
     def set_show_caching
-      # Artifact update time + locale
-      fresh_when etag: [I18n.locale, @artifact.id, @artifact.updated_at.to_i], public: true
+      # User Id (or anon) + locale + artifact id + artifact update time
+      etag = [
+        current_user.try(:id) || 'anon',
+        I18n.locale,
+        @artifact.id,
+        @artifact.updated_at.to_i
+      ]
+      fresh_when etag, public: true
     end
 
     def artifact_params
