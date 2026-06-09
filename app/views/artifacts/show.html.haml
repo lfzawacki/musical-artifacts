@@ -11,25 +11,26 @@
 
   = render "created_by", artifact: @artifact
 
-  .row.artifact-item
-    .col-lg-8.col-md-8.col-sm-8.light-item.pad-bottom
-      .artifact-description
-        -if @artifact.description.present?
-          = @artifact.description_html
-        - else
-          .no-description= t('.no_description')
+  - cache @artifact do
+    .row.artifact-item
+      .col-lg-8.col-md-8.col-sm-8.light-item.pad-bottom
+        .artifact-description
+          -if @artifact.description.present?
+            = @artifact.description_html
+          - else
+            .no-description= t('.no_description')
 
-      = render 'artifact_links'
+        = render 'artifact_links'
 
-      .artifact-tags.big-tags
-        = render 'artifact_tags', artifact: @artifact
+        .artifact-tags.big-tags
+          = render 'artifact_tags', artifact: @artifact
 
-      %p.artifact-license
-        = render 'artifacts/license', artifact: @artifact, small: false
+        %p.artifact-license
+          = render 'artifacts/license', artifact: @artifact, small: false
 
-    - # Preview file list and multimedia content linked as more info urls
-    = render 'file_listing'
-    = render 'more_info_multimedia'
+      - # Preview file list and multimedia content linked as more info urls
+      = render 'file_listing'
+      = render 'more_info_multimedia'
 
   .row
 

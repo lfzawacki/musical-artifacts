@@ -1,6 +1,6 @@
 class Favorite < ActiveRecord::Base
   belongs_to :user
-  belongs_to :artifact
+  belongs_to :artifact, touch: true
 
   after_create :update_favorite_count
   after_destroy :update_favorite_count

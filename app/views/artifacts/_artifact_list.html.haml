@@ -20,26 +20,27 @@
 
         = render "artifacts/side_buttons", artifact: artifact
 
-        .artifact-name-wrapper
-          %h2.artifact-name
-            = link_to artifact.name, artifact
+        - cache artifact do
+          .artifact-name-wrapper
+            %h2.artifact-name
+              = link_to artifact.name, artifact
 
-          %span
-            = render "artifacts/created_by", artifact: artifact
+            %span
+              = render "artifacts/created_by", artifact: artifact
 
-        .artifact-description
-          -if artifact.description.present?
-            = strip_tags(artifact.description_html).truncate(480)
-          - else
-            .no-description= t('artifacts.show.no_description')
+          .artifact-description
+            -if artifact.description.present?
+              = strip_tags(artifact.description_html).truncate(480)
+            - else
+              .no-description= t('artifacts.show.no_description')
 
-        %p.more-info
-          = link_to t('.more_info'), artifact_path(artifact)
+          %p.more-info
+            = link_to t('.more_info'), artifact_path(artifact)
 
-        .artifact-tags
-          = render 'artifacts/artifact_tags', artifact: artifact
+          .artifact-tags
+            = render 'artifacts/artifact_tags', artifact: artifact
 
-        .artifact-license
-          = render 'artifacts/license', artifact: artifact, small: true
+          .artifact-license
+            = render 'artifacts/license', artifact: artifact, small: true
 
         = render partial: 'artifacts/buttons', locals: { artifact: artifact }

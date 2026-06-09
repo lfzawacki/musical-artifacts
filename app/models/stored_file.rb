@@ -2,7 +2,7 @@ require './lib/file_extractors/file_extractor'
 
 class StoredFile < ActiveRecord::Base
   mount_uploader :file, ArtifactFileUploader
-  belongs_to :artifact
+  belongs_to :artifact, touch: true
 
   before_save :save_file_format
   after_save :enqueue_fetch_metadata
