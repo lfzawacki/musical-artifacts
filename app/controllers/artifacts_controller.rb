@@ -10,12 +10,17 @@ class ArtifactsController < InheritedResources::Base
 
   # For CDN caching purposes
   # Disable Set-Cookie and add cache headers for logged out users
-  before_action :disable_session_for_guests
-  def disable_session_for_guests
+  def set_cache_header
     response.headers["Cache-Control"] =
       "public, max-age=2592000, s-maxage=2592000"
+  end
 
-    request.session_options[:skip] = true unless current_user
+  before_action :disable_session_for_guests
+  def disable_session_for_guests
+    return if current_user
+
+    set_cache_header
+    request.session_options[:skip] = true
   end
 
   before_filter only: [:index] do
@@ -23,11 +28,11 @@ class ArtifactsController < InheritedResources::Base
     order_by_params
     paginate
     load_tag_filters
-    set_index_caching
+    set_index_caching unless current_user
   end
 
   before_action only: [:show] do
-    set_show_caching
+    set_show_caching unless current_user
   end
 
   before_filter :load_licenses, only: [:new, :edit, :create, :update]
@@ -55,10 +60,9 @@ class ArtifactsController < InheritedResources::Base
     file = @artifact.get_file_by_name(sanitize_filename_from_params)
 
     if file.present?
-      # Set cache options
-      response.headers["Cache-Control"] =
-        "public, max-age=2592000, s-maxage=2592000"
+      set_cache_header
 
+      # Cache if file hash is the same
       fresh_when etag: @artifact.file_hash, public: true
 
       # Don`t include cookie if file is public, important for cloudflare
