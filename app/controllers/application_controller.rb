@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
     render layout: nil
   end
 
+  def locale_selector
+    render partial: 'application/locale_selector', layout: false
+  end
+
   private
   def check_session_for_notifications
     session[:notifications] ||= {}

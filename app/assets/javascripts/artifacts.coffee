@@ -325,6 +325,13 @@ parseQueryString = (str) ->
   params['q'] = str if str.length > 0
   params
 
+# Load locale form dinamically
+# We need this for cache
+initialize_locales = ->
+  if $('#dynamic-locale-selector').length
+    $.get '/locale_selector', (data) ->
+      $('#dynamic-locale-selector').html(data)
+
 # UGLY hack, to enable the search bar after a
 # back button (because turbolinks isnt firing an event)
 #
@@ -345,6 +352,9 @@ $ ->
   enableSearchBar()
 
 $(document).on 'page:change', ->
+
+  #------- all
+  initialize_locales()
 
   # ------ index
   if $('#artifact_search')[0]

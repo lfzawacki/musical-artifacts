@@ -139,13 +139,7 @@
 
             .footer-col.col-md-2
               %h3= t('.footer.language')
-              .dropdown#locale-selector-dropdown{role: 'menu'}
-                %button.btn.btn-default.dropdown-toggle{type: 'button', id: 'locale-selector-button', :'data-toggle' => 'dropdown'}
-                  = t('.footer.switch_language')
-                  %span.caret
-                %ul.dropdown-menu
-                  - I18n.available_locales.each do |l|
-                    %li= link_to t('locale_name', locale: l), set_locale_path(locale: l), method: :post
+              #dynamic-locale-selector
 
       .footer-below
         .container

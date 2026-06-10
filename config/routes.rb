@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/settings', to: 'settings#edit', as: 'edit_settings'
 
   get '/comments_script', to: 'application#comments_script', as: 'comments_script'
+  get '/locale_selector', to: 'application#locale_selector', as: 'locale_selector'
 
   resources :apps, only: [:show, :index]
 
