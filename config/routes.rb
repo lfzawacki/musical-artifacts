@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   get '/comments_script', to: 'application#comments_script', as: 'comments_script'
   get '/locale_selector', to: 'application#locale_selector', as: 'locale_selector'
 
-  resources :apps, only: [:show, :index]
-
   root to: "artifacts#index"
 
   devise_for :users, ActiveAdmin::Devise.config.merge(:path => 'users',

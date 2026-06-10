@@ -21,6 +21,15 @@ class ApplicationController < ActionController::Base
 
   before_filter :check_session_for_notifications
 
+  # Fallback access denied handling
+  def handle_access_denied exception
+    if request.format.json?
+      head :unauthorized
+    else
+      redirect_to root_path, notice: t('_other.access_denied')
+    end
+  end
+
   # When a controller gets the user via current_user
   def load_user
     @user = current_user
