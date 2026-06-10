@@ -15,24 +15,16 @@ class ArtifactsController < InheritedResources::Base
       "public, max-age=2592000, s-maxage=2592000"
   end
 
-  before_action :disable_session_for_guests
-  def disable_session_for_guests
-    return if current_user
-
-    set_cache_header
-    request.session_options[:skip] = true
-  end
-
   before_filter only: [:index] do
     search_artifacts
     order_by_params
     load_tag_filters
     paginate
-    set_index_caching unless current_user
+    set_index_caching
   end
 
   before_action only: [:show] do
-    set_show_caching unless current_user
+    set_show_caching
   end
 
   before_filter :load_licenses, only: [:new, :edit, :create, :update]
@@ -117,6 +109,7 @@ class ArtifactsController < InheritedResources::Base
         @artifact.id,
         @artifact.updated_at.to_i
       ]
+
       fresh_when etag, public: true
     end
 
