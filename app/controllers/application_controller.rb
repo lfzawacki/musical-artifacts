@@ -7,10 +7,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied, with: :handle_access_denied
 
-  # Prevent this from being an error 500 in production
-  if Rails.env.production?
-    rescue_from ActionController::UnknownFormat, with: :handle_unknown_format
-  end
+  # Prevent this from being an error 500
+  rescue_from ActionController::UnknownFormat, with: :handle_unknown_format
 
   # API specific authentication
   before_action :api_authenticate
@@ -133,9 +131,7 @@ class ApplicationController < ActionController::Base
     msg = "[UnknownFormat] error at #{request.path}"
     logger.error msg
 
-    ExceptionNotifier.notify_exception exception, env: request.env, data: {message: msg}
-
-    render file: "#{Rails.root}/public/404.html", status: 404, format: :html, layout: false
+    head :not_acceptable
   end
 
 end
