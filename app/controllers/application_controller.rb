@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
 
-  # Prevent CSRF attacks by raising an exception.
-  # Normal form authentication
-  protect_from_forgery with: :exception, unless: :is_api_call?
+  # Prevent CSRF attacks by raising an exception for HTML requests.
+  protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied, with: :handle_access_denied
 
@@ -42,6 +41,17 @@ class ApplicationController < ActionController::Base
 
   def locale_selector
     render partial: 'application/locale_selector', layout: false
+  end
+
+  protected
+
+  # Use the NullSession strategy explicitly for API calls without overriding global strategy
+  def handle_unverified_request
+    if is_api_call?
+      ActionController::RequestForgeryProtection::ProtectionMethods::NullSession.new(self).handle_unverified_request
+    else
+      super
+    end
   end
 
   private
