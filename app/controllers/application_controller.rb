@@ -55,27 +55,42 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def check_session_for_notifications
     session[:notifications] ||= {}
     session[:notifications]['survey'] ||= DateTime.now
+  end
+
+  # Ensures the path is strictly a relative path to prevent Open Redirects
+  def safe_redirect_path?(path)
+    return false if path.blank? || !path.is_a?(String)
+    # Must start with a single slash and not be followed by another slash, backslash, or encoded slash
+    path.start_with?('/') && !path.match?(/\A\/+[\/\\]/) && !path.match?(/\A\/+%2f/i)
   end
 
   def store_location
     paths = ['/users/login', '/users/sign_up', '/users/password/new', '/users/password/edit', '/users/confirmation', '/users/logout']
     auth_paths = /^\/users\/auth\//
     names = ['download']
+
     if request.method == 'GET' &&
        !paths.include?(request.path) &&
        !auth_paths.match(request.path) &&
        !names.include?(action_name) &&
-       !request.xhr?
+       !request.xhr? &&
+       safe_redirect_path?(request.fullpath)
 
       session[:previous_path] = request.fullpath
     end
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    session[:previous_path] || artifacts_path
+    path = session[:previous_path]
+    if safe_redirect_path?(path)
+      path
+    else
+      artifacts_path
+    end
   end
 
   def after_sign_out_path_for(resource_or_scope)
