@@ -7,6 +7,11 @@ class License < ActiveRecord::Base
 
   # TODO: Maybe move this whole code to attributes in the database?
   def self.type_image name, small=false
+    @type_image_cache ||= {}
+    cache_key = "#{name}-#{small}"
+    return @type_image_cache[cache_key] if @type_image_cache.key?(cache_key)
+
+    original_name = name
     # All gpls use the same image
     if name.match(/gpl/)
       name = 'gpl'
@@ -22,11 +27,14 @@ class License < ActiveRecord::Base
 
     # find the correct image extension
     ['svg', 'png', 'jpg'].each do |ext|
-      extension = ext if license_image_present?("#{img}.#{ext}")
+      if license_image_present?("#{img}.#{ext}")
+        extension = ext
+        break
+      end
     end
 
     # Return full image path
-    "#{img}.#{extension}" if extension
+    @type_image_cache[cache_key] = (extension ? "#{img}.#{extension}" : nil)
   end
 
   def self.type_name type

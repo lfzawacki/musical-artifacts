@@ -23,6 +23,11 @@ class ArtifactsController < InheritedResources::Base
     set_index_caching
   end
 
+  # Eager load associations only if the cache check misses
+  before_filter only: [:index] do
+    @artifacts = @artifacts.includes(:license, :tags, :taggings, :stored_files)
+  end
+
   before_action only: [:show] do
     set_show_caching
   end
@@ -123,8 +128,8 @@ class ArtifactsController < InheritedResources::Base
     def search_artifacts
       @artifacts = Searches.new(
         Artifact.approved,
-        params.permit(:hash, :tags, :apps, :formats, :license, :q)
-      ).call.includes(:license)
+        params.permit(:hash, :tags, :apps, :formats, :license, :q, :order, :asc)
+      ).call
     end
 
     def paginate
@@ -162,22 +167,28 @@ class ArtifactsController < InheritedResources::Base
     end
 
     def load_tag_filters
-      @tags = {
-        tags: @artifacts.tag_counts_on(:tags)
-          .where('tags_count > ?', @setting.min_tag_search.to_i)
-          .order('tags.taggings_count DESC')
-          .limit(@setting.max_tag_results.to_i),
-        apps: @artifacts.tag_counts_on(:software)
-          .where('tags_count > ?', @setting.min_app_search.to_i)
-          .order('tags.name ASC')
-          .limit(@setting.max_app_results.to_i),
-        formats: @artifacts.tag_counts_on(:file_formats)
-          .where('tags_count > ?', @setting.min_format_search.to_i)
-          .order('tags.name ASC')
-          .limit(@setting.max_format_results.to_i)
-      }
-      @licenses = License.license_types - ['copyright', 'various', 'gray']
-      @copyright = License.find('copyright') # always the black sheep
+      cache_key = "tag_filters_#{Digest::MD5.hexdigest(@artifacts.to_sql)}"
+
+      @tags, @licenses, @copyright = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
+        tags = {
+          tags: @artifacts.tag_counts_on(:tags)
+            .where('tags_count > ?', @setting.min_tag_search.to_i)
+            .order('tags.taggings_count DESC')
+            .limit(@setting.max_tag_results.to_i).to_a,
+          apps: @artifacts.tag_counts_on(:software)
+            .where('tags_count > ?', @setting.min_app_search.to_i)
+            .order('tags.name ASC')
+            .limit(@setting.max_app_results.to_i).to_a,
+          formats: @artifacts.tag_counts_on(:file_formats)
+            .where('tags_count > ?', @setting.min_format_search.to_i)
+            .order('tags.name ASC')
+            .limit(@setting.max_format_results.to_i).to_a
+        }
+        licenses = License.license_types - ['copyright', 'various', 'gray']
+        copyright = License.find('copyright')
+
+        [tags, licenses, copyright]
+      end
     end
 
     def sanitize_filename_from_params
