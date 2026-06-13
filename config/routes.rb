@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     post '/users/auth/', as: 'create_with_omniauth', controller: 'users/auth_callbacks', action: 'create_with_omniauth'
   end
 
-  get 'my_artifacts', to: 'users#show', as: :my_artifacts
+  get '/profile', to: 'users#show', as: :profile
+  get '/user/artifacts', to: 'users#artifacts', as: :my_artifacts
+  get '/user/favorites', to: 'users#favorites', as: :my_favorites
 
   resources :activities, only: [:index], as: 'activities'
 

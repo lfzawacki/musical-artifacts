@@ -28,6 +28,8 @@ class Ability
       can :create, Artifact
 
       can :show, User
+      can :artifacts, User
+      can :favorites, User
 
       can :favorite, Artifact do |artifact|
         Favorite.where(artifact_id: artifact.id, user_id: user.id).empty?

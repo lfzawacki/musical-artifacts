@@ -305,11 +305,27 @@ fr:
       note: "Ceci doit être fait une seule fois lorsque vous vous enregistrez."
 
     show:
+      user_profile: "Profil de l'utilisateur"
+      user_info: "Informations sur l'utilisateur"
+      username: "Nom d'utilisateur :"
+      email: "Courriel :"
+      joined: "Inscrit le :"
+      last_signed_in: "Dernière connexion :"
       your_artifacts: Vos artéfacts musicaux
-      description: "Dis donc, %{user} ! Voici tous les artéfacts que tu as enregistrés sur ce site."
+      description: "Dis donc, %{user} ! Voici tous les artéfacts et favoris."
       your_favorites: Favoris
-      favorite_description: Ce sont les artéfacts que tu as marqués en tant que favoris
-      show_favorites_html: "À votre recherche %{link} ?"
+
+    artifacts:
+      your_artifacts: "Artéfacts"
+      description: "Dis donc, %{user} ! Voici vos artéfacts."
+      back_to_profile: "← Retour au profil"
+      your_favorites: "Voir les favoris"
+
+    favorites:
+      your_favorites: "Favoris"
+      favorite_description: "Ce sont les artéfacts que tu as marqués en tant que favoris"
+      back_to_profile: "← Retour au profil"
+      your_artifacts: "Voir les artéfacts"
 
     passwords:
       new:

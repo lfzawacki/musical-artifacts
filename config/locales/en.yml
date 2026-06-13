@@ -295,11 +295,27 @@ en:
       note: "This only needs to be done the first time you sign in."
 
     show:
-      your_artifacts: Your Musical Artifacts
-      description: "Hey, %{user}! Here are all the artifacts you have registered on the site."
-      your_favorites: Favorites
-      favorite_description: These are the artifacts you have marked as your favorites
-      show_favorites_html: "Looking for you %{link}?"
+      user_profile: "User Profile"
+      user_info: "User Information"
+      username: "Username:"
+      email: "Email:"
+      joined: "Joined:"
+      last_signed_in: "Last signed in:"
+      your_artifacts: "Your Musical Artifacts"
+      description: "Hey, %{user}! Here are you'll find all your artifacts and favorites."
+      your_favorites: "Favorites"
+
+    artifacts:
+      your_artifacts: "Artifacts"
+      description: "Hey, %{user}! Here are your artifacts."
+      back_to_profile: "← Back to Profile"
+      your_favorites: "View Favorites"
+
+    favorites:
+      your_favorites: "Favorites"
+      favorite_description: "These are the artifacts you have marked as your favorites"
+      back_to_profile: "← Back to Profile"
+      your_artifacts: "View Artifacts"
 
     passwords:
       new:

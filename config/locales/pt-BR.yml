@@ -316,11 +316,27 @@ pt-BR:
       note: "Isto só é feito na primeira vez que você entrar no site."
 
     show:
+      user_profile: "Perfil de Usuário"
+      user_info: "Informações do Usuário"
+      username: "Apelido:"
+      email: "Email:"
+      joined: "Registrado em:"
+      last_signed_in: "Último acesso:"
       your_artifacts: Seus Artefatos Musicais
-      description: "Olá, %{user}! Aqui estão todos os artefatos que você registrou no site!"
+      description: "Olá, %{user}! Aqui estão todos seus artefatos e favoritos!"
       your_favorites: Favoritos
-      favorite_description: Estes são os artefatos que você marcou como favoritos.
-      show_favorites_html: "Procurando por seus %{link}?"
+
+    artifacts:
+      your_artifacts: "Artefatos"
+      description: "Olá, %{user}! Aqui estão seus artefatos."
+      back_to_profile: "← Voltar para o Perfil"
+      your_favorites: "Ver Favoritos"
+
+    favorites:
+      your_favorites: "Favoritos"
+      favorite_description: "Estes são os artefatos que você marcou como favoritos."
+      back_to_profile: "← Voltar para o Perfil"
+      your_artifacts: "Ver Artefatos"
 
     omniauth_providers:
       title: "Entre com outros sites:"

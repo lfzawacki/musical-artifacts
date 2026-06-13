@@ -1,0 +1,15 @@
+= content_for :title, t('.your_artifacts', default: 'Artifacts')
+
+.row#your-artifacts.min-height-wrapper
+  %h2= t('.your_artifacts', default: 'Artifacts')
+
+  %p.pull-right
+    = link_to t('.back_to_profile', default: '← Back to Profile'), profile_path
+    |
+    = link_to t('.your_favorites', default: 'View Favorites'), my_favorites_path
+
+  - if @artifacts.any?
+    .row.pad-top
+      = render 'artifacts/artifact_list', artifacts: @artifacts, per_row: 1
+    .row.pad-top
+      = paginate @artifacts

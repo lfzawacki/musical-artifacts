@@ -69,7 +69,7 @@
 
             - if current_user.present?
               %li
-                = link_to my_artifacts_path do
+                = link_to profile_path do
                   %span.badge.badge-artifacts= current_user.artifacts.count
                   = t('.current_user', user: current_user.username || current_user.email)
 

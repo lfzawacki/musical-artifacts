@@ -11,14 +11,14 @@ class ShowInfoTest < Capybara::Rails::TestCase
     login_with(@admin, 'sunsetsuperman')
     visit '/'
 
-    assert_link I18n.t('layouts.application.current_user', user: @admin.username), href: my_artifacts_path
+    assert_link I18n.t('layouts.application.current_user', user: @admin.username), href: profile_path
   end
 
   test "show user name and salutation when logged in (user)" do
     login_with(@user, 'holydiver')
     visit '/'
 
-    assert_link I18n.t('layouts.application.current_user', user: @user.username), href: my_artifacts_path
+    assert_link I18n.t('layouts.application.current_user', user: @user.username), href: profile_path
   end
 
   test "show user email and salutation when logged in (user) and has no name set" do
@@ -30,7 +30,7 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_link I18n.t('layouts.application.current_user', user: @admin.email), href: my_artifacts_path
+    assert_link I18n.t('layouts.application.current_user', user: @admin.email), href: profile_path
   end
 
   test "show about link on main page" do
@@ -89,7 +89,7 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_link '2', href: my_artifacts_path
+    assert_link '2', href: profile_path
   end
 
   test "show number of artifacts for a user (none)" do
@@ -97,7 +97,7 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_link '0', href: my_artifacts_path
+    assert_link '0', href: profile_path
   end
 
   test "show number of artifacts for a user (3, 1 for other user)" do
@@ -110,7 +110,7 @@ class ShowInfoTest < Capybara::Rails::TestCase
 
     visit '/'
 
-    assert_link '3', href: my_artifacts_path
+    assert_link '3', href: profile_path
   end
 
   test "show logout link for normal user" do

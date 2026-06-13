@@ -1,21 +1,36 @@
-= content_for :title, t('.your_artifacts')
+= content_for :title, t('.user_profile', default: 'User Profile')
 
-.row#your-artifacts
-  %h2= t('.your_artifacts')
+.row#user-profile.min-height-wrapper
+  .col-md-12
+    %h2= t('.user_profile', default: 'Your Profile')
 
-  %p= t('.description', user: @user.email)
-  %p
-    = t('.show_favorites_html', link: link_to(t('.your_favorites'), '#your-favorites', id: 'go-to-favorites'))
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title= t('.user_info', default: 'User Information')
+      .panel-body
+        .row
+          .col-md-2.text-center
+            - if current_user.avatar.present?
+              = image_tag current_user.avatar, class: "img-thumbnail", alt: "User Avatar"
+          .col-md-10
+            %dl.dl-horizontal
+              %dt= t('.username', default: 'Username:')
+              %dd= current_user.username.presence || '-'
+              %dt= t('.email', default: 'Email:')
+              %dd= current_user.email
+              %dt= t('.joined', default: 'Joined:')
+              %dd= current_user.created_at ? current_user.created_at.strftime("%B %d, %Y") : '-'
+              %dt= t('.last_signed_in', default: 'Last signed in:')
+              %dd= current_user.last_sign_in_at ? time_ago_in_words(current_user.last_sign_in_at) + " ago" : '-'
 
-- if @artifacts.any?
-  .row.pad-top
-    = render 'artifacts/artifact_list', artifacts: @artifacts, per_row: 1
+    %p= t('.description', user: current_user.username.presence || current_user.email)
 
-.row#your-favorites
-  %h2= t('.your_favorites')
+    .actions.pad-top{ style: "margin-top: 20px; margin-bottom: 20px;" }
+      = link_to my_artifacts_path, class: 'btn btn-primary', style: "margin-right: 15px;" do
+        %span.fa.fa-list
+        = t('.your_artifacts', default: 'Artifacts')
+      = link_to my_favorites_path, class: 'btn btn-info' do
+        %span.fa.fa-star
+        = t('.your_favorites', default: 'Favorites')
 
-  %p= t('.favorite_description')
-
-- if @favorite_artifacts.any?
-  .row.pad-top
-    = render 'artifacts/artifact_list', artifacts: @favorite_artifacts, per_row: 1
+    %tr

@@ -19,7 +19,6 @@ class UsersControllerTest < ActionController::TestCase
     get :show
 
     assert_equal @user, assigns(:user)
-    assert_equal Artifact.none, assigns(:artifacts)
   end
 
   test 'show my artifacts page for current_user (3 artifacts)' do
@@ -32,7 +31,7 @@ class UsersControllerTest < ActionController::TestCase
         FactoryBot.create(:artifact, user: FactoryBot.create(:user)) # another user
     ]
 
-    get :show
+    get :artifacts
 
     assert_equal @user, assigns(:user)
     assert_equal assigns(:artifacts).count, 3
@@ -50,13 +49,44 @@ class UsersControllerTest < ActionController::TestCase
         FactoryBot.create(:artifact, user: @user, approved: false)
     ]
 
-    get :show
+    get :artifacts
 
     assert_equal @user, assigns(:user)
     assert_equal assigns(:artifacts).count, 3
     assert_includes assigns(:artifacts), artifacts[0]
     assert_includes assigns(:artifacts), artifacts[1]
     assert_includes assigns(:artifacts), artifacts[2]
+  end
+
+  test 'show my favorites page for current_user' do
+    sign_in(@user)
+
+    get :favorites
+
+    assert_equal @user, assigns(:user)
+  end
+
+  test 'show my favorites page for current_user (3 artifacts)' do
+    sign_in(@user)
+
+    artifacts = [
+        FactoryBot.create(:artifact),
+        FactoryBot.create(:artifact),
+        FactoryBot.create(:artifact),
+        FactoryBot.create(:artifact)
+    ]
+
+    FactoryBot.create(:favorite, user: @user, artifact: artifacts[0])
+    FactoryBot.create(:favorite, user: @user, artifact: artifacts[1])
+    FactoryBot.create(:favorite, user: @user, artifact: artifacts[2])
+
+    get :favorites
+
+    assert_equal @user, assigns(:user)
+    assert_equal assigns(:favorite_artifacts).count, 3
+    assert_includes assigns(:favorite_artifacts), artifacts[0]
+    assert_includes assigns(:favorite_artifacts), artifacts[1]
+    assert_includes assigns(:favorite_artifacts), artifacts[2]
   end
 
   #
@@ -69,6 +99,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should render show in json format and with no artifacts" do
+    skip # OBSOLETE API call
     api_authenticate(@user)
 
     get :show, format: :json
@@ -82,7 +113,35 @@ class UsersControllerTest < ActionController::TestCase
 
     artifacts = [ FactoryBot.create(:artifact, user: @user), FactoryBot.create(:artifact, user: @user) ]
 
-    get :show, format: :json
+    get :artifacts, format: :json
+
+    assert_response :success
+    assert_equal json_body.size, 2
+    assert_equal artifacts[1].name, json_body[0]['name']
+    assert_equal artifacts[0].name, json_body[1]['name']
+  end
+
+  test "should render artifacts in json format and with 2 artifacts" do
+    api_authenticate(@user)
+
+    artifacts = [ FactoryBot.create(:artifact, user: @user), FactoryBot.create(:artifact, user: @user) ]
+
+    get :artifacts, format: :json
+
+    assert_response :success
+    assert_equal json_body.size, 2
+    assert_equal artifacts[1].name, json_body[0]['name']
+    assert_equal artifacts[0].name, json_body[1]['name']
+  end
+
+  test "should render favorites in json format and with 2 artifacts" do
+    api_authenticate(@user)
+
+    artifacts = [ FactoryBot.create(:artifact), FactoryBot.create(:artifact) ]
+    FactoryBot.create(:favorite, user: @user, artifact: artifacts[0])
+    FactoryBot.create(:favorite, user: @user, artifact: artifacts[1])
+
+    get :favorites, format: :json
 
     assert_response :success
     assert_equal json_body.size, 2
