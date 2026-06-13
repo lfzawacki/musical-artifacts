@@ -25,7 +25,7 @@ class ArtifactsController < InheritedResources::Base
 
   # Eager load associations only if the cache check misses
   before_filter only: [:index] do
-    @artifacts = @artifacts.includes(:license, :tags, :taggings, :stored_files)
+    @artifacts = @artifacts.includes(:license, :stored_files, :tags, :software, :file_formats)
   end
 
   before_action only: [:show] do

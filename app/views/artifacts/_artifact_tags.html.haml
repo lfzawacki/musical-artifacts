@@ -1,10 +1,10 @@
 - # TODO: Hash ordering is not guaranteed, but I don't want to write extra code here
 - # If this breaks it's just an aesthetic bug and then I can deal with it
-- lists = {'app' => :software, 'tag' => :tag, 'format' => :file_format }
+- lists = {'app' => :software, 'tag' => :tags, 'format' => :file_formats }
 
-- lists.each do |tag_name, list_name|
+- lists.each do |tag_name, assoc_name|
 
-  - list = artifact.send("#{list_name}_list")
+  - list = artifact.send(assoc_name).map(&:name)
 
   - if list.present? && defined?(@max_tags)
     - list.first(@max_tags[tag_name]).each do |tag|
