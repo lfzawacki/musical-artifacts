@@ -21,4 +21,8 @@ module ApplicationHelper
     end
   end
 
+  def is_search_query?
+    [:q, :tags, :apps, :formats, :order, :page].any? { |p| params[p].present? }
+  end
+
 end
