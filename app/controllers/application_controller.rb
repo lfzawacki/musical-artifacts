@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownFormat, with: :handle_unknown_format
 
   # API specific authentication
-  before_action :api_authenticate
+  before_action :api_authenticate, except: [:locale_selector, :comments_script]
 
-  before_filter :load_settings
-  before_filter :count_unapproved_artifacts
+  before_filter :load_settings, except: [:locale_selector, :comments_script]
+  before_filter :count_unapproved_artifacts, except: [:locale_selector, :comments_script]
   before_filter :set_current_locale
 
   before_filter :store_location
