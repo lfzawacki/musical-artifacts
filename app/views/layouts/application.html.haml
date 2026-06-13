@@ -9,7 +9,7 @@
     %meta{:content => "", :name => "author"}/
 
     - # Prevent robots from indexing search pages
-    - if params[:q].present? || params[:tags].present? || params[:apps].present? || params[:formats].present?
+    - if params[:q].present? || params[:tags].present? || params[:apps].present? || params[:formats].present? || params[:order].present?
       %meta{name: "robots", content: "noindex, nofollow"}
 
     %title= application_title

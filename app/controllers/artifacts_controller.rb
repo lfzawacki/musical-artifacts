@@ -151,7 +151,7 @@ class ArtifactsController < InheritedResources::Base
         @artifacts = @artifacts.order("artifacts.#{search_str} #{direction}")
       else
         # prevents page from showing arbitrary parameter
-        params[:order] = 'created_at'
+        params.delete(:order)
         @artifacts = @artifacts.order('artifacts.created_at DESC')
       end
     end
