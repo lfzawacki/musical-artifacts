@@ -18,7 +18,7 @@ class SettingTest < ActiveSupport::TestCase
       :max_artifact_tags, :max_artifact_apps, :max_artifact_formats,
       :min_tag_search, :min_app_search, :min_format_search,
       :max_tag_results, :max_app_results, :max_format_results,
-      :enable_related_artifacts
+      :enable_related_artifacts, :simple_tag_searches
     ]
     assert_equal expected_attributes.sort, Setting.data_attributes.sort
   end
@@ -29,6 +29,14 @@ class SettingTest < ActiveSupport::TestCase
 
     setting.enable_related_artifacts = false
     assert_not setting.enable_related_artifacts?
+  end
+
+  def test_simple_tag_searches
+    setting.simple_tag_searches = true
+    assert setting.simple_tag_searches?
+
+    setting.simple_tag_searches = false
+    assert_not setting.simple_tag_searches?
   end
 
 end

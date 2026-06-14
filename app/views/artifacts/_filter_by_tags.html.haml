@@ -20,14 +20,12 @@
       - @tags[tag_type].each do |tag|
         - tags = params[tag_type].try(:split, ',').to_a
 
-        - if tag_type == :tags
-          - merge_with = ([tag.name] + tags).join(',')
-        - else
-          - merge_with = tag.name
-
-        - new_params = params.slice(*search_fields).merge(tag_type => merge_with)
-
         - if tags.include?(tag.name)
           %span.tag-filter.selected-tag= "#{tag.name} (#{tag.count})"
         - else
-          = link_to "#{tag.name} (#{tag.count})", artifacts_path(new_params), class: "tag-filter #{tag_type.to_s.singularize}-tag"
+          - if @setting.try(:simple_tag_searches?)
+            - path = artifacts_path(tag_type => tag.name)
+          - else
+            - new_tags = (tags + [tag.name]).uniq.join(',')
+            - path = artifacts_path(params.slice(*search_fields).merge(tag_type => new_tags))
+          = link_to "#{tag.name} (#{tag.count})", path, class: "tag-filter #{tag_type.to_s.singularize}-tag"
