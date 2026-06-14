@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # API specific authentication
   before_action :api_authenticate, except: [:locale_selector, :comments_script]
 
-  before_filter :load_settings, except: [:locale_selector, :comments_script]
+  before_filter :load_settings, except: [:locale_selector]
   before_filter :count_unapproved_artifacts, except: [:locale_selector, :comments_script]
   before_filter :set_current_locale
 
