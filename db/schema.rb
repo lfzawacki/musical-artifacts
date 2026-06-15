@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200414051122) do
+ActiveRecord::Schema.define(version: 20260615000001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +53,15 @@ ActiveRecord::Schema.define(version: 20200414051122) do
     t.string   "name"
     t.string   "url"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.boolean  "has_integration"
+  end
+
+  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
+    t.string   "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "artifacts", force: :cascade do |t|
@@ -76,6 +82,8 @@ ActiveRecord::Schema.define(version: 20200414051122) do
     t.integer  "download_count",     default: 0
   end
 
+  add_index "artifacts", ["approved"], name: "index_artifacts_on_approved", using: :btree
+
   create_table "favorites", force: :cascade do |t|
     t.integer  "artifact_id"
     t.integer  "user_id"
@@ -92,6 +100,8 @@ ActiveRecord::Schema.define(version: 20200414051122) do
     t.string   "license_type"
     t.boolean  "free"
   end
+
+  add_index "licenses", ["free"], name: "index_licenses_on_free", using: :btree
 
   create_table "settings", force: :cascade do |t|
     t.hstore   "data"
