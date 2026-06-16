@@ -22,6 +22,10 @@ class ActiveSupport::TestCase
     I18n.locale = :en
   end
 
+  teardown do
+    Capybara.reset_sessions!
+  end
+
   # To open files
   def fixture_file file
     File.open(File.join(Rails.root, '/test/fixtures/files', file))
@@ -35,7 +39,7 @@ class ActiveSupport::TestCase
 
   def login_with user, password
     visit new_user_session_path
-
+    assert page.has_field?('user_email'), "Expected login form to be visible at #{current_path}, got: #{page.status_code}"
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: password
     click_button I18n.t('_other.login')

@@ -17,7 +17,7 @@ class ApiCsrfTest < ActionDispatch::IntegrationTest
 
   test "JSON POST with session cookie but no CSRF token fails due to nullified session" do
     # 1. Sign in
-    login_with(@user, @user.password)
+    login_with(@user, 'password123')
 
     # Temporarily enable CSRF protection to test the vulnerability
     ActionController::Base.allow_forgery_protection = true
@@ -68,6 +68,9 @@ class ApiCsrfTest < ActionDispatch::IntegrationTest
       assert_equal 200, page.driver.status_code
     ensure
       ActionController::Base.allow_forgery_protection = false
+      page.driver.header 'Authorization', nil
+      page.driver.header 'Content-Type', nil
+      page.driver.header 'Accept', nil
     end
   end
 end
