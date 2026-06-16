@@ -59,24 +59,23 @@ class ArtifactsController < InheritedResources::Base
     if file.present?
       set_cache_header
 
-      # Cache if file hash is the same
-      fresh_when etag: @artifact.file_hash, public: true
+      if stale?(etag: @artifact.file_hash, public: true)
+        # Don`t include cookie if file is public, important for cloudflare
+        if @artifact.downloadable? && @artifact.approved?
+          request.session_options[:skip] = true
+        end
 
-      # Don`t include cookie if file is public, important for cloudflare
-      if @artifact.downloadable? && @artifact.approved?
-        request.session_options[:skip] = true
+        file_params = { filename: file.name }
+
+        # If mime type is registered for the file send it
+        mime_type = Mime::Type.lookup_by_extension(file.format)
+        file_params.merge!(type: mime_type) if mime_type.present?
+
+        # Pathname is necessary for X-Send-File to work with Capistrano sym-links
+        send_file Pathname(file.path).realdirpath, file_params
+
+        file.increment_download_count
       end
-
-      file_params = { filename: file.name }
-
-      # If mime type is registered for the file send it
-      mime_type = Mime::Type.lookup_by_extension(file.format)
-      file_params.merge!(type: mime_type) if mime_type.present?
-
-      # Pathname is necessary for X-Send-File to work with Capistrano sym-links
-      send_file Pathname(file.path).realdirpath, file_params
-
-      file.increment_download_count
     else
       render :file => "#{Rails.root}/public/404.html", :status => 404
     end
