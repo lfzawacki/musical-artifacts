@@ -1,8 +1,11 @@
 class License < ActiveRecord::Base
   has_many :artifacts
 
+  after_save :expire_license_types_cache
+  after_destroy :expire_license_types_cache
+
   def self.license_types
-    License.all.pluck(:license_type).uniq
+    Rails.cache.fetch("license_types") { License.all.pluck(:license_type).uniq }
   end
 
   # TODO: Maybe move this whole code to attributes in the database?
@@ -108,6 +111,12 @@ class License < ActiveRecord::Base
   def self.cc_license_number short_name
     last = short_name.split('-')[-1]
     is_text_part?(last) ? 4 : 3
+  end
+
+  private
+
+  def expire_license_types_cache
+    Rails.cache.delete("license_types")
   end
 
 end

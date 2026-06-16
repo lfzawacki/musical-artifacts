@@ -1,7 +1,5 @@
 class Setting < ActiveRecord::Base
-  after_save do
-    Rails.cache.delete("settings")
-  end
+  after_save :expire_settings_cache
 
   def self.data_attributes
     [:hostname, :site_name, :juvia_site_key, :juvia_server_url, :juvia_include_css, :juvia_comment_order, :api_throttle_per_minute,
@@ -20,5 +18,11 @@ class Setting < ActiveRecord::Base
 
   def simple_tag_searches?
     ActiveRecord::Type::Boolean.new.type_cast_from_user(simple_tag_searches)
+  end
+
+  private
+
+  def expire_settings_cache
+    Rails.cache.delete("settings")
   end
 end
