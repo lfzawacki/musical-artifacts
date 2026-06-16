@@ -2,6 +2,12 @@ ActiveAdmin.register Artifact do
   permit_params :name, :approved, :downloadable, :author, :user, :mirrors, :license,
     :more_info_urls, :extra_license_text, :stored_files, :user, :user_id
 
+  controller do
+    def scoped_collection
+      super.includes(:user)
+    end
+  end
+
   index do
     selectable_column
     id_column
