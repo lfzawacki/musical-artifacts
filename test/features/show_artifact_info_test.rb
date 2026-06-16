@@ -3,6 +3,7 @@ require "test_helper"
 class ShowArtifactInfoTest < Capybara::Rails::TestCase
 
   setup do
+    Setting.first || FactoryBot.create(:setting)
     @artifact = FactoryBot.create(:artifact)
     @admin = FactoryBot.create(:user, email: 'peter@genes.is', password: 'watcheroftheskies', admin: true)
     @user = FactoryBot.create(:user, email: 'phil@genes.is', password: 'musicalbox')
