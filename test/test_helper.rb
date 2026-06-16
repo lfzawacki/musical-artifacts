@@ -24,6 +24,7 @@ class ActiveSupport::TestCase
 
   teardown do
     Capybara.reset_sessions!
+    Rails.cache.clear
   end
 
   # To open files
