@@ -377,6 +377,33 @@ class SearchesTest < ActiveSupport::TestCase
     assert_equal 0, tags.count
   end
 
+  test "#artifacts_by_metadata (non-alphanumeric query . does not crash)" do
+    search = Searches::artifacts_by_metadata(@scope, '.')
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (non-alphanumeric query ! does not crash)" do
+    search = Searches::artifacts_by_metadata(@scope, '!')
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (non-alphanumeric query with spaces does not crash)" do
+    search = Searches::artifacts_by_metadata(@scope, '. ! @ #')
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#artifacts_by_metadata (non-alphanumeric chars ignored with valid term)" do
+    search = Searches::artifacts_by_metadata(@scope, '@#$ guitar !')
+    assert_includes search, @artifacts[1]
+    assert_includes search, @artifacts[5]
+  end
+
+  test "#artifacts_by_metadata (non-alphanumeric query combined with valid tags)" do
+    search = Searches.new(Artifact.all, q: '.', tags: 'soundfont', formats: 'sf2').call
+    assert_equal 1, search.count
+    assert_includes search, @artifacts[0]
+  end
+
   test "#recent_tags" do
     skip
   end

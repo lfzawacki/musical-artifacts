@@ -133,7 +133,10 @@ class Searches
     terms = @params[:q]
     tag_terms = Searches.split_terms(terms).first(self.class.max_taggings_on_search)
 
-    tsquery = terms.split(/\s+/).map { |t| "#{sanitize_tsquery_term(t)}:*" }.join(' & ')
+    sanitized_terms = terms.split(/\s+/).map { |t| sanitize_tsquery_term(t) }.reject(&:empty?)
+    return if sanitized_terms.empty?
+
+    tsquery = sanitized_terms.map { |t| "#{t}:*" }.join(' & ')
 
     text_clause = "to_tsvector('english', coalesce(name, '') || ' ' || coalesce(description, '') || ' ' || coalesce(author, '') || ' ' || coalesce(extra_license_text, '')) @@ to_tsquery('english', :tsquery)"
 
