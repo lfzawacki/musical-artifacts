@@ -26,6 +26,9 @@ class Artifact < ActiveRecord::Base
 
     after_create :enqueue_notification
 
+    after_save :expire_unapproved_count_cache, if: :approved_changed?
+    after_destroy :expire_unapproved_count_cache
+
     # Automatically set some app_tags based on
     # the format of the uploaded file
     after_create :set_app_tags_from_format
@@ -203,5 +206,9 @@ class Artifact < ActiveRecord::Base
 
     def enqueue_notification
       Resque.enqueue(ArtifactCreatedNotificationWorker, self.id)
+    end
+
+    def expire_unapproved_count_cache
+      Rails.cache.delete("unapproved_count")
     end
 end

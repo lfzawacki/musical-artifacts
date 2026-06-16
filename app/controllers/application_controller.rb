@@ -158,7 +158,9 @@ class ApplicationController < ActionController::Base
   end
 
   def count_unapproved_artifacts
-    @unapproved_artifacts = Artifact.where(approved: false).count
+    @unapproved_artifacts = Rails.cache.fetch("unapproved_count") do
+      Artifact.where(approved: false).count
+    end
   end
 
   def handle_unknown_format(exception)
