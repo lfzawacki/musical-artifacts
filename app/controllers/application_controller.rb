@@ -154,7 +154,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_settings
-    @setting = Setting.first
+    @setting = Rails.cache.fetch("settings") { Setting.first }
   end
 
   def count_unapproved_artifacts
