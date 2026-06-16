@@ -131,27 +131,33 @@ class Searches
   def by_metadata
     return unless @params[:q].present?
     terms = @params[:q]
-
-    search_by_data = @scope.where(
-      'name ILIKE ? OR description ILIKE ? OR author ILIKE ? OR extra_license_text ILIKE ?',
-      "%#{terms}%", "%#{terms}%", "%#{terms}%", "%#{terms}%"
-    )
-
     tag_terms = Searches.split_terms(terms).first(self.class.max_taggings_on_search)
 
-    tagged        = @scope.where(tag_exists_sql('tags', tag_terms))
-    app_tagged    = @scope.where(tag_exists_sql('software', tag_terms))
-    format_tagged = @scope.where(tag_exists_sql('file_formats', tag_terms))
+    sql_parts = [
+      '(name ILIKE :query OR description ILIKE :query OR author ILIKE :query OR extra_license_text ILIKE :query)',
+      tag_exists_sql('tags', tag_terms)[0],
+      tag_exists_sql('software', tag_terms)[0],
+      tag_exists_sql('file_formats', tag_terms)[0]
+    ]
 
-    @scope = search_by_data.union(tagged).union(app_tagged).union(format_tagged)
+    safe_query = ActiveRecord::Base.send(:sanitize_sql_like, terms)
+
+    @scope = @scope.where(
+      sql_parts.join(' OR '),
+      query: "%#{safe_query}%",
+      terms: tag_terms.map(&:downcase)
+    )
   end
 
-  # Split ignoring spaces
+  # Split ignoring spaces and properly handling URL encoding
   def self.split_terms terms
-    terms.to_s.split(/\s*,\s*/)
+    CGI.unescape(terms.to_s).split(/\s*,\s*/)
   end
 
   def tag_exists_sql(context, terms)
+    valid_contexts = ['tags', 'software', 'file_formats']
+    raise ArgumentError, "Invalid context" unless valid_contexts.include?(context)
+
     sql = <<~SQL
       EXISTS (
         SELECT 1

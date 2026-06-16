@@ -153,6 +153,21 @@ class SearchesTest < ActiveSupport::TestCase
     assert_kind_of ActiveRecord::Relation, search
   end
 
+  test "search matching metadata and URL encoded tags combined" do
+    target_artifact = FactoryBot.create(:artifact,
+      name: 'search element',
+      description: 'testing the bug',
+      tag_list: ['lg', 'tagb']
+    )
+
+    # The bug was triggered by parameters parsed from a URL query string
+    search = Searches.new(Artifact.all, q: 'search', tags: 'lg%2Ctagb').call
+
+    assert_equal 1, search.count
+    assert_includes search, target_artifact
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
   test "#artifacts_tagged_with (none found)" do
     search = Searches::artifacts_tagged_with(@scope, 'thatshowthenewsgoes')
 
