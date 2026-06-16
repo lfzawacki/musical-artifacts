@@ -1,15 +1,22 @@
--# Template Dependency: licenses/cc
--# Template Dependency: licenses/gpl
 .license
 
-  - if ['public', 'cc-sample', 'copyleft', 'falv13', 'wtfpl'].include? artifact.license.short_name
+  - short = artifact.license.short_name
+  - type = artifact.license.license_type
+
+  - if ['public', 'cc-sample', 'copyleft', 'falv13', 'wtfpl'].include? short
     = render "licenses/image_only_license", artifact: artifact, small: small, cached: true
 
-  - elsif ['various', 'gray'].include? artifact.license.short_name
+  - elsif ['various', 'gray'].include? short
     = render "licenses/text_only_license", artifact: artifact, small: small, cached: true
 
-  - else
-    = render "licenses/#{artifact.license.license_type}", artifact: artifact, small: small, cached: true
+  - elsif type == 'cc'
+    = render "licenses/cc", artifact: artifact, small: small, cached: true
+
+  - elsif type == 'gpl'
+    = render "licenses/gpl", artifact: artifact, small: small, cached: true
+
+  - elsif type == 'copyright'
+    = render "licenses/copyright", artifact: artifact, small: small, cached: true
 
   - if !artifact.license.free
     .label.label-non-free
