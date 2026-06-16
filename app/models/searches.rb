@@ -133,20 +133,29 @@ class Searches
     terms = @params[:q]
     tag_terms = Searches.split_terms(terms).first(self.class.max_taggings_on_search)
 
-    sql_parts = [
-      '(name ILIKE :query OR description ILIKE :query OR author ILIKE :query OR extra_license_text ILIKE :query)',
-      tag_exists_sql('tags', tag_terms)[0],
-      tag_exists_sql('software', tag_terms)[0],
-      tag_exists_sql('file_formats', tag_terms)[0]
-    ]
+    tsquery = terms.split(/\s+/).map { |t| "#{sanitize_tsquery_term(t)}:*" }.join(' & ')
 
-    safe_query = ActiveRecord::Base.send(:sanitize_sql_like, terms)
+    text_clause = "to_tsvector('english', coalesce(name, '') || ' ' || coalesce(description, '') || ' ' || coalesce(author, '') || ' ' || coalesce(extra_license_text, '')) @@ to_tsquery('english', :tsquery)"
 
-    @scope = @scope.where(
-      sql_parts.join(' OR '),
-      query: "%#{safe_query}%",
-      terms: tag_terms.map(&:downcase)
-    )
+    if tag_terms.any?
+      tag_clause = [
+        tag_exists_sql('tags', tag_terms)[0],
+        tag_exists_sql('software', tag_terms)[0],
+        tag_exists_sql('file_formats', tag_terms)[0]
+      ].join(' OR ')
+
+      @scope = @scope.where(
+        "(#{text_clause}) OR (#{tag_clause})",
+        tsquery: tsquery,
+        terms: tag_terms.map(&:downcase)
+      )
+    else
+      @scope = @scope.where(text_clause, tsquery: tsquery)
+    end
+  end
+
+  def sanitize_tsquery_term(term)
+    term.gsub(/[^[:alnum:]]/, '')
   end
 
   # Split ignoring spaces and properly handling URL encoding

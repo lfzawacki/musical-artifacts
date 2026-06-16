@@ -101,6 +101,9 @@ gem 'auto_html', git: 'https://github.com/lfzawacki/auto_html.git'
 
 gem 'kaminari', '~> 1.1.1'
 
+# PostgreSQL full-text search
+gem 'pg_search', '~> 2.0'
+
 # JSON API authentication with JWT
 gem 'knock', '~> 1.4.1'
 

@@ -2,6 +2,11 @@ require 'digest/sha2'
 
 class Artifact < ActiveRecord::Base
     include AutoHtml
+    include PgSearch::Model
+
+    pg_search_scope :search_metadata,
+      against: { name: 'A', description: 'B', author: 'C', extra_license_text: 'D' },
+      using: { tsearch: { prefix: true } }
 
     # TODO: extract out to another file?
     # Collect activity from creates, edits and deletions
