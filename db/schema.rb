@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20260615000001) do
+ActiveRecord::Schema.define(version: 20260616000000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20260615000001) do
   end
 
   add_index "artifacts", ["approved"], name: "index_artifacts_on_approved", using: :btree
+  add_index "artifacts", ["user_id"], name: "index_artifacts_on_user_id", using: :btree
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "artifact_id"
@@ -90,6 +91,8 @@ ActiveRecord::Schema.define(version: 20260615000001) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "favorites", ["artifact_id", "user_id"], name: "index_favorites_on_artifact_id_and_user_id", using: :btree
 
   create_table "licenses", force: :cascade do |t|
     t.string   "name"
@@ -119,6 +122,8 @@ ActiveRecord::Schema.define(version: 20260615000001) do
     t.datetime "updated_at"
     t.integer  "download_count", default: 0
   end
+
+  add_index "stored_files", ["artifact_id"], name: "index_stored_files_on_artifact_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
