@@ -2,6 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    @user = user
 
     can :download, Artifact do |artifact|
       artifact.downloadable? && artifact.approved?
@@ -32,13 +33,23 @@ class Ability
       can :favorites, User
 
       can :favorite, Artifact do |artifact|
-        Favorite.where(artifact_id: artifact.id, user_id: user.id).empty?
+        !favorited_ids.include?(artifact.id)
       end
 
       can :unfavorite, Artifact do |artifact|
-        Favorite.where(artifact_id: artifact.id, user_id: user.id).any?
+        favorited_ids.include?(artifact.id)
       end
     end
 
+  end
+
+  private
+
+  def favorited_ids
+    @favorited_ids ||= Favorite.where(user_id: @user.id).pluck(:artifact_id).to_set
+  end
+
+  def user
+    @user
   end
 end
