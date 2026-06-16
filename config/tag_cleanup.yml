@@ -1,0 +1,57 @@
+# Tag Cleanup Rules
+# =================
+# Edit this file to add, change, or remove cleanup rules.
+# Apply changes by running:  bundle exec rake tag_cleanup:run
+#
+# Available contexts: tags, file_formats, software
+#
+# Rule types:
+#
+#   moves:
+#     Move tags from one context to another.
+#     Example: 'sf2' is a file format, not a general tag.
+#
+#   renames:
+#     Correct misspellings or rename tags within the same context.
+#     Example: 'poliphone' -> 'polyphone' in software.
+#
+#   removes:
+#     Delete bad/unwanted entries from a context.
+#     Example: 'sega' is not a software name.
+#
+#   strip_dots:
+#     Strip leading dots from tag names in a context.
+#     Example: '.sf2' -> 'sf2' in file_formats.
+
+moves:
+  - from: tags
+    to: file_formats
+    values:
+      - sf2
+      - wav
+      - midi
+      - ogg
+
+  - from: tags
+    to: software
+    values:
+      - polyphone
+      - musescore
+
+  - from: file_formats
+    to: tags
+    values:
+      - video game
+
+renames:
+  software:
+    poliphone: polyphone
+
+removes:
+  - from: software
+    values:
+      - sega
+      - anything that can load soundfonts
+
+strip_dots:
+  - file_formats
