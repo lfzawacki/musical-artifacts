@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+# Start guard in background, restart on Guardfile changes.
+# Press Enter to re-run all tests manually.
+
+echo "Starting guard (watches *.rb files, runs matching tests)..."
+echo "Press Ctrl+C to stop."
+
+exec bundle exec guard

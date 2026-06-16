@@ -41,6 +41,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 1.6.2'
+  gem 'spring-commands-testunit', '~> 1.0'
 
   # Debugging views gems
   gem 'binding_of_caller', '~> 0.7.2'
@@ -56,8 +57,8 @@ group :development, :test do
 
   gem 'ffi'
 
-  # gem 'guard'
-  # gem 'guard-minitest'
+  gem 'guard', '~> 2.13'
+  gem 'guard-minitest', '~> 2.4'
 
   gem 'net-ssh', '~> 2.10.0.beta2'
   gem 'capistrano', '~> 2.14.2'

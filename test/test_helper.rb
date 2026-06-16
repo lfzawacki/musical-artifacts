@@ -1,5 +1,7 @@
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
+if ENV['CI']
+  require 'codeclimate-test-reporter'
+  CodeClimate::TestReporter.start
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -8,8 +10,9 @@ require 'minitest/reporters'
 require 'minitest/rails/capybara'
 require 'faker'
 
-reporter_options = { color: true }
-Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new]
+Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new(color: true)
+
+Rails.logger.level = Logger::WARN if Rails.logger
 
 # To get mock emails in test environment
 ActionMailer::Base.default_url_options = { host: 'https://musical-artifacts.com' }
