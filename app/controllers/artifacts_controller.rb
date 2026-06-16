@@ -231,14 +231,4 @@ class ArtifactsController < InheritedResources::Base
 
       @app_integrations = App.tagged_with(app_tags, any: true).where(has_integration: true)
     end
-
-    # Translate commas and spaces from url encoded values
-    # back to their ascii counterparts
-    def translate_url_encoded_params string
-      [:hash, :tags, :apps, :formats, :license, :q].each do |param_name|
-        if params[param_name].present?
-          params[param_name] = params[param_name].gsub('%20',' ').gsub('%2C', ',')
-        end
-      end
-    end
 end
