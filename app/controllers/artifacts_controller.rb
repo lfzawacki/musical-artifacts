@@ -84,7 +84,7 @@ class ArtifactsController < InheritedResources::Base
   private
 
     def set_index_caching
-      # User Id (or anon) + locale + query + the artifact id + artifact update time
+      # User Id (or anon) + locale + query + the artifact id + artifact update time + tags
       etag = Digest::MD5.hexdigest(
         [
           current_user.try(:id) || 'anon',
@@ -98,7 +98,7 @@ class ArtifactsController < InheritedResources::Base
           params[:license],
           params[:order],
           params[:asc],
-          @artifacts.map { |a| "#{a.id}-#{a.updated_at.to_i}" }.join("/")
+          @artifacts.map { |a| "#{a.id}-#{a.updated_at.to_i}-#{a.tag_list.to_s}-#{a.software_list.to_s}-#{a.file_format_list.to_s}" }.join("/")
         ].join("|")
       )
 
@@ -106,12 +106,15 @@ class ArtifactsController < InheritedResources::Base
     end
 
     def set_show_caching
-      # User Id (or anon) + locale + artifact id + artifact update time
+      # User Id (or anon) + locale + artifact id + artifact update time + tags
       etag = [
         current_user.try(:id) || 'anon',
         I18n.locale,
         @artifact.id,
-        @artifact.updated_at.to_i
+        @artifact.updated_at.to_i,
+        @artifact.tag_list.to_s,
+        @artifact.software_list.to_s,
+        @artifact.file_format_list.to_s
       ]
 
       fresh_when etag, public: true
