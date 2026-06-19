@@ -79,13 +79,13 @@ class Searches
   def initialize(scope = Artifact.all, params = {})
     @scope = scope
     @params = params
+    @tag_conditions = {}
   end
 
   def call
     by_hash
-    by_tags
-    by_apps
-    by_formats
+    collect_tag_conditions
+    apply_tag_filters
     by_license
     by_metadata
 
@@ -98,19 +98,47 @@ class Searches
     @scope = @scope.where(file_hash: @params[:hash])
   end
 
-  def by_tags
-    return unless @params[:tags].present?
-    @scope = @scope.where(tag_exists_sql('tags', Searches.split_terms(@params[:tags]).first(self.class.max_taggings_on_search)))
+  def collect_tag_conditions
+    @tag_conditions['tags'] = @params[:tags] if @params[:tags].present?
+    @tag_conditions['software'] = @params[:apps] if @params[:apps].present?
+    @tag_conditions['file_formats'] = @params[:formats] if @params[:formats].present?
   end
 
-  def by_apps
-    return unless @params[:apps].present?
-    @scope = @scope.where(tag_exists_sql('software', Searches.split_terms(@params[:apps]).first(self.class.max_taggings_on_search)))
-  end
+  def apply_tag_filters
+    return if @tag_conditions.empty?
 
-  def by_formats
-    return unless @params[:formats].present?
-    @scope = @scope.where(tag_exists_sql('file_formats', Searches.split_terms(@params[:formats]).first(self.class.max_taggings_on_search)))
+    valid_contexts = ['tags', 'software', 'file_formats']
+    context_terms = {}
+
+    @tag_conditions.each do |context, raw|
+      next unless valid_contexts.include?(context)
+      context_terms[context] = Searches.split_terms(raw).first(self.class.max_taggings_on_search)
+    end
+
+    return if context_terms.empty?
+
+    where_parts = context_terms.map do |context, terms|
+      escaped = terms.map(&:downcase).map { |t| ActiveRecord::Base.connection.quote(t) }.join(',')
+      "(t.context = '#{context}' AND LOWER(tags.name) IN (#{escaped}))"
+    end
+
+    having_parts = context_terms.keys.map do |context|
+      "COUNT(CASE WHEN t.context = '#{context}' THEN 1 END) > 0"
+    end
+
+    join_sql = <<~SQL.squish
+      INNER JOIN (
+        SELECT t.taggable_id
+        FROM taggings t
+        JOIN tags ON tags.id = t.tag_id
+        WHERE t.taggable_type = 'Artifact'
+          AND (#{where_parts.join(' OR ')})
+        GROUP BY t.taggable_id
+        HAVING #{having_parts.join(' AND ')}
+      ) AS tag_filters ON tag_filters.taggable_id = artifacts.id
+    SQL
+
+    @scope = @scope.joins(join_sql)
   end
 
   def by_license
