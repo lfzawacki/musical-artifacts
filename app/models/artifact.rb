@@ -77,6 +77,9 @@ class Artifact < ActiveRecord::Base
         self.file_hash = Digest::SHA256.hexdigest(file.file.read)
       end
       true
+    rescue Errno::ENOENT
+      Rails.logger.warn "generate_file_hash: file not found for artifact #{id}"
+      true
     end
 
     before_save :save_new_file

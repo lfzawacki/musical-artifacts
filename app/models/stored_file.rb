@@ -31,7 +31,18 @@ class StoredFile < ActiveRecord::Base
   end
 
   def fetch_metadata_from_file
-    xt = FileExtractor.get_extractor(self.file.path, self.format)
+    if self.file.path.present?
+      file_path = self.file.path
+      tmpfile = nil
+    else
+      tmpfile = Tempfile.new(['stored_file', ".#{self.format}"])
+      tmpfile.binmode
+      tmpfile.write(self.file.file.read)
+      tmpfile.rewind
+      file_path = tmpfile.path
+    end
+
+    xt = FileExtractor.get_extractor(file_path, self.format)
 
     if xt.present?
       attrs = {}
@@ -43,6 +54,9 @@ class StoredFile < ActiveRecord::Base
 
       self.update_attributes attrs
     end
+  ensure
+    tmpfile&.close
+    tmpfile&.unlink
   end
 
   private

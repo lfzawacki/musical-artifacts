@@ -71,8 +71,13 @@ class ArtifactsController < InheritedResources::Base
         mime_type = Mime::Type.lookup_by_extension(file.format)
         file_params.merge!(type: mime_type) if mime_type.present?
 
-        # Pathname is necessary for X-Send-File to work with Capistrano sym-links
-        send_file Pathname(file.path).realdirpath, file_params
+        if file.path.present?
+          # Pathname is necessary for X-Send-File to work with symlinks
+          send_file Pathname(file.path).realdirpath, file_params
+        else # using carrierwave :fog files
+          response.headers.delete('Cache-Control')
+          redirect_to file.file.url
+        end
 
         file.increment_download_count
       end
