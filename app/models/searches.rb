@@ -169,14 +169,8 @@ class Searches
     text_clause = "to_tsvector('english', coalesce(name, '') || ' ' || coalesce(description, '') || ' ' || coalesce(author, '') || ' ' || coalesce(extra_license_text, '')) @@ to_tsquery('english', :tsquery)"
 
     if tag_terms.any?
-      tag_clause = [
-        tag_exists_sql('tags', tag_terms)[0],
-        tag_exists_sql('software', tag_terms)[0],
-        tag_exists_sql('file_formats', tag_terms)[0]
-      ].join(' OR ')
-
       @scope = @scope.where(
-        "(#{text_clause}) OR (#{tag_clause})",
+        "(#{text_clause}) OR #{tag_exists_any_context_sql(tag_terms)}",
         tsquery: tsquery,
         terms: tag_terms.map(&:downcase)
       )
@@ -194,22 +188,17 @@ class Searches
     CGI.unescape(terms.to_s).split(/\s*,\s*/)
   end
 
-  def tag_exists_sql(context, terms)
-    valid_contexts = ['tags', 'software', 'file_formats']
-    raise ArgumentError, "Invalid context" unless valid_contexts.include?(context)
-
-    sql = <<~SQL
+  def tag_exists_any_context_sql(terms)
+    <<~SQL.squish
       EXISTS (
         SELECT 1
         FROM taggings t
         JOIN tags ON tags.id = t.tag_id
         WHERE t.taggable_type = 'Artifact'
           AND t.taggable_id = artifacts.id
-          AND t.context = '#{context}'
+          AND t.context IN ('tags', 'software', 'file_formats')
           AND LOWER(tags.name) IN (:terms)
       )
     SQL
-
-    [sql, { terms: terms.map(&:downcase) }]
   end
 end
