@@ -159,7 +159,7 @@ class Searches
   def by_metadata
     return unless @params[:q].present?
     terms = @params[:q]
-    tag_terms = Searches.split_terms(terms).first(self.class.max_taggings_on_search)
+    tag_terms = terms.include?(',') ? Searches.split_terms(terms).first(self.class.max_taggings_on_search) : []
 
     sanitized_terms = terms.split(/\s+/).map { |t| sanitize_tsquery_term(t) }.reject(&:empty?)
     return if sanitized_terms.empty?
@@ -185,7 +185,7 @@ class Searches
 
   # Split ignoring spaces and properly handling URL encoding
   def self.split_terms terms
-    CGI.unescape(terms.to_s).split(/\s*,\s*/)
+    CGI.unescape(terms.to_s).split(/\s*,\s*/).map(&:strip)
   end
 
   def tag_exists_any_context_sql(terms)
