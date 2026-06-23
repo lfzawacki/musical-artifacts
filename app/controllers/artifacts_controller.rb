@@ -71,10 +71,10 @@ class ArtifactsController < InheritedResources::Base
         mime_type = Mime::Type.lookup_by_extension(file.format)
         file_params.merge!(type: mime_type) if mime_type.present?
 
-        if file.path.present?
+        if file.file.class.storage == CarrierWave::Storage::File
           # Pathname is necessary for X-Send-File to work with symlinks
           send_file Pathname(file.path).realdirpath, file_params
-        else # using carrierwave :fog files
+        else
           response.headers.delete('Cache-Control')
           redirect_to file.file.url
         end

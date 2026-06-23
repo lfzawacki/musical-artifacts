@@ -78,8 +78,9 @@ end
 gem 'font-awesome-rails', '~> 4.5.0.0'
 
 gem 'bootstrap-generators', '~> 3.3.1'
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave', '~> 1.3.4'
 gem 'fog-aws'
+gem 'excon', '0.71.0'
 
 gem 'haml-rails', '~> 1.0.0'
 
