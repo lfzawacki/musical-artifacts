@@ -261,6 +261,11 @@ class ArtifactTest < ActiveSupport::TestCase
     end
   end
 
+  test "artifact file_size" do
+    @artifact.update_attributes(file: fixture_file('audio.wav'))
+    assert @artifact.file_size > 0
+  end
+
   test '.owned_by?(user)' do
     user = FactoryBot.create(:user)
 

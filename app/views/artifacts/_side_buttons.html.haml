@@ -41,4 +41,5 @@
         %i.fa.fa-download
         .small-label
           = t('.download')
-          = "(#{number_to_human_size(artifact.file.file.size)})"
+          - if artifact.file_size.present?
+            = "(#{number_to_human_size(artifact.file_size)})"

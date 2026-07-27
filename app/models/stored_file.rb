@@ -4,7 +4,7 @@ class StoredFile < ActiveRecord::Base
   mount_uploader :file, ArtifactFileUploader
   belongs_to :artifact, touch: true
 
-  before_save :save_file_format
+  before_save :save_file_format, :save_file_size
   after_save :enqueue_fetch_metadata
 
   serialize :file_list, Array
@@ -26,6 +26,13 @@ class StoredFile < ActiveRecord::Base
     if file_changed?
       self.format = file.file.try(:extension).try(:downcase)
       self.compressed = StoredFile.compressed_formats.include?(format.downcase)
+    end
+    true
+  end
+
+  def save_file_size
+    if file_changed?
+      self.file_size = file.size
     end
     true
   end

@@ -109,6 +109,10 @@ class Artifact < ActiveRecord::Base
       stored_files.where(file: filename).order('created_at DESC').first
     end
 
+    def file_size
+      stored_files.last.try(:file_size)
+    end
+
     def file_name
       stored_files.last.name
     end

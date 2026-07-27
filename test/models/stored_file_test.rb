@@ -10,6 +10,11 @@ class StoredFileTest < ActiveSupport::TestCase
     @file_zip.file = File.open('test/fixtures/files/under.zip')
   end
 
+  test "save file saves file size" do
+    assert @file_wav.save
+    assert @file_wav.file_size > 0
+  end
+
   test "save file" do
     assert @file_wav.save
     assert @file_wav.valid?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20260618000000) do
+ActiveRecord::Schema.define(version: 20260727000000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,7 +120,8 @@ ActiveRecord::Schema.define(version: 20260618000000) do
     t.integer  "artifact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "download_count", default: 0
+    t.integer  "download_count",           default: 0
+    t.integer  "file_size",      limit: 8
   end
 
   add_index "stored_files", ["artifact_id"], name: "index_stored_files_on_artifact_id", using: :btree
