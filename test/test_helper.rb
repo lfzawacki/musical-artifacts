@@ -10,6 +10,20 @@ require 'minitest/reporters'
 require 'minitest/rails/capybara'
 require 'faker'
 
+Fog.mock!
+
+CarrierWave.configure do |config|
+  config.fog_credentials = {
+    provider:              'AWS',
+    aws_access_key_id:     'test',
+    aws_secret_access_key: 'test',
+    region:                'us-east-1',
+  }
+  config.fog_directory  = 'musical-artifacts-test'
+  config.fog_public     = true
+  config.storage        = :fog
+end
+
 Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new(color: true)
 
 Rails.logger.level = Logger::WARN if Rails.logger
@@ -23,6 +37,14 @@ class ActiveSupport::TestCase
 
   setup do
     I18n.locale = :en
+    Fog::Mock.reset
+    connection = Fog::Storage.new(
+      provider:              'AWS',
+      aws_access_key_id:     'test',
+      aws_secret_access_key: 'test',
+      region:                'us-east-1',
+    )
+    connection.directories.create(key: 'musical-artifacts-test')
   end
 
   teardown do
@@ -56,5 +78,19 @@ class ActiveSupport::TestCase
 
   def json_body
     JSON.parse(response.body)
+  end
+
+  def with_storage(type, &block)
+    ArtifactFileUploader.storage(type)
+    yield
+  ensure
+    ArtifactFileUploader.storage(:fog)
+    CarrierWave::Uploader::Base.fog_credentials = { provider: 'AWS', aws_access_key_id: 'test', aws_secret_access_key: 'test', region: 'us-east-1' }
+    CarrierWave::Uploader::Base.fog_directory = 'musical-artifacts-test'
+    CarrierWave::Uploader::Base.fog_public = true
+    FileUtils.rm_rf(Dir[Rails.root.join('public', 'uploads')])
+    Fog::Mock.reset
+    connection = Fog::Storage.new(provider: 'AWS', aws_access_key_id: 'test', aws_secret_access_key: 'test', region: 'us-east-1')
+    connection.directories.create(key: 'musical-artifacts-test')
   end
 end

@@ -28,4 +28,26 @@ class StoredFileTest < ActiveSupport::TestCase
     assert_includes @file_zip.file_list, 'AnnoyDog'
   end
 
+  test "fetch_metadata_from_file with fog storage" do
+    @file_zip.save
+    assert_equal CarrierWave::Storage::Fog, @file_zip.file.class.storage
+
+    @file_zip.fetch_metadata_from_file
+
+    assert_equal 'zip', @file_zip.format
+    assert_includes @file_zip.file_list, 'SpdrCider'
+  end
+
+  test "fetch_metadata_from_file with file storage" do
+    with_storage(:file) do
+      @file_zip.save
+      assert_equal CarrierWave::Storage::File, @file_zip.file.class.storage
+
+      @file_zip.fetch_metadata_from_file
+
+      assert_equal 'zip', @file_zip.format
+      assert_includes @file_zip.file_list, 'SpdrCider'
+    end
+  end
+
 end

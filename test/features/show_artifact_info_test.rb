@@ -216,29 +216,31 @@ class ShowArtifactInfoTest < Capybara::Rails::TestCase
   end
 
   test "see download count on the icon" do
-    @artifact.update_attributes(file: fixture_file('example.gx'))
+    with_storage(:file) do
+      @artifact.update_attributes(file: fixture_file('example.gx'))
 
-    # With no downloads
-    visit artifact_path(@artifact)
+      # With no downloads
+      visit artifact_path(@artifact)
 
-    within('.download-count') do
-      assert_content 0
-    end
+      within('.download-count') do
+        assert_content 0
+      end
 
-    # After a download
-    find('a.btn-download').click
-    visit artifact_path(@artifact)
+      # After a download
+      find('a.btn-download').click
+      visit artifact_path(@artifact)
 
-    within('.download-count') do
-      assert_content 1
-    end
+      within('.download-count') do
+        assert_content 1
+      end
 
-    # With an arbitrary value
-    @artifact.update_attributes(download_count: 10)
-    visit artifact_path(@artifact)
+      # With an arbitrary value
+      @artifact.update_attributes(download_count: 10)
+      visit artifact_path(@artifact)
 
-    within('.download-count') do
-      assert_content 10
+      within('.download-count') do
+        assert_content 10
+      end
     end
   end
 

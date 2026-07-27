@@ -59,6 +59,8 @@ class ArtifactsController < InheritedResources::Base
     if file.present?
       set_cache_header
 
+      # TODO:
+      # Did NOT invalidate the cache when filename did not change
       if stale?(etag: @artifact.file_hash, public: true)
         # Don`t include cookie if file is public, important for cloudflare
         if @artifact.downloadable? && @artifact.approved?

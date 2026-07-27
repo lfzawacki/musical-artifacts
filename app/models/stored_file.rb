@@ -31,7 +31,7 @@ class StoredFile < ActiveRecord::Base
   end
 
   def fetch_metadata_from_file
-    if self.file.path.present?
+    if self.file.class.storage == CarrierWave::Storage::File
       file_path = self.file.path
       tmpfile = nil
     else

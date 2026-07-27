@@ -241,6 +241,26 @@ class ArtifactTest < ActiveSupport::TestCase
     assert_equal @artifact.download_path, "/artifacts/#{@artifact.id}/#{@artifact.file_name}"
   end
 
+  test "update artifact with file via fog storage" do
+    assert_equal CarrierWave::Storage::Fog, @artifact.file.class.storage
+
+    @artifact.update_attributes(file: fixture_file('file.zip'))
+
+    assert_equal 'file.zip', @artifact.file_name
+    assert_includes @artifact.file_format_list, 'zip'
+  end
+
+  test "update artifact with file via file storage" do
+    with_storage(:file) do
+      assert_equal CarrierWave::Storage::File, @artifact.file.class.storage
+
+      @artifact.update_attributes(file: fixture_file('file.zip'))
+
+      assert_equal 'file.zip', @artifact.file_name
+      assert_includes @artifact.file_format_list, 'zip'
+    end
+  end
+
   test '.owned_by?(user)' do
     user = FactoryBot.create(:user)
 

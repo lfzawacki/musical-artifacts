@@ -47,7 +47,7 @@
             = f.label :file
 
             - if @artifact.file.present?
-              = @artifact.file.file.identifier
+              = @artifact.file_name
 
             = f.file_field :file, class: 'btn btn-default btn-file form-control', placeholder: true
 

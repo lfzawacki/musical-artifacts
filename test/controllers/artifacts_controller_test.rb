@@ -185,7 +185,7 @@ class ArtifactsControllerTest < ActionController::TestCase
       get :download, id: @artifact, filename: 'example.gx'
     end
 
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should render 404 with wrong link" do
@@ -207,7 +207,7 @@ class ArtifactsControllerTest < ActionController::TestCase
       get :download, id: @artifact, filename: 'example.gx'
     end
 
-    assert_response :success
+    assert_response :redirect
   end
 
 #  test "user should not download artifact if downloadable=false" do
@@ -219,7 +219,7 @@ class ArtifactsControllerTest < ActionController::TestCase
       get :download, id: @artifact, filename: 'example.gx'
     end
 
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should not download artifact if approved=false" do
@@ -241,7 +241,7 @@ class ArtifactsControllerTest < ActionController::TestCase
       get :download, id: @artifact, filename: 'example.gx'
     end
 
-    assert_response :success
+    assert_response :redirect
   end
 
   test "creator should download artifact no matter what" do
@@ -252,7 +252,7 @@ class ArtifactsControllerTest < ActionController::TestCase
       get :download, id: @artifact, filename: 'example.gx'
     end
 
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should update artifact as admin" do
@@ -498,6 +498,34 @@ class ArtifactsControllerTest < ActionController::TestCase
   test "should render index in .atom format" do
     get :index, format: :atom
     assert_response :success
+  end
+
+  #
+  # -- Tests with fog storage
+  #
+  test "should render edit form with fog-stored file without crashing" do
+    sign_in(@admin)
+    @artifact.update_attributes(file: fixture_file('example.gx'))
+
+    get :edit, id: @artifact
+    assert_response :success
+  end
+
+  test "should redirect download to fog url" do
+    @artifact.update_attributes(file: fixture_file('example.gx'))
+
+    get :download, id: @artifact, filename: 'example.gx'
+    assert_response :redirect
+    assert_match %r{https?://}, response.location
+  end
+
+  test "should download via send_file with file storage" do
+    with_storage(:file) do
+      @artifact.update_attributes(file: fixture_file('example.gx'))
+
+      get :download, id: @artifact, filename: 'example.gx'
+      assert_response :success
+    end
   end
 
 end
