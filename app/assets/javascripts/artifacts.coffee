@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-MAX_FILE_UPLOAD = 500
+MAX_FILE_UPLOAD = 100
 
 artifact_search_fields = ['apps', 'tags', 'license', 'hash', 'formats']
 
