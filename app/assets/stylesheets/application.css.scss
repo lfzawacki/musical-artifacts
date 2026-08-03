@@ -52,6 +52,10 @@
   padding: 10px;
 }
 
+.width100 {
+  width: 100%;
+}
+
 .pad-bottom {
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;
@@ -657,10 +661,15 @@ a.btn-scroll-top:hover {
   width: 100%;
 }
 
+/* user_sessions/new */
 .container-login {
   font-size: 120%;
   padding-top: 2em;
   padding-bottom: 2em;
+}
+
+.new_user {
+  padding-bottom: 1em;
 }
 
 /* users/_omniauth_providers */
