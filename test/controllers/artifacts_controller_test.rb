@@ -528,4 +528,20 @@ class ArtifactsControllerTest < ActionController::TestCase
     end
   end
 
+  test "should get index with array-style formats param without error" do
+    get :index, q: 'bamboo flute', formats: ['sf2']
+    assert_response :success
+    assert_not_nil assigns(:artifacts)
+    assert_match /sf2/, response.body
+    assert_no_match /\["sf2"\]/, response.body
+  end
+
+  test "should get index with escaped separators in formats param" do
+    get :index, formats: 'sf2%2C%20zip'
+    assert_response :success
+    assert_match /sf2, zip/, response.body
+    assert_no_match /%2C/, response.body
+    assert_no_match /%20/, response.body
+  end
+
 end

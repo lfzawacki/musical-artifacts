@@ -25,7 +25,7 @@
       - new_search.delete('formats')
 
       %span.label-delete= link_to '×', artifacts_path(new_search)
-      .label.label-big.label-format= params[:formats]
+      .label.label-big.label-format= unescape_separators(params[:formats])
 
     - if params[:license].present?
 

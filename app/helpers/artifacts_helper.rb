@@ -5,17 +5,17 @@ module ArtifactsHelper
     title = ''
 
     if tags[:apps].present?
-      title += tags[:apps].split(',').join(', ')
+      title += stringify_param(tags[:apps]).split(',').join(', ')
     end
 
     if tags[:tags].present?
       title += ' ' if title.present?
-      title += tags[:tags].split(',').join(' ')
+      title += stringify_param(tags[:tags]).split(',').join(' ')
     end
 
     if tags[:formats].present?
       title += ' ' if title.present?
-      title += tags[:formats].split(',').map {|f| ".#{f}" }.join(' ')
+      title += stringify_param(tags[:formats]).split(',').map {|f| ".#{f}" }.join(' ')
     end
 
     unescape_separators(title).capitalize
@@ -124,10 +124,14 @@ module ArtifactsHelper
 
   private
 
+  def stringify_param(value)
+    Array(value).join(',')
+  end
+
   # Only unescape ' ' and ','
   def unescape_separators str
     return '' if str.blank?
-    str.gsub('%20',' ').gsub('%2C', ',')
+    stringify_param(str).gsub('%20',' ').gsub('%2C', ',')
   end
 
   # Only unescape "'" and '"' ... it's confusing
