@@ -176,7 +176,8 @@ class ArtifactsController < InheritedResources::Base
     end
 
     def load_tag_filters
-      cache_key = "tag_filters_#{Digest::MD5.hexdigest(@artifacts.to_sql)}"
+      digest = tag_data_digest
+      cache_key = "tag_filters_#{Digest::MD5.hexdigest(@artifacts.to_sql)}_#{digest}"
 
       @tags, @licenses, @copyright = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
         tags = {
@@ -198,6 +199,24 @@ class ArtifactsController < InheritedResources::Base
 
         [tags, licenses, copyright]
       end
+    end
+
+    def tag_data_digest
+      scope_ids = @artifacts.select(:id)
+      parts = []
+
+      { tags: :tags, apps: :software, formats: :file_formats }.each do |key, context|
+        data = ActsAsTaggableOn::Tag
+          .joins(:taggings)
+          .where(taggings: { taggable_type: 'Artifact', context: context.to_s })
+          .where(taggings: { taggable_id: scope_ids })
+          .distinct
+          .order(:name)
+          .pluck(:name, :taggings_count)
+        parts << "#{key}:#{data}"
+      end
+
+      Digest::MD5.hexdigest(parts.join('|'))
     end
 
     def sanitize_filename_from_params
