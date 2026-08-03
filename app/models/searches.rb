@@ -8,6 +8,7 @@ class Searches
   end
 
   def self.tags terms
+    terms = sanitize_utf8(terms)
     query = ActsAsTaggableOn::Tag.includes(:taggings).where(taggings: {context: 'tags'})
 
     query = query.named_like(terms) if terms.present?
@@ -19,6 +20,7 @@ class Searches
   end
 
   def self.app_tags terms
+    terms = sanitize_utf8(terms)
     query = ActsAsTaggableOn::Tag.includes(:taggings).where(taggings: {context: 'software'})
 
     query = query.named_like(terms) if terms.present?
@@ -26,6 +28,7 @@ class Searches
   end
 
   def self.file_format_tags terms
+    terms = sanitize_utf8(terms)
     query = ActsAsTaggableOn::Tag.includes(:taggings).where(taggings: {context: 'file_formats'})
 
     query = query.named_like(terms) if terms.present?
@@ -33,6 +36,7 @@ class Searches
   end
 
   def self.artifacts_tagged_with artifacts, terms
+    terms = sanitize_utf8(terms)
     if terms.present?
       terms = split_terms(terms).first(max_taggings_on_search)
       artifacts = artifacts.tagged_with(terms, on: 'tags')
@@ -41,6 +45,7 @@ class Searches
   end
 
   def self.artifacts_app_tagged_with artifacts, terms
+    terms = sanitize_utf8(terms)
     if terms.present?
       terms = split_terms(terms).first(max_taggings_on_search)
       artifacts = artifacts.tagged_with(terms, on: 'software')
@@ -49,6 +54,7 @@ class Searches
   end
 
   def self.artifacts_licensed_as scope, term
+    term = sanitize_utf8(term)
     if term.present?
       scope = Searches.new(scope, :license => term).call
     end
@@ -56,6 +62,7 @@ class Searches
   end
 
   def self.artifacts_with_hash artifacts, hash
+    hash = sanitize_utf8(hash)
     if hash.present?
       artifacts = artifacts.where(file_hash: hash)
     end
@@ -63,6 +70,7 @@ class Searches
   end
 
   def self.artifacts_with_file_format artifacts, format
+    format = sanitize_utf8(format)
     if format.present?
       artifacts = artifacts.tagged_with(format, on: 'file_formats')
     end
@@ -70,6 +78,7 @@ class Searches
   end
 
   def self.artifacts_by_metadata scope, terms
+    terms = sanitize_utf8(terms)
     if terms.present?
       scope = Searches.new(scope, :q => terms).call
     end
@@ -78,7 +87,7 @@ class Searches
 
   def initialize(scope = Artifact.all, params = {})
     @scope = scope
-    @params = params
+    @params = params.each_with_object(ActiveSupport::HashWithIndifferentAccess.new) { |(k, v), h| h[k] = Searches.sanitize_utf8(v) }
     @tag_conditions = {}
   end
 
@@ -157,9 +166,13 @@ class Searches
   end
 
   def by_metadata
-    return unless @params[:q].present?
-    terms = @params[:q]
-    tag_terms = terms.include?(',') ? Searches.split_terms(terms).first(self.class.max_taggings_on_search) : []
+    return unless @params[:q]
+    terms = Searches.sanitize_utf8(@params[:q])
+
+    # return if blank term or only symbols left after sanitization
+    return if terms.blank? || terms !~ /[[:alnum:]]/
+
+    tag_terms = terms.include?(",") ? Searches.split_terms(terms).first(self.class.max_taggings_on_search) : []
 
     sanitized_terms = terms.split(/\s+/).map { |t| sanitize_tsquery_term(t) }.reject(&:empty?)
     return if sanitized_terms.empty?
@@ -181,6 +194,11 @@ class Searches
 
   def sanitize_tsquery_term(term)
     term.gsub(/[^[:alnum:]]/, '')
+  end
+
+  def self.sanitize_utf8(value)
+    return value unless value.is_a?(String)
+    value.encode("UTF-8", invalid: :replace, undef: :replace, replace: "").delete("\u0000")
   end
 
   # Split ignoring spaces and properly handling URL encoding

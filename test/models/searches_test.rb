@@ -404,4 +404,208 @@ class SearchesTest < ActiveSupport::TestCase
     skip
   end
 
+  test "#by_metadata handles null bytes in query" do
+    search = Searches.new(Artifact.all, q: "1\u0000guitar").call
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#by_metadata handles invalid UTF-8 bytes" do
+    malicious_query = [0xC0, 0xA7, 0xC0, 0xA2].pack("C*").force_encoding("UTF-8")
+    search = Searches.new(Artifact.all, q: "1#{malicious_query}guitar").call
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#by_metadata handles null byte and invalid UTF-8 combined" do
+    malicious_query = "1\u0000\xC0\xA7\xC0\xA2%2527%2522"
+    search = Searches.new(Artifact.all, q: malicious_query).call
+    assert_kind_of ActiveRecord::Relation, search
+  end
+
+  test "#by_metadata handles only garbage bytes" do
+    malicious_query = "\u0000\xC0\xA7\xC0\xA2"
+    search = Searches.new(Artifact.all, q: malicious_query).call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_equal Artifact.count, search.count
+  end
+
+  test "#artifacts_by_metadata handles null bytes in query" do
+    search = Searches::artifacts_by_metadata(@scope, "drum\u0000kit")
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[3]
+  end
+
+  test "#artifacts_by_metadata handles invalid UTF-8 bytes" do
+    malicious_query = [0xC0, 0xA7, 0xC0, 0xA2].pack("C*").force_encoding("UTF-8")
+    search = Searches::artifacts_by_metadata(@scope, "drum#{malicious_query}kit")
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[3]
+  end
+
+  test "#artifacts_by_metadata handles only garbage in query" do
+    malicious_query = "\u0000\xC0\xA7\xC0\xA2"
+    search = Searches::artifacts_by_metadata(@scope, malicious_query)
+    assert_kind_of ActiveRecord::Relation, search
+    assert_equal @scope.count, search.count
+  end
+
+  ##
+  # Tests for invalid UTF-8 bytes in all parameter vectors
+  ##
+
+  test "#by_hash handles invalid UTF-8 in hash param" do
+    search = Searches.new(Artifact.all, q: "guitar", hash: bad_bytes).call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[1]
+  end
+
+  test "#by_hash handles null byte in hash param" do
+    search = Searches.new(Artifact.all, q: "guitar", hash: "\u0000").call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[1]
+  end
+
+  test "#collect_tag_conditions handles invalid UTF-8 in tags param" do
+    search = Searches.new(Artifact.all, tags: "guitar#{bad_bytes}").call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[1]
+  end
+
+  test "#collect_tag_conditions handles null byte in tags param" do
+    search = Searches.new(Artifact.all, tags: "guitar\u0000").call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[1]
+  end
+
+  test "#collect_tag_conditions handles invalid UTF-8 in apps param" do
+    search = Searches.new(Artifact.all, apps: "fluidsynth#{bad_bytes}").call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[0]
+  end
+
+  test "#collect_tag_conditions handles null byte in apps param" do
+    search = Searches.new(Artifact.all, apps: "fluidsynth\u0000").call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[0]
+  end
+
+  test "#collect_tag_conditions handles invalid UTF-8 in formats param" do
+    search = Searches.new(Artifact.all, formats: "sf2#{bad_bytes}").call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[0]
+  end
+
+  test "#collect_tag_conditions handles null byte in formats param" do
+    search = Searches.new(Artifact.all, formats: "sf2\u0000").call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[0]
+  end
+
+  test "#by_license handles invalid UTF-8 in license param" do
+    search = Searches.new(Artifact.all, license: "by#{bad_bytes}").call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[0]
+  end
+
+  test "#by_license handles null byte in license param" do
+    search = Searches.new(Artifact.all, license: "by\u0000").call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_includes search, @artifacts[0]
+  end
+
+  test "#by_license handles only garbage in license param" do
+    search = Searches.new(Artifact.all, license: bad_bytes).call
+    assert_kind_of ActiveRecord::Relation, search
+    assert_equal Artifact.count, search.count
+  end
+
+  test "Searches.tags handles invalid UTF-8" do
+    result = Searches.tags("gui#{bad_bytes}tar")
+    assert_kind_of ActiveRecord::Relation, result
+    assert result.count >= 1
+    assert_includes result.map(&:name), "guitar"
+  end
+
+  test "Searches.tags handles null byte" do
+    result = Searches.tags("gui\u0000tar")
+    assert_kind_of ActiveRecord::Relation, result
+    assert result.count >= 1
+    assert_includes result.map(&:name), "guitar"
+  end
+
+  test "Searches.app_tags handles invalid UTF-8" do
+    result = Searches.app_tags("fluids#{bad_bytes}ynth")
+    assert_kind_of ActiveRecord::Relation, result
+    assert result.count >= 1
+    assert_includes result.map(&:name), "fluidsynth"
+  end
+
+  test "Searches.app_tags handles null byte" do
+    result = Searches.app_tags("fluids\u0000ynth")
+    assert_kind_of ActiveRecord::Relation, result
+    assert result.count >= 1
+    assert_includes result.map(&:name), "fluidsynth"
+  end
+
+  test "Searches.file_format_tags handles invalid UTF-8" do
+    result = Searches.file_format_tags("s#{bad_bytes}f2")
+    assert_kind_of ActiveRecord::Relation, result
+    assert result.count >= 1
+    assert_includes result.map(&:name), "sf2"
+  end
+
+  test "Searches.file_format_tags handles null byte" do
+    result = Searches.file_format_tags("s\u0000f2")
+    assert_kind_of ActiveRecord::Relation, result
+    assert result.count >= 1
+    assert_includes result.map(&:name), "sf2"
+  end
+
+  test "Searches.artifacts_tagged_with handles invalid UTF-8" do
+    result = Searches.artifacts_tagged_with(@scope, "gui#{bad_bytes}tar")
+    assert_kind_of ActiveRecord::Relation, result
+    assert_includes result, @artifacts[1]
+  end
+
+  test "Searches.artifacts_tagged_with handles null byte" do
+    result = Searches.artifacts_tagged_with(@scope, "gui\u0000tar")
+    assert_kind_of ActiveRecord::Relation, result
+    assert_includes result, @artifacts[1]
+  end
+
+  test "Searches.artifacts_app_tagged_with handles invalid UTF-8" do
+    result = Searches.artifacts_app_tagged_with(@scope, "fluids#{bad_bytes}ynth")
+    assert_kind_of ActiveRecord::Relation, result
+    assert_includes result, @artifacts[0]
+  end
+
+  test "Searches.artifacts_app_tagged_with handles null byte" do
+    result = Searches.artifacts_app_tagged_with(@scope, "fluids\u0000ynth")
+    assert_kind_of ActiveRecord::Relation, result
+    assert_includes result, @artifacts[0]
+  end
+
+  test "Searches.artifacts_licensed_as handles invalid UTF-8" do
+    result = Searches.artifacts_licensed_as(@scope, "b#{bad_bytes}y")
+    assert_kind_of ActiveRecord::Relation, result
+    assert_includes result, @artifacts[0]
+  end
+
+  test "Searches.artifacts_licensed_as handles null byte" do
+    result = Searches.artifacts_licensed_as(@scope, "b\u0000y")
+    assert_kind_of ActiveRecord::Relation, result
+    assert_includes result, @artifacts[0]
+  end
+
+  test "Searches.artifacts_licensed_as handles only garbage" do
+    result = Searches.artifacts_licensed_as(@scope, bad_bytes)
+    assert_kind_of ActiveRecord::Relation, result
+    assert_equal @scope.count, result.count
+  end
+
+  private
+
+  def bad_bytes
+    [0xC0, 0xA7, 0xC0, 0xA2].pack("C*").force_encoding("UTF-8")
+  end
+
 end

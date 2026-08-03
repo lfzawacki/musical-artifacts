@@ -236,8 +236,8 @@ class ArtifactsController < InheritedResources::Base
     # Used for notifications
     def load_app_integrations
       app_tags = @artifact.try(:software_list) || []
-      app_tags.push(params[:apps]) if params[:apps].present?
-
+      apps = Searches.sanitize_utf8(params[:apps])
+      app_tags.push(apps) if apps.present?
       @app_integrations = App.tagged_with(app_tags, any: true).where(has_integration: true)
     end
 end
