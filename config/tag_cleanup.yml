@@ -30,13 +30,21 @@ moves:
       - sf2
       - wav
       - midi
+      - mid
+      - .mid
       - ogg
+      - dwp
+      - .dwp
 
   - from: tags
     to: software
     values:
       - polyphone
       - musescore
+      - ableton
+      - logic pro
+      - pianoteq 9
+      - pianoteq 8
 
   - from: file_formats
     to: tags
@@ -46,12 +54,46 @@ moves:
 renames:
   software:
     poliphone: polyphone
+  tags:
+    drum kits: drumkit
+    snes soundfont: snes
+    super nintendo entertainment system: snes
+    super nintendo: snes
+    1990: 90s
+    90's: 90s
+    1980: 80s
+    80's: 80s
+    16bits: 16bit
+    8bits: 8bit
+    sound effect: sfx
+    rock guitar: rock
+    metal guitar: metal
+    synths: synth
+    nds soundfont: nds
+    sonic soundfont: sonic
+    copyright-safe free samples: free
+    free samples: free
+    megaman: mega man
+    megaman x: mega man x
+    rockman: rock man
+    rockman x: rock man x
+    memes: meme
 
 removes:
   - from: software
     values:
       - sega
       - anything that can load soundfonts
+      - all
+      - anything that can load audio files
+      - anything that can load sf2
+      - anything with an sf2 player
+  - from: tags
+    values:
+      - aa
+      - piano lovers
+      - can anyone please help me find free music?
+      - stuff that i ripped so you don't have to go through the pain of ripping it
 
 strip_dots:
   - file_formats
