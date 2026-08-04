@@ -4,7 +4,7 @@
 
 - lists.each do |tag_name, assoc_name|
 
-  - list = artifact.send(assoc_name).map(&:name)
+  - list = artifact.send(assoc_name).sort_by { |t| -t.taggings_count.to_i }.map(&:name)
 
   - if list.present? && defined?(@max_tags)
     - list.first(@max_tags[tag_name]).each do |tag|
