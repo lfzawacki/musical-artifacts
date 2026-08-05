@@ -94,6 +94,7 @@ pt-BR:
         more_links: Mais informações
         switch_language: Trocar linguagem
         terms: Termos e Condições
+        ai_policy: Política de IA
         theme_credit: "Tema derivado de:"
         site_license: "O banco de dados, texto e metadados é licenciado CC-BY-SA 4.0. Os arquivos têm suas licenças respectivas."
         author_html: "criado por <a href=\"https://github.com/lfzawacki/\">lfz</a>"
@@ -441,6 +442,14 @@ pt-BR:
       termination_text: "Reservamo-nos o direito de encerrar contas de usuário sem causa ou aviso prévio, o que pode resultar na perda e destruição de todas as informações associadas à conta. Todas as disposições deste Contrato que, por sua natureza, devam sobreviver à rescisão deverão sobreviver à rescisão, incluindo, sem limitação, disposições de propriedade, isenções de garantia, indenização e limitações de responsabilidade."
       change_title: Cláusula de Alteração de Disposições
       change_text: "O Musical Artifacts se reserva o direito de alterar essas condições de tempos em tempos, conforme achar conveniente, e o uso continuado do website significará sua aceitação de qualquer ajuste nesses termos. Portanto, é aconselhável reler esta declaração regularmente. Se houver alguma alteração na forma como usamos os dados dos usuários do nosso site, uma notificação por email será feita às pessoas afetadas pela alteração."
+
+    ai_policy:
+      title: Aviso de Treinamento de IA e Reserva de Direitos
+      notice_html: "O conteúdo deste website, incluindo todo o texto, imagens e outro material original, é protegido por direitos autorais e é propriedade de <strong>%{site_name}</strong>."
+      reservation_html: "Fica aqui notificado que nenhuma parte do conteúdo deste website pode ser acessada, raspada, copiada, reproduzida ou usada — total ou parcialmente — com o propósito de treinar, ajustar, desenvolver ou de qualquer forma construir qualquer modelo de inteligência artificial, aprendizado de máquina ou modelo de linguagem de grande escala, sem a prévia e expressa autorização por escrito do proprietário."
+      violation_html: "Isto constitui uma reserva explícita de direitos sob as leis aplicáveis de direitos autorais e mineração de texto e dados, incluindo, mas não se limitando ao Artigo 4(3) da Diretiva UE 2019/790. Qualquer entidade, incluindo desenvolvedores de IA, crawlers e seus operadores, que ingerir, armazenar ou treinar um modelo com este conteúdo em violação deste aviso o faz sem autorização e pode estar sujeita a ação judicial, incluindo reivindicações por violação de direitos autorais, quebra de contrato e enriquecimento sem causa, e <strong>%{site_name}</strong> reserva-se o direito de buscar todas as medidas legais disponíveis."
+      scope: "Este aviso aplica-se independentemente de quaisquer permissões gerais que possam ser implícitas pela acessibilidade pública deste conteúdo."
+      last_updated: "Última atualização: %{date}"
 
   views:
     pagination:

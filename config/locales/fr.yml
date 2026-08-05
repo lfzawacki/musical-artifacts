@@ -86,6 +86,7 @@ fr:
         more_links: Ailleurs
         switch_language: Changer de langue
         terms: Conditions générales
+        ai_policy: Politique IA
         theme_credit: "Le thème est dérivé de :"
         site_license: "La base de données artifact, les textes et les méta-données sont licenciés sous CC-BY-SA 4.0. Les fichiers eux-même possèdent leurs licences respectives."
         author_html: "créé par <a href=\"https://github.com/lfzawacki/\">lfz</a>"
@@ -424,6 +425,14 @@ fr:
       termination_text: "Nous nous réservons le droit de résilier les comptes d'utilisateur sans motif ni préavis, ce qui peut entraîner la confiscation et la destruction de toutes les informations associées au compte. Toutes les dispositions du présent accord qui, de par leur nature, devraient survivre à la résiliation survivront à la résiliation, y compris, sans limitation, les dispositions relatives à la propriété, les exclusions de garantie, l'indemnisation et les limitations de responsabilité."
       change_title: Clause de changement de dispositions
       change_text: "Musical Artifacts se réserve le droit de modifier ces conditions de temps à autre, comme il le juge approprié, et votre utilisation continue du site signifiera votre acceptation de toute modification de ces conditions. Il vous est donc conseillé de relire régulièrement cette déclaration. En cas de changement dans la manière dont nous utilisons les données des utilisateurs de notre site, une notification par courriel sera envoyée aux personnes concernées par ce changement."
+
+    ai_policy:
+      title: Avis d'Entraînement IA et Réserve de Droits
+      notice_html: "Le contenu de ce site web, y compris l'ensemble du texte, des images et autres matériels originaux, est protégé par le droit d'auteur et est la propriété de <strong>%{site_name}</strong>."
+      reservation_html: "Il est par la présente notifié qu'aucune partie du contenu de ce site web ne peut être consultée, extraite, copiée, reproduite ou utilisée — en tout ou en partie — dans le but d'entraîner, d'affiner, de développer ou de construire de quelque manière que ce soit un modèle d'intelligence artificielle, d'apprentissage automatique ou de grand modèle de langage, sans autorisation écrite préalable et expresse du propriétaire."
+      violation_html: "Cela constitue une réserve explicite de droits en vertu des lois applicables sur le droit d'auteur et l'exploration de textes et de données, y compris mais sans s'y limiter l'Article 4(3) de la Directive UE 2019/790. Toute entité, y compris les développeurs d'IA, les robots d'indexation et leurs opérateurs, qui ingère, stocke ou entraîne un modèle sur ce contenu en violation du présent avis le fait sans autorisation et peut faire l'objet de poursuites judiciaires, y compris des réclamations pour violation du droit d'auteur, rupture de contrat et enrichissement sans cause, et <strong>%{site_name}</strong> se réserve le droit d'exercer tous les recours juridiques disponibles."
+      scope: "Cet avis s'applique indépendamment de toute autorisation générale qui pourrait autrement être implicite du fait de l'accessibilité publique de ce contenu."
+      last_updated: "Dernière mise à jour : %{date}"
 
   views:
     pagination:

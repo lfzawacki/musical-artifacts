@@ -1,5 +1,6 @@
 !!!
 %html
+  / AI Training Notice: The content on this website is protected by copyright and is the property of #{@setting.site_name}. No part may be accessed, scraped, copied, or used for training, developing, or building AI/ML/LLM models without prior express written permission. This reservation of rights is under applicable copyright and text-and-data-mining laws including Article 4(3) of EU Directive 2019/790. Unauthorized ingestion or training constitutes infringement. Last updated: #{Date.today.to_s}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
@@ -109,6 +110,9 @@
               %h3= t('.footer.legal')
               %h4
                 = link_to t('.footer.terms'), terms_and_conditions_path
+
+              %h4
+                = link_to t('.footer.ai_policy'), ai_policy_path
 
               #opt-out= link_to t('info.optout.title'), analytics_optout_path
 

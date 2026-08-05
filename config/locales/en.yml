@@ -74,6 +74,7 @@ en:
         more_links: Elsewhere
         switch_language: Switch Language
         terms: Terms and Conditions
+        ai_policy: AI Policy
         theme_credit: "Theme is derived from:"
         site_license: "The artifact database, text and metadata is licensed CC-BY-SA 4.0. The files themselves have their respective licenses."
         author_html: "created by <a href=\"https://github.com/lfzawacki/\">lfz</a>"
@@ -415,3 +416,12 @@ en:
       termination_text: "We reserve the right to terminate user accounts without cause or notice, which may result in the forfeiture and destruction of all information associated with the account. All provisions of this Agreement that, by their nature, should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability."
       change_title: Change of Provisions Clause
       change_text: "Musical Artifacts reserves the right to change these conditions from time to time as it sees fit and your continued use of the site will signify your acceptance of any adjustment to these terms. You are therefore advised to re-read this statement on a regular basis. If there are any changes in how we use our site users' data, notification by email will be made to those affected by the change."
+
+    ai_policy:
+      title: AI Training Notice and Rights Reservation
+      notice_html: "The content on this website, including all text, images, and other original material, is protected by copyright and is the property of <strong>%{site_name}</strong>."
+      reservation_html: "Notice is hereby given that no part of this website's content may be accessed, scraped, copied, reproduced, or used — in whole or in part — for the purpose of training, fine-tuning, developing, or otherwise building any artificial intelligence, machine learning model, or large language model, without prior express written permission from the owner."
+      violation_html: "This constitutes an explicit reservation of rights under applicable copyright and text-and-data-mining laws, including but not limited to Article 4(3) of EU Directive 2019/790. Any entity, including AI developers, crawlers, and their operators, that ingests, stores, or trains a model on this content in violation of this notice does so without authorization and may be subject to legal action, including claims for copyright infringement, breach of contract, and unjust enrichment, and <strong>%{site_name}</strong> reserves the right to pursue all available legal remedies."
+      scope: "This notice applies regardless of any general permissions that may otherwise be implied by the public accessibility of this content."
+      last_updated: "Last updated: %{date}"
+

@@ -16,4 +16,7 @@ class InfoController < ApplicationController
   def terms_and_conditions
   end
 
+  def ai_policy
+  end
+
 end

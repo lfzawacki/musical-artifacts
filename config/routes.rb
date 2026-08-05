@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get '/info/survey', to: 'info#survey', as: :info_survey
   get '/analytics_optout', to: 'info#optout', as: :analytics_optout
   get '/terms_and_conditions', to: 'info#terms_and_conditions', as: :terms_and_conditions
+  get '/ai-policy', to: 'info#ai_policy', as: :ai_policy
 
   post '/locale/:locale', to: 'locales#set_locale', as: :set_locale
 

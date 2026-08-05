@@ -1,0 +1,7 @@
+- content_for :title, t('.title')
+%h1= t('.title')
+%p= t('.notice_html', site_name: @setting.site_name)
+%p= t('.reservation_html')
+%p= t('.violation_html', site_name: @setting.site_name)
+%p= t('.scope')
+%p.small= t('.last_updated', date: l(Date.today, format: :long))
