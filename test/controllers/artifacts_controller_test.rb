@@ -63,6 +63,14 @@ class ArtifactsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should set default license to copyright on new" do
+    sign_in(@user)
+    get :new
+
+    assert_response :success
+    assert_equal License.find('copyright'), assigns(:artifact).license
+  end
+
   test "should create artifact as admin" do
     sign_in(@admin)
 

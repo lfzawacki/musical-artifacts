@@ -33,6 +33,7 @@ class ArtifactsController < InheritedResources::Base
   end
 
   before_filter :load_licenses, only: [:new, :edit, :create, :update]
+  before_action :set_default_license, only: [:new]
   before_filter :load_app_integrations, only: [:index, :show]
   before_filter :load_max_tags, except: [:download]
 
@@ -173,6 +174,10 @@ class ArtifactsController < InheritedResources::Base
     def load_licenses
       @free_licenses = License.where(free: true).map(&:license_for_group_select).sort_by(&:first)
       @non_free_licenses = License.where(free: [false, nil]).map(&:license_for_group_select).sort_by(&:first)
+    end
+
+    def set_default_license
+      @artifact.license = License.find_by(short_name: 'copyright')
     end
 
     def load_tag_filters
