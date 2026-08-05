@@ -83,14 +83,13 @@ select_for_http_links = (id) ->
 
   # Puts http:// in front of selection and sets obj.id equal to obj.text
   format = (object, container) ->
-    text = escapeHTML(object.text)
+    raw = object.text
     # Assume a url has been entered and stick a http:// in front if it's not there
-    if not object.text.match(/^http[s]?\:\/\//)
-       text = 'http://' + text
-    else
-      text
+    if not raw.match(/^http[s]?\:\/\//)
+      raw = 'http://' + raw
 
-    object.text = object.id = text
+    object.id = raw
+    object.text = escapeHTML(raw)
 
   if $(id)[0]
     $(id)?.select2
