@@ -144,6 +144,41 @@ class ArtifactsController < InheritedResources::Base
 
     def paginate
       @artifacts = @artifacts.page(params[:page]).per(@setting.artifacts_per_page)
+      set_pagination_headers
+    end
+
+    def set_pagination_headers
+      return unless request.format.json?
+
+      response.headers['X-Total'] = @artifacts.total_count.to_s
+      response.headers['X-Total-Pages'] = @artifacts.total_pages.to_s
+      response.headers['X-Per-Page'] = @artifacts.limit_value.to_s
+
+      links = build_page_links
+      response.headers['Link'] = links.join(', ') if links.any?
+    end
+
+    def build_page_links
+      links = []
+      filter_params = request.query_parameters
+        .symbolize_keys
+        .except(:page, :action, :controller, :format)
+        .merge(format: :json)
+
+      base_url = artifacts_url(filter_params)
+
+      {
+        first: 1,
+        prev:  @artifacts.prev_page,
+        next:  @artifacts.next_page,
+        last:  @artifacts.total_pages.positive? ? @artifacts.total_pages : nil
+      }.each do |rel, page|
+        next if page.nil?
+        url = "#{base_url}#{base_url.include?('?') ? '&' : '?'}page=#{page}"
+        links << %(<#{url}>; rel="#{rel}")
+      end
+
+      links
     end
 
     def order_by_params

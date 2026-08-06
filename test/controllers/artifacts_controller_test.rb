@@ -501,6 +501,91 @@ class ArtifactsControllerTest < ActionController::TestCase
   end
 
   #
+  # -- JSON pagination headers
+  #
+  test "json index includes pagination headers" do
+    get :index, format: :json
+
+    assert_response :success
+    assert response.headers['X-Total'].present?
+    assert response.headers['X-Total-Pages'].present?
+    assert response.headers['X-Per-Page'].present?
+    assert_match(/artifacts\.json/, response.headers['Link'])
+    assert_match %r{rel="first"}, response.headers['Link']
+  end
+
+  test "json index with multiple pages has correct pagination values" do
+    Setting.first.update_attributes(artifacts_per_page: 2)
+    FactoryBot.create_list(:artifact, 4)
+
+    get :index, format: :json
+
+    link = response.headers['Link']
+    refute_nil link, 'Link header must be present'
+    assert_match %r{rel="first"}, link
+    assert_match %r{rel="next"}, link
+    assert_match %r{rel="last"}, link
+    refute_match %r{rel="prev"}, link, 'prev should not appear on first page'
+
+    assert_equal '5', response.headers['X-Total']
+    assert_equal '3', response.headers['X-Total-Pages']
+    assert_equal '2', response.headers['X-Per-Page']
+  end
+
+  test "json index page 2 includes prev and next links" do
+    Setting.first.update_attributes(artifacts_per_page: 2)
+    FactoryBot.create_list(:artifact, 4)
+
+    get :index, page: 2, format: :json
+
+    link = response.headers['Link']
+    assert_match %r{rel="first"}, link
+    assert_match %r{rel="prev"}, link
+    assert_match %r{rel="next"}, link
+    assert_match %r{rel="last"}, link
+  end
+
+  test "json index last page includes prev but no next" do
+    Setting.first.update_attributes(artifacts_per_page: 2)
+    FactoryBot.create_list(:artifact, 4)
+
+    get :index, page: 3, format: :json
+
+    link = response.headers['Link']
+    assert_match %r{rel="prev"}, link
+    refute_match %r{rel="next"}, link, 'next should not appear on last page'
+  end
+
+  test "json index with single page omits prev and next" do
+    get :index, format: :json
+
+    link = response.headers['Link']
+    assert_match %r{rel="first"}, link
+    refute_match %r{rel="prev"}, link
+    refute_match %r{rel="next"}, link
+  end
+
+  test "json index Link header preserves filter params" do
+    Setting.first.update_attributes(artifacts_per_page: 1)
+    FactoryBot.create_list(:artifact, 3)
+
+    get :index, q: 'sunset', tags: 'guitar', format: :json
+
+    link = response.headers['Link']
+    refute_nil link
+    assert_match(/[?&]q=sunset/, link)
+    assert_match(/[?&]tags=guitar/, link)
+  end
+
+  test "html index does not include pagination headers" do
+    get :index
+
+    assert_nil response.headers['X-Total']
+    assert_nil response.headers['X-Total-Pages']
+    assert_nil response.headers['Link']
+  end
+
+  #
   # -- ATOM Feed tests
   #
   test "should render index in .atom format" do
