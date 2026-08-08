@@ -316,7 +316,7 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     nprogress-rails (0.1.6.7)
-    oauth (0.5.4)
+    oauth (0.5.10)
     oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
