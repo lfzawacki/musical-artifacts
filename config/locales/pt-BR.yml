@@ -110,6 +110,7 @@ pt-BR:
     extra_text: "Considerações extras:"
     link:
       cc: http://creativecommons.org/licenses/%{type}/4.0/deed.pt
+      cc_3: http://creativecommons.org/licenses/%{type}/3.0/deed.pt
       cc_sample: https://creativecommons.org/licenses/sampling+/1.0/
       copyleft: https://www.gnu.org/copyleft/copyleft.pt-br.html
       copyright: ''

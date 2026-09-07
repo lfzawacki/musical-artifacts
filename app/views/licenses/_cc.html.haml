@@ -1,6 +1,5 @@
-- name = artifact.license.short_name
-- link = t("licenses.link.cc", type: name)
 - img = image_tag(artifact.license.image_url(small))
+- link = artifact.license.cc_link
 
 - parts = artifact.license.name_parts.map do |part|
   - t("licenses.#{small ? 'small_' : ''}name_parts.#{part}")
