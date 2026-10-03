@@ -88,6 +88,18 @@ class License < ActiveRecord::Base
     end
   end
 
+  # The deed URL for a CC license, versioned correctly. Mirrors how
+  # cc_license_number/type_image already tell 3.0 short_names (which carry a
+  # trailing version segment, e.g. "by-nc-3") apart from 4.0 ones ("by-nc").
+  def cc_link
+    if cc_license_number == 3
+      type = short_name.split('-')[0...-1].join('-')
+      I18n.t("licenses.link.cc_3", type: type)
+    else
+      I18n.t("licenses.link.cc", type: short_name)
+    end
+  end
+
   private
   def self.license_image_present? filename
     if Rails.env.production?

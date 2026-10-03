@@ -105,6 +105,7 @@ fr:
     extra_text: "Considérations additionnelles :"
     link:
       cc: http://creativecommons.org/licenses/%{type}/4.0/deed.fr
+      cc_3: http://creativecommons.org/licenses/%{type}/3.0/deed.fr
       cc_sample: https://creativecommons.org/licenses/sampling+/1.0/
       copyleft: https://www.gnu.org/copyleft/copyleft.fr.html
       copyright: ''

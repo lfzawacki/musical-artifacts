@@ -100,6 +100,14 @@ class LicenseTest < ActiveSupport::TestCase
     assert_equal 4, License.cc_license_number('by-nd')
   end
 
+  test "cc_link uses the versioned deed URL for 3.0 licenses" do
+    assert_equal "http://creativecommons.org/licenses/by-nc/3.0/deed.en", @bync3.cc_link
+  end
+
+  test "cc_link uses the 4.0 deed URL for plain (unversioned) licenses" do
+    assert_equal "http://creativecommons.org/licenses/by/4.0/deed.en", @by.cc_link
+  end
+
   test "self.is_text_part?" do
     assert License.is_text_part?('by')
     assert License.is_text_part?('nc')
